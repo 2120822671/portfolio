@@ -7,164 +7,199 @@
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft Yahei", sans-serif;
-    background: #0f1222; color: #e8eaf2; min-height: 100vh;
+    font-family: "Microsoft Yahei", "PingFang SC", sans-serif;
+    background: #e8eaf0; color: #222; padding: 30px 12px 60px;
   }
-  .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
-  nav {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(15,18,34,.85); backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255,255,255,.08);
+  /* 浮动操作按钮（不干扰文档观感） */
+  .fab { position: fixed; top: 16px; right: 16px; display: flex; gap: 10px; z-index: 99; }
+  .fab a {
+    background: #3b4a8c; color: #fff; text-decoration: none; font-size: 13px;
+    padding: 8px 16px; border-radius: 20px; box-shadow: 0 2px 8px rgba(59,74,140,.35);
   }
-  .nav-inner { display: flex; align-items: center; gap: 24px; height: 60px; }
-  .nav-inner a { color: rgba(232,234,242,.75); text-decoration: none; font-size: 14px; }
-  .nav-inner a:hover { color: #fff; }
-  .nav-inner .dl {
-    margin-left: auto; font-weight: 600; color: #0f1222; background: #8b5cf6;
-    padding: 7px 16px; border-radius: 8px; font-size: 13px;
+  .fab a:hover { background: #2f3c73; }
+
+  /* A4 纸张质感 */
+  .page {
+    width: 794px; max-width: 100%; margin: 0 auto; background: #fff;
+    box-shadow: 0 2px 18px rgba(0,0,0,.12); padding: 40px 48px 50px;
   }
 
-  /* 头部 */
-  .head { padding: 52px 0 26px; border-bottom: 1px solid rgba(255,255,255,.09); }
-  .head h1 { font-size: 32px; }
-  .head .intent { margin-top: 8px; font-size: 16px; color: #8b5cf6; font-weight: 600; }
-  .meta { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 10px 26px; font-size: 14px; color: rgba(232,234,242,.7); }
-  .meta a { color: rgba(232,234,242,.7); text-decoration: none; }
-  .meta a:hover { color: #fff; }
-
-  /* 分区 */
-  section { padding: 30px 0 6px; }
-  section h2 {
-    font-size: 18px; color: #2dd4bf; margin-bottom: 16px;
-    display: flex; align-items: center; gap: 10px;
+  /* 顶部标题横幅（文档样式） */
+  .banner { display: flex; align-items: center; gap: 8px; margin-bottom: 34px; }
+  .banner .tag {
+    background: #3b4a8c; color: #fff; font-size: 26px; font-weight: 700;
+    padding: 10px 34px 10px 26px; border-radius: 0 10px 10px 0; letter-spacing: 4px;
+    position: relative;
   }
-  section h2::after { content: ""; flex: 1; height: 1px; background: rgba(255,255,255,.09); }
-
-  .block { margin-bottom: 20px; }
-  .block .title { font-size: 15.5px; font-weight: 700; }
-  .block .title .dur { font-weight: 400; color: rgba(232,234,242,.55); font-size: 13px; margin-left: 10px; }
-  .block .title .role { font-weight: 400; color: #f59e0b; font-size: 13px; margin-left: 10px; }
-  .block ul { list-style: none; margin-top: 8px; }
-  .block li {
-    padding: 4px 0 4px 22px; position: relative;
-    color: rgba(232,234,242,.78); font-size: 14px; line-height: 1.8;
+  .banner .tag::before {
+    content: ""; position: absolute; left: -14px; top: 14px;
+    border: 7px solid transparent; border-right-color: #27335f;
   }
-  .block li::before { content: "▸"; position: absolute; left: 4px; color: rgba(232,234,242,.35); }
-  .block li b { color: #e8eaf2; }
 
-  .skill-group { margin-bottom: 12px; }
-  .skill-group .g { color: #e8eaf2; font-weight: 700; font-size: 14px; }
+  /* 基本信息 */
+  .head { display: flex; gap: 24px; margin-bottom: 36px; }
+  .head-left { flex: 1; }
+  .name-row { display: flex; align-items: baseline; gap: 22px; margin-bottom: 16px; }
+  .name-row h1 { font-size: 30px; letter-spacing: 2px; color: #1a1a1a; }
+  .name-row .intent { font-size: 15px; font-weight: 700; color: #1a1a1a; }
+  .fields { display: grid; grid-template-columns: 150px 1fr 1fr; gap: 13px 14px; font-size: 14px; color: #333; }
+  .fields a { color: #333; text-decoration: none; }
+  .fields a:hover { color: #3b4a8c; text-decoration: underline; }
+  .head-photo { width: 112px; height: 150px; object-fit: cover; object-position: top; flex-shrink: 0; }
 
-  .honor-line { color: rgba(232,234,242,.78); font-size: 14px; line-height: 1.9; }
+  /* 区块标题胶囊 */
+  section { margin-bottom: 34px; }
+  .sec-title {
+    display: flex; align-items: center; gap: 14px; margin-bottom: 16px;
+  }
+  .sec-title .pill {
+    background: #3b4a8c; color: #fff; font-size: 17px; font-weight: 700;
+    padding: 8px 26px; border-radius: 22px; letter-spacing: 2px; white-space: nowrap;
+  }
+  .sec-title .line { flex: 1; height: 1px; background: #3b4a8c; opacity: .45; }
 
-  footer { margin-top: 26px; padding: 22px 0 46px; border-top: 1px solid rgba(255,255,255,.09); color: rgba(232,234,242,.45); font-size: 13px; text-align: center; }
+  /* 内容 */
+  .intent-box {
+    border: 1px solid #b9bfd4; border-radius: 4px; padding: 10px 16px;
+    font-size: 14.5px; color: #222; background: #fafbfe;
+  }
+  .sub-head { font-weight: 700; font-size: 14.5px; margin: 8px 0 6px; color: #1a1a1a; }
+  ul.blist { list-style: none; }
+  ul.blist li {
+    position: relative; padding: 4px 0 4px 20px;
+    font-size: 14px; line-height: 1.85; color: #333;
+  }
+  ul.blist li::before {
+    content: ""; position: absolute; left: 4px; top: 13px;
+    width: 5px; height: 5px; border-radius: 50%; background: #3b4a8c;
+  }
+  ul.blist b { color: #1a1a1a; }
+
+  .proj-title { font-size: 15px; font-weight: 700; color: #1a1a1a; margin: 14px 0 4px; }
+  .proj-title .sep { color: #3b4a8c; font-weight: 400; margin: 0 6px; }
+  .proj-title:first-of-type { margin-top: 0; }
+
+  .honor-line { font-size: 14px; line-height: 1.9; color: #333; }
+
+  /* 打印 */
+  @media print {
+    body { background: #fff; padding: 0; }
+    .fab { display: none; }
+    .page { box-shadow: none; width: 100%; padding: 20px 30px; }
+  }
+  @media (max-width: 820px) {
+    .page { padding: 24px 20px; }
+    .fields { grid-template-columns: 1fr 1fr; }
+    .head-photo { width: 90px; height: 120px; }
+  }
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-inner wrap">
-    <a href="/">← 返回作品集首页</a>
-    <a class="dl" href="/resume.docx" download>⬇ 下载简历 (docx)</a>
+<div class="fab">
+  <a href="/">← 返回作品集</a>
+  <a href="/resume.docx" download>⬇ 下载 docx</a>
+</div>
+
+<div class="page">
+
+  <div class="banner"><div class="tag">个人简历</div></div>
+
+  <div class="head">
+    <div class="head-left">
+      <div class="name-row">
+        <h1>陈振华</h1>
+        <span class="intent">求职意向：AI 应用开发</span>
+      </div>
+      <div class="fields">
+        <span>电话：18270399720</span>
+        <span>邮箱：2405030532@qq.com</span>
+        <span></span>
+        <span>性别：男</span>
+        <span>出生日期：2005.09.11</span>
+        <span>到岗时间：可尽快到岗</span>
+        <span>现所在地：福州</span>
+        <span>最高学历：大专</span>
+        <span>民族：汉族</span>
+        <span>工作年限：无经验</span>
+        <span>项目 / GitHub 链接：<a href="https://github.com/2120822671/portfolio" target="_blank">github.com/2120822671</a></span>
+        <span></span>
+      </div>
+    </div>
+    <img class="head-photo" src="/resume-photo" alt="证件照">
   </div>
-</nav>
-
-<header class="head wrap">
-  <h1>陈振华</h1>
-  <div class="intent">求职意向：AI 应用开发实习生 / Python 后端开发实习生 · 可尽快到岗</div>
-  <div class="meta">
-    <span>📞 18270399720</span>
-    <span>✉️ 2405030532@qq.com</span>
-    <span>男 · 2005.09</span>
-    <span>现居福州 · 大专（人工智能技术应用）</span>
-    <span><a href="https://github.com/2120822671" target="_blank">GitHub：2120822671</a></span>
-  </div>
-</header>
-
-<main class="wrap">
 
   <section>
-    <h2>个人技能</h2>
-    <div class="skill-group">
-      <div class="g">熟练掌握</div>
-      <ul>
-        <li><b>后端：</b>精通 Python 语言，熟练使用 FastAPI、SQLAlchemy 框架，可独立完成接口设计、参数校验、会话认证与性能优化</li>
-        <li><b>数据库：</b>熟练使用 MySQL 8.0，掌握表结构设计、索引优化、事务控制与连接池配置，具备慢查询调优实战经验</li>
-        <li><b>前端：</b>掌握 HTML5 / CSS3 / 原生 JavaScript，了解 Vue 基础开发，可独立完成前后端联调与单页应用搭建</li>
-        <li><b>工具：</b>Git 版本控制、Navicat 数据库管理、Trae CN AI 辅助开发；精通扣子（Coze）智能体平台，可独立完成知识库构建、提示词工程、工作流编排</li>
-      </ul>
-    </div>
-    <div class="skill-group">
-      <div class="g">学习提升</div>
-      <ul>
-        <li>正在系统性夯实数据结构与算法、操作系统、计算机网络、深度学习基础理论，逐步提升底层开发能力</li>
-      </ul>
-    </div>
+    <div class="sec-title"><div class="pill">求职意向</div><div class="line"></div></div>
+    <div class="intent-box">意向岗位：AI 应用开发实习生 / Python 后端开发实习生</div>
   </section>
 
   <section>
-    <h2>项目经历</h2>
-
-    <div class="block">
-      <div class="title">多场景智能体开发（扣子 Coze）<span class="dur">2026.9 – 2026.10</span><span class="role">独立开发者</span></div>
-      <ul>
-        <li><b>场景落地：</b>针对多领域人工服务标准化低、效率不足的痛点，独立完成 16 款业务智能体从需求拆解到上线全流程，覆盖 5 类核心业务场景</li>
-        <li><b>知识库建设：</b>为实现精准信息问答目标，搭建食物 GI 值、图片图鉴等垂直知识库，结构化沉淀专业内容，查询准确率达 90% 以上</li>
-        <li><b>能力编排：</b>围绕身份识别、图片合规核查等业务需求，通过系统变量 + 插件 + 工作流实现多模态能力，识别效率较人工提升 3 倍</li>
-        <li><b>效率沉淀：</b>总结搭建方法论并沉淀通用模板，同类型智能体开发周期缩短 50%，实现快速复用与批量落地</li>
-      </ul>
-    </div>
-
-    <div class="block">
-      <div class="title">星坞 StarDock 粉丝社区平台（FastAPI + DBUtils 连接池 + MySQL）<span class="dur">2026.10 – 2026.11</span><span class="role">后端核心开发</span></div>
-      <ul>
-        <li><b>模块开发：</b>面向粉丝社区多场景互动需求，主导用户认证、名人主页、粉丝团、互动娱乐等核心模块后端开发，打通全业务链路</li>
-        <li><b>并发优化：</b>针对高并发下数据库连接损耗高、数据一致性风险，引入 DBUtils 连接池 + 参数绑定 + 事务保护机制，筑牢并发安全底座</li>
-        <li><b>稳定加固：</b>覆盖全业务分支边界场景，设计异常兜底与错误重试逻辑，大幅降低异常触发概率，提升系统鲁棒性</li>
-        <li><b>落地成果：</b>数据库连接复用率提升 70%，百级并发下数据一致性 100%，全模块功能稳定运行，支撑多用户同时在线交互</li>
-      </ul>
-    </div>
-
-    <div class="block">
-      <div class="title">其他全栈项目实践<span class="dur">本作品集内可运行演示</span></div>
-      <ul>
-        <li>围绕实训目标与能力打磨，独立开发蛋糕线上商城、招财记账系统、学生社团活动登记平台 3 个 Web 项目，全部基于 FastAPI + MySQL 技术栈实现</li>
-        <li>覆盖 Session 会话认证、Pydantic 参数校验、SQL 索引优化等核心后端能力，其中蛋糕商城项目获评校级优秀实训项目，所有项目均可现场运行演示</li>
-      </ul>
-    </div>
+    <div class="sec-title"><div class="pill">个人技能</div><div class="line"></div></div>
+    <div class="sub-head">熟练掌握：</div>
+    <ul class="blist">
+      <li><b>后端：</b>精通 Python 语言，熟练使用 FastAPI、SQLAlchemy 框架，可独立完成接口设计、参数校验、会话认证与性能优化</li>
+      <li><b>数据库：</b>熟练使用 MySQL 8.0，掌握表结构设计、索引优化、事务控制与连接池配置，具备慢查询调优实战经验</li>
+      <li><b>前端：</b>掌握 HTML5 / CSS3 / 原生 JavaScript，了解 Vue 基础开发，可独立完成前后端联调与单页应用搭建</li>
+      <li><b>工具：</b>Git 版本控制、Navicat 数据库管理、Trae CN AI 辅助开发；精通扣子（Coze）智能体平台，可独立完成知识库构建、提示词工程、工作流编排</li>
+    </ul>
+    <div class="sub-head">学习提升：</div>
+    <ul class="blist">
+      <li>正在系统性夯实数据结构与算法、操作系统、计算机网络、深度学习基础理论，逐步提升底层开发能力</li>
+    </ul>
   </section>
 
   <section>
-    <h2>校园经历</h2>
-    <div class="block">
-      <div class="title">福州软件职业技术学院 · 人工智能技术应用<span class="dur">2024.09 – 2026.12</span></div>
-      <ul>
-        <li>主修人工智能技术应用专业，坚持项目驱动式学习，在校期间独立落地多款可运行的 Web 应用与智能体产品，优先做能解决真实小问题的落地项目</li>
-        <li>注重工程实践与问题复盘，习惯沉淀开发踩坑笔记，具备独立检索、定位、调试代码问题的能力；清晰认知 AI 是工具，逻辑与正确性由人把控</li>
-        <li>同步补齐数据结构、计算机网络、数据库原理等计算机底层基础，目标从"借助 AI 搭应用"逐步走向自主设计、自主实现复杂系统</li>
-      </ul>
-    </div>
+    <div class="sec-title"><div class="pill">项目经历</div><div class="line"></div></div>
+
+    <div class="proj-title">多场景智能体开发（扣子Coze）<span class="sep">｜</span>2026.9–2026.10<span class="sep">｜</span>独立开发者</div>
+    <ul class="blist">
+      <li><b>场景落地：</b>针对多领域人工服务标准化低、效率不足的痛点，独立完成 16 款业务智能体从需求拆解到上线全流程，覆盖 5 类核心业务场景</li>
+      <li><b>知识库建设：</b>为实现精准信息问答目标，搭建食物 GI 值、图片图鉴等垂直知识库，结构化沉淀专业内容，查询准确率达 90% 以上</li>
+      <li><b>能力编排：</b>围绕身份识别、图片合规核查等业务需求，通过系统变量 + 插件 + 工作流实现多模态能力，识别效率较人工提升 3 倍</li>
+      <li><b>效率沉淀：</b>总结搭建方法论并沉淀通用模板，同类型智能体开发周期缩短 50%，实现快速复用与批量落地</li>
+    </ul>
+
+    <div class="proj-title">星坞 StarDock 粉丝社区平台（FastAPI + DBUtils 连接池 + MySQL）<span class="sep">｜</span>2026.10–2026.11<span class="sep">｜</span>后端核心开发</div>
+    <ul class="blist">
+      <li><b>模块开发：</b>面向粉丝社区多场景互动需求，主导用户认证、名人主页、粉丝团、互动娱乐等核心模块后端开发，打通全业务链路</li>
+      <li><b>并发优化：</b>针对高并发下数据库连接损耗高、数据一致性风险，引入 DBUtils 连接池 + 参数绑定 + 事务保护机制，筑牢并发安全底座</li>
+      <li><b>稳定加固：</b>覆盖全业务分支边界场景，设计异常兜底与错误重试逻辑，大幅降低异常触发概率，提升系统鲁棒性</li>
+      <li><b>落地成果：</b>数据库连接复用率提升 70%，百级并发下数据一致性 100%，全模块功能稳定运行，支撑多用户同时在线交互</li>
+    </ul>
+
+    <div class="proj-title">其他全栈项目实践</div>
+    <ul class="blist">
+      <li>围绕实训目标与能力打磨，独立开发蛋糕线上商城、招财记账系统、学生社团活动登记平台 3 个 Web 项目，全部基于 FastAPI + MySQL 技术栈实现</li>
+      <li>覆盖 Session 会话认证、Pydantic 参数校验、SQL 索引优化等核心后端能力，其中蛋糕商城项目获评校级优秀实训项目，所有项目均可现场运行演示</li>
+    </ul>
   </section>
 
   <section>
-    <h2>个人荣誉</h2>
-    <p class="honor-line">计算机软件测试员（三级）· 全国计算机等级考试（一级）· 校级学生奖学金三等奖（2 次）</p>
+    <div class="sec-title"><div class="pill">校园经历</div><div class="line"></div></div>
+    <div class="proj-title">2024.09-2026.12<span class="sep">｜</span>福州软件职业技术学院</div>
+    <ul class="blist">
+      <li>主修人工智能技术应用专业，坚持项目驱动式学习，在校期间独立落地多款可运行的 Web 应用与智能体产品，优先做能解决真实小问题的落地项目</li>
+      <li>注重工程实践与问题复盘，习惯沉淀开发踩坑笔记，具备独立检索、定位、调试代码问题的能力；清晰认知 AI 是工具，逻辑与正确性由人把控</li>
+      <li>同步补齐数据结构、计算机网络、数据库原理等计算机底层基础，目标从 “借助 AI 搭应用” 逐步走向自主设计、自主实现复杂系统</li>
+    </ul>
   </section>
 
   <section>
-    <h2>个人评价</h2>
-    <ul>
+    <div class="sec-title"><div class="pill">个人荣誉</div><div class="line"></div></div>
+    <p class="honor-line">计算机软件测试员（三级）、全国计算机等级考试（一级）、校级学生奖学金三等奖（2次）</p>
+  </section>
+
+  <section>
+    <div class="sec-title"><div class="pill">个人评价</div><div class="line"></div></div>
+    <ul class="blist">
       <li>应用落地型开发人才，可独立完成智能体搭建、后端接口开发、前后端联调全流程，已有 16 款上线智能体与校级优秀全栈项目背书，具备从需求拆解到落地交付的完整能力</li>
       <li>擅长借助 AI 工具辅助编码与原型迭代，能快速识别 AI 输出的逻辑问题并验证调试，通过沉淀通用开发模板，将同类项目搭建周期缩短 50%</li>
       <li>正系统性夯实计算机底层理论基础，适配 AI 应用开发、Python 后端开发类实习岗位，可快速上手业务，愿意在实战中沉淀工程经验、持续成长</li>
     </ul>
   </section>
 
-</main>
-
-<footer>
-  <div class="wrap">陈振华 · 求职简历 · 本页为在线版本，<a href="/resume.docx" download style="color:#8b5cf6;text-decoration:none;">下载 docx 原件</a></div>
-</footer>
+</div>
 
 </body>
 </html>

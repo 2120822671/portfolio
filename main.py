@@ -66,6 +66,11 @@ async def resume_page():
     return FileResponse(os.path.join(BASE, "resume.html"))
 
 
+@app.get("/resume-photo")
+async def resume_photo():
+    return FileResponse(os.path.join(BASE, "static", "images", "photo.png"))
+
+
 @app.get("/resume.docx")
 async def resume_docx():
     return FileResponse(os.path.join(BASE, "resume", "个人简历.docx"),
