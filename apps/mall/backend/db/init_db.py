@@ -1,1 +1,202 @@
-IiIiCuW7uuW6k+W7uuihqCArIOagt+S+i+aVsOaNriArIOS4i+i9veecn+Wunuibi+ezleWbvgrov5DooYzvvJpweXRob24gYmFja2VuZC9kYi9pbml0X2RiLnB5CiIiIgppbXBvcnQgb3MsIHNzbCwgdXJsbGliLnJlcXVlc3QKaW1wb3J0IHB5bXlzcWwKZnJvbSBweW15c3FsLmN1cnNvcnMgaW1wb3J0IERpY3RDdXJzb3IKZnJvbSBoYXNobGliIGltcG9ydCBtZDUKCkRCX0NPTkZJRyA9IGRpY3QoaG9zdD0ibG9jYWxob3N0IiwgcG9ydD0zMzA2LCB1c2VyPSJyb290IiwgcGFzc3dvcmQ9IjEyMzQ1NiIsIGNoYXJzZXQ9InV0ZjhtYjQiKQpEQl9OQU1FID0gImNha2VzaG9wIgoKIyA2IOW8oCBVbnNwbGFzaCDnnJ/lrp7om4vns5Xlm77vvIjkuIvovb3liLAgZnJvbnRlbmQvc3RhdGljL2ltYWdlcy/vvIkKSU1HX1VSTFMgPSB7CiAgICAxOiAiaHR0cHM6Ly9pbWFnZXMudW5zcGxhc2guY29tL3Bob3RvLTE1NjU5NTgwMTE3MDMtNDRmOTgyOWJhMTg3P3c9NjAwJnE9ODAmYXV0bz1mb3JtYXQiLAogICAgMjogImh0dHBzOi8vaW1hZ2VzLnVuc3BsYXNoLmNvbS9waG90by0xNTc4OTg1NTQ1MDYyLTY5OTI4YjFkOTU4Nz93PTYwMCZxPTgwJmF1dG89Zm9ybWF0IiwKICAgIDM6ICJodHRwczovL2ltYWdlcy51bnNwbGFzaC5jb20vcGhvdG8tMTQ4ODQ3NzE4MTk0Ni02NDI4YTAyOTE3Nzc/dz02MDAmcT04MCZhdXRvPWZvcm1hdCIsCiAgICA0OiAiaHR0cHM6Ly9pbWFnZXMudW5zcGxhc2guY29tL3Bob3RvLTE0NjQxOTUyNDQ5MTYtNDA1ZmEwYTgyNTQ1P3c9NjAwJnE9ODAmYXV0bz1mb3JtYXQiLAogICAgNTogImh0dHBzOi8vaW1hZ2VzLnVuc3BsYXNoLmNvbS9waG90by0xNTMzMTM0MjQyNDQzLWQ0ZmQyMTUzMDVhZD93PTYwMCZxPTgwJmF1dG89Zm9ybWF0IiwKICAgIDY6ICJodHRwczovL2ltYWdlcy51bnNwbGFzaC5jb20vcGhvdG8tMTU1ODk2MTM2My1mYThmZGY4MmRiMzU/dz02MDAmcT04MCZhdXRvPWZvcm1hdCIsCn0KClJPT1QgPSBvcy5wYXRoLmRpcm5hbWUob3MucGF0aC5kaXJuYW1lKG9zLnBhdGguZGlybmFtZShvcy5wYXRoLmFic3BhdGgoX19maWxlX18pKSkpCklNR19ESVIgPSBvcy5wYXRoLmpvaW4oUk9PVCwgImZyb250ZW5kIiwgInN0YXRpYyIsICJpbWFnZXMiKQoKCmRlZiBnZXRfY29ubihkYj1Ob25lKToKICAgIGNmZyA9IGRpY3QoREJfQ09ORklHKQogICAgaWYgZGI6CiAgICAgICAgY2ZnWyJkYXRhYmFzZSJdID0gZGIKICAgIGNmZ1siY3Vyc29yY2xhc3MiXSA9IERpY3RDdXJzb3IKICAgIHJldHVybiBweW15c3FsLmNvbm5lY3QoKipjZmcpCgoKZGVmIGRvd25sb2FkX2ltYWdlcygpOgogICAgb3MubWFrZWRpcnMoSU1HX0RJUiwgZXhpc3Rfb2s9VHJ1ZSkKICAgIGZvciBjaWQsIHVybCBpbiBJTUdfVVJMUy5pdGVtcygpOgogICAgICAgIGRzdCA9IG9zLnBhdGguam9pbihJTUdfRElSLCBmImNha2V7Y2lkfS5qcGciKQogICAgICAgIGlmIG9zLnBhdGguZXhpc3RzKGRzdCkgYW5kIG9zLnBhdGguZ2V0c2l6ZShkc3QpID4gMzAwMDoKICAgICAgICAgICAgcHJpbnQoZiIgIOW3suaciSBjYWtle2NpZH0uanBn77yM6Lez6L+HIikKICAgICAgICAgICAgY29udGludWUKICAgICAgICBwcmludChmIiAg5LiL6L29IGNha2V7Y2lkfSAuLi4iKQogICAgICAgIHRyeToKICAgICAgICAgICAgY3R4ID0gc3NsLl9jcmVhdGVfdW52ZXJpZmllZF9jb250ZXh0KCkKICAgICAgICAgICAgd2l0aCB1cmxsaWIucmVxdWVzdC51cmxvcGVuKHVybCwgY29udGV4dD1jdHgsIHRpbWVvdXQ9MTUpIGFzIHIsIG9wZW4oZHN0LCAid2IiKSBhcyBmOgogICAgICAgICAgICAgICAgZi53cml0ZShyLnJlYWQoKSkKICAgICAgICAgICAgaWYgb3MucGF0aC5nZXRzaXplKGRzdCkgPiAzMDAwOgogICAgICAgICAgICAgICAgcHJpbnQoZiIgICAg4pyFIE9LIHtvcy5wYXRoLmdldHNpemUoZHN0KX1CIikKICAgICAgICAgICAgZWxzZToKICAgICAgICAgICAgICAgIG9zLnJlbW92ZShkc3QpCiAgICAgICAgICAgICAgICBwcmludChmIiAgICDimqDvuI8g5paH5Lu26L+H5bCP77yM5Lii5byDIikKICAgICAgICBleGNlcHQgRXhjZXB0aW9uIGFzIGU6CiAgICAgICAgICAgIHByaW50KGYiICAgIOKdjCB7ZX0iKQoKCmRlZiBpbml0KCk6CiAgICAjIDEuIOW7uuW6kwogICAgY29ubiA9IGdldF9jb25uKCkKICAgIHdpdGggY29ubi5jdXJzb3IoKSBhcyBjdXI6CiAgICAgICAgY3VyLmV4ZWN1dGUoZiJDUkVBVEUgREFUQUJBU0UgSUYgTk9UIEVYSVNUUyBge0RCX05BTUV9YCBERUZBVUxUIENIQVJTRVQgdXRmOG1iNCBDT0xMQVRFIHV0ZjhtYjRfZ2VuZXJhbF9jaSIpCiAgICBjb25uLmNsb3NlKCkKCiAgICBjb25uID0gZ2V0X2Nvbm4oREJfTkFNRSkKCiAgICAjIDIuIOW7uuihqO+8iOS4jiBzY2hlbWEuc3FsIOS/neaMgeS4gOiHtO+8iQogICAgdGFibGVzID0gWwogICAgICAgICIiIkNSRUFURSBUQUJMRSBJRiBOT1QgRVhJU1RTIGB1c2VyYCAoCiAgICAgICAgICAgIGBpZGAgaW50KDExKSBOT1QgTlVMTCBBVVRPX0lOQ1JFTUVOVCBDT01NRU5UICfnlKjmiLdJRCcsCiAgICAgICAgICAgIGB1c2VybmFtZWAgdmFyY2hhcig1MCkgTk9UIE5VTEwgQ09NTUVOVCAn55So5oi35ZCNJywKICAgICAgICAgICAgYG5pY2tuYW1lYCB2YXJjaGFyKDUwKSBERUZBVUxUIE5VTEwgQ09NTUVOVCAn5pi156ewJywKICAgICAgICAgICAgYHBob25lYCB2YXJjaGFyKDIwKSBOT1QgTlVMTCBDT01NRU5UICfmiYvmnLrlj7cnLAogICAgICAgICAgICBgcGFzc3dvcmRgIHZhcmNoYXIoMTAwKSBOT1QgTlVMTCBDT01NRU5UICflr4bnoIEnLAogICAgICAgICAgICBgcm9sZWAgdGlueWludCBOT1QgTlVMTCBERUZBVUxUIDAgQ09NTUVOVCAnMOmhvuWuoiAx566h55CG5ZGYJywKICAgICAgICAgICAgYHN0YXR1c2AgdGlueWludCBOT1QgTlVMTCBERUZBVUxUIDEgQ09NTUVOVCAnMeato+W4uCAw5Ya757uTJywKICAgICAgICAgICAgYGNyZWF0ZV90aW1lYCBkYXRldGltZSBERUZBVUxUIGN1cnJlbnRfdGltZXN0YW1wKCkgQ09NTUVOVCAn5rOo5YaM5pe26Ze0JywKICAgICAgICAgICAgUFJJTUFSWSBLRVkgKGBpZGApLCBVTklRVUUgS0VZIGBwaG9uZWAgKGBwaG9uZWApCiAgICAgICAgKSBFTkdJTkU9SW5ub0RCIERFRkFVTFQgQ0hBUlNFVD11dGY4bWI0IENPTU1FTlQ9J+eUqOaIt+ihqCciIiIsCiAgICAgICAgIiIiQ1JFQVRFIFRBQkxFIElGIE5PVCBFWElTVFMgYGFkZHJlc3NgICgKICAgICAgICAgICAgYGlkYCBpbnQoMTEpIE5PVCBOVUxMIEFVVE9fSU5DUkVNRU5ULAogICAgICAgICAgICBgdXNlcl9pZGAgaW50KDExKSBOT1QgTlVMTCwKICAgICAgICAgICAgYHJlY2VpdmVyX25hbWVgIHZhcmNoYXIoNTApIE5PVCBOVUxMLAogICAgICAgICAgICBgcmVjZWl2ZXJfcGhvbmVgIHZhcmNoYXIoMjApIE5PVCBOVUxMLAogICAgICAgICAgICBgYWRkcmVzc2AgdmFyY2hhcigyNTUpIE5PVCBOVUxMLAogICAgICAgICAgICBgaXNfZGVmYXVsdGAgdGlueWludCBOT1QgTlVMTCBERUZBVUxUIDAsCiAgICAgICAgICAgIFBSSU1BUlkgS0VZIChgaWRgKSwgS0VZIGB1c2VyX2lkYCAoYHVzZXJfaWRgKQogICAgICAgICkgRU5HSU5FPUlubm9EQiBERUZBVUxUIENIQVJTRVQ9dXRmOG1iNCBDT01NRU5UPSfmlLbotKflnLDlnYDooagnIiIiLAogICAgICAgICIiIkNSRUFURSBUQUJMRSBJRiBOT1QgRVhJU1RTIGBjYWtlX2NhdGVnb3J5YCAoCiAgICAgICAgICAgIGBpZGAgaW50KDExKSBOT1QgTlVMTCBBVVRPX0lOQ1JFTUVOVCwKICAgICAgICAgICAgYGNhdGVnb3J5X25hbWVgIHZhcmNoYXIoNTApIE5PVCBOVUxMLAogICAgICAgICAgICBgc29ydGAgaW50KDExKSBERUZBVUxUIDAsCiAgICAgICAgICAgIFBSSU1BUlkgS0VZIChgaWRgKQogICAgICAgICkgRU5HSU5FPUlubm9EQiBERUZBVUxUIENIQVJTRVQ9dXRmOG1iNCBDT01NRU5UPSfom4vns5XliIbnsbvooagnIiIiLAogICAgICAgICIiIkNSRUFURSBUQUJMRSBJRiBOT1QgRVhJU1RTIGBjYWtlYCAoCiAgICAgICAgICAgIGBpZGAgaW50KDExKSBOT1QgTlVMTCBBVVRPX0lOQ1JFTUVOVCBDT01NRU5UICfom4vns5VJRCcsCiAgICAgICAgICAgIGBjYWtlX25hbWVgIHZhcmNoYXIoMTAwKSBOT1QgTlVMTCBDT01NRU5UICfom4vns5XlkI3np7AnLAogICAgICAgICAgICBgcHJpY2VgIGRlY2ltYWwoMTAsMikgTk9UIE5VTEwgQ09NTUVOVCAn5ZSu5Lu3JywKICAgICAgICAgICAgYHN0b2NrYCBpbnQoMTEpIERFRkFVTFQgMCBDT01NRU5UICflupPlrZjmlbDph48nLAogICAgICAgICAgICBgY2F0ZWdvcnlfaWRgIGludCgxMSkgTk9UIE5VTEwgQ09NTUVOVCAn5omA5bGe5YiG57G7SUQnLAogICAgICAgICAgICBgaW1hZ2VgIHZhcmNoYXIoMjU1KSBERUZBVUxUIE5VTEwgQ09NTUVOVCAn5ZWG5ZOB5Zu+54mHJywKICAgICAgICAgICAgYGRlc2NyaXB0aW9uYCB0ZXh0IERFRkFVTFQgTlVMTCBDT01NRU5UICfom4vns5Xmj4/ov7AnLAogICAgICAgICAgICBgc3BlY2AgdmFyY2hhcigyNTUpIERFRkFVTFQgTlVMTCBDT01NRU5UICflj6/pgInop4TmoLwnLAogICAgICAgICAgICBgb25fc2hlbGZgIHRpbnlpbnQgTk9UIE5VTEwgREVGQVVMVCAxIENPTU1FTlQgJzHkuIrmnrYgMOS4i+aeticsCiAgICAgICAgICAgIGBjcmVhdGVfdGltZWAgZGF0ZXRpbWUgREVGQVVMVCBjdXJyZW50X3RpbWVzdGFtcCgpIENPTU1FTlQgJ+S4iuaetuaXtumXtCcsCiAgICAgICAgICAgIFBSSU1BUlkgS0VZIChgaWRgKSwgS0VZIGBjYXRlZ29yeV9pZGAgKGBjYXRlZ29yeV9pZGApCiAgICAgICAgKSBFTkdJTkU9SW5ub0RCIERFRkFVTFQgQ0hBUlNFVD11dGY4bWI0IENPTU1FTlQ9J+ibi+ezleWVhuWTgeihqCciIiIsCiAgICAgICAgIiIiQ1JFQVRFIFRBQkxFIElGIE5PVCBFWElTVFMgYGZhdm9yaXRlYCAoCiAgICAgICAgICAgIGBpZGAgaW50KDExKSBOT1QgTlVMTCBBVVRPX0lOQ1JFTUVOVCwKICAgICAgICAgICAgYHVzZXJfaWRgIGludCgxMSkgTk9UIE5VTEwsCiAgICAgICAgICAgIGBjYWtlX2lkYCBpbnQoMTEpIE5PVCBOVUxMLAogICAgICAgICAgICBgY3JlYXRlX3RpbWVgIGRhdGV0aW1lIERFRkFVTFQgY3VycmVudF90aW1lc3RhbXAoKSwKICAgICAgICAgICAgUFJJTUFSWSBLRVkgKGBpZGApLCBVTklRVUUgS0VZIGB1a191c2VyX2Nha2VgIChgdXNlcl9pZGAsYGNha2VfaWRgKQogICAgICAgICkgRU5HSU5FPUlubm9EQiBERUZBVUxUIENIQVJTRVQ9dXRmOG1iNCBDT01NRU5UPSfmlLbol4/ooagnIiIiLAogICAgICAgICIiIkNSRUFURSBUQUJMRSBJRiBOT1QgRVhJU1RTIGBjYXJ0YCAoCiAgICAgICAgICAgIGBpZGAgaW50KDExKSBOT1QgTlVMTCBBVVRPX0lOQ1JFTUVOVCwKICAgICAgICAgICAgYHVzZXJfaWRgIGludCgxMSkgTk9UIE5VTEwsCiAgICAgICAgICAgIGBjYWtlX2lkYCBpbnQoMTEpIE5PVCBOVUxMLAogICAgICAgICAgICBgYnV5X251bWAgaW50KDExKSBOT1QgTlVMTCBERUZBVUxUIDEsCiAgICAgICAgICAgIFBSSU1BUlkgS0VZIChgaWRgKSwgVU5JUVVFIEtFWSBgdWtfdXNlcl9jYWtlYCAoYHVzZXJfaWRgLGBjYWtlX2lkYCkKICAgICAgICApIEVOR0lORT1Jbm5vREIgREVGQVVMVCBDSEFSU0VUPXV0ZjhtYjQgQ09NTUVOVD0n6LSt54mp6L2m6KGoJyIiIiwKICAgICAgICAiIiJDUkVBVEUgVEFCTEUgSUYgTk9UIEVYSVNUUyBgb3JkZXJzYCAoCiAgICAgICAgICAgIGBpZGAgaW50KDExKSBOT1QgTlVMTCBBVVRPX0lOQ1JFTUVOVCBDT01NRU5UICforqLljZVJRCcsCiAgICAgICAgICAgIGBvcmRlcl9ub2AgdmFyY2hhcigzMikgTk9UIE5VTEwgQ09NTUVOVCAn6K6i5Y2V5Y+3JywKICAgICAgICAgICAgYHVzZXJfaWRgIGludCgxMSkgTk9UIE5VTEwgQ09NTUVOVCAn5LiL5Y2V55So5oi3SUQnLAogICAgICAgICAgICBgdG90YWxfYW1vdW50YCBkZWNpbWFsKDEwLDIpIE5PVCBOVUxMIENPTU1FTlQgJ+iuouWNleaAu+mHkeminScsCiAgICAgICAgICAgIGBvcmRlcl9zdGF0dXNgIHRpbnlpbnQgREVGQVVMVCAwIENPTU1FTlQgJzDlvoXmlK/ku5ggMeW+hemFjemAgSAy5bey5a6M5oiQIDPlt7Llj5bmtognLAogICAgICAgICAgICBgcmVjZWl2ZXJfbmFtZWAgdmFyY2hhcig1MCkgREVGQVVMVCBOVUxMLAogICAgICAgICAgICBgcmVjZWl2ZXJfcGhvbmVgIHZhcmNoYXIoMjApIERFRkFVTFQgTlVMTCwKICAgICAgICAgICAgYHJlY2VpdmVyX2FkZHJlc3NgIHZhcmNoYXIoMjU1KSBOT1QgTlVMTCBDT01NRU5UICfmlLbotKflnLDlnYAnLAogICAgICAgICAgICBgcmVtYXJrYCB2YXJjaGFyKDI1NSkgREVGQVVMVCBOVUxMIENPTU1FTlQgJ+Wkh+azqCcsCiAgICAgICAgICAgIGBjcmVhdGVfdGltZWAgZGF0ZXRpbWUgREVGQVVMVCBjdXJyZW50X3RpbWVzdGFtcCgpLAogICAgICAgICAgICBQUklNQVJZIEtFWSAoYGlkYCksIFVOSVFVRSBLRVkgYG9yZGVyX25vYCAoYG9yZGVyX25vYCksIEtFWSBgdXNlcl9pZGAgKGB1c2VyX2lkYCkKICAgICAgICApIEVOR0lORT1Jbm5vREIgREVGQVVMVCBDSEFSU0VUPXV0ZjhtYjQgQ09NTUVOVD0n6K6i5Y2V6KGoJyIiIiwKICAgICAgICAiIiJDUkVBVEUgVEFCTEUgSUYgTk9UIEVYSVNUUyBgb3JkZXJfaXRlbWAgKAogICAgICAgICAgICBgaWRgIGludCgxMSkgTk9UIE5VTEwgQVVUT19JTkNSRU1FTlQgQ09NTUVOVCAn5piO57uGSUQnLAogICAgICAgICAgICBgb3JkZXJfaWRgIGludCgxMSkgTk9UIE5VTEwgQ09NTUVOVCAn6K6i5Y2VSUQnLAogICAgICAgICAgICBgY2FrZV9pZGAgaW50KDExKSBOT1QgTlVMTCBDT01NRU5UICfom4vns5VJRCcsCiAgICAgICAgICAgIGBidXlfbnVtYCBpbnQoMTEpIE5PVCBOVUxMIENPTU1FTlQgJ+i0reS5sOaVsOmHjycsCiAgICAgICAgICAgIGBidXlfcHJpY2VgIGRlY2ltYWwoMTAsMikgTk9UIE5VTEwgQ09NTUVOVCAn5LiL5Y2V5pe25Y2V5Lu3JywKICAgICAgICAgICAgUFJJTUFSWSBLRVkgKGBpZGApLCBLRVkgYG9yZGVyX2lkYCAoYG9yZGVyX2lkYCksIEtFWSBgY2FrZV9pZGAgKGBjYWtlX2lkYCkKICAgICAgICApIEVOR0lORT1Jbm5vREIgREVGQVVMVCBDSEFSU0VUPXV0ZjhtYjQgQ09NTUVOVD0n6K6i5Y2V5piO57uG6KGoJyIiIiwKICAgICAgICAiIiJDUkVBVEUgVEFCTEUgSUYgTk9UIEVYSVNUUyBgY29tbWVudGAgKAogICAgICAgICAgICBgaWRgIGludCgxMSkgTk9UIE5VTEwgQVVUT19JTkNSRU1FTlQgQ09NTUVOVCAn6K+E6K66SUQnLAogICAgICAgICAgICBgdXNlcl9pZGAgaW50KDExKSBOT1QgTlVMTCBDT01NRU5UICfor4TorrrnlKjmiLdJRCcsCiAgICAgICAgICAgIGBjYWtlX2lkYCBpbnQoMTEpIE5PVCBOVUxMIENPTU1FTlQgJ+ivhOiuuueahOibi+ezlUlEJywKICAgICAgICAgICAgYGNvbnRlbnRgIHRleHQgTk9UIE5VTEwgQ09NTUVOVCAn6K+E6K665YaF5a65JywKICAgICAgICAgICAgYGNyZWF0ZV90aW1lYCBkYXRldGltZSBERUZBVUxUIGN1cnJlbnRfdGltZXN0YW1wKCksCiAgICAgICAgICAgIFBSSU1BUlkgS0VZIChgaWRgKSwgS0VZIGB1c2VyX2lkYCAoYHVzZXJfaWRgKSwgS0VZIGBjYWtlX2lkYCAoYGNha2VfaWRgKQogICAgICAgICkgRU5HSU5FPUlubm9EQiBERUZBVUxUIENIQVJTRVQ9dXRmOG1iNCBDT01NRU5UPSfllYblk4Hor4TorrrooagnIiIiLAogICAgXQogICAgd2l0aCBjb25uLmN1cnNvcigpIGFzIGN1cjoKICAgICAgICBmb3Igc3FsIGluIHRhYmxlczoKICAgICAgICAgICAgaWYgc3FsLnN0cmlwKCk6IGN1ci5leGVjdXRlKHNxbCkKICAgIGNvbm4uY29tbWl0KCkKCiAgICAjIDMuIOagt+S+i+aVsOaNrgogICAgZGVmIHB3KHApOiByZXR1cm4gbWQ1KHAuZW5jb2RlKCkpLmhleGRpZ2VzdCgpCgogICAgd2l0aCBjb25uLmN1cnNvcigpIGFzIGN1cjoKICAgICAgICBjdXIuZXhlY3V0ZSgiU0VMRUNUIENPVU5UKCopIEFTIGMgRlJPTSB1c2VyIikKICAgICAgICBpZiBjdXIuZmV0Y2hvbmUoKVsiYyJdID09IDA6CiAgICAgICAgICAgIGN1ci5leGVjdXRlbWFueSgKICAgICAgICAgICAgICAgICJJTlNFUlQgSU5UTyB1c2VyICh1c2VybmFtZSwgbmlja25hbWUsIHBob25lLCBwYXNzd29yZCwgcm9sZSkgVkFMVUVTICglcywlcywlcywlcywlcykiLAogICAgICAgICAgICAgICAgWygiYWRtaW4iLCAi5bqX5Li75bCP5piOIiwgIjEzODAwMDAwMDAwIiwgcHcoIjEyMzQ1NiIpLCAxKSwKICAgICAgICAgICAgICAgICAoImxpbHkiLCAi6I6J6I6JIiwgIjEzOTAwMDAwMDAxIiwgcHcoIjEyMzQ1NiIpLCAwKSwKICAgICAgICAgICAgICAgICAoInRvbSIsICLmsaTlp4YiLCAiMTM5MDAwMDAwMDIiLCBwdygiMTIzNDU2IiksIDApXSkKICAgICAgICBjdXIuZXhlY3V0ZSgiU0VMRUNUIENPVU5UKCopIEFTIGMgRlJPTSBjYWtlX2NhdGVnb3J5IikKICAgICAgICBpZiBjdXIuZmV0Y2hvbmUoKVsiYyJdID09IDA6CiAgICAgICAgICAgIGN1ci5leGVjdXRlbWFueSgKICAgICAgICAgICAgICAgICJJTlNFUlQgSU5UTyBjYWtlX2NhdGVnb3J5IChjYXRlZ29yeV9uYW1lLCBzb3J0KSBWQUxVRVMgKCVzLCVzKSIsCiAgICAgICAgICAgICAgICBbKCLnlJ/ml6Xom4vns5UiLCAxKSwgKCLmhZXmlq/lsI/om4vns5UiLCAyKSwgKCLljYPlsYLom4vns5UiLCAzKSwgKCLoip3lo6vom4vns5UiLCA0KSwgKCLnlJzlk4Hngrnlv4MiLCA1KV0pCiAgICAgICAgY3VyLmV4ZWN1dGUoIlNFTEVDVCBDT1VOVCgqKSBBUyBjIEZST00gY2FrZSIpCiAgICAgICAgaWYgY3VyLmZldGNob25lKClbImMiXSA9PSAwOgogICAgICAgICAgICBjdXIuZXhlY3V0ZW1hbnkoCiAgICAgICAgICAgICAgICAiSU5TRVJUIElOVE8gY2FrZSAoY2FrZV9uYW1lLCBwcmljZSwgc3RvY2ssIGNhdGVnb3J5X2lkLCBpbWFnZSwgZGVzY3JpcHRpb24sIHNwZWMsIG9uX3NoZWxmKSBWQUxVRVMgKCVzLCVzLCVzLCVzLCVzLCVzLCVzLCVzKSIsCiAgICAgICAgICAgICAgICBbKCLojYnojpPpspzlpbbnlJ/ml6Xom4vns5UgOOWvuCIsIDE2OC4wMCwgNTAsIDEsICIvc3RhdGljL2ltYWdlcy9jYWtlMS5qcGciLCAi5paw6bKc6I2J6I6TK+i/m+WPo+WKqOeJqeWltuayue+8jOmmmeeUnOS4jeiFu+OAgiIsICI45a+4LzEw5a+4LzEy5a+4IiwgMSksCiAgICAgICAgICAgICAgICAgKCLpu5Hmo67mnpflt6flhYvlipvom4vns5UiLCAxOTguMDAsIDMwLCAxLCAiL3N0YXRpYy9pbWFnZXMvY2FrZTIuanBnIiwgIuavlOWIqeaXtum7keW3pyvmqLHmoYPphZLvvIznu4/lhbjlvrflm73po47lkbPjgIIiLCAiOOWvuC8xMOWvuCIsIDEpLAogICAgICAgICAgICAgICAgICgi6IqS5p6c5oWV5pav5bCP6JuL57OVIiwgMzguMDAsIDEwMCwgMiwgIi9zdGF0aWMvaW1hZ2VzL2Nha2UzLmpwZyIsICLkuIvljYjojLbpppbpgInvvIzovbvnm4jlj6PmhJ/jgIIiLCAi5Y2V5Y+qLzblj6roo4UiLCAxKSwKICAgICAgICAgICAgICAgICAoIuaPkOaLieexs+iLj+WNg+WxgiIsIDIyOC4wMCwgMjAsIDMsICIvc3RhdGljL2ltYWdlcy9jYWtlNC5qcGciLCAi5oSP5byP5rWT57ypK+mprOaWr+WNoeW9reiKneWjq+OAgiIsICI45a+4IiwgMSksCiAgICAgICAgICAgICAgICAgKCLlt7Tmlq/lhYvoip3lo6vom4vns5UiLCAxNTguMDAsIDI1LCA0LCAiL3N0YXRpYy9pbWFnZXMvY2FrZTUuanBnIiwgIueEpummmeihqOmdoivlhoXlv4PmtYHlv4PjgIIiLCAiNuWvuC845a+4IiwgMSksCiAgICAgICAgICAgICAgICAgKCLmiYvlt6Xmm7LlpYfnpLznm5Loo4UiLCA2OC4wMCwgMjAwLCA1LCAiL3N0YXRpYy9pbWFnZXMvY2FrZTYuanBnIiwgIum7hOayueOAgeaKueiMtuOAgeW3p+WFi+WKm+S4ieenjeWPo+WRs+OAgiIsICIyNTBnLzUwMGciLCAxKV0pCiAgICAgICAgY29ubi5jb21taXQoKQogICAgY29ubi5jbG9zZSgpCgogICAgIyA0LiDkuIvovb0v5qOA5p+l5Zu+54mHCiAgICBwcmludCgiXG7wn5O3IOajgOafpeibi+ezleWbvueJhy4uLiIpCiAgICBkb3dubG9hZF9pbWFnZXMoKQoKICAgICMgNS4g5oqK5Zu+54mH6Lev5b6E5YaZ6L+bIERC77yI6YG/5YWNIGluaXRfZGIg6LeR56ys5LqM5qyh6Lez6L+H5qC35L6L5pWw5o2u5pe25ryP5LqGIGltYWdlIOWtl+aute+8iQogICAgY29ubiA9IGdldF9jb25uKERCX05BTUUpCiAgICB3aXRoIGNvbm4uY3Vyc29yKCkgYXMgY3VyOgogICAgICAgIGZvciBjaWQgaW4gSU1HX1VSTFM6CiAgICAgICAgICAgIGRzdCA9IG9zLnBhdGguam9pbihJTUdfRElSLCBmImNha2V7Y2lkfS5qcGciKQogICAgICAgICAgICBpZiBvcy5wYXRoLmV4aXN0cyhkc3QpIGFuZCBvcy5wYXRoLmdldHNpemUoZHN0KSA+IDMwMDA6CiAgICAgICAgICAgICAgICBjdXIuZXhlY3V0ZSgiVVBEQVRFIGNha2UgU0VUIGltYWdlPSVzIFdIRVJFIGlkPSVzIEFORCBpbWFnZSBJUyBOVUxMIiwgKGYiL3N0YXRpYy9pbWFnZXMvY2FrZXtjaWR9LmpwZyIsIGNpZCkpCiAgICAgICAgY29ubi5jb21taXQoKQogICAgY29ubi5jbG9zZSgpCgogICAgcHJpbnQoIlxu4pyFIGNha2VzaG9wIOaVsOaNruW6k+WIneWni+WMluWujOaIkCIpCgoKaWYgX19uYW1lX18gPT0gIl9fbWFpbl9fIjoKICAgIGluaXQoKQo=
+"""
+建库建表 + 样例数据 + 下载真实蛋糕图
+运行：python backend/db/init_db.py
+"""
+import os, ssl, urllib.request
+import pymysql
+from pymysql.cursors import DictCursor
+from hashlib import md5
+
+DB_CONFIG = dict(host="localhost", port=3306, user="root", password="123456", charset="utf8mb4")
+DB_NAME = "cakeshop"
+
+# 6 张 Unsplash 真实蛋糕图（下载到 frontend/static/images/）
+IMG_URLS = {
+    1: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=600&q=80&auto=format",
+    2: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&q=80&auto=format",
+    3: "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&q=80&auto=format",
+    4: "https://images.unsplash.com/photo-1464195244916-405fa0a82545?w=600&q=80&auto=format",
+    5: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=600&q=80&auto=format",
+    6: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&q=80&auto=format",
+}
+
+ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+IMG_DIR = os.path.join(ROOT, "frontend", "static", "images")
+
+
+def get_conn(db=None):
+    cfg = dict(DB_CONFIG)
+    if db:
+        cfg["database"] = db
+    cfg["cursorclass"] = DictCursor
+    return pymysql.connect(**cfg)
+
+
+def download_images():
+    os.makedirs(IMG_DIR, exist_ok=True)
+    for cid, url in IMG_URLS.items():
+        dst = os.path.join(IMG_DIR, f"cake{cid}.jpg")
+        if os.path.exists(dst) and os.path.getsize(dst) > 3000:
+            print(f"  已有 cake{cid}.jpg，跳过")
+            continue
+        print(f"  下载 cake{cid} ...")
+        try:
+            ctx = ssl._create_unverified_context()
+            with urllib.request.urlopen(url, context=ctx, timeout=15) as r, open(dst, "wb") as f:
+                f.write(r.read())
+            if os.path.getsize(dst) > 3000:
+                print(f"    ✅ OK {os.path.getsize(dst)}B")
+            else:
+                os.remove(dst)
+                print(f"    ⚠️ 文件过小，丢弃")
+        except Exception as e:
+            print(f"    ❌ {e}")
+
+
+def init():
+    # 1. 建库
+    conn = get_conn()
+    with conn.cursor() as cur:
+        cur.execute(f"CREATE DATABASE IF NOT EXISTS `{DB_NAME}` DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci")
+    conn.close()
+
+    conn = get_conn(DB_NAME)
+
+    # 2. 建表（与 schema.sql 保持一致）
+    tables = [
+        """CREATE TABLE IF NOT EXISTS `user` (
+            `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户ID',
+            `username` varchar(50) NOT NULL COMMENT '用户名',
+            `nickname` varchar(50) DEFAULT NULL COMMENT '昵称',
+            `phone` varchar(20) NOT NULL COMMENT '手机号',
+            `password` varchar(100) NOT NULL COMMENT '密码',
+            `role` tinyint NOT NULL DEFAULT 0 COMMENT '0顾客 1管理员',
+            `status` tinyint NOT NULL DEFAULT 1 COMMENT '1正常 0冻结',
+            `create_time` datetime DEFAULT current_timestamp() COMMENT '注册时间',
+            PRIMARY KEY (`id`), UNIQUE KEY `phone` (`phone`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户表'""",
+        """CREATE TABLE IF NOT EXISTS `address` (
+            `id` int(11) NOT NULL AUTO_INCREMENT,
+            `user_id` int(11) NOT NULL,
+            `receiver_name` varchar(50) NOT NULL,
+            `receiver_phone` varchar(20) NOT NULL,
+            `address` varchar(255) NOT NULL,
+            `is_default` tinyint NOT NULL DEFAULT 0,
+            PRIMARY KEY (`id`), KEY `user_id` (`user_id`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='收货地址表'""",
+        """CREATE TABLE IF NOT EXISTS `cake_category` (
+            `id` int(11) NOT NULL AUTO_INCREMENT,
+            `category_name` varchar(50) NOT NULL,
+            `sort` int(11) DEFAULT 0,
+            PRIMARY KEY (`id`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='蛋糕分类表'""",
+        """CREATE TABLE IF NOT EXISTS `cake` (
+            `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '蛋糕ID',
+            `cake_name` varchar(100) NOT NULL COMMENT '蛋糕名称',
+            `price` decimal(10,2) NOT NULL COMMENT '售价',
+            `stock` int(11) DEFAULT 0 COMMENT '库存数量',
+            `category_id` int(11) NOT NULL COMMENT '所属分类ID',
+            `image` varchar(255) DEFAULT NULL COMMENT '商品图片',
+            `description` text DEFAULT NULL COMMENT '蛋糕描述',
+            `spec` varchar(255) DEFAULT NULL COMMENT '可选规格',
+            `on_shelf` tinyint NOT NULL DEFAULT 1 COMMENT '1上架 0下架',
+            `create_time` datetime DEFAULT current_timestamp() COMMENT '上架时间',
+            PRIMARY KEY (`id`), KEY `category_id` (`category_id`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='蛋糕商品表'""",
+        """CREATE TABLE IF NOT EXISTS `favorite` (
+            `id` int(11) NOT NULL AUTO_INCREMENT,
+            `user_id` int(11) NOT NULL,
+            `cake_id` int(11) NOT NULL,
+            `create_time` datetime DEFAULT current_timestamp(),
+            PRIMARY KEY (`id`), UNIQUE KEY `uk_user_cake` (`user_id`,`cake_id`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='收藏表'""",
+        """CREATE TABLE IF NOT EXISTS `cart` (
+            `id` int(11) NOT NULL AUTO_INCREMENT,
+            `user_id` int(11) NOT NULL,
+            `cake_id` int(11) NOT NULL,
+            `buy_num` int(11) NOT NULL DEFAULT 1,
+            PRIMARY KEY (`id`), UNIQUE KEY `uk_user_cake` (`user_id`,`cake_id`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='购物车表'""",
+        """CREATE TABLE IF NOT EXISTS `orders` (
+            `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '订单ID',
+            `order_no` varchar(32) NOT NULL COMMENT '订单号',
+            `user_id` int(11) NOT NULL COMMENT '下单用户ID',
+            `total_amount` decimal(10,2) NOT NULL COMMENT '订单总金额',
+            `order_status` tinyint DEFAULT 0 COMMENT '0待支付 1待配送 2已完成 3已取消',
+            `receiver_name` varchar(50) DEFAULT NULL,
+            `receiver_phone` varchar(20) DEFAULT NULL,
+            `receiver_address` varchar(255) NOT NULL COMMENT '收货地址',
+            `remark` varchar(255) DEFAULT NULL COMMENT '备注',
+            `create_time` datetime DEFAULT current_timestamp(),
+            PRIMARY KEY (`id`), UNIQUE KEY `order_no` (`order_no`), KEY `user_id` (`user_id`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='订单表'""",
+        """CREATE TABLE IF NOT EXISTS `order_item` (
+            `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '明细ID',
+            `order_id` int(11) NOT NULL COMMENT '订单ID',
+            `cake_id` int(11) NOT NULL COMMENT '蛋糕ID',
+            `buy_num` int(11) NOT NULL COMMENT '购买数量',
+            `buy_price` decimal(10,2) NOT NULL COMMENT '下单时单价',
+            PRIMARY KEY (`id`), KEY `order_id` (`order_id`), KEY `cake_id` (`cake_id`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='订单明细表'""",
+        """CREATE TABLE IF NOT EXISTS `comment` (
+            `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '评论ID',
+            `user_id` int(11) NOT NULL COMMENT '评论用户ID',
+            `cake_id` int(11) NOT NULL COMMENT '评论的蛋糕ID',
+            `content` text NOT NULL COMMENT '评论内容',
+            `create_time` datetime DEFAULT current_timestamp(),
+            PRIMARY KEY (`id`), KEY `user_id` (`user_id`), KEY `cake_id` (`cake_id`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='商品评论表'""",
+    ]
+    with conn.cursor() as cur:
+        for sql in tables:
+            if sql.strip(): cur.execute(sql)
+    conn.commit()
+
+    # 3. 样例数据
+    def pw(p): return md5(p.encode()).hexdigest()
+
+    with conn.cursor() as cur:
+        cur.execute("SELECT COUNT(*) AS c FROM user")
+        if cur.fetchone()["c"] == 0:
+            cur.executemany(
+                "INSERT INTO user (username, nickname, phone, password, role) VALUES (%s,%s,%s,%s,%s)",
+                [("admin", "店主小明", "13800000000", pw("123456"), 1),
+                 ("lily", "莉莉", "13900000001", pw("123456"), 0),
+                 ("tom", "汤姆", "13900000002", pw("123456"), 0)])
+        cur.execute("SELECT COUNT(*) AS c FROM cake_category")
+        if cur.fetchone()["c"] == 0:
+            cur.executemany(
+                "INSERT INTO cake_category (category_name, sort) VALUES (%s,%s)",
+                [("生日蛋糕", 1), ("慕斯小蛋糕", 2), ("千层蛋糕", 3), ("芝士蛋糕", 4), ("甜品点心", 5)])
+        cur.execute("SELECT COUNT(*) AS c FROM cake")
+        if cur.fetchone()["c"] == 0:
+            cur.executemany(
+                "INSERT INTO cake (cake_name, price, stock, category_id, image, description, spec, on_shelf) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)",
+                [("草莓鲜奶生日蛋糕 8寸", 168.00, 50, 1, "/static/images/cake1.jpg", "新鲜草莓+进口动物奶油，香甜不腻。", "8寸/10寸/12寸", 1),
+                 ("黑森林巧克力蛋糕", 198.00, 30, 1, "/static/images/cake2.jpg", "比利时黑巧+樱桃酒，经典德国风味。", "8寸/10寸", 1),
+                 ("芒果慕斯小蛋糕", 38.00, 100, 2, "/static/images/cake3.jpg", "下午茶首选，轻盈口感。", "单只/6只装", 1),
+                 ("提拉米苏千层", 228.00, 20, 3, "/static/images/cake4.jpg", "意式浓缩+马斯卡彭芝士。", "8寸", 1),
+                 ("巴斯克芝士蛋糕", 158.00, 25, 4, "/static/images/cake5.jpg", "焦香表面+内心流心。", "6寸/8寸", 1),
+                 ("手工曲奇礼盒装", 68.00, 200, 5, "/static/images/cake6.jpg", "黄油、抹茶、巧克力三种口味。", "250g/500g", 1)])
+        conn.commit()
+    conn.close()
+
+    # 4. 下载/检查图片
+    print("\n📷 检查蛋糕图片...")
+    download_images()
+
+    # 5. 把图片路径写进 DB（避免 init_db 跑第二次跳过样例数据时漏了 image 字段）
+    conn = get_conn(DB_NAME)
+    with conn.cursor() as cur:
+        for cid in IMG_URLS:
+            dst = os.path.join(IMG_DIR, f"cake{cid}.jpg")
+            if os.path.exists(dst) and os.path.getsize(dst) > 3000:
+                cur.execute("UPDATE cake SET image=%s WHERE id=%s AND image IS NULL", (f"/static/images/cake{cid}.jpg", cid))
+        conn.commit()
+    conn.close()
+
+    print("\n✅ cakeshop 数据库初始化完成")
+
+
+if __name__ == "__main__":
+    init()

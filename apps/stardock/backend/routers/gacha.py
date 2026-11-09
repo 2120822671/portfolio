@@ -1,1 +1,351 @@
-IiIiCmdhY2hhLnB5IOKAlOKAlCDmir3ljaHmuLjmiI8gKyDnrqHnkIblkZjljaHmsaDphY3nva4KIiIiCmltcG9ydCBqc29uCmltcG9ydCByYW5kb20KZnJvbSBkYXRldGltZSBpbXBvcnQgZGF0ZXRpbWUKZnJvbSBmYXN0YXBpIGltcG9ydCBBUElSb3V0ZXIsIERlcGVuZHMsIEhUVFBFeGNlcHRpb24sIFF1ZXJ5CmZyb20gcHlkYW50aWMgaW1wb3J0IEJhc2VNb2RlbApmcm9tIHR5cGluZyBpbXBvcnQgT3B0aW9uYWwKCmZyb20gZGF0YWJhc2UgaW1wb3J0IHF1ZXJ5X29uZSwgcXVlcnlfYWxsLCBleGVjdXRlLCBleGVjdXRlX3JldHVybl9pZApmcm9tIGRlcHMgaW1wb3J0IGdldF9jdXJyZW50X3VzZXIsIHJlcXVpcmVfcm9sZQoKcm91dGVyID0gQVBJUm91dGVyKHByZWZpeD0iL2FwaS9nYWNoYSIsIHRhZ3M9WyJnYWNoYSJdKQoKIyByYXJpdHkg5pi+56S65ZCNCl9SQVJJVFlfTkFNRVMgPSB7MTogIk4iLCAyOiAiUiIsIDM6ICJTUiIsIDQ6ICJTU1IifQoKCiMgPT09PT09PT09PT09PT0gU2NoZW1hID09PT09PT09PT09PT09CmNsYXNzIERyYXdCb2R5KEJhc2VNb2RlbCk6CiAgICBwb29sX2lkOiBpbnQKICAgIGNvdW50OiBpbnQgPSAxICAjIDEg5oiWIDEwCgoKY2xhc3MgUG9vbENyZWF0ZShCYXNlTW9kZWwpOgogICAgbmFtZTogc3RyCiAgICBjZWxlYnJpdHlfaWQ6IE9wdGlvbmFsW2ludF0gPSBOb25lCiAgICBkZXNjcmlwdGlvbjogT3B0aW9uYWxbc3RyXSA9IE5vbmUKICAgIGNvc3RfcGVyX2RyYXc6IGludCA9IDEwMAogICAgY29zdF9wZXJfdGVuOiBpbnQgPSA5MDAKICAgIGlzX2FjdGl2ZTogaW50ID0gMQoKCmNsYXNzIFBvb2xVcGRhdGUoQmFzZU1vZGVsKToKICAgIG5hbWU6IE9wdGlvbmFsW3N0cl0gPSBOb25lCiAgICBjZWxlYnJpdHlfaWQ6IE9wdGlvbmFsW2ludF0gPSBOb25lCiAgICBkZXNjcmlwdGlvbjogT3B0aW9uYWxbc3RyXSA9IE5vbmUKICAgIGNvc3RfcGVyX2RyYXc6IE9wdGlvbmFsW2ludF0gPSBOb25lCiAgICBjb3N0X3Blcl90ZW46IE9wdGlvbmFsW2ludF0gPSBOb25lCiAgICBpc19hY3RpdmU6IE9wdGlvbmFsW2ludF0gPSBOb25lCgoKX1BPT0xfQUxMT1dFRF9VUERBVEUgPSB7Im5hbWUiLCAiY2VsZWJyaXR5X2lkIiwgImRlc2NyaXB0aW9uIiwgImNvc3RfcGVyX2RyYXciLCAiY29zdF9wZXJfdGVuIiwgImlzX2FjdGl2ZSJ9CgoKY2xhc3MgQ2FyZENyZWF0ZShCYXNlTW9kZWwpOgogICAgcG9vbF9pZDogaW50CiAgICBjZWxlYnJpdHlfaWQ6IE9wdGlvbmFsW2ludF0gPSBOb25lCiAgICBuYW1lOiBzdHIKICAgIGltYWdlX3VybDogc3RyCiAgICByYXJpdHk6IGludAogICAgd2VpZ2h0OiBpbnQgPSAxMDAKICAgIGRlc2NyaXB0aW9uOiBPcHRpb25hbFtzdHJdID0gTm9uZQoKCmNsYXNzIENhcmRVcGRhdGUoQmFzZU1vZGVsKToKICAgIHBvb2xfaWQ6IE9wdGlvbmFsW2ludF0gPSBOb25lCiAgICBjZWxlYnJpdHlfaWQ6IE9wdGlvbmFsW2ludF0gPSBOb25lCiAgICBuYW1lOiBPcHRpb25hbFtzdHJdID0gTm9uZQogICAgaW1hZ2VfdXJsOiBPcHRpb25hbFtzdHJdID0gTm9uZQogICAgcmFyaXR5OiBPcHRpb25hbFtpbnRdID0gTm9uZQogICAgd2VpZ2h0OiBPcHRpb25hbFtpbnRdID0gTm9uZQogICAgZGVzY3JpcHRpb246IE9wdGlvbmFsW3N0cl0gPSBOb25lCgoKX0NBUkRfQUxMT1dFRF9VUERBVEUgPSB7InBvb2xfaWQiLCAiY2VsZWJyaXR5X2lkIiwgIm5hbWUiLCAiaW1hZ2VfdXJsIiwgInJhcml0eSIsICJ3ZWlnaHQiLCAiZGVzY3JpcHRpb24ifQoKCiMgPT09PT09PT09PT09PT0g5bel5YW377ya5oyJ5p2D6YeN5oq95LiA5byg5Y2hID09PT09PT09PT09PT09CmRlZiBfd2VpZ2h0ZWRfcGljayhjYXJkczogbGlzdFtkaWN0XSkgLT4gZGljdDoKICAgICIiIuaMiSB3ZWlnaHQg5p2D6YeN6ZqP5py66YCJ5LiA5bygIiIiCiAgICB0b3RhbCA9IHN1bShjWyJ3ZWlnaHQiXSBmb3IgYyBpbiBjYXJkcykKICAgIHIgPSByYW5kb20ucmFuZGludCgxLCB0b3RhbCkKICAgIGFjYyA9IDAKICAgIGZvciBjIGluIGNhcmRzOgogICAgICAgIGFjYyArPSBjWyJ3ZWlnaHQiXQogICAgICAgIGlmIHIgPD0gYWNjOgogICAgICAgICAgICByZXR1cm4gYwogICAgcmV0dXJuIGNhcmRzWy0xXQoKCiMgPT09PT09PT09PT09PT0g5YWs5byA77ya5Y2h5rGg5YiX6KGoIC8g6K+m5oOFID09PT09PT09PT09PT09CkByb3V0ZXIuZ2V0KCIvcG9vbHMiKQphc3luYyBkZWYgbGlzdF9wb29scygpOgogICAgcm93cyA9IHF1ZXJ5X2FsbCgKICAgICAgICAiIiJTRUxFQ1QgcC5pZCwgcC5uYW1lLCBwLmRlc2NyaXB0aW9uLCBwLmNvc3RfcGVyX2RyYXcsIHAuY29zdF9wZXJfdGVuLAogICAgICAgICAgICAgICAgICBwLmlzX2FjdGl2ZSwgcC5jZWxlYnJpdHlfaWQsCiAgICAgICAgICAgICAgICAgIGMuc3RhZ2VfbmFtZSBBUyBjZWxlYnJpdHlfbmFtZQogICAgICAgICAgIEZST00gY2FyZF9wb29scyBwCiAgICAgICAgICAgTEVGVCBKT0lOIGNlbGVicml0aWVzIGMgT04gYy5pZCA9IHAuY2VsZWJyaXR5X2lkCiAgICAgICAgICAgT1JERVIgQlkgcC5pc19hY3RpdmUgREVTQywgcC5pZCBERVNDIiIiCiAgICApCiAgICByZXR1cm4geyJjb2RlIjogMCwgIm1zZyI6ICJvayIsICJkYXRhIjogcm93c30KCgpAcm91dGVyLmdldCgiL3Bvb2xzL3twb29sX2lkfSIpCmFzeW5jIGRlZiBnZXRfcG9vbChwb29sX2lkOiBpbnQpOgogICAgcG9vbCA9IHF1ZXJ5X29uZSgKICAgICAgICAiIiJTRUxFQ1QgcC4qLCBjLnN0YWdlX25hbWUgQVMgY2VsZWJyaXR5X25hbWUKICAgICAgICAgICBGUk9NIGNhcmRfcG9vbHMgcAogICAgICAgICAgIExFRlQgSk9JTiBjZWxlYnJpdGllcyBjIE9OIGMuaWQgPSBwLmNlbGVicml0eV9pZAogICAgICAgICAgIFdIRVJFIHAuaWQ9JXMiIiIsCiAgICAgICAgKHBvb2xfaWQsKQogICAgKQogICAgaWYgbm90IHBvb2w6CiAgICAgICAgcmFpc2UgSFRUUEV4Y2VwdGlvbihzdGF0dXNfY29kZT00MDQsIGRldGFpbD0i5Y2h5rGg5LiN5a2Y5ZyoIikKCiAgICBjYXJkcyA9IHF1ZXJ5X2FsbCgKICAgICAgICAiU0VMRUNUICogRlJPTSBjYXJkcyBXSEVSRSBwb29sX2lkPSVzIE9SREVSIEJZIHJhcml0eSBERVNDLCB3ZWlnaHQgREVTQyIsCiAgICAgICAgKHBvb2xfaWQsKQogICAgKQogICAgIyDnu5nljaHniYfliqAgcmFyaXR5X25hbWUKICAgIGZvciBjIGluIGNhcmRzOgogICAgICAgIGNbInJhcml0eV9uYW1lIl0gPSBfUkFSSVRZX05BTUVTLmdldChjWyJyYXJpdHkiXSwgIj8iKQogICAgcG9vbFsiY2FyZHMiXSA9IGNhcmRzCiAgICByZXR1cm4geyJjb2RlIjogMCwgIm1zZyI6ICJvayIsICJkYXRhIjogcG9vbH0KCgojID09PT09PT09PT09PT09IOaKveWNoeaguOW/gyA9PT09PT09PT09PT09PQpAcm91dGVyLnBvc3QoIi9kcmF3IikKYXN5bmMgZGVmIGRyYXcoYm9keTogRHJhd0JvZHksIGN1cnJlbnRfdXNlcjogZGljdCA9IERlcGVuZHMoZ2V0X2N1cnJlbnRfdXNlcikpOgogICAgIiIiCiAgICDmiafooYzmir3ljaHvvIjkuovliqHkv53miqTvvIkKICAgIC0g5p+l5Y2h5rGgIOKGkiDmn6Xnp6/liIYg4oaSIOaJo+enr+WIhiDihpIg5oq95Y2hIOKGkiDlhpnorrDlvZUg4oaSIOabtOaWsCB1c2VyX2NhcmRzCiAgICAiIiIKICAgIGlmIGJvZHkuY291bnQgbm90IGluICgxLCAxMCk6CiAgICAgICAgcmFpc2UgSFRUUEV4Y2VwdGlvbihzdGF0dXNfY29kZT00MDAsIGRldGFpbD0iY291bnQg5Y+q6IO95pivIDEg5oiWIDEwIikKCiAgICBwb29sID0gcXVlcnlfb25lKCJTRUxFQ1QgKiBGUk9NIGNhcmRfcG9vbHMgV0hFUkUgaWQ9JXMiLCAoYm9keS5wb29sX2lkLCkpCiAgICBpZiBub3QgcG9vbDoKICAgICAgICByYWlzZSBIVFRQRXhjZXB0aW9uKHN0YXR1c19jb2RlPTQwNCwgZGV0YWlsPSLljaHmsaDkuI3lrZjlnKgiKQogICAgaWYgcG9vbFsiaXNfYWN0aXZlIl0gIT0gMToKICAgICAgICByYWlzZSBIVFRQRXhjZXB0aW9uKHN0YXR1c19jb2RlPTQwMCwgZGV0YWlsPSLljaHmsaDlt7LlhbPpl60iKQoKICAgICMg5p+l6K+l5Y2h5rGg55qE5omA5pyJ5Y2h54mHCiAgICBjYXJkc19pbl9wb29sID0gcXVlcnlfYWxsKAogICAgICAgICJTRUxFQ1QgaWQsIG5hbWUsIGltYWdlX3VybCwgcmFyaXR5LCB3ZWlnaHQgRlJPTSBjYXJkcyBXSEVSRSBwb29sX2lkPSVzIiwKICAgICAgICAoYm9keS5wb29sX2lkLCkKICAgICkKICAgIGlmIG5vdCBjYXJkc19pbl9wb29sOgogICAgICAgIHJhaXNlIEhUVFBFeGNlcHRpb24oc3RhdHVzX2NvZGU9NDAwLCBkZXRhaWw9IuWNoeaxoOmHjOayoeacieWNoeeJhyIpCgogICAgIyDnrpfmtojogJcKICAgIGNvc3QgPSBwb29sWyJjb3N0X3Blcl90ZW4iXSBpZiBib2R5LmNvdW50ID09IDEwIGVsc2UgcG9vbFsiY29zdF9wZXJfZHJhdyJdCgogICAgIyDmn6Xnp6/liIbvvIjpnIDopoHkuovliqHlhoXlho3mn6XkuIDmrKHmoKHpqozvvIzpmLLmraLlubblj5HmiaPotoXvvIkKICAgIHVzZXIgPSBxdWVyeV9vbmUoIlNFTEVDVCBpZCwgc2NvcmUgRlJPTSB1c2VycyBXSEVSRSBpZD0lcyIsIChjdXJyZW50X3VzZXJbImlkIl0sKSkKICAgIGlmIHVzZXJbInNjb3JlIl0gPCBjb3N0OgogICAgICAgIHJhaXNlIEhUVFBFeGNlcHRpb24oc3RhdHVzX2NvZGU9NDAwLCBkZXRhaWw9ZiLnp6/liIbkuI3otrPvvIzpnIDopoEge2Nvc3R977yM5b2T5YmNIHt1c2VyWydzY29yZSddfSIpCgogICAgIyDmiafooYzmir3ljaHvvIjkvKrkuovliqHvvJrlhYjmiaPnp6/liIblho3mir3vvIzlpLHotKXlm57mu5rvvIkKICAgICMg5rOo5oSP77ya55Sf5Lqn546v5aKD5bqU6K+l55So55yf5q2j55qE5pWw5o2u5bqT5LqL5Yqh77yM6L+Z6YeM566A5YyW5aSE55CGCiAgICB0cnk6CiAgICAgICAgIyAxLiDmiaPnp6/liIYKICAgICAgICBleGVjdXRlKAogICAgICAgICAgICAiVVBEQVRFIHVzZXJzIFNFVCBzY29yZSA9IHNjb3JlIC0gJXMgV0hFUkUgaWQ9JXMgQU5EIHNjb3JlID49ICVzIiwKICAgICAgICAgICAgKGNvc3QsIGN1cnJlbnRfdXNlclsiaWQiXSwgY29zdCkKICAgICAgICApCgogICAgICAgICMgMi4g5oq9IGJvZHkuY291bnQg5qyhCiAgICAgICAgZHJhd25fY2FyZHMgPSBbXQogICAgICAgIHJlc3VsdHNfanNvbiA9IFtdCiAgICAgICAgZm9yIF8gaW4gcmFuZ2UoYm9keS5jb3VudCk6CiAgICAgICAgICAgIHBpY2tlZCA9IF93ZWlnaHRlZF9waWNrKGNhcmRzX2luX3Bvb2wpCiAgICAgICAgICAgIGRyYXduX2NhcmRzLmFwcGVuZChwaWNrZWQpCiAgICAgICAgICAgIHJlc3VsdHNfanNvbi5hcHBlbmQoewogICAgICAgICAgICAgICAgImNhcmRfaWQiOiBwaWNrZWRbImlkIl0sCiAgICAgICAgICAgICAgICAibmFtZSI6IHBpY2tlZFsibmFtZSJdLAogICAgICAgICAgICAgICAgImltYWdlX3VybCI6IHBpY2tlZFsiaW1hZ2VfdXJsIl0sCiAgICAgICAgICAgICAgICAicmFyaXR5IjogcGlja2VkWyJyYXJpdHkiXSwKICAgICAgICAgICAgICAgICJyYXJpdHlfbmFtZSI6IF9SQVJJVFlfTkFNRVMuZ2V0KHBpY2tlZFsicmFyaXR5Il0sICI/IiksCiAgICAgICAgICAgIH0pCgogICAgICAgICMgMy4g5pu05pawIHVzZXJfY2FyZHPvvIhPTiBEVVBMSUNBVEUgS0VZIFVQREFURSBjb3VudO+8iQogICAgICAgIGZvciBwaWNrZWQgaW4gZHJhd25fY2FyZHM6CiAgICAgICAgICAgIGFmZmVjdGVkID0gZXhlY3V0ZSgKICAgICAgICAgICAgICAgICIiIklOU0VSVCBJTlRPIHVzZXJfY2FyZHMgKHVzZXJfaWQsIGNhcmRfaWQsIGNvdW50LCBvYnRhaW5fdGltZSkKICAgICAgICAgICAgICAgICAgIFZBTFVFUyAoJXMsICVzLCAxLCAlcykKICAgICAgICAgICAgICAgICAgIE9OIERVUExJQ0FURSBLRVkgVVBEQVRFIGNvdW50ID0gY291bnQgKyAxIiIiLAogICAgICAgICAgICAgICAgKGN1cnJlbnRfdXNlclsiaWQiXSwgcGlja2VkWyJpZCJdLCBkYXRldGltZS5ub3coKSkKICAgICAgICAgICAgKQoKICAgICAgICAjIDQuIOWGmeaKveWNoeiusOW9lSDigJTigJQgZHJhd190eXBlOiAxPeWNleaKvSwgMj3ljYHov57vvIjkuI3mmK8gY291bnQg5pys6Lqr77yB77yJCiAgICAgICAgZHJhd190eXBlID0gMiBpZiBib2R5LmNvdW50ID09IDEwIGVsc2UgMQogICAgICAgIGV4ZWN1dGVfcmV0dXJuX2lkKAogICAgICAgICAgICAiIiJJTlNFUlQgSU5UTyBnYWNoYV9yZWNvcmRzICh1c2VyX2lkLCBwb29sX2lkLCBkcmF3X3R5cGUsIHRvdGFsX2Nvc3QsIHJlc3VsdHNfanNvbiwgY3JlYXRlX3RpbWUpCiAgICAgICAgICAgICAgIFZBTFVFUyAoJXMsICVzLCAlcywgJXMsICVzLCAlcykiIiIsCiAgICAgICAgICAgIChjdXJyZW50X3VzZXJbImlkIl0sIGJvZHkucG9vbF9pZCwgZHJhd190eXBlLCBjb3N0LCBqc29uLmR1bXBzKHJlc3VsdHNfanNvbiwgZW5zdXJlX2FzY2lpPUZhbHNlKSwgZGF0ZXRpbWUubm93KCkpCiAgICAgICAgKQoKICAgICAgICAjIDUuIOi/lOWbnu+8iOazqOaEj+WJjeerr+WxleekuumhuuW6j++8mlNTUiDmlL7mnIDlkI7mr5TovoPmnInmgqzlv7XvvIkKICAgICAgICByZXN1bHRzX2pzb24ucmV2ZXJzZSgpCiAgICAgICAgcmV0dXJuIHsKICAgICAgICAgICAgImNvZGUiOiAwLCAibXNnIjogIuaKveWNoeaIkOWKnyIsCiAgICAgICAgICAgICJkYXRhIjogewogICAgICAgICAgICAgICAgImNvc3QiOiBjb3N0LAogICAgICAgICAgICAgICAgImRyYXduIjogcmVzdWx0c19qc29uLAogICAgICAgICAgICAgICAgInJlbWFpbl9zY29yZSI6IHVzZXJbInNjb3JlIl0gLSBjb3N0LAogICAgICAgICAgICB9CiAgICAgICAgfQoKICAgIGV4Y2VwdCBFeGNlcHRpb24gYXMgZToKICAgICAgICAjIOWbnua7muenr+WIhu+8iOWmguaenOaJo+S6hueahOivne+8iQogICAgICAgIHRyeToKICAgICAgICAgICAgZXhlY3V0ZSgKICAgICAgICAgICAgICAgICJVUERBVEUgdXNlcnMgU0VUIHNjb3JlID0gc2NvcmUgKyAlcyBXSEVSRSBpZD0lcyIsCiAgICAgICAgICAgICAgICAoY29zdCwgY3VycmVudF91c2VyWyJpZCJdKQogICAgICAgICAgICApCiAgICAgICAgZXhjZXB0IEV4Y2VwdGlvbjoKICAgICAgICAgICAgcGFzcwogICAgICAgIHJhaXNlIEhUVFBFeGNlcHRpb24oc3RhdHVzX2NvZGU9NTAwLCBkZXRhaWw9ZiLmir3ljaHlpLHotKXvvJp7c3RyKGUpfSIpCgoKIyA9PT09PT09PT09PT09PSDmiJHnmoTlm77pibQgLyDmir3ljaHorrDlvZUgPT09PT09PT09PT09PT0KQHJvdXRlci5nZXQoIi9teS1jYXJkcyIpCmFzeW5jIGRlZiBteV9jYXJkcygKICAgIHBhZ2U6IGludCA9IFF1ZXJ5KDEsIGdlPTEpLAogICAgc2l6ZTogaW50ID0gUXVlcnkoMjAsIGdlPTEsIGxlPTEwMCksCiAgICByYXJpdHk6IE9wdGlvbmFsW2ludF0gPSBOb25lLAogICAgY3VycmVudF91c2VyOiBkaWN0ID0gRGVwZW5kcyhnZXRfY3VycmVudF91c2VyKSwKKToKICAgIG9mZnNldCA9IChwYWdlIC0gMSkgKiBzaXplCiAgICB3aGVyZSA9IFsidWMudXNlcl9pZD0lcyJdCiAgICBhcmdzOiBsaXN0ID0gW2N1cnJlbnRfdXNlclsiaWQiXV0KICAgIGlmIHJhcml0eToKICAgICAgICB3aGVyZS5hcHBlbmQoImMucmFyaXR5PSVzIikKICAgICAgICBhcmdzLmFwcGVuZChyYXJpdHkpCgogICAgc3FsID0gZiIiIgogICAgICAgIFNFTEVDVCB1Yy5jYXJkX2lkLCB1Yy5jb3VudCwgdWMub2J0YWluX3RpbWUsCiAgICAgICAgICAgICAgIGMubmFtZSwgYy5pbWFnZV91cmwsIGMucmFyaXR5LCBjLnBvb2xfaWQKICAgICAgICBGUk9NIHVzZXJfY2FyZHMgdWMKICAgICAgICBKT0lOIGNhcmRzIGMgT04gYy5pZCA9IHVjLmNhcmRfaWQKICAgICAgICBXSEVSRSB7JyBBTkQgJy5qb2luKHdoZXJlKX0KICAgICAgICBPUkRFUiBCWSBjLnJhcml0eSBERVNDLCB1Yy5vYnRhaW5fdGltZSBERVNDCiAgICAgICAgTElNSVQgJXMgT0ZGU0VUICVzCiAgICAiIiIKICAgIGFyZ3MuZXh0ZW5kKFtzaXplLCBvZmZzZXRdKQogICAgcm93cyA9IHF1ZXJ5X2FsbChzcWwsIGFyZ3MpCiAgICBmb3IgciBpbiByb3dzOgogICAgICAgIHJbInJhcml0eV9uYW1lIl0gPSBfUkFSSVRZX05BTUVTLmdldChyWyJyYXJpdHkiXSwgIj8iKQogICAgcmV0dXJuIHsiY29kZSI6IDAsICJtc2ciOiAib2siLCAiZGF0YSI6IHJvd3N9CgoKQHJvdXRlci5nZXQoIi9teS1jYXJkcy97Y2FyZF9pZH0iKQphc3luYyBkZWYgbXlfY2FyZF9kZXRhaWwoY2FyZF9pZDogaW50LCBjdXJyZW50X3VzZXI6IGRpY3QgPSBEZXBlbmRzKGdldF9jdXJyZW50X3VzZXIpKToKICAgICIiIuaIkeeahOafkOW8oOWNoeivpuaDhSDigJTigJQg5bimIHVzZXJfaWQg6Ziy6LaK5p2DIiIiCiAgICByb3cgPSBxdWVyeV9vbmUoCiAgICAgICAgIiIiU0VMRUNUIHVjLmNvdW50LCB1Yy5vYnRhaW5fdGltZSwKICAgICAgICAgICAgICAgICAgYy4qLCBwLm5hbWUgQVMgcG9vbF9uYW1lCiAgICAgICAgICAgRlJPTSB1c2VyX2NhcmRzIHVjCiAgICAgICAgICAgSk9JTiBjYXJkcyBjIE9OIGMuaWQgPSB1Yy5jYXJkX2lkCiAgICAgICAgICAgSk9JTiBjYXJkX3Bvb2xzIHAgT04gcC5pZCA9IGMucG9vbF9pZAogICAgICAgICAgIFdIRVJFIHVjLmNhcmRfaWQ9JXMgQU5EIHVjLnVzZXJfaWQ9JXMiIiIsCiAgICAgICAgKGNhcmRfaWQsIGN1cnJlbnRfdXNlclsiaWQiXSkKICAgICkKICAgIGlmIG5vdCByb3c6CiAgICAgICAgcmFpc2UgSFRUUEV4Y2VwdGlvbihzdGF0dXNfY29kZT00MDQsIGRldGFpbD0i5rKh5pyJ6L+Z5byg5Y2hIikKICAgIHJvd1sicmFyaXR5X25hbWUiXSA9IF9SQVJJVFlfTkFNRVMuZ2V0KHJvd1sicmFyaXR5Il0sICI/IikKICAgIHJldHVybiB7ImNvZGUiOiAwLCAibXNnIjogIm9rIiwgImRhdGEiOiByb3d9CgoKQHJvdXRlci5nZXQoIi9yZWNvcmRzIikKYXN5bmMgZGVmIG15X3JlY29yZHMoCiAgICBwYWdlOiBpbnQgPSBRdWVyeSgxLCBnZT0xKSwKICAgIHNpemU6IGludCA9IFF1ZXJ5KDIwLCBnZT0xLCBsZT0xMDApLAogICAgY3VycmVudF91c2VyOiBkaWN0ID0gRGVwZW5kcyhnZXRfY3VycmVudF91c2VyKSwKKToKICAgIG9mZnNldCA9IChwYWdlIC0gMSkgKiBzaXplCiAgICByb3dzID0gcXVlcnlfYWxsKAogICAgICAgICIiIlNFTEVDVCByLmlkLCByLnBvb2xfaWQsIHIuZHJhd190eXBlLCByLnRvdGFsX2Nvc3QsIHIucmVzdWx0c19qc29uLCByLmNyZWF0ZV90aW1lLAogICAgICAgICAgICAgICAgICBwLm5hbWUgQVMgcG9vbF9uYW1lCiAgICAgICAgICAgRlJPTSBnYWNoYV9yZWNvcmRzIHIKICAgICAgICAgICBKT0lOIGNhcmRfcG9vbHMgcCBPTiBwLmlkID0gci5wb29sX2lkCiAgICAgICAgICAgV0hFUkUgci51c2VyX2lkPSVzCiAgICAgICAgICAgT1JERVIgQlkgci5pZCBERVNDCiAgICAgICAgICAgTElNSVQgJXMgT0ZGU0VUICVzIiIiLAogICAgICAgIChjdXJyZW50X3VzZXJbImlkIl0sIHNpemUsIG9mZnNldCkKICAgICkKICAgIGZvciByIGluIHJvd3M6CiAgICAgICAgclsicmVzdWx0c19qc29uIl0gPSBqc29uLmxvYWRzKHJbInJlc3VsdHNfanNvbiJdKQogICAgcmV0dXJuIHsiY29kZSI6IDAsICJtc2ciOiAib2siLCAiZGF0YSI6IHJvd3N9CgoKIyA9PT09PT09PT09PT09PSDnrqHnkIblkZjvvJrljaHmsaDphY3nva4gPT09PT09PT09PT09PT0KQHJvdXRlci5wb3N0KCIvcG9vbHMiKQphc3luYyBkZWYgYWRtaW5fY3JlYXRlX3Bvb2woYm9keTogUG9vbENyZWF0ZSwgY3VycmVudF91c2VyOiBkaWN0ID0gRGVwZW5kcyhyZXF1aXJlX3JvbGUoMikpKToKICAgIHBpZCA9IGV4ZWN1dGVfcmV0dXJuX2lkKAogICAgICAgICIiIklOU0VSVCBJTlRPIGNhcmRfcG9vbHMgKG5hbWUsIGNlbGVicml0eV9pZCwgZGVzY3JpcHRpb24sIGNvc3RfcGVyX2RyYXcsIGNvc3RfcGVyX3RlbiwgaXNfYWN0aXZlLCBjcmVhdGVfdGltZSkKICAgICAgICAgICBWQUxVRVMgKCVzLCAlcywgJXMsICVzLCAlcywgJXMsICVzKSIiIiwKICAgICAgICAoYm9keS5uYW1lLCBib2R5LmNlbGVicml0eV9pZCwgYm9keS5kZXNjcmlwdGlvbiwgYm9keS5jb3N0X3Blcl9kcmF3LCBib2R5LmNvc3RfcGVyX3RlbiwgYm9keS5pc19hY3RpdmUsIGRhdGV0aW1lLm5vdygpKQogICAgKQogICAgcmV0dXJuIHsiY29kZSI6IDAsICJtc2ciOiAi5Y2h5rGg5Yib5bu65oiQ5YqfIiwgImRhdGEiOiB7InBvb2xfaWQiOiBwaWR9fQoKCkByb3V0ZXIucHV0KCIvcG9vbHMve3Bvb2xfaWR9IikKYXN5bmMgZGVmIGFkbWluX3VwZGF0ZV9wb29sKHBvb2xfaWQ6IGludCwgYm9keTogUG9vbFVwZGF0ZSwgY3VycmVudF91c2VyOiBkaWN0ID0gRGVwZW5kcyhyZXF1aXJlX3JvbGUoMikpKToKICAgIHBvb2wgPSBxdWVyeV9vbmUoIlNFTEVDVCBpZCBGUk9NIGNhcmRfcG9vbHMgV0hFUkUgaWQ9JXMiLCAocG9vbF9pZCwpKQogICAgaWYgbm90IHBvb2w6CiAgICAgICAgcmFpc2UgSFRUUEV4Y2VwdGlvbihzdGF0dXNfY29kZT00MDQsIGRldGFpbD0i5Y2h5rGg5LiN5a2Y5ZyoIikKCiAgICBmaWVsZHMgPSBib2R5Lm1vZGVsX2R1bXAoZXhjbHVkZV9ub25lPVRydWUpCiAgICBpbnZhbGlkID0gc2V0KGZpZWxkcy5rZXlzKCkpIC0gX1BPT0xfQUxMT1dFRF9VUERBVEUKICAgIGlmIGludmFsaWQ6CiAgICAgICAgcmFpc2UgSFRUUEV4Y2VwdGlvbihzdGF0dXNfY29kZT00MDAsIGRldGFpbD1mIuS4jeWFgeiuuOabtOaWsOWtl+autToge2ludmFsaWR9IikKICAgIGlmIG5vdCBmaWVsZHM6CiAgICAgICAgcmFpc2UgSFRUUEV4Y2VwdGlvbihzdGF0dXNfY29kZT00MDAsIGRldGFpbD0i5rKh5pyJ5Y+v5pu05paw55qE5a2X5q61IikKCiAgICBzZXRfY2xhdXNlID0gIiwgIi5qb2luKGYie2t9PSVzIiBmb3IgayBpbiBmaWVsZHMua2V5cygpKQogICAgYXJncyA9IGxpc3QoZmllbGRzLnZhbHVlcygpKSArIFtwb29sX2lkXQogICAgZXhlY3V0ZShmIlVQREFURSBjYXJkX3Bvb2xzIFNFVCB7c2V0X2NsYXVzZX0gV0hFUkUgaWQ9JXMiLCBhcmdzKQogICAgcmV0dXJuIHsiY29kZSI6IDAsICJtc2ciOiAi5pu05paw5oiQ5YqfIiwgImRhdGEiOiBOb25lfQoKCkByb3V0ZXIucG9zdCgiL2NhcmRzIikKYXN5bmMgZGVmIGFkbWluX2NyZWF0ZV9jYXJkKGJvZHk6IENhcmRDcmVhdGUsIGN1cnJlbnRfdXNlcjogZGljdCA9IERlcGVuZHMocmVxdWlyZV9yb2xlKDIpKSk6CiAgICBpZiBib2R5LnJhcml0eSBub3QgaW4gKDEsIDIsIDMsIDQpOgogICAgICAgIHJhaXNlIEhUVFBFeGNlcHRpb24oc3RhdHVzX2NvZGU9NDAwLCBkZXRhaWw9InJhcml0eSDlj6rog73mmK8gMS8yLzMvNCIpCgogICAgY2lkID0gZXhlY3V0ZV9yZXR1cm5faWQoCiAgICAgICAgIiIiSU5TRVJUIElOVE8gY2FyZHMgKHBvb2xfaWQsIGNlbGVicml0eV9pZCwgbmFtZSwgaW1hZ2VfdXJsLCByYXJpdHksIHdlaWdodCwgZGVzY3JpcHRpb24sIGNyZWF0ZV90aW1lKQogICAgICAgICAgIFZBTFVFUyAoJXMsICVzLCAlcywgJXMsICVzLCAlcywgJXMsICVzKSIiIiwKICAgICAgICAoYm9keS5wb29sX2lkLCBib2R5LmNlbGVicml0eV9pZCwgYm9keS5uYW1lLCBib2R5LmltYWdlX3VybCwgYm9keS5yYXJpdHksIGJvZHkud2VpZ2h0LCBib2R5LmRlc2NyaXB0aW9uLCBkYXRldGltZS5ub3coKSkKICAgICkKICAgIHJldHVybiB7ImNvZGUiOiAwLCAibXNnIjogIuWNoeeJh+WIm+W7uuaIkOWKnyIsICJkYXRhIjogeyJjYXJkX2lkIjogY2lkfX0KCgpAcm91dGVyLnB1dCgiL2NhcmRzL3tjYXJkX2lkfSIpCmFzeW5jIGRlZiBhZG1pbl91cGRhdGVfY2FyZChjYXJkX2lkOiBpbnQsIGJvZHk6IENhcmRVcGRhdGUsIGN1cnJlbnRfdXNlcjogZGljdCA9IERlcGVuZHMocmVxdWlyZV9yb2xlKDIpKSk6CiAgICBjYXJkID0gcXVlcnlfb25lKCJTRUxFQ1QgaWQgRlJPTSBjYXJkcyBXSEVSRSBpZD0lcyIsIChjYXJkX2lkLCkpCiAgICBpZiBub3QgY2FyZDoKICAgICAgICByYWlzZSBIVFRQRXhjZXB0aW9uKHN0YXR1c19jb2RlPTQwNCwgZGV0YWlsPSLljaHniYfkuI3lrZjlnKgiKQoKICAgIGZpZWxkcyA9IGJvZHkubW9kZWxfZHVtcChleGNsdWRlX25vbmU9VHJ1ZSkKICAgIGludmFsaWQgPSBzZXQoZmllbGRzLmtleXMoKSkgLSBfQ0FSRF9BTExPV0VEX1VQREFURQogICAgaWYgaW52YWxpZDoKICAgICAgICByYWlzZSBIVFRQRXhjZXB0aW9uKHN0YXR1c19jb2RlPTQwMCwgZGV0YWlsPWYi5LiN5YWB6K645pu05paw5a2X5q61OiB7aW52YWxpZH0iKQogICAgaWYgbm90IGZpZWxkczoKICAgICAgICByYWlzZSBIVFRQRXhjZXB0aW9uKHN0YXR1c19jb2RlPTQwMCwgZGV0YWlsPSLmsqHmnInlj6/mm7TmlrDnmoTlrZfmrrUiKQoKICAgIHNldF9jbGF1c2UgPSAiLCAiLmpvaW4oZiJ7a309JXMiIGZvciBrIGluIGZpZWxkcy5rZXlzKCkpCiAgICBhcmdzID0gbGlzdChmaWVsZHMudmFsdWVzKCkpICsgW2NhcmRfaWRdCiAgICBleGVjdXRlKGYiVVBEQVRFIGNhcmRzIFNFVCB7c2V0X2NsYXVzZX0gV0hFUkUgaWQ9JXMiLCBhcmdzKQogICAgcmV0dXJuIHsiY29kZSI6IDAsICJtc2ciOiAi5pu05paw5oiQ5YqfIiwgImRhdGEiOiBOb25lfQoKCkByb3V0ZXIuZGVsZXRlKCIvY2FyZHMve2NhcmRfaWR9IikKYXN5bmMgZGVmIGFkbWluX2RlbGV0ZV9jYXJkKGNhcmRfaWQ6IGludCwgY3VycmVudF91c2VyOiBkaWN0ID0gRGVwZW5kcyhyZXF1aXJlX3JvbGUoMikpKToKICAgIGV4ZWN1dGUoIkRFTEVURSBGUk9NIGNhcmRzIFdIRVJFIGlkPSVzIiwgKGNhcmRfaWQsKSkKICAgIHJldHVybiB7ImNvZGUiOiAwLCAibXNnIjogIuWIoOmZpOaIkOWKnyIsICJkYXRhIjogTm9uZX0K
+"""
+gacha.py —— 抽卡游戏 + 管理员卡池配置
+"""
+import json
+import random
+from datetime import datetime
+from fastapi import APIRouter, Depends, HTTPException, Query
+from pydantic import BaseModel
+from typing import Optional
+
+from database import query_one, query_all, execute, execute_return_id
+from deps import get_current_user, require_role
+
+router = APIRouter(prefix="/api/gacha", tags=["gacha"])
+
+# rarity 显示名
+_RARITY_NAMES = {1: "N", 2: "R", 3: "SR", 4: "SSR"}
+
+
+# ============== Schema ==============
+class DrawBody(BaseModel):
+    pool_id: int
+    count: int = 1  # 1 或 10
+
+
+class PoolCreate(BaseModel):
+    name: str
+    celebrity_id: Optional[int] = None
+    description: Optional[str] = None
+    cost_per_draw: int = 100
+    cost_per_ten: int = 900
+    is_active: int = 1
+
+
+class PoolUpdate(BaseModel):
+    name: Optional[str] = None
+    celebrity_id: Optional[int] = None
+    description: Optional[str] = None
+    cost_per_draw: Optional[int] = None
+    cost_per_ten: Optional[int] = None
+    is_active: Optional[int] = None
+
+
+_POOL_ALLOWED_UPDATE = {"name", "celebrity_id", "description", "cost_per_draw", "cost_per_ten", "is_active"}
+
+
+class CardCreate(BaseModel):
+    pool_id: int
+    celebrity_id: Optional[int] = None
+    name: str
+    image_url: str
+    rarity: int
+    weight: int = 100
+    description: Optional[str] = None
+
+
+class CardUpdate(BaseModel):
+    pool_id: Optional[int] = None
+    celebrity_id: Optional[int] = None
+    name: Optional[str] = None
+    image_url: Optional[str] = None
+    rarity: Optional[int] = None
+    weight: Optional[int] = None
+    description: Optional[str] = None
+
+
+_CARD_ALLOWED_UPDATE = {"pool_id", "celebrity_id", "name", "image_url", "rarity", "weight", "description"}
+
+
+# ============== 工具：按权重抽一张卡 ==============
+def _weighted_pick(cards: list[dict]) -> dict:
+    """按 weight 权重随机选一张"""
+    total = sum(c["weight"] for c in cards)
+    r = random.randint(1, total)
+    acc = 0
+    for c in cards:
+        acc += c["weight"]
+        if r <= acc:
+            return c
+    return cards[-1]
+
+
+# ============== 公开：卡池列表 / 详情 ==============
+@router.get("/pools")
+async def list_pools():
+    rows = query_all(
+        """SELECT p.id, p.name, p.description, p.cost_per_draw, p.cost_per_ten,
+                  p.is_active, p.celebrity_id,
+                  c.stage_name AS celebrity_name
+           FROM card_pools p
+           LEFT JOIN celebrities c ON c.id = p.celebrity_id
+           ORDER BY p.is_active DESC, p.id DESC"""
+    )
+    return {"code": 0, "msg": "ok", "data": rows}
+
+
+@router.get("/pools/{pool_id}")
+async def get_pool(pool_id: int):
+    pool = query_one(
+        """SELECT p.*, c.stage_name AS celebrity_name
+           FROM card_pools p
+           LEFT JOIN celebrities c ON c.id = p.celebrity_id
+           WHERE p.id=%s""",
+        (pool_id,)
+    )
+    if not pool:
+        raise HTTPException(status_code=404, detail="卡池不存在")
+
+    cards = query_all(
+        "SELECT * FROM cards WHERE pool_id=%s ORDER BY rarity DESC, weight DESC",
+        (pool_id,)
+    )
+    # 给卡片加 rarity_name
+    for c in cards:
+        c["rarity_name"] = _RARITY_NAMES.get(c["rarity"], "?")
+    pool["cards"] = cards
+    return {"code": 0, "msg": "ok", "data": pool}
+
+
+# ============== 抽卡核心 ==============
+@router.post("/draw")
+async def draw(body: DrawBody, current_user: dict = Depends(get_current_user)):
+    """
+    执行抽卡（事务保护）
+    - 查卡池 → 查积分 → 扣积分 → 抽卡 → 写记录 → 更新 user_cards
+    """
+    if body.count not in (1, 10):
+        raise HTTPException(status_code=400, detail="count 只能是 1 或 10")
+
+    pool = query_one("SELECT * FROM card_pools WHERE id=%s", (body.pool_id,))
+    if not pool:
+        raise HTTPException(status_code=404, detail="卡池不存在")
+    if pool["is_active"] != 1:
+        raise HTTPException(status_code=400, detail="卡池已关闭")
+
+    # 查该卡池的所有卡片
+    cards_in_pool = query_all(
+        "SELECT id, name, image_url, rarity, weight FROM cards WHERE pool_id=%s",
+        (body.pool_id,)
+    )
+    if not cards_in_pool:
+        raise HTTPException(status_code=400, detail="卡池里没有卡片")
+
+    # 算消耗
+    cost = pool["cost_per_ten"] if body.count == 10 else pool["cost_per_draw"]
+
+    # 查积分（需要事务内再查一次校验，防止并发扣超）
+    user = query_one("SELECT id, score FROM users WHERE id=%s", (current_user["id"],))
+    if user["score"] < cost:
+        raise HTTPException(status_code=400, detail=f"积分不足，需要 {cost}，当前 {user['score']}")
+
+    # 执行抽卡（伪事务：先扣积分再抽，失败回滚）
+    # 注意：生产环境应该用真正的数据库事务，这里简化处理
+    try:
+        # 1. 扣积分
+        execute(
+            "UPDATE users SET score = score - %s WHERE id=%s AND score >= %s",
+            (cost, current_user["id"], cost)
+        )
+
+        # 2. 抽 body.count 次
+        drawn_cards = []
+        results_json = []
+        for _ in range(body.count):
+            picked = _weighted_pick(cards_in_pool)
+            drawn_cards.append(picked)
+            results_json.append({
+                "card_id": picked["id"],
+                "name": picked["name"],
+                "image_url": picked["image_url"],
+                "rarity": picked["rarity"],
+                "rarity_name": _RARITY_NAMES.get(picked["rarity"], "?"),
+            })
+
+        # 3. 更新 user_cards（ON DUPLICATE KEY UPDATE count）
+        for picked in drawn_cards:
+            affected = execute(
+                """INSERT INTO user_cards (user_id, card_id, count, obtain_time)
+                   VALUES (%s, %s, 1, %s)
+                   ON DUPLICATE KEY UPDATE count = count + 1""",
+                (current_user["id"], picked["id"], datetime.now())
+            )
+
+        # 4. 写抽卡记录 —— draw_type: 1=单抽, 2=十连（不是 count 本身！）
+        draw_type = 2 if body.count == 10 else 1
+        execute_return_id(
+            """INSERT INTO gacha_records (user_id, pool_id, draw_type, total_cost, results_json, create_time)
+               VALUES (%s, %s, %s, %s, %s, %s)""",
+            (current_user["id"], body.pool_id, draw_type, cost, json.dumps(results_json, ensure_ascii=False), datetime.now())
+        )
+
+        # 5. 返回（注意前端展示顺序：SSR 放最后比较有悬念）
+        results_json.reverse()
+        return {
+            "code": 0, "msg": "抽卡成功",
+            "data": {
+                "cost": cost,
+                "drawn": results_json,
+                "remain_score": user["score"] - cost,
+            }
+        }
+
+    except Exception as e:
+        # 回滚积分（如果扣了的话）
+        try:
+            execute(
+                "UPDATE users SET score = score + %s WHERE id=%s",
+                (cost, current_user["id"])
+            )
+        except Exception:
+            pass
+        raise HTTPException(status_code=500, detail=f"抽卡失败：{str(e)}")
+
+
+# ============== 我的图鉴 / 抽卡记录 ==============
+@router.get("/my-cards")
+async def my_cards(
+    page: int = Query(1, ge=1),
+    size: int = Query(20, ge=1, le=100),
+    rarity: Optional[int] = None,
+    current_user: dict = Depends(get_current_user),
+):
+    offset = (page - 1) * size
+    where = ["uc.user_id=%s"]
+    args: list = [current_user["id"]]
+    if rarity:
+        where.append("c.rarity=%s")
+        args.append(rarity)
+
+    sql = f"""
+        SELECT uc.card_id, uc.count, uc.obtain_time,
+               c.name, c.image_url, c.rarity, c.pool_id
+        FROM user_cards uc
+        JOIN cards c ON c.id = uc.card_id
+        WHERE {' AND '.join(where)}
+        ORDER BY c.rarity DESC, uc.obtain_time DESC
+        LIMIT %s OFFSET %s
+    """
+    args.extend([size, offset])
+    rows = query_all(sql, args)
+    for r in rows:
+        r["rarity_name"] = _RARITY_NAMES.get(r["rarity"], "?")
+    return {"code": 0, "msg": "ok", "data": rows}
+
+
+@router.get("/my-cards/{card_id}")
+async def my_card_detail(card_id: int, current_user: dict = Depends(get_current_user)):
+    """我的某张卡详情 —— 带 user_id 防越权"""
+    row = query_one(
+        """SELECT uc.count, uc.obtain_time,
+                  c.*, p.name AS pool_name
+           FROM user_cards uc
+           JOIN cards c ON c.id = uc.card_id
+           JOIN card_pools p ON p.id = c.pool_id
+           WHERE uc.card_id=%s AND uc.user_id=%s""",
+        (card_id, current_user["id"])
+    )
+    if not row:
+        raise HTTPException(status_code=404, detail="没有这张卡")
+    row["rarity_name"] = _RARITY_NAMES.get(row["rarity"], "?")
+    return {"code": 0, "msg": "ok", "data": row}
+
+
+@router.get("/records")
+async def my_records(
+    page: int = Query(1, ge=1),
+    size: int = Query(20, ge=1, le=100),
+    current_user: dict = Depends(get_current_user),
+):
+    offset = (page - 1) * size
+    rows = query_all(
+        """SELECT r.id, r.pool_id, r.draw_type, r.total_cost, r.results_json, r.create_time,
+                  p.name AS pool_name
+           FROM gacha_records r
+           JOIN card_pools p ON p.id = r.pool_id
+           WHERE r.user_id=%s
+           ORDER BY r.id DESC
+           LIMIT %s OFFSET %s""",
+        (current_user["id"], size, offset)
+    )
+    for r in rows:
+        r["results_json"] = json.loads(r["results_json"])
+    return {"code": 0, "msg": "ok", "data": rows}
+
+
+# ============== 管理员：卡池配置 ==============
+@router.post("/pools")
+async def admin_create_pool(body: PoolCreate, current_user: dict = Depends(require_role(2))):
+    pid = execute_return_id(
+        """INSERT INTO card_pools (name, celebrity_id, description, cost_per_draw, cost_per_ten, is_active, create_time)
+           VALUES (%s, %s, %s, %s, %s, %s, %s)""",
+        (body.name, body.celebrity_id, body.description, body.cost_per_draw, body.cost_per_ten, body.is_active, datetime.now())
+    )
+    return {"code": 0, "msg": "卡池创建成功", "data": {"pool_id": pid}}
+
+
+@router.put("/pools/{pool_id}")
+async def admin_update_pool(pool_id: int, body: PoolUpdate, current_user: dict = Depends(require_role(2))):
+    pool = query_one("SELECT id FROM card_pools WHERE id=%s", (pool_id,))
+    if not pool:
+        raise HTTPException(status_code=404, detail="卡池不存在")
+
+    fields = body.model_dump(exclude_none=True)
+    invalid = set(fields.keys()) - _POOL_ALLOWED_UPDATE
+    if invalid:
+        raise HTTPException(status_code=400, detail=f"不允许更新字段: {invalid}")
+    if not fields:
+        raise HTTPException(status_code=400, detail="没有可更新的字段")
+
+    set_clause = ", ".join(f"{k}=%s" for k in fields.keys())
+    args = list(fields.values()) + [pool_id]
+    execute(f"UPDATE card_pools SET {set_clause} WHERE id=%s", args)
+    return {"code": 0, "msg": "更新成功", "data": None}
+
+
+@router.post("/cards")
+async def admin_create_card(body: CardCreate, current_user: dict = Depends(require_role(2))):
+    if body.rarity not in (1, 2, 3, 4):
+        raise HTTPException(status_code=400, detail="rarity 只能是 1/2/3/4")
+
+    cid = execute_return_id(
+        """INSERT INTO cards (pool_id, celebrity_id, name, image_url, rarity, weight, description, create_time)
+           VALUES (%s, %s, %s, %s, %s, %s, %s, %s)""",
+        (body.pool_id, body.celebrity_id, body.name, body.image_url, body.rarity, body.weight, body.description, datetime.now())
+    )
+    return {"code": 0, "msg": "卡片创建成功", "data": {"card_id": cid}}
+
+
+@router.put("/cards/{card_id}")
+async def admin_update_card(card_id: int, body: CardUpdate, current_user: dict = Depends(require_role(2))):
+    card = query_one("SELECT id FROM cards WHERE id=%s", (card_id,))
+    if not card:
+        raise HTTPException(status_code=404, detail="卡片不存在")
+
+    fields = body.model_dump(exclude_none=True)
+    invalid = set(fields.keys()) - _CARD_ALLOWED_UPDATE
+    if invalid:
+        raise HTTPException(status_code=400, detail=f"不允许更新字段: {invalid}")
+    if not fields:
+        raise HTTPException(status_code=400, detail="没有可更新的字段")
+
+    set_clause = ", ".join(f"{k}=%s" for k in fields.keys())
+    args = list(fields.values()) + [card_id]
+    execute(f"UPDATE cards SET {set_clause} WHERE id=%s", args)
+    return {"code": 0, "msg": "更新成功", "data": None}
+
+
+@router.delete("/cards/{card_id}")
+async def admin_delete_card(card_id: int, current_user: dict = Depends(require_role(2))):
+    execute("DELETE FROM cards WHERE id=%s", (card_id,))
+    return {"code": 0, "msg": "删除成功", "data": None}

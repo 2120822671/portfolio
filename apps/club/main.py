@@ -1,1 +1,248 @@
-aW1wb3J0IG9zCmZyb20gZmFzdGFwaSBpbXBvcnQgRmFzdEFQSSwgSFRUUEV4Y2VwdGlvbgpmcm9tIGZhc3RhcGkucmVzcG9uc2VzIGltcG9ydCBSZWRpcmVjdFJlc3BvbnNlCmZyb20gZmFzdGFwaS5zdGF0aWNmaWxlcyBpbXBvcnQgU3RhdGljRmlsZXMKZnJvbSBweWRhbnRpYyBpbXBvcnQgQmFzZU1vZGVsLCBGaWVsZCwgZmllbGRfdmFsaWRhdG9yCmltcG9ydCBweW15c3FsCmZyb20gdHlwaW5nIGltcG9ydCBMaXN0CgphcHAgPSBGYXN0QVBJKCkKCgojIC0tLS0tLS0tLS0tLS0tLS0g5qC56Lev5b6E6Lez6L2s77yI5L2c5ZOB6ZuG5pW05ZCI77yJIC0tLS0tLS0tLS0tLS0tLS0KQGFwcC5nZXQoIi8iKQphc3luYyBkZWYgaW5kZXhfcmVkaXJlY3QoKToKICAgIHJldHVybiBSZWRpcmVjdFJlc3BvbnNlKHVybD0iL2NsdWIvc3RhdGljL2luZGV4Lmh0bWwiKQoKIyAtLS0tLS0tLS0tLS0tLS0tIOiHquWKqOeUn+aIkCBzdGF0aWMvaW5kZXguaHRtbCAtLS0tLS0tLS0tLS0tLS0tCkJBU0VfRElSID0gb3MucGF0aC5kaXJuYW1lKG9zLnBhdGguYWJzcGF0aChfX2ZpbGVfXykpClNUQVRJQ19ESVIgPSBvcy5wYXRoLmpvaW4oQkFTRV9ESVIsICJzdGF0aWMiKQpIVE1MX0ZJTEUgPSBvcy5wYXRoLmpvaW4oU1RBVElDX0RJUiwgImluZGV4Lmh0bWwiKQoKaWYgbm90IG9zLnBhdGguZXhpc3RzKFNUQVRJQ19ESVIpOgogICAgb3MubWFrZWRpcnMoU1RBVElDX0RJUikKCmlmIG5vdCBvcy5wYXRoLmV4aXN0cyhIVE1MX0ZJTEUpOgogICAgIyDjgJDkv67mlLnngrk177ya5YmN56uv5L+u5aSNWFNT6ZqQ5oKj44CR5bCGIGlubmVySFRNTCDmi7zmjqXmlLnkuLrlronlhajnmoQgdGV4dENvbnRlbnQg6LWL5YC8CiAgICBodG1sX2NvbnRlbnQgPSAiIiIKPCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9InpoLUNOIj4KPGhlYWQ+CiAgICA8bWV0YSBjaGFyc2V0PSJVVEYtOCI+CiAgICA8dGl0bGU+5a2m55Sf56S+5Zui5rS75Yqo55m76K6w57O757ufPC90aXRsZT4KICAgIDxzdHlsZT4KICAgICAgICBib2R5IHsgZm9udC1mYW1pbHk6ICdTZWdvZSBVSScsIFRhaG9tYSwgR2VuZXZhLCBWZXJkYW5hLCBzYW5zLXNlcmlmOyBtYXJnaW46IDQwcHg7IGJhY2tncm91bmQtY29sb3I6ICNmNGY3ZjY7IH0KICAgICAgICBoMSB7IGNvbG9yOiAjMzMzOyB0ZXh0LWFsaWduOiBjZW50ZXI7IH0KICAgICAgICAuY29udGFpbmVyIHsgbWF4LXdpZHRoOiA4MDBweDsgbWFyZ2luOiAwIGF1dG87IGJhY2tncm91bmQ6ICNmZmY7IHBhZGRpbmc6IDMwcHg7IGJvcmRlci1yYWRpdXM6IDhweDsgYm94LXNoYWRvdzogMCA0cHggNnB4IHJnYmEoMCwwLDAsMC4xKTsgfQogICAgICAgIC5mb3JtLWdyb3VwIHsgbWFyZ2luLWJvdHRvbTogMTVweDsgfQogICAgICAgIC5mb3JtLWdyb3VwIGxhYmVsIHsgZGlzcGxheTogYmxvY2s7IG1hcmdpbi1ib3R0b206IDVweDsgZm9udC13ZWlnaHQ6IGJvbGQ7IGNvbG9yOiAjNTU1OyB9CiAgICAgICAgLmZvcm0tZ3JvdXAgaW5wdXQgeyB3aWR0aDogMTAwJTsgcGFkZGluZzogMTBweDsgYm9yZGVyOiAxcHggc29saWQgI2NjYzsgYm9yZGVyLXJhZGl1czogNHB4OyBib3gtc2l6aW5nOiBib3JkZXItYm94OyB9CiAgICAgICAgLmZvcm0tZ3JvdXAgaW5wdXQ6Zm9jdXMgeyBib3JkZXItY29sb3I6ICMwMDdiZmY7IG91dGxpbmU6IG5vbmU7IH0KICAgICAgICBidXR0b24geyBiYWNrZ3JvdW5kLWNvbG9yOiAjMDA3YmZmOyBjb2xvcjogd2hpdGU7IHBhZGRpbmc6IDEwcHggMjBweDsgYm9yZGVyOiBub25lOyBib3JkZXItcmFkaXVzOiA0cHg7IGN1cnNvcjogcG9pbnRlcjsgZm9udC1zaXplOiAxNnB4OyB9CiAgICAgICAgYnV0dG9uOmhvdmVyIHsgYmFja2dyb3VuZC1jb2xvcjogIzAwNTZiMzsgfQogICAgICAgIHRhYmxlIHsgd2lkdGg6IDEwMCU7IGJvcmRlci1jb2xsYXBzZTogY29sbGFwc2U7IG1hcmdpbi10b3A6IDMwcHg7IH0KICAgICAgICB0aCwgdGQgeyBib3JkZXI6IDFweCBzb2xpZCAjZGRkOyBwYWRkaW5nOiAxMnB4OyB0ZXh0LWFsaWduOiBjZW50ZXI7IH0KICAgICAgICB0aCB7IGJhY2tncm91bmQtY29sb3I6ICMwMDdiZmY7IGNvbG9yOiB3aGl0ZTsgfQogICAgICAgIHRyOm50aC1jaGlsZChldmVuKSB7IGJhY2tncm91bmQtY29sb3I6ICNmMmYyZjI7IH0KICAgICAgICAubXNnIHsgcGFkZGluZzogMTBweDsgbWFyZ2luLWJvdHRvbTogMTVweDsgYm9yZGVyLXJhZGl1czogNHB4OyBkaXNwbGF5OiBub25lOyB9CiAgICAgICAgLm1zZy5lcnJvciB7IGJhY2tncm91bmQtY29sb3I6ICNmOGQ3ZGE7IGNvbG9yOiAjNzIxYzI0OyBib3JkZXI6IDFweCBzb2xpZCAjZjVjNmNiOyBkaXNwbGF5OiBibG9jazsgfQogICAgICAgIC5tc2cuc3VjY2VzcyB7IGJhY2tncm91bmQtY29sb3I6ICNkNGVkZGE7IGNvbG9yOiAjMTU1NzI0OyBib3JkZXI6IDFweCBzb2xpZCAjYzNlNmNiOyBkaXNwbGF5OiBibG9jazsgfQogICAgPC9zdHlsZT4KPC9oZWFkPgo8Ym9keT4KICAgIDxkaXYgY2xhc3M9ImNvbnRhaW5lciI+CiAgICAgICAgPGgxPuWtpueUn+ekvuWboua0u+WKqOeZu+iusDwvaDE+CiAgICAgICAgPGZvcm0gaWQ9ImFjdGl2aXR5Rm9ybSI+CiAgICAgICAgICAgIDxkaXYgaWQ9ImZvcm1Nc2ciIGNsYXNzPSJtc2ciPjwvZGl2PgogICAgICAgICAgICA8ZGl2IGNsYXNzPSJmb3JtLWdyb3VwIj4KICAgICAgICAgICAgICAgIDxsYWJlbD7mtLvliqjlkI3np7A8L2xhYmVsPgogICAgICAgICAgICAgICAgPGlucHV0IHR5cGU9InRleHQiIGlkPSJhY3Rpdml0eV9uYW1lIiByZXF1aXJlZCBwbGFjZWhvbGRlcj0i6K+36L6T5YWl5rS75Yqo5ZCN56ewIj4KICAgICAgICAgICAgPC9kaXY+CiAgICAgICAgICAgIDxkaXYgY2xhc3M9ImZvcm0tZ3JvdXAiPgogICAgICAgICAgICAgICAgPGxhYmVsPua0u+WKqOexu+WeizwvbGFiZWw+CiAgICAgICAgICAgICAgICA8aW5wdXQgdHlwZT0idGV4dCIgaWQ9ImFjdGl2aXR5X3R5cGUiIHJlcXVpcmVkIHBsYWNlaG9sZGVyPSLkvovlpoLvvJrkvZPogrLnq57mioDjgIHlrabmnK/orrLluqciPgogICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICAgPGRpdiBjbGFzcz0iZm9ybS1ncm91cCI+CiAgICAgICAgICAgICAgICA8bGFiZWw+5Y+C5LiO5Lq65pWwPC9sYWJlbD4KICAgICAgICAgICAgICAgIDwhLS0g44CQ5L+u5pS554K5Nu+8muWJjeerr+WinuWKoOS6uuaVsOS4iumZkOmZkOWItuOAkSAtLT4KICAgICAgICAgICAgICAgIDxpbnB1dCB0eXBlPSJudW1iZXIiIGlkPSJqb2luX251bSIgcmVxdWlyZWQgbWluPSIxIiBtYXg9Ijk5OTkiIHBsYWNlaG9sZGVyPSIxLTk5OTnmlbTmlbAiPgogICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICAgPGJ1dHRvbiB0eXBlPSJzdWJtaXQiPuaPkOS6pOeZu+iusDwvYnV0dG9uPgogICAgICAgIDwvZm9ybT4KICAgICAgICA8dGFibGU+CiAgICAgICAgICAgIDx0aGVhZD4KICAgICAgICAgICAgICAgIDx0cj4KICAgICAgICAgICAgICAgICAgICA8dGg+SUQ8L3RoPgogICAgICAgICAgICAgICAgICAgIDx0aD7mtLvliqjlkI3np7A8L3RoPgogICAgICAgICAgICAgICAgICAgIDx0aD7mtLvliqjnsbvlnos8L3RoPgogICAgICAgICAgICAgICAgICAgIDx0aD7lj4LkuI7kurrmlbA8L3RoPgogICAgICAgICAgICAgICAgPC90cj4KICAgICAgICAgICAgPC90aGVhZD4KICAgICAgICAgICAgPHRib2R5IGlkPSJhY3Rpdml0eUxpc3QiPjwvdGJvZHk+CiAgICAgICAgPC90YWJsZT4KICAgIDwvZGl2PgogICAgPHNjcmlwdD4KICAgICAgICB3aW5kb3cub25sb2FkID0gZmV0Y2hBY3Rpdml0aWVzOwogICAgICAgIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdhY3Rpdml0eUZvcm0nKS5hZGRFdmVudExpc3RlbmVyKCdzdWJtaXQnLCBhc3luYyBmdW5jdGlvbihlKSB7CiAgICAgICAgICAgIGUucHJldmVudERlZmF1bHQoKTsKICAgICAgICAgICAgY29uc3QgbXNnRGl2ID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2Zvcm1Nc2cnKTsKICAgICAgICAgICAgbXNnRGl2LmNsYXNzTmFtZSA9ICdtc2cnOwogICAgICAgICAgICBjb25zdCBuYW1lID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2FjdGl2aXR5X25hbWUnKS52YWx1ZS50cmltKCk7CiAgICAgICAgICAgIGNvbnN0IHR5cGUgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnYWN0aXZpdHlfdHlwZScpLnZhbHVlLnRyaW0oKTsKICAgICAgICAgICAgY29uc3QgbnVtID0gcGFyc2VJbnQoZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2pvaW5fbnVtJykudmFsdWUpOwogICAgICAgICAgICAKICAgICAgICAgICAgLy8g44CQ5L+u5pS554K5M++8muWJjeerr+WKoOW8uuepuui+k+WFpeaLpuaIquOAkee6r+epuuagvOi+k+WFpeebtOaOpeaLpuaIqgogICAgICAgICAgICBpZiAoIW5hbWUgfHwgIXR5cGUpIHsKICAgICAgICAgICAgICAgIG1zZ0Rpdi50ZXh0Q29udGVudCA9ICfmtLvliqjlkI3np7DlkozmtLvliqjnsbvlnovkuI3og73kuLrnqbrmiJbnuq/nqbrmoLzvvIEnOwogICAgICAgICAgICAgICAgbXNnRGl2LmNsYXNzTmFtZSA9ICdtc2cgZXJyb3InOwogICAgICAgICAgICAgICAgcmV0dXJuOwogICAgICAgICAgICB9CiAgICAgICAgICAgIC8vIOOAkOS/ruaUueeCuTTvvJrliY3nq6/lop7liqDkurrmlbDkuIrpmZDmoKHpqozjgJEKICAgICAgICAgICAgaWYgKGlzTmFOKG51bSkgfHwgbnVtIDw9IDAgfHwgbnVtID4gOTk5OSkgewogICAgICAgICAgICAgICAgbXNnRGl2LnRleHRDb250ZW50ID0gJ+WPguS4juS6uuaVsOW/hemhu+aYrzEtOTk5OeeahOaVtOaVsO+8gSc7CiAgICAgICAgICAgICAgICBtc2dEaXYuY2xhc3NOYW1lID0gJ21zZyBlcnJvcic7CiAgICAgICAgICAgICAgICByZXR1cm47CiAgICAgICAgICAgIH0KICAgICAgICAgICAgdHJ5IHsKICAgICAgICAgICAgICAgIGNvbnN0IHJlc3BvbnNlID0gYXdhaXQgZmV0Y2goJy9hcGkvYWN0aXZpdHkvYWRkJywgewogICAgICAgICAgICAgICAgICAgIG1ldGhvZDogJ1BPU1QnLAogICAgICAgICAgICAgICAgICAgIGhlYWRlcnM6IHsgJ0NvbnRlbnQtVHlwZSc6ICdhcHBsaWNhdGlvbi9qc29uJyB9LAogICAgICAgICAgICAgICAgICAgIGJvZHk6IEpTT04uc3RyaW5naWZ5KHsgYWN0aXZpdHlfbmFtZTogbmFtZSwgYWN0aXZpdHlfdHlwZTogdHlwZSwgam9pbl9udW06IG51bSB9KQogICAgICAgICAgICAgICAgfSk7CiAgICAgICAgICAgICAgICBjb25zdCBkYXRhID0gYXdhaXQgcmVzcG9uc2UuanNvbigpOwogICAgICAgICAgICAgICAgaWYgKHJlc3BvbnNlLm9rKSB7CiAgICAgICAgICAgICAgICAgICAgbXNnRGl2LnRleHRDb250ZW50ID0gJ+eZu+iusOaIkOWKn++8gSc7CiAgICAgICAgICAgICAgICAgICAgbXNnRGl2LmNsYXNzTmFtZSA9ICdtc2cgc3VjY2Vzcyc7CiAgICAgICAgICAgICAgICAgICAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2FjdGl2aXR5Rm9ybScpLnJlc2V0KCk7CiAgICAgICAgICAgICAgICAgICAgZmV0Y2hBY3Rpdml0aWVzKCk7CiAgICAgICAgICAgICAgICB9IGVsc2UgewogICAgICAgICAgICAgICAgICAgIGNvbnN0IGVyck1zZyA9IGRhdGEuZGV0YWlsID8gKEFycmF5LmlzQXJyYXkoZGF0YS5kZXRhaWwpID8gZGF0YS5kZXRhaWwubWFwKGUgPT4gZS5tc2cpLmpvaW4oJzsgJykgOiBkYXRhLmRldGFpbCkgOiAn5o+Q5Lqk5aSx6LSlJzsKICAgICAgICAgICAgICAgICAgICBtc2dEaXYudGV4dENvbnRlbnQgPSAn6ZSZ6K+v77yaJyArIGVyck1zZzsKICAgICAgICAgICAgICAgICAgICBtc2dEaXYuY2xhc3NOYW1lID0gJ21zZyBlcnJvcic7CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0gY2F0Y2ggKGVycm9yKSB7CiAgICAgICAgICAgICAgICBtc2dEaXYudGV4dENvbnRlbnQgPSAn572R57uc6K+35rGC5byC5bi477yBJzsKICAgICAgICAgICAgICAgIG1zZ0Rpdi5jbGFzc05hbWUgPSAnbXNnIGVycm9yJzsKICAgICAgICAgICAgfQogICAgICAgIH0pOwogICAgICAgIGFzeW5jIGZ1bmN0aW9uIGZldGNoQWN0aXZpdGllcygpIHsKICAgICAgICAgICAgdHJ5IHsKICAgICAgICAgICAgICAgIGNvbnN0IHJlc3BvbnNlID0gYXdhaXQgZmV0Y2goJy9hcGkvYWN0aXZpdHkvbGlzdCcpOwogICAgICAgICAgICAgICAgY29uc3QgZGF0YSA9IGF3YWl0IHJlc3BvbnNlLmpzb24oKTsKICAgICAgICAgICAgICAgIGNvbnN0IHRib2R5ID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2FjdGl2aXR5TGlzdCcpOwogICAgICAgICAgICAgICAgdGJvZHkuaW5uZXJIVE1MID0gJyc7CiAgICAgICAgICAgICAgICBpZiAoZGF0YS5sZW5ndGggPT09IDApIHsKICAgICAgICAgICAgICAgICAgICB0Ym9keS5pbm5lckhUTUwgPSAnPHRyPjx0ZCBjb2xzcGFuPSI0Ij7mmoLml6DmtLvliqjorrDlvZU8L3RkPjwvdHI+JzsKICAgICAgICAgICAgICAgICAgICByZXR1cm47CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICBkYXRhLmZvckVhY2goaXRlbSA9PiB7CiAgICAgICAgICAgICAgICAgICAgY29uc3QgdHIgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCd0cicpOwogICAgICAgICAgICAgICAgICAgIC8vIOOAkOS/ruaUueeCuTXvvJrkv67lpI1YU1PpmpDmgqPjgJHkuI3kvb/nlKggaW5uZXJIVE1MIOaLvOaOpe+8jOaUueeUqOWuieWFqOeahCB0ZXh0Q29udGVudCDotYvlgLwKICAgICAgICAgICAgICAgICAgICBjb25zdCB0ZElkID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgndGQnKTsKICAgICAgICAgICAgICAgICAgICB0ZElkLnRleHRDb250ZW50ID0gaXRlbS5pZDsgCiAgICAgICAgICAgICAgICAgICAgY29uc3QgdGROYW1lID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgndGQnKTsKICAgICAgICAgICAgICAgICAgICB0ZE5hbWUudGV4dENvbnRlbnQgPSBpdGVtLmFjdGl2aXR5X25hbWU7CiAgICAgICAgICAgICAgICAgICAgY29uc3QgdGRUeXBlID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgndGQnKTsKICAgICAgICAgICAgICAgICAgICB0ZFR5cGUudGV4dENvbnRlbnQgPSBpdGVtLmFjdGl2aXR5X3R5cGU7CiAgICAgICAgICAgICAgICAgICAgY29uc3QgdGROdW0gPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCd0ZCcpOwogICAgICAgICAgICAgICAgICAgIHRkTnVtLnRleHRDb250ZW50ID0gaXRlbS5qb2luX251bTsKICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICB0ci5hcHBlbmRDaGlsZCh0ZElkKTsKICAgICAgICAgICAgICAgICAgICB0ci5hcHBlbmRDaGlsZCh0ZE5hbWUpOwogICAgICAgICAgICAgICAgICAgIHRyLmFwcGVuZENoaWxkKHRkVHlwZSk7CiAgICAgICAgICAgICAgICAgICAgdHIuYXBwZW5kQ2hpbGQodGROdW0pOwogICAgICAgICAgICAgICAgICAgIHRib2R5LmFwcGVuZENoaWxkKHRyKTsKICAgICAgICAgICAgICAgIH0pOwogICAgICAgICAgICB9IGNhdGNoIChlcnJvcikgewogICAgICAgICAgICAgICAgY29uc29sZS5lcnJvcign6I635Y+W5YiX6KGo5aSx6LSlOicsIGVycm9yKTsKICAgICAgICAgICAgfQogICAgICAgIH0KICAgIDwvc2NyaXB0Pgo8L2JvZHk+CjwvaHRtbD4KICAgICIiIgogICAgd2l0aCBvcGVuKEhUTUxfRklMRSwgInciLCBlbmNvZGluZz0idXRmLTgiKSBhcyBmOgogICAgICAgIGYud3JpdGUoaHRtbF9jb250ZW50LnN0cmlwKCkpCgphcHAubW91bnQoIi9zdGF0aWMiLCBTdGF0aWNGaWxlcyhkaXJlY3Rvcnk9U1RBVElDX0RJUiwgaHRtbD1UcnVlKSwgbmFtZT0ic3RhdGljIikKCiMgLS0tLS0tLS0tLS0tLS0tLSDmlbDmja7lupPphY3nva4gLS0tLS0tLS0tLS0tLS0tLQpEQl9DT05GSUcgPSB7CiAgICAiaG9zdCI6ICIxMjcuMC4wLjEiLAogICAgInBvcnQiOiAzMzA2LAogICAgInVzZXIiOiAicm9vdCIsICAgICAgIAogICAgInBhc3N3b3JkIjogIjEyMzQ1NiIsIAogICAgImRhdGFiYXNlIjogInRlc3RfZGIiLAogICAgImNoYXJzZXQiOiAidXRmOG1iNCIKfQoKZGVmIGdldF9kYl9jb25uZWN0aW9uKCk6CiAgICAjIOOAkOS/ruaUueeCuTHvvJrlop7liqDmgKfog73orablkYrms6jph4rjgJHnlJ/kuqfnjq/looPlv4Xpobvmm7/mjaLkuLrov57mjqXmsaAo5aaCREJVdGlsc+aIllNRTEFsY2hlbXkp77yM6YG/5YWN6L+e5o6l5pWw5omT5ruhCiAgICB0cnk6CiAgICAgICAgY29ubiA9IHB5bXlzcWwuY29ubmVjdCgqKkRCX0NPTkZJRywgY3Vyc29yY2xhc3M9cHlteXNxbC5jdXJzb3JzLkRpY3RDdXJzb3IpCiAgICAgICAgcmV0dXJuIGNvbm4KICAgIGV4Y2VwdCBFeGNlcHRpb24gYXMgZToKICAgICAgICByYWlzZSBIVFRQRXhjZXB0aW9uKHN0YXR1c19jb2RlPTUwMCwgZGV0YWlsPWYi5pWw5o2u5bqT6L+e5o6l5aSx6LSlOiB7c3RyKGUpfSIpCgojIC0tLS0tLS0tLS0tLS0tLS0gUHlkYW50aWMg5qih5Z6LICjlj4LmlbDmoKHpqowpIC0tLS0tLS0tLS0tLS0tLS0KY2xhc3MgQWN0aXZpdHlDcmVhdGUoQmFzZU1vZGVsKToKICAgICMg44CQ5L+u5pS554K5Mu+8muihpem9kOS4muWKoeWPguaVsOagoemqjOmAu+i+keOAkeWinuWKoOacgOWkp+mVv+W6pumZkOWItuWSjOWPguS4juS6uuaVsOS4iumZkChsZT05OTk5KQogICAgYWN0aXZpdHlfbmFtZTogc3RyID0gRmllbGQoLi4uLCBtaW5fbGVuZ3RoPTEsIG1heF9sZW5ndGg9MTAwLCBkZXNjcmlwdGlvbj0i5rS75Yqo5ZCN56ew5LiN6IO95Li656m65LiU5pyA6ZW/MTAw5a2X56ymIikKICAgIGFjdGl2aXR5X3R5cGU6IHN0ciA9IEZpZWxkKC4uLiwgbWluX2xlbmd0aD0xLCBtYXhfbGVuZ3RoPTUwLCBkZXNjcmlwdGlvbj0i5rS75Yqo57G75Z6L5LiN6IO95Li656m65LiU5pyA6ZW/NTDlrZfnrKYiKQogICAgam9pbl9udW06IGludCA9IEZpZWxkKC4uLiwgZ3Q9MCwgbGU9OTk5OSwgZGVzY3JpcHRpb249IuWPguS4juS6uuaVsOW/hemhu+Wkp+S6jjDkuJTkuIrpmZA5OTk5IikKCiAgICAjIOOAkOS/ruaUueeCuTPvvJrlkI7nq6/liqDlvLrnqbrovpPlhaXmi6bmiKrjgJHkvb/nlKggZmllbGRfdmFsaWRhdG9yIOaLpuaIque6r+epuuagvOi+k+WFpQogICAgQGZpZWxkX3ZhbGlkYXRvcignYWN0aXZpdHlfbmFtZScsICdhY3Rpdml0eV90eXBlJykKICAgIEBjbGFzc21ldGhvZAogICAgZGVmIHN0cmlwX2FuZF92YWxpZGF0ZV9ub3RfZW1wdHkoY2xzLCB2OiBzdHIpIC0+IHN0cjoKICAgICAgICB2ID0gdi5zdHJpcCgpCiAgICAgICAgaWYgbm90IHY6CiAgICAgICAgICAgIHJhaXNlIFZhbHVlRXJyb3IoJ+S4jeiDvei+k+WFpee6r+epuuagvCcpCiAgICAgICAgcmV0dXJuIHYKCmNsYXNzIEFjdGl2aXR5UmVzcG9uc2UoQmFzZU1vZGVsKToKICAgIGlkOiBpbnQKICAgIGFjdGl2aXR5X25hbWU6IHN0cgogICAgYWN0aXZpdHlfdHlwZTogc3RyCiAgICBqb2luX251bTogaW50CgojIC0tLS0tLS0tLS0tLS0tLS0g5o6l5Y+j6Lev55SxIC0tLS0tLS0tLS0tLS0tLS0KQGFwcC5wb3N0KCIvYXBpL2FjdGl2aXR5L2FkZCIsIHJlc3BvbnNlX21vZGVsPUFjdGl2aXR5UmVzcG9uc2UpCmRlZiBhZGRfYWN0aXZpdHkoYWN0aXZpdHk6IEFjdGl2aXR5Q3JlYXRlKToKICAgIGNvbm4gPSBnZXRfZGJfY29ubmVjdGlvbigpCiAgICB0cnk6CiAgICAgICAgd2l0aCBjb25uLmN1cnNvcigpIGFzIGN1cnNvcjoKICAgICAgICAgICAgIyDjgJDkv67mlLnngrkx77ya6ZiyU1FM5rOo5YWl6KeE6IyD5qCH5rOo44CR5Lil5qC85L2/55So5Y+C5pWw5YyW5p+l6K+i5YWD57uE77yM5Lil56aB5a2X56ym5Liy5ou85o6lZm9ybWF05oiWZi1zdHJpbmcKICAgICAgICAgICAgc3FsID0gIklOU0VSVCBJTlRPIGFjdGl2aXR5IChhY3Rpdml0eV9uYW1lLCBhY3Rpdml0eV90eXBlLCBqb2luX251bSkgVkFMVUVTICglcywgJXMsICVzKSIKICAgICAgICAgICAgY3Vyc29yLmV4ZWN1dGUoc3FsLCAoYWN0aXZpdHkuYWN0aXZpdHlfbmFtZSwgYWN0aXZpdHkuYWN0aXZpdHlfdHlwZSwgYWN0aXZpdHkuam9pbl9udW0pKQogICAgICAgICAgICBjb25uLmNvbW1pdCgpCiAgICAgICAgICAgIGluc2VydF9pZCA9IGN1cnNvci5sYXN0cm93aWQKICAgICAgICAgICAgcmV0dXJuIHsKICAgICAgICAgICAgICAgICJpZCI6IGluc2VydF9pZCwKICAgICAgICAgICAgICAgICJhY3Rpdml0eV9uYW1lIjogYWN0aXZpdHkuYWN0aXZpdHlfbmFtZSwKICAgICAgICAgICAgICAgICJhY3Rpdml0eV90eXBlIjogYWN0aXZpdHkuYWN0aXZpdHlfdHlwZSwKICAgICAgICAgICAgICAgICJqb2luX251bSI6IGFjdGl2aXR5LmpvaW5fbnVtCiAgICAgICAgICAgIH0KICAgIGV4Y2VwdCBFeGNlcHRpb24gYXMgZToKICAgICAgICBjb25uLnJvbGxiYWNrKCkKICAgICAgICByYWlzZSBIVFRQRXhjZXB0aW9uKHN0YXR1c19jb2RlPTUwMCwgZGV0YWlsPWYi5pWw5o2u5o+S5YWl5aSx6LSlOiB7c3RyKGUpfSIpCiAgICBmaW5hbGx5OgogICAgICAgIGNvbm4uY2xvc2UoKQoKQGFwcC5nZXQoIi9hcGkvYWN0aXZpdHkvbGlzdCIsIHJlc3BvbnNlX21vZGVsPUxpc3RbQWN0aXZpdHlSZXNwb25zZV0pCmRlZiBsaXN0X2FjdGl2aXRpZXMoKToKICAgIGNvbm4gPSBnZXRfZGJfY29ubmVjdGlvbigpCiAgICB0cnk6CiAgICAgICAgd2l0aCBjb25uLmN1cnNvcigpIGFzIGN1cnNvcjoKICAgICAgICAgICAgc3FsID0gIlNFTEVDVCBpZCwgYWN0aXZpdHlfbmFtZSwgYWN0aXZpdHlfdHlwZSwgam9pbl9udW0gRlJPTSBhY3Rpdml0eSBPUkRFUiBCWSBpZCBERVNDIgogICAgICAgICAgICBjdXJzb3IuZXhlY3V0ZShzcWwpCiAgICAgICAgICAgIHJlc3VsdHMgPSBjdXJzb3IuZmV0Y2hhbGwoKQogICAgICAgICAgICByZXR1cm4gcmVzdWx0cwogICAgZXhjZXB0IEV4Y2VwdGlvbiBhcyBlOgogICAgICAgIHJhaXNlIEhUVFBFeGNlcHRpb24oc3RhdHVzX2NvZGU9NTAwLCBkZXRhaWw9ZiLmlbDmja7mn6Xor6LlpLHotKU6IHtzdHIoZSl9IikKICAgIGZpbmFsbHk6CiAgICAgICAgY29ubi5jbG9zZSgpCgppZiBfX25hbWVfXyA9PSAiX19tYWluX18iOgogICAgaW1wb3J0IHV2aWNvcm4KICAgIHV2aWNvcm4ucnVuKGFwcCwgaG9zdD0iMC4wLjAuMCIsIHBvcnQ9ODAwMCkK
+import os
+from fastapi import FastAPI, HTTPException
+from fastapi.responses import RedirectResponse
+from fastapi.staticfiles import StaticFiles
+from pydantic import BaseModel, Field, field_validator
+import pymysql
+from typing import List
+
+app = FastAPI()
+
+
+# ---------------- 根路径跳转（作品集整合） ----------------
+@app.get("/")
+async def index_redirect():
+    return RedirectResponse(url="/club/static/index.html")
+
+# ---------------- 自动生成 static/index.html ----------------
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_DIR = os.path.join(BASE_DIR, "static")
+HTML_FILE = os.path.join(STATIC_DIR, "index.html")
+
+if not os.path.exists(STATIC_DIR):
+    os.makedirs(STATIC_DIR)
+
+if not os.path.exists(HTML_FILE):
+    # 【修改点5：前端修复XSS隐患】将 innerHTML 拼接改为安全的 textContent 赋值
+    html_content = """
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>学生社团活动登记系统</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 40px; background-color: #f4f7f6; }
+        h1 { color: #333; text-align: center; }
+        .container { max-width: 800px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; color: #555; }
+        .form-group input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .form-group input:focus { border-color: #007bff; outline: none; }
+        button { background-color: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        button:hover { background-color: #0056b3; }
+        table { width: 100%; border-collapse: collapse; margin-top: 30px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: center; }
+        th { background-color: #007bff; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        .msg { padding: 10px; margin-bottom: 15px; border-radius: 4px; display: none; }
+        .msg.error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; display: block; }
+        .msg.success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; display: block; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>学生社团活动登记</h1>
+        <form id="activityForm">
+            <div id="formMsg" class="msg"></div>
+            <div class="form-group">
+                <label>活动名称</label>
+                <input type="text" id="activity_name" required placeholder="请输入活动名称">
+            </div>
+            <div class="form-group">
+                <label>活动类型</label>
+                <input type="text" id="activity_type" required placeholder="例如：体育竞技、学术讲座">
+            </div>
+            <div class="form-group">
+                <label>参与人数</label>
+                <!-- 【修改点6：前端增加人数上限限制】 -->
+                <input type="number" id="join_num" required min="1" max="9999" placeholder="1-9999整数">
+            </div>
+            <button type="submit">提交登记</button>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>活动名称</th>
+                    <th>活动类型</th>
+                    <th>参与人数</th>
+                </tr>
+            </thead>
+            <tbody id="activityList"></tbody>
+        </table>
+    </div>
+    <script>
+        window.onload = fetchActivities;
+        document.getElementById('activityForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const msgDiv = document.getElementById('formMsg');
+            msgDiv.className = 'msg';
+            const name = document.getElementById('activity_name').value.trim();
+            const type = document.getElementById('activity_type').value.trim();
+            const num = parseInt(document.getElementById('join_num').value);
+            
+            // 【修改点3：前端加强空输入拦截】纯空格输入直接拦截
+            if (!name || !type) {
+                msgDiv.textContent = '活动名称和活动类型不能为空或纯空格！';
+                msgDiv.className = 'msg error';
+                return;
+            }
+            // 【修改点4：前端增加人数上限校验】
+            if (isNaN(num) || num <= 0 || num > 9999) {
+                msgDiv.textContent = '参与人数必须是1-9999的整数！';
+                msgDiv.className = 'msg error';
+                return;
+            }
+            try {
+                const response = await fetch('/api/activity/add', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ activity_name: name, activity_type: type, join_num: num })
+                });
+                const data = await response.json();
+                if (response.ok) {
+                    msgDiv.textContent = '登记成功！';
+                    msgDiv.className = 'msg success';
+                    document.getElementById('activityForm').reset();
+                    fetchActivities();
+                } else {
+                    const errMsg = data.detail ? (Array.isArray(data.detail) ? data.detail.map(e => e.msg).join('; ') : data.detail) : '提交失败';
+                    msgDiv.textContent = '错误：' + errMsg;
+                    msgDiv.className = 'msg error';
+                }
+            } catch (error) {
+                msgDiv.textContent = '网络请求异常！';
+                msgDiv.className = 'msg error';
+            }
+        });
+        async function fetchActivities() {
+            try {
+                const response = await fetch('/api/activity/list');
+                const data = await response.json();
+                const tbody = document.getElementById('activityList');
+                tbody.innerHTML = '';
+                if (data.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="4">暂无活动记录</td></tr>';
+                    return;
+                }
+                data.forEach(item => {
+                    const tr = document.createElement('tr');
+                    // 【修改点5：修复XSS隐患】不使用 innerHTML 拼接，改用安全的 textContent 赋值
+                    const tdId = document.createElement('td');
+                    tdId.textContent = item.id; 
+                    const tdName = document.createElement('td');
+                    tdName.textContent = item.activity_name;
+                    const tdType = document.createElement('td');
+                    tdType.textContent = item.activity_type;
+                    const tdNum = document.createElement('td');
+                    tdNum.textContent = item.join_num;
+                    
+                    tr.appendChild(tdId);
+                    tr.appendChild(tdName);
+                    tr.appendChild(tdType);
+                    tr.appendChild(tdNum);
+                    tbody.appendChild(tr);
+                });
+            } catch (error) {
+                console.error('获取列表失败:', error);
+            }
+        }
+    </script>
+</body>
+</html>
+    """
+    with open(HTML_FILE, "w", encoding="utf-8") as f:
+        f.write(html_content.strip())
+
+app.mount("/static", StaticFiles(directory=STATIC_DIR, html=True), name="static")
+
+# ---------------- 数据库配置 ----------------
+DB_CONFIG = {
+    "host": "127.0.0.1",
+    "port": 3306,
+    "user": "root",       
+    "password": "123456", 
+    "database": "test_db",
+    "charset": "utf8mb4"
+}
+
+def get_db_connection():
+    # 【修改点1：增加性能警告注释】生产环境必须替换为连接池(如DBUtils或SQLAlchemy)，避免连接数打满
+    try:
+        conn = pymysql.connect(**DB_CONFIG, cursorclass=pymysql.cursors.DictCursor)
+        return conn
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"数据库连接失败: {str(e)}")
+
+# ---------------- Pydantic 模型 (参数校验) ----------------
+class ActivityCreate(BaseModel):
+    # 【修改点2：补齐业务参数校验逻辑】增加最大长度限制和参与人数上限(le=9999)
+    activity_name: str = Field(..., min_length=1, max_length=100, description="活动名称不能为空且最长100字符")
+    activity_type: str = Field(..., min_length=1, max_length=50, description="活动类型不能为空且最长50字符")
+    join_num: int = Field(..., gt=0, le=9999, description="参与人数必须大于0且上限9999")
+
+    # 【修改点3：后端加强空输入拦截】使用 field_validator 拦截纯空格输入
+    @field_validator('activity_name', 'activity_type')
+    @classmethod
+    def strip_and_validate_not_empty(cls, v: str) -> str:
+        v = v.strip()
+        if not v:
+            raise ValueError('不能输入纯空格')
+        return v
+
+class ActivityResponse(BaseModel):
+    id: int
+    activity_name: str
+    activity_type: str
+    join_num: int
+
+# ---------------- 接口路由 ----------------
+@app.post("/api/activity/add", response_model=ActivityResponse)
+def add_activity(activity: ActivityCreate):
+    conn = get_db_connection()
+    try:
+        with conn.cursor() as cursor:
+            # 【修改点1：防SQL注入规范标注】严格使用参数化查询元组，严禁字符串拼接format或f-string
+            sql = "INSERT INTO activity (activity_name, activity_type, join_num) VALUES (%s, %s, %s)"
+            cursor.execute(sql, (activity.activity_name, activity.activity_type, activity.join_num))
+            conn.commit()
+            insert_id = cursor.lastrowid
+            return {
+                "id": insert_id,
+                "activity_name": activity.activity_name,
+                "activity_type": activity.activity_type,
+                "join_num": activity.join_num
+            }
+    except Exception as e:
+        conn.rollback()
+        raise HTTPException(status_code=500, detail=f"数据插入失败: {str(e)}")
+    finally:
+        conn.close()
+
+@app.get("/api/activity/list", response_model=List[ActivityResponse])
+def list_activities():
+    conn = get_db_connection()
+    try:
+        with conn.cursor() as cursor:
+            sql = "SELECT id, activity_name, activity_type, join_num FROM activity ORDER BY id DESC"
+            cursor.execute(sql)
+            results = cursor.fetchall()
+            return results
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"数据查询失败: {str(e)}")
+    finally:
+        conn.close()
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)

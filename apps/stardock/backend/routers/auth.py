@@ -1,1 +1,92 @@
-IiIiCmF1dGgucHkg4oCU4oCUIOiupOivge+8muazqOWGjCAvIOeZu+W9lSAvIG1lIC8gbG9nb3V0ClYyIOWKoOWbuu+8muazqOWGjOWQjuerr+ehrOe8lueggSByb2xlPTHvvIzlv73nlaXliY3nq6/kvKDlhaUKIiIiCmltcG9ydCBoYXNobGliCmZyb20gZGF0ZXRpbWUgaW1wb3J0IGRhdGV0aW1lCmZyb20gZmFzdGFwaSBpbXBvcnQgQVBJUm91dGVyLCBEZXBlbmRzLCBIVFRQRXhjZXB0aW9uLCBSZXF1ZXN0CmZyb20gcHlkYW50aWMgaW1wb3J0IEJhc2VNb2RlbCwgZmllbGRfdmFsaWRhdG9yCgpmcm9tIGRhdGFiYXNlIGltcG9ydCBxdWVyeV9vbmUsIGV4ZWN1dGVfcmV0dXJuX2lkCmZyb20gZGVwcyBpbXBvcnQgZ2V0X2N1cnJlbnRfdXNlcgoKcm91dGVyID0gQVBJUm91dGVyKHByZWZpeD0iL2FwaS9hdXRoIiwgdGFncz1bImF1dGgiXSkKCgojID09PT09PT09PT09PT09IFNjaGVtYSA9PT09PT09PT09PT09PQpjbGFzcyBSZWdpc3RlckJvZHkoQmFzZU1vZGVsKToKICAgIHVzZXJuYW1lOiBzdHIKICAgIHBhc3N3b3JkOiBzdHIKICAgIG5pY2tuYW1lOiBzdHIKICAgICMg5rOo5oSP77ya5pWF5oSP5LiN5o6l5Y+XIHJvbGUg5a2X5q6177yB5rOo5YaM5LiA5b6LIHJvbGU9MQoKCmNsYXNzIExvZ2luQm9keShCYXNlTW9kZWwpOgogICAgdXNlcm5hbWU6IHN0cgogICAgcGFzc3dvcmQ6IHN0cgoKICAgIEBmaWVsZF92YWxpZGF0b3IoInVzZXJuYW1lIiwgInBhc3N3b3JkIikKICAgIEBjbGFzc21ldGhvZAogICAgZGVmIG5vdF9lbXB0eShjbHMsIHY6IHN0cikgLT4gc3RyOgogICAgICAgIGlmIG5vdCB2IG9yIG5vdCB2LnN0cmlwKCk6CiAgICAgICAgICAgIHJhaXNlIFZhbHVlRXJyb3IoIui0puWPt+WSjOWvhueggeS4jeiDveS4uuepuiIpCiAgICAgICAgcmV0dXJuIHYuc3RyaXAoKQoKCiMgPT09PT09PT09PT09PT0g5o6l5Y+jID09PT09PT09PT09PT09CkByb3V0ZXIucG9zdCgiL3JlZ2lzdGVyIikKYXN5bmMgZGVmIHJlZ2lzdGVyKGJvZHk6IFJlZ2lzdGVyQm9keSk6CiAgICAiIiLms6jlhowg4oCU4oCUIOWQjuerr+ehrOe8lueggSByb2xlPTHvvIjnsonkuJ3vvInvvIzpmLLmraLotormnYMiIiIKICAgIGlmIG5vdCBib2R5LnVzZXJuYW1lLnN0cmlwKCkgb3Igbm90IGJvZHkucGFzc3dvcmQuc3RyaXAoKToKICAgICAgICByYWlzZSBIVFRQRXhjZXB0aW9uKHN0YXR1c19jb2RlPTQwMCwgZGV0YWlsPSLotKblj7flkozlr4bnoIHkuI3og73kuLrnqboiKQogICAgaWYgbGVuKGJvZHkucGFzc3dvcmQpIDwgNjoKICAgICAgICByYWlzZSBIVFRQRXhjZXB0aW9uKHN0YXR1c19jb2RlPTQwMCwgZGV0YWlsPSLlr4bnoIHoh7PlsJEgNiDkvY0iKQogICAgaWYgbGVuKGJvZHkudXNlcm5hbWUpIDwgMzoKICAgICAgICByYWlzZSBIVFRQRXhjZXB0aW9uKHN0YXR1c19jb2RlPTQwMCwgZGV0YWlsPSLotKblj7foh7PlsJEgMyDkvY0iKQoKICAgICMg5qOA5p+l6YeN5ZCNCiAgICBleGlzdHMgPSBxdWVyeV9vbmUoIlNFTEVDVCBpZCBGUk9NIHVzZXJzIFdIRVJFIHVzZXJuYW1lPSVzIiwgKGJvZHkudXNlcm5hbWUsKSkKICAgIGlmIGV4aXN0czoKICAgICAgICByYWlzZSBIVFRQRXhjZXB0aW9uKHN0YXR1c19jb2RlPTQwMCwgZGV0YWlsPSLotKblj7flt7LlrZjlnKgiKQoKICAgICMg5ZCO56uv56Gs57yW56CBIHJvbGU9Me+8jOS4jeS/oeWJjeerrwogICAgbWQ1X3B3ZCA9IGhhc2hsaWIubWQ1KGJvZHkucGFzc3dvcmQuZW5jb2RlKCkpLmhleGRpZ2VzdCgpCiAgICB1aWQgPSBleGVjdXRlX3JldHVybl9pZCgKICAgICAgICAiIiJJTlNFUlQgSU5UTyB1c2VycyAodXNlcm5hbWUsIHBhc3N3b3JkLCBuaWNrbmFtZSwgcm9sZSwgY3JlYXRlX3RpbWUpCiAgICAgICAgICAgVkFMVUVTICglcywgJXMsICVzLCAxLCAlcykiIiIsCiAgICAgICAgKGJvZHkudXNlcm5hbWUsIG1kNV9wd2QsIGJvZHkubmlja25hbWUuc3RyaXAoKSwgZGF0ZXRpbWUubm93KCkpCiAgICApCiAgICByZXR1cm4geyJjb2RlIjogMCwgIm1zZyI6ICLms6jlhozmiJDlip/vvIzor7fnmbvlvZUiLCAiZGF0YSI6IHsidXNlcl9pZCI6IHVpZH19CgoKQHJvdXRlci5wb3N0KCIvbG9naW4iKQphc3luYyBkZWYgbG9naW4oYm9keTogTG9naW5Cb2R5LCByZXF1ZXN0OiBSZXF1ZXN0KToKICAgICIiIueZu+W9lSDigJTigJQgU2Vzc2lvbiDlhpnlhaUgdXNlcl9pZCIiIgogICAgbWQ1X3B3ZCA9IGhhc2hsaWIubWQ1KGJvZHkucGFzc3dvcmQuZW5jb2RlKCkpLmhleGRpZ2VzdCgpCiAgICB1c2VyID0gcXVlcnlfb25lKAogICAgICAgICJTRUxFQ1QgaWQsIHVzZXJuYW1lLCBuaWNrbmFtZSwgYXZhdGFyLCByb2xlLCBzdGF0dXMgRlJPTSB1c2VycyBXSEVSRSB1c2VybmFtZT0lcyBBTkQgcGFzc3dvcmQ9JXMiLAogICAgICAgIChib2R5LnVzZXJuYW1lLCBtZDVfcHdkKQogICAgKQogICAgaWYgbm90IHVzZXI6CiAgICAgICAgcmFpc2UgSFRUUEV4Y2VwdGlvbihzdGF0dXNfY29kZT00MDAsIGRldGFpbD0i6LSm5Y+35oiW5a+G56CB6ZSZ6K+vIikKICAgIGlmIHVzZXJbInN0YXR1cyJdICE9IDE6CiAgICAgICAgcmFpc2UgSFRUUEV4Y2VwdGlvbihzdGF0dXNfY29kZT00MDMsIGRldGFpbD0i6LSm5Y+35bey6KKr56aB55SoIikKCiAgICByZXF1ZXN0LnNlc3Npb25bInVzZXJfaWQiXSA9IHVzZXJbImlkIl0KICAgIHJldHVybiB7CiAgICAgICAgImNvZGUiOiAwLCAibXNnIjogIueZu+W9leaIkOWKnyIsCiAgICAgICAgImRhdGEiOiB7azogdiBmb3IgaywgdiBpbiB1c2VyLml0ZW1zKCkgaWYgayAhPSAic3RhdHVzIn0KICAgIH0KCgpAcm91dGVyLmdldCgiL21lIikKYXN5bmMgZGVmIG1lKGN1cnJlbnRfdXNlcjogZGljdCA9IERlcGVuZHMoZ2V0X2N1cnJlbnRfdXNlcikpOgogICAgIiIi6I635Y+W5b2T5YmN55m75b2V55So5oi35L+h5oGvIiIiCiAgICByZXR1cm4geyJjb2RlIjogMCwgIm1zZyI6ICJvayIsICJkYXRhIjogY3VycmVudF91c2VyfQoKCkByb3V0ZXIucG9zdCgiL2xvZ291dCIpCmFzeW5jIGRlZiBsb2dvdXQocmVxdWVzdDogUmVxdWVzdCk6CiAgICAiIiLpgIDlh7rnmbvlvZUg4oCU4oCUIOa4hSBTZXNzaW9uIiIiCiAgICByZXF1ZXN0LnNlc3Npb24ucG9wKCJ1c2VyX2lkIiwgTm9uZSkKICAgIHJldHVybiB7ImNvZGUiOiAwLCAibXNnIjogIuW3sumAgOWHuiIsICJkYXRhIjogTm9uZX0K
+"""
+auth.py —— 认证：注册 / 登录 / me / logout
+V2 加固：注册后端硬编码 role=1，忽略前端传入
+"""
+import hashlib
+from datetime import datetime
+from fastapi import APIRouter, Depends, HTTPException, Request
+from pydantic import BaseModel, field_validator
+
+from database import query_one, execute_return_id
+from deps import get_current_user
+
+router = APIRouter(prefix="/api/auth", tags=["auth"])
+
+
+# ============== Schema ==============
+class RegisterBody(BaseModel):
+    username: str
+    password: str
+    nickname: str
+    # 注意：故意不接受 role 字段！注册一律 role=1
+
+
+class LoginBody(BaseModel):
+    username: str
+    password: str
+
+    @field_validator("username", "password")
+    @classmethod
+    def not_empty(cls, v: str) -> str:
+        if not v or not v.strip():
+            raise ValueError("账号和密码不能为空")
+        return v.strip()
+
+
+# ============== 接口 ==============
+@router.post("/register")
+async def register(body: RegisterBody):
+    """注册 —— 后端硬编码 role=1（粉丝），防止越权"""
+    if not body.username.strip() or not body.password.strip():
+        raise HTTPException(status_code=400, detail="账号和密码不能为空")
+    if len(body.password) < 6:
+        raise HTTPException(status_code=400, detail="密码至少 6 位")
+    if len(body.username) < 3:
+        raise HTTPException(status_code=400, detail="账号至少 3 位")
+
+    # 检查重名
+    exists = query_one("SELECT id FROM users WHERE username=%s", (body.username,))
+    if exists:
+        raise HTTPException(status_code=400, detail="账号已存在")
+
+    # 后端硬编码 role=1，不信前端
+    md5_pwd = hashlib.md5(body.password.encode()).hexdigest()
+    uid = execute_return_id(
+        """INSERT INTO users (username, password, nickname, role, create_time)
+           VALUES (%s, %s, %s, 1, %s)""",
+        (body.username, md5_pwd, body.nickname.strip(), datetime.now())
+    )
+    return {"code": 0, "msg": "注册成功，请登录", "data": {"user_id": uid}}
+
+
+@router.post("/login")
+async def login(body: LoginBody, request: Request):
+    """登录 —— Session 写入 user_id"""
+    md5_pwd = hashlib.md5(body.password.encode()).hexdigest()
+    user = query_one(
+        "SELECT id, username, nickname, avatar, role, status FROM users WHERE username=%s AND password=%s",
+        (body.username, md5_pwd)
+    )
+    if not user:
+        raise HTTPException(status_code=400, detail="账号或密码错误")
+    if user["status"] != 1:
+        raise HTTPException(status_code=403, detail="账号已被禁用")
+
+    request.session["user_id"] = user["id"]
+    return {
+        "code": 0, "msg": "登录成功",
+        "data": {k: v for k, v in user.items() if k != "status"}
+    }
+
+
+@router.get("/me")
+async def me(current_user: dict = Depends(get_current_user)):
+    """获取当前登录用户信息"""
+    return {"code": 0, "msg": "ok", "data": current_user}
+
+
+@router.post("/logout")
+async def logout(request: Request):
+    """退出登录 —— 清 Session"""
+    request.session.pop("user_id", None)
+    return {"code": 0, "msg": "已退出", "data": None}

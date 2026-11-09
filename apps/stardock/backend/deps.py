@@ -1,1 +1,60 @@
-IiIiCmRlcHMucHkg4oCU4oCUIOS+nei1luazqOWFpe+8muiOt+WPluW9k+WJjeeUqOaIt+OAgeinkuiJsumJtOadgwoiIiIKZnJvbSBmYXN0YXBpIGltcG9ydCBEZXBlbmRzLCBIVFRQRXhjZXB0aW9uLCBSZXF1ZXN0LCBXZWJTb2NrZXQsIFdlYlNvY2tldEV4Y2VwdGlvbiwgc3RhdHVzCgpmcm9tIGRhdGFiYXNlIGltcG9ydCBxdWVyeV9vbmUKCgojID09PT09PT09PT09PT09IEhUVFAg5o6l5Y+j6Ym05p2DID09PT09PT09PT09PT09CgpkZWYgZ2V0X2N1cnJlbnRfdXNlcihyZXF1ZXN0OiBSZXF1ZXN0KSAtPiBkaWN0OgogICAgIiIiCiAgICDku44gU2Vzc2lvbiDor7vlj5bnmbvlvZXnlKjmiLcKICAgIOacqueZu+W9leaKmyA0MDEKICAgICIiIgogICAgdXNlcl9pZCA9IHJlcXVlc3Quc2Vzc2lvbi5nZXQoInVzZXJfaWQiKQogICAgaWYgbm90IHVzZXJfaWQ6CiAgICAgICAgcmFpc2UgSFRUUEV4Y2VwdGlvbihzdGF0dXNfY29kZT00MDEsIGRldGFpbD0i5pyq55m75b2VIikKCiAgICB1c2VyID0gcXVlcnlfb25lKAogICAgICAgICJTRUxFQ1QgaWQsIHVzZXJuYW1lLCBuaWNrbmFtZSwgYXZhdGFyLCByb2xlLCBzY29yZSwgc3RhdHVzIEZST00gdXNlcnMgV0hFUkUgaWQ9JXMiLAogICAgICAgICh1c2VyX2lkLCkKICAgICkKICAgIGlmIG5vdCB1c2VyOgogICAgICAgIHJhaXNlIEhUVFBFeGNlcHRpb24oc3RhdHVzX2NvZGU9NDAxLCBkZXRhaWw9IueUqOaIt+S4jeWtmOWcqCIpCiAgICBpZiB1c2VyWyJzdGF0dXMiXSAhPSAxOgogICAgICAgIHJhaXNlIEhUVFBFeGNlcHRpb24oc3RhdHVzX2NvZGU9NDAzLCBkZXRhaWw9Iui0puWPt+W3suiiq+emgeeUqCIpCiAgICByZXR1cm4gdXNlcgoKCmRlZiByZXF1aXJlX3JvbGUoKnJvbGVzOiBpbnQpOgogICAgIiIiCiAgICDop5LoibLmoKHpqozoo4XppbDlmajlt6XljoIKICAgIOeUqOazle+8mkRlcGVuZHMocmVxdWlyZV9yb2xlKDIsIDMpKSAg5YWB6K64566h55CG5ZGY5ZKM5piO5pifCiAgICAiIiIKICAgIGRlZiBfY2hlY2soY3VycmVudF91c2VyOiBkaWN0ID0gRGVwZW5kcyhnZXRfY3VycmVudF91c2VyKSkgLT4gZGljdDoKICAgICAgICBpZiBjdXJyZW50X3VzZXJbInJvbGUiXSBub3QgaW4gcm9sZXM6CiAgICAgICAgICAgIHJhaXNlIEhUVFBFeGNlcHRpb24oc3RhdHVzX2NvZGU9NDAzLCBkZXRhaWw9Iuadg+mZkOS4jei2syIpCiAgICAgICAgcmV0dXJuIGN1cnJlbnRfdXNlcgogICAgcmV0dXJuIF9jaGVjawoKCiMgPT09PT09PT09PT09PT0gV2ViU29ja2V0IOmJtOadgyA9PT09PT09PT09PT09PQoKYXN5bmMgZGVmIHdzX2dldF9jdXJyZW50X3VzZXIod2Vic29ja2V0OiBXZWJTb2NrZXQpIC0+IGRpY3Q6CiAgICAiIiIKICAgIFdlYlNvY2tldCDpibTmnYPvvJrku44gcXVlcnkg5Y+C5pWw6K+7IHRva2Vu77yI5oiW5aSN55SoIENvb2tpZSBTZXNzaW9u77yJCiAgICDov5nph4znroDljJblpITnkIbvvJror7vlj5YgcXVlcnkgP3VzZXJfaWQ9eHh4IO+8iOeUn+S6p+eOr+Wig+W6lOivpemqjOivgSB0b2tlbu+8iQogICAgIiIiCiAgICB1c2VyX2lkID0gd2Vic29ja2V0LnF1ZXJ5X3BhcmFtcy5nZXQoInVzZXJfaWQiKQogICAgaWYgbm90IHVzZXJfaWQ6CiAgICAgICAgcmFpc2UgV2ViU29ja2V0RXhjZXB0aW9uKGNvZGU9c3RhdHVzLldTXzEwMDhfUE9MSUNZX1ZJT0xBVElPTikKCiAgICB1c2VyID0gcXVlcnlfb25lKAogICAgICAgICJTRUxFQ1QgaWQsIHVzZXJuYW1lLCBuaWNrbmFtZSwgYXZhdGFyLCByb2xlLCBzdGF0dXMgRlJPTSB1c2VycyBXSEVSRSBpZD0lcyBBTkQgc3RhdHVzPTEiLAogICAgICAgIChpbnQodXNlcl9pZCksKQogICAgKQogICAgaWYgbm90IHVzZXI6CiAgICAgICAgcmFpc2UgV2ViU29ja2V0RXhjZXB0aW9uKGNvZGU9c3RhdHVzLldTXzEwMDhfUE9MSUNZX1ZJT0xBVElPTikKICAgIHJldHVybiB1c2VyCg==
+"""
+deps.py —— 依赖注入：获取当前用户、角色鉴权
+"""
+from fastapi import Depends, HTTPException, Request, WebSocket, WebSocketException, status
+
+from database import query_one
+
+
+# ============== HTTP 接口鉴权 ==============
+
+def get_current_user(request: Request) -> dict:
+    """
+    从 Session 读取登录用户
+    未登录抛 401
+    """
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="未登录")
+
+    user = query_one(
+        "SELECT id, username, nickname, avatar, role, score, status FROM users WHERE id=%s",
+        (user_id,)
+    )
+    if not user:
+        raise HTTPException(status_code=401, detail="用户不存在")
+    if user["status"] != 1:
+        raise HTTPException(status_code=403, detail="账号已被禁用")
+    return user
+
+
+def require_role(*roles: int):
+    """
+    角色校验装饰器工厂
+    用法：Depends(require_role(2, 3))  允许管理员和明星
+    """
+    def _check(current_user: dict = Depends(get_current_user)) -> dict:
+        if current_user["role"] not in roles:
+            raise HTTPException(status_code=403, detail="权限不足")
+        return current_user
+    return _check
+
+
+# ============== WebSocket 鉴权 ==============
+
+async def ws_get_current_user(websocket: WebSocket) -> dict:
+    """
+    WebSocket 鉴权：从 query 参数读 token（或复用 Cookie Session）
+    这里简化处理：读取 query ?user_id=xxx （生产环境应该验证 token）
+    """
+    user_id = websocket.query_params.get("user_id")
+    if not user_id:
+        raise WebSocketException(code=status.WS_1008_POLICY_VIOLATION)
+
+    user = query_one(
+        "SELECT id, username, nickname, avatar, role, status FROM users WHERE id=%s AND status=1",
+        (int(user_id),)
+    )
+    if not user:
+        raise WebSocketException(code=status.WS_1008_POLICY_VIOLATION)
+    return user

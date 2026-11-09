@@ -1,1 +1,3 @@
-ZnJvbSBmYXN0YXBpIGltcG9ydCBBUElSb3V0ZXIKCnJvdXRlciA9IEFQSVJvdXRlcigpCg==
+from fastapi import APIRouter
+
+router = APIRouter()

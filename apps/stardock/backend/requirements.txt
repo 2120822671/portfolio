@@ -1,1 +1,5 @@
-ZmFzdGFwaT49MC4xMTAuMAp1dmljb3JuW3N0YW5kYXJkXT49MC4yOS4wCnB5bXlzcWw+PTEuMS4wCkRCVXRpbHM+PTMuMC4wCnB5dGhvbi1tdWx0aXBhcnQ+PTAuMC45Cg==
+fastapi>=0.110.0
+uvicorn[standard]>=0.29.0
+pymysql>=1.1.0
+DBUtils>=3.0.0
+python-multipart>=0.0.9

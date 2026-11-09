@@ -1,1 +1,172 @@
-IiIiCmFjdGl2aXRpZXMucHkg4oCU4oCUIOa0u+WKqCAvIOmAmuefpQrlj5HluIPmnYPpmZDvvJrnrqHnkIblkZgocm9sZT0yKSDmiJYg5piO5pif5pys5Lq6KHJvbGU9MykK5p+l55yL5p2D6ZmQ77yaCiAgc2NvcGU9MSDlhajkvZPlj6/op4EKICBzY29wZT0yIOWPquacieaMh+WumueyieS4neWbouaIkOWRmOWPr+inge+8iOeuoeeQhuWRmC/lj5HluIPogIXmnKzkurrlj6/op4HmiYDmnInvvIkKIiIiCmZyb20gZGF0ZXRpbWUgaW1wb3J0IGRhdGV0aW1lCmZyb20gZmFzdGFwaSBpbXBvcnQgQVBJUm91dGVyLCBEZXBlbmRzLCBIVFRQRXhjZXB0aW9uLCBRdWVyeQpmcm9tIHB5ZGFudGljIGltcG9ydCBCYXNlTW9kZWwKZnJvbSB0eXBpbmcgaW1wb3J0IE9wdGlvbmFsCgpmcm9tIGRhdGFiYXNlIGltcG9ydCBxdWVyeV9vbmUsIHF1ZXJ5X2FsbCwgZXhlY3V0ZSwgZXhlY3V0ZV9yZXR1cm5faWQKZnJvbSBkZXBzIGltcG9ydCBnZXRfY3VycmVudF91c2VyLCByZXF1aXJlX3JvbGUKCnJvdXRlciA9IEFQSVJvdXRlcihwcmVmaXg9Ii9hcGkvYWN0aXZpdGllcyIsIHRhZ3M9WyJhY3Rpdml0aWVzIl0pCgoKIyA9PT09PT09PT09PT09PSBTY2hlbWEgPT09PT09PT09PT09PT0KY2xhc3MgQWN0aXZpdHlDcmVhdGUoQmFzZU1vZGVsKToKICAgIHRpdGxlOiBzdHIKICAgIGNvbnRlbnQ6IHN0cgogICAgYWN0aXZpdHlfdHlwZTogaW50ID0gMSAgICAgICMgMemAmuefpS8y5rS75YqoCiAgICBzY29wZTogaW50ID0gMSAgICAgICAgICAgICAgIyAx5YWo5L2TLzLmjIflrprnsonkuJ3lm6IKICAgIHRhcmdldF9jbHViX2lkOiBPcHRpb25hbFtpbnRdID0gTm9uZQoKCmNsYXNzIEFjdGl2aXR5VXBkYXRlKEJhc2VNb2RlbCk6CiAgICB0aXRsZTogT3B0aW9uYWxbc3RyXSA9IE5vbmUKICAgIGNvbnRlbnQ6IE9wdGlvbmFsW3N0cl0gPSBOb25lCiAgICBzdGF0dXM6IE9wdGlvbmFsW2ludF0gPSBOb25lCgoKX0FMTE9XRURfVVBEQVRFID0geyJ0aXRsZSIsICJjb250ZW50IiwgInN0YXR1cyJ9CgoKIyA9PT09PT09PT09PT09PSDlj5HluIMgPT09PT09PT09PT09PT0KQHJvdXRlci5wb3N0KCIiKQphc3luYyBkZWYgY3JlYXRlX2FjdGl2aXR5KGJvZHk6IEFjdGl2aXR5Q3JlYXRlLCBjdXJyZW50X3VzZXI6IGRpY3QgPSBEZXBlbmRzKGdldF9jdXJyZW50X3VzZXIpKToKICAgICIiIueuoeeQhuWRmCDmiJYg5piO5pif5pys5Lq6IOWPkeW4gyIiIgogICAgaWYgY3VycmVudF91c2VyWyJyb2xlIl0gbm90IGluICgyLCAzKToKICAgICAgICByYWlzZSBIVFRQRXhjZXB0aW9uKHN0YXR1c19jb2RlPTQwMywgZGV0YWlsPSLml6DmnYPpmZDlj5HluIPmtLvliqgiKQoKICAgIGlmIGJvZHkuYWN0aXZpdHlfdHlwZSBub3QgaW4gKDEsIDIpOgogICAgICAgIHJhaXNlIEhUVFBFeGNlcHRpb24oc3RhdHVzX2NvZGU9NDAwLCBkZXRhaWw9ImFjdGl2aXR5X3R5cGUg5Y+q6IO95pivIDEg5oiWIDIiKQogICAgaWYgYm9keS5zY29wZSBub3QgaW4gKDEsIDIpOgogICAgICAgIHJhaXNlIEhUVFBFeGNlcHRpb24oc3RhdHVzX2NvZGU9NDAwLCBkZXRhaWw9InNjb3BlIOWPquiDveaYryAxIOaIliAyIikKICAgIGlmIGJvZHkuc2NvcGUgPT0gMiBhbmQgbm90IGJvZHkudGFyZ2V0X2NsdWJfaWQ6CiAgICAgICAgcmFpc2UgSFRUUEV4Y2VwdGlvbihzdGF0dXNfY29kZT00MDAsIGRldGFpbD0ic2NvcGU9MiDlv4XpobvmjIflrpogdGFyZ2V0X2NsdWJfaWQiKQoKICAgICMg5piO5pif5Y+R5biDIHNjb3BlPTLvvJrlj6rog73lj5Hoh6rlt7HnmoTnsonkuJ3lm6IKICAgIGlmIGN1cnJlbnRfdXNlclsicm9sZSJdID09IDMgYW5kIGJvZHkuc2NvcGUgPT0gMjoKICAgICAgICBteV9jbHViID0gcXVlcnlfb25lKAogICAgICAgICAgICAiIiJTRUxFQ1QgZmMuaWQgRlJPTSBmYW5fY2x1YnMgZmMKICAgICAgICAgICAgICAgSk9JTiBjZWxlYnJpdGllcyBjIE9OIGMuaWQgPSBmYy5jZWxlYnJpdHlfaWQKICAgICAgICAgICAgICAgV0hFUkUgYy51c2VyX2lkID0gJXMiIiIsCiAgICAgICAgICAgIChjdXJyZW50X3VzZXJbImlkIl0sKQogICAgICAgICkKICAgICAgICBpZiBub3QgbXlfY2x1YiBvciBib2R5LnRhcmdldF9jbHViX2lkICE9IG15X2NsdWJbImlkIl06CiAgICAgICAgICAgIHJhaXNlIEhUVFBFeGNlcHRpb24oc3RhdHVzX2NvZGU9NDAzLCBkZXRhaWw9IuaYjuaYn+WPquiDveWPkeiHquW3seeahOeyieS4neWboiIpCgogICAgbm93ID0gZGF0ZXRpbWUubm93KCkKICAgIGFpZCA9IGV4ZWN1dGVfcmV0dXJuX2lkKAogICAgICAgICIiIklOU0VSVCBJTlRPIGFjdGl2aXRpZXMKICAgICAgICAgICAodGl0bGUsIGNvbnRlbnQsIGFjdGl2aXR5X3R5cGUsIHNjb3BlLCB0YXJnZXRfY2x1Yl9pZCwKICAgICAgICAgICAgcG9zdGVyX2lkLCBwb3N0ZXJfbmFtZSwgY3JlYXRlX3RpbWUpCiAgICAgICAgICAgVkFMVUVTICglcywgJXMsICVzLCAlcywgJXMsICVzLCAlcywgJXMpIiIiLAogICAgICAgIChib2R5LnRpdGxlWzoxMDBdLCBib2R5LmNvbnRlbnQsIGJvZHkuYWN0aXZpdHlfdHlwZSwgYm9keS5zY29wZSwKICAgICAgICAgYm9keS50YXJnZXRfY2x1Yl9pZCwgY3VycmVudF91c2VyWyJpZCJdLCBjdXJyZW50X3VzZXJbIm5pY2tuYW1lIl0sIG5vdykKICAgICkKICAgIHJldHVybiB7ImNvZGUiOiAwLCAibXNnIjogIuWPkeW4g+aIkOWKnyIsICJkYXRhIjogeyJhY3Rpdml0eV9pZCI6IGFpZH19CgoKIyA9PT09PT09PT09PT09PSDliJfooajvvIjluKbmnYPpmZDov4fmu6TvvIk9PT09PT09PT09PT09PQpAcm91dGVyLmdldCgiIikKYXN5bmMgZGVmIGxpc3RfYWN0aXZpdGllcygKICAgIHBhZ2U6IGludCA9IFF1ZXJ5KDEsIGdlPTEpLAogICAgc2l6ZTogaW50ID0gUXVlcnkoMTAsIGdlPTEsIGxlPTUwKSwKICAgIGN1cnJlbnRfdXNlcjogZGljdCA9IERlcGVuZHMoZ2V0X2N1cnJlbnRfdXNlciksCik6CiAgICAiIiLliJfooajvvJrnrqHnkIblkZgv5piO5pif6IO955yL5YWo6YOo77yb57KJ5Lid5Y+q55yL5YWo5bGAK+iHquW3seeyieS4neWboueahCIiIgogICAgb2Zmc2V0ID0gKHBhZ2UgLSAxKSAqIHNpemUKCiAgICBpZiBjdXJyZW50X3VzZXJbInJvbGUiXSA9PSAyOgogICAgICAgICMg566h55CG5ZGY77ya5YWo6YOoCiAgICAgICAgd2hlcmUgPSBbInN0YXR1cz0xIl0KICAgICAgICBhcmdzID0gW10KICAgIGVsaWYgY3VycmVudF91c2VyWyJyb2xlIl0gPT0gMzoKICAgICAgICAjIOaYjuaYn++8muWFqOWxgCArIOiHquW3seeyieS4neWboueahAogICAgICAgIG15X2NsdWIgPSBxdWVyeV9vbmUoCiAgICAgICAgICAgICIiIlNFTEVDVCBmYy5pZCBGUk9NIGZhbl9jbHVicyBmYwogICAgICAgICAgICAgICBKT0lOIGNlbGVicml0aWVzIGMgT04gYy5pZCA9IGZjLmNlbGVicml0eV9pZAogICAgICAgICAgICAgICBXSEVSRSBjLnVzZXJfaWQgPSAlcyIiIiwKICAgICAgICAgICAgKGN1cnJlbnRfdXNlclsiaWQiXSwpCiAgICAgICAgKQogICAgICAgIGlmIG15X2NsdWI6CiAgICAgICAgICAgIHdoZXJlID0gWyJzdGF0dXM9MSBBTkQgKHNjb3BlPTEgT1IgKHNjb3BlPTIgQU5EIHRhcmdldF9jbHViX2lkPSVzKSkiXQogICAgICAgICAgICBhcmdzID0gW215X2NsdWJbImlkIl1dCiAgICAgICAgZWxzZToKICAgICAgICAgICAgd2hlcmUgPSBbInN0YXR1cz0xIEFORCBzY29wZT0xIl0KICAgICAgICAgICAgYXJncyA9IFtdCiAgICBlbHNlOgogICAgICAgICMg57KJ5Lid77ya5YWo5bGAICsg6Ieq5bex5Yqg5YWl55qE57KJ5Lid5ZuiCiAgICAgICAgd2hlcmUgPSBbInN0YXR1cz0xIEFORCBzY29wZT0xIl0KICAgICAgICBtZW1iZXJfY2x1YnMgPSBxdWVyeV9hbGwoCiAgICAgICAgICAgICJTRUxFQ1QgY2x1Yl9pZCBGUk9NIGZhbl9jbHViX21lbWJlcnMgV0hFUkUgdXNlcl9pZD0lcyIsCiAgICAgICAgICAgIChjdXJyZW50X3VzZXJbImlkIl0sKQogICAgICAgICkKICAgICAgICBjbHViX2lkcyA9IFttWyJjbHViX2lkIl0gZm9yIG0gaW4gbWVtYmVyX2NsdWJzXQogICAgICAgIGlmIGNsdWJfaWRzOgogICAgICAgICAgICBwbGFjZWhvbGRlcnMgPSAiLCIuam9pbihbIiVzIl0gKiBsZW4oY2x1Yl9pZHMpKQogICAgICAgICAgICB3aGVyZVswXSA9IGYiKHN0YXR1cz0xIEFORCBzY29wZT0xKSBPUiAoc3RhdHVzPTEgQU5EIHNjb3BlPTIgQU5EIHRhcmdldF9jbHViX2lkIElOICh7cGxhY2Vob2xkZXJzfSkpIgogICAgICAgICAgICBhcmdzID0gY2x1Yl9pZHMKICAgICAgICBlbHNlOgogICAgICAgICAgICBhcmdzID0gW10KCiAgICBzcWwgPSBmIiIiCiAgICAgICAgU0VMRUNUIGEuKiwgZmMubmFtZSBBUyBjbHViX25hbWUKICAgICAgICBGUk9NIGFjdGl2aXRpZXMgYQogICAgICAgIExFRlQgSk9JTiBmYW5fY2x1YnMgZmMgT04gZmMuaWQgPSBhLnRhcmdldF9jbHViX2lkCiAgICAgICAgV0hFUkUgeycgQU5EICcuam9pbih3aGVyZSkgaWYgbGVuKHdoZXJlKSA+IDEgZWxzZSB3aGVyZVswXX0KICAgICAgICBPUkRFUiBCWSBhLmlkIERFU0MKICAgICAgICBMSU1JVCAlcyBPRkZTRVQgJXMKICAgICIiIgogICAgYXJncy5leHRlbmQoW3NpemUsIG9mZnNldF0pCiAgICByb3dzID0gcXVlcnlfYWxsKHNxbCwgYXJncykKICAgIHJldHVybiB7ImNvZGUiOiAwLCAibXNnIjogIm9rIiwgImRhdGEiOiByb3dzfQoKCiMgPT09PT09PT09PT09PT0g5Y2V5p2hID09PT09PT09PT09PT09CkByb3V0ZXIuZ2V0KCIve2FpZH0iKQphc3luYyBkZWYgZ2V0X2FjdGl2aXR5KGFpZDogaW50LCBjdXJyZW50X3VzZXI6IGRpY3QgPSBEZXBlbmRzKGdldF9jdXJyZW50X3VzZXIpKToKICAgIHJvdyA9IHF1ZXJ5X29uZSgiU0VMRUNUICogRlJPTSBhY3Rpdml0aWVzIFdIRVJFIGlkPSVzIiwgKGFpZCwpKQogICAgaWYgbm90IHJvdzoKICAgICAgICByYWlzZSBIVFRQRXhjZXB0aW9uKHN0YXR1c19jb2RlPTQwNCwgZGV0YWlsPSLmtLvliqjkuI3lrZjlnKgiKQogICAgaWYgcm93WyJzdGF0dXMiXSAhPSAxIGFuZCByb3dbInBvc3Rlcl9pZCJdICE9IGN1cnJlbnRfdXNlclsiaWQiXSBhbmQgY3VycmVudF91c2VyWyJyb2xlIl0gIT0gMjoKICAgICAgICByYWlzZSBIVFRQRXhjZXB0aW9uKHN0YXR1c19jb2RlPTQwMywgZGV0YWlsPSLml6DmnYPmn6XnnIsiKQogICAgcmV0dXJuIHsiY29kZSI6IDAsICJtc2ciOiAib2siLCAiZGF0YSI6IHJvd30KCgojID09PT09PT09PT09PT09IOaSpOWbniAvIOabtOaWsCA9PT09PT09PT09PT09PQpAcm91dGVyLnB1dCgiL3thaWR9IikKYXN5bmMgZGVmIHVwZGF0ZV9hY3Rpdml0eShhaWQ6IGludCwgYm9keTogQWN0aXZpdHlVcGRhdGUsIGN1cnJlbnRfdXNlcjogZGljdCA9IERlcGVuZHMoZ2V0X2N1cnJlbnRfdXNlcikpOgogICAgcm93ID0gcXVlcnlfb25lKCJTRUxFQ1QgKiBGUk9NIGFjdGl2aXRpZXMgV0hFUkUgaWQ9JXMiLCAoYWlkLCkpCiAgICBpZiBub3Qgcm93OgogICAgICAgIHJhaXNlIEhUVFBFeGNlcHRpb24oc3RhdHVzX2NvZGU9NDA0LCBkZXRhaWw9Iua0u+WKqOS4jeWtmOWcqCIpCiAgICBpZiBjdXJyZW50X3VzZXJbInJvbGUiXSAhPSAyIGFuZCByb3dbInBvc3Rlcl9pZCJdICE9IGN1cnJlbnRfdXNlclsiaWQiXToKICAgICAgICByYWlzZSBIVFRQRXhjZXB0aW9uKHN0YXR1c19jb2RlPTQwMywgZGV0YWlsPSLlj6rmnInlj5HluIPogIXmiJbnrqHnkIblkZjlj6/ku6Xkv67mlLkiKQoKICAgIGZpZWxkcyA9IGJvZHkubW9kZWxfZHVtcChleGNsdWRlX25vbmU9VHJ1ZSkKICAgIGludmFsaWQgPSBzZXQoZmllbGRzLmtleXMoKSkgLSBfQUxMT1dFRF9VUERBVEUKICAgIGlmIGludmFsaWQ6CiAgICAgICAgcmFpc2UgSFRUUEV4Y2VwdGlvbihzdGF0dXNfY29kZT00MDAsIGRldGFpbD1mIuS4jeWFgeiuuOabtOaWsOWtl+autToge2ludmFsaWR9IikKICAgIGlmIG5vdCBmaWVsZHM6CiAgICAgICAgcmFpc2UgSFRUUEV4Y2VwdGlvbihzdGF0dXNfY29kZT00MDAsIGRldGFpbD0i5rKh5pyJ5Y+v5pu05paw55qE5a2X5q61IikKCiAgICBzZXRfY2xhdXNlID0gIiwgIi5qb2luKGYie2t9PSVzIiBmb3IgayBpbiBmaWVsZHMua2V5cygpKQogICAgYXJncyA9IGxpc3QoZmllbGRzLnZhbHVlcygpKSArIFthaWRdCiAgICBleGVjdXRlKGYiVVBEQVRFIGFjdGl2aXRpZXMgU0VUIHtzZXRfY2xhdXNlfSBXSEVSRSBpZD0lcyIsIGFyZ3MpCiAgICByZXR1cm4geyJjb2RlIjogMCwgIm1zZyI6ICLmm7TmlrDmiJDlip8iLCAiZGF0YSI6IE5vbmV9CgoKQHJvdXRlci5kZWxldGUoIi97YWlkfSIpCmFzeW5jIGRlZiBkZWxldGVfYWN0aXZpdHkoYWlkOiBpbnQsIGN1cnJlbnRfdXNlcjogZGljdCA9IERlcGVuZHMoZ2V0X2N1cnJlbnRfdXNlcikpOgogICAgIiIi6L2v5Yig6Zmk77ya5oqKIHN0YXR1cyDorr7miJAgMCIiIgogICAgcm93ID0gcXVlcnlfb25lKCJTRUxFQ1QgKiBGUk9NIGFjdGl2aXRpZXMgV0hFUkUgaWQ9JXMiLCAoYWlkLCkpCiAgICBpZiBub3Qgcm93OgogICAgICAgIHJhaXNlIEhUVFBFeGNlcHRpb24oc3RhdHVzX2NvZGU9NDA0LCBkZXRhaWw9Iua0u+WKqOS4jeWtmOWcqCIpCiAgICBpZiBjdXJyZW50X3VzZXJbInJvbGUiXSAhPSAyIGFuZCByb3dbInBvc3Rlcl9pZCJdICE9IGN1cnJlbnRfdXNlclsiaWQiXToKICAgICAgICByYWlzZSBIVFRQRXhjZXB0aW9uKHN0YXR1c19jb2RlPTQwMywgZGV0YWlsPSLlj6rmnInlj5HluIPogIXmiJbnrqHnkIblkZjlj6/ku6XmkqTlm54iKQogICAgZXhlY3V0ZSgiVVBEQVRFIGFjdGl2aXRpZXMgU0VUIHN0YXR1cz0wIFdIRVJFIGlkPSVzIiwgKGFpZCwpKQogICAgcmV0dXJuIHsiY29kZSI6IDAsICJtc2ciOiAi5bey5pKk5ZueIiwgImRhdGEiOiBOb25lfQo=
+"""
+activities.py —— 活动 / 通知
+发布权限：管理员(role=2) 或 明星本人(role=3)
+查看权限：
+  scope=1 全体可见
+  scope=2 只有指定粉丝团成员可见（管理员/发布者本人可见所有）
+"""
+from datetime import datetime
+from fastapi import APIRouter, Depends, HTTPException, Query
+from pydantic import BaseModel
+from typing import Optional
+
+from database import query_one, query_all, execute, execute_return_id
+from deps import get_current_user, require_role
+
+router = APIRouter(prefix="/api/activities", tags=["activities"])
+
+
+# ============== Schema ==============
+class ActivityCreate(BaseModel):
+    title: str
+    content: str
+    activity_type: int = 1      # 1通知/2活动
+    scope: int = 1              # 1全体/2指定粉丝团
+    target_club_id: Optional[int] = None
+
+
+class ActivityUpdate(BaseModel):
+    title: Optional[str] = None
+    content: Optional[str] = None
+    status: Optional[int] = None
+
+
+_ALLOWED_UPDATE = {"title", "content", "status"}
+
+
+# ============== 发布 ==============
+@router.post("")
+async def create_activity(body: ActivityCreate, current_user: dict = Depends(get_current_user)):
+    """管理员 或 明星本人 发布"""
+    if current_user["role"] not in (2, 3):
+        raise HTTPException(status_code=403, detail="无权限发布活动")
+
+    if body.activity_type not in (1, 2):
+        raise HTTPException(status_code=400, detail="activity_type 只能是 1 或 2")
+    if body.scope not in (1, 2):
+        raise HTTPException(status_code=400, detail="scope 只能是 1 或 2")
+    if body.scope == 2 and not body.target_club_id:
+        raise HTTPException(status_code=400, detail="scope=2 必须指定 target_club_id")
+
+    # 明星发布 scope=2：只能发自己的粉丝团
+    if current_user["role"] == 3 and body.scope == 2:
+        my_club = query_one(
+            """SELECT fc.id FROM fan_clubs fc
+               JOIN celebrities c ON c.id = fc.celebrity_id
+               WHERE c.user_id = %s""",
+            (current_user["id"],)
+        )
+        if not my_club or body.target_club_id != my_club["id"]:
+            raise HTTPException(status_code=403, detail="明星只能发自己的粉丝团")
+
+    now = datetime.now()
+    aid = execute_return_id(
+        """INSERT INTO activities
+           (title, content, activity_type, scope, target_club_id,
+            poster_id, poster_name, create_time)
+           VALUES (%s, %s, %s, %s, %s, %s, %s, %s)""",
+        (body.title[:100], body.content, body.activity_type, body.scope,
+         body.target_club_id, current_user["id"], current_user["nickname"], now)
+    )
+    return {"code": 0, "msg": "发布成功", "data": {"activity_id": aid}}
+
+
+# ============== 列表（带权限过滤）==============
+@router.get("")
+async def list_activities(
+    page: int = Query(1, ge=1),
+    size: int = Query(10, ge=1, le=50),
+    current_user: dict = Depends(get_current_user),
+):
+    """列表：管理员/明星能看全部；粉丝只看全局+自己粉丝团的"""
+    offset = (page - 1) * size
+
+    if current_user["role"] == 2:
+        # 管理员：全部
+        where = ["status=1"]
+        args = []
+    elif current_user["role"] == 3:
+        # 明星：全局 + 自己粉丝团的
+        my_club = query_one(
+            """SELECT fc.id FROM fan_clubs fc
+               JOIN celebrities c ON c.id = fc.celebrity_id
+               WHERE c.user_id = %s""",
+            (current_user["id"],)
+        )
+        if my_club:
+            where = ["status=1 AND (scope=1 OR (scope=2 AND target_club_id=%s))"]
+            args = [my_club["id"]]
+        else:
+            where = ["status=1 AND scope=1"]
+            args = []
+    else:
+        # 粉丝：全局 + 自己加入的粉丝团
+        where = ["status=1 AND scope=1"]
+        member_clubs = query_all(
+            "SELECT club_id FROM fan_club_members WHERE user_id=%s",
+            (current_user["id"],)
+        )
+        club_ids = [m["club_id"] for m in member_clubs]
+        if club_ids:
+            placeholders = ",".join(["%s"] * len(club_ids))
+            where[0] = f"(status=1 AND scope=1) OR (status=1 AND scope=2 AND target_club_id IN ({placeholders}))"
+            args = club_ids
+        else:
+            args = []
+
+    sql = f"""
+        SELECT a.*, fc.name AS club_name
+        FROM activities a
+        LEFT JOIN fan_clubs fc ON fc.id = a.target_club_id
+        WHERE {' AND '.join(where) if len(where) > 1 else where[0]}
+        ORDER BY a.id DESC
+        LIMIT %s OFFSET %s
+    """
+    args.extend([size, offset])
+    rows = query_all(sql, args)
+    return {"code": 0, "msg": "ok", "data": rows}
+
+
+# ============== 单条 ==============
+@router.get("/{aid}")
+async def get_activity(aid: int, current_user: dict = Depends(get_current_user)):
+    row = query_one("SELECT * FROM activities WHERE id=%s", (aid,))
+    if not row:
+        raise HTTPException(status_code=404, detail="活动不存在")
+    if row["status"] != 1 and row["poster_id"] != current_user["id"] and current_user["role"] != 2:
+        raise HTTPException(status_code=403, detail="无权查看")
+    return {"code": 0, "msg": "ok", "data": row}
+
+
+# ============== 撤回 / 更新 ==============
+@router.put("/{aid}")
+async def update_activity(aid: int, body: ActivityUpdate, current_user: dict = Depends(get_current_user)):
+    row = query_one("SELECT * FROM activities WHERE id=%s", (aid,))
+    if not row:
+        raise HTTPException(status_code=404, detail="活动不存在")
+    if current_user["role"] != 2 and row["poster_id"] != current_user["id"]:
+        raise HTTPException(status_code=403, detail="只有发布者或管理员可以修改")
+
+    fields = body.model_dump(exclude_none=True)
+    invalid = set(fields.keys()) - _ALLOWED_UPDATE
+    if invalid:
+        raise HTTPException(status_code=400, detail=f"不允许更新字段: {invalid}")
+    if not fields:
+        raise HTTPException(status_code=400, detail="没有可更新的字段")
+
+    set_clause = ", ".join(f"{k}=%s" for k in fields.keys())
+    args = list(fields.values()) + [aid]
+    execute(f"UPDATE activities SET {set_clause} WHERE id=%s", args)
+    return {"code": 0, "msg": "更新成功", "data": None}
+
+
+@router.delete("/{aid}")
+async def delete_activity(aid: int, current_user: dict = Depends(get_current_user)):
+    """软删除：把 status 设成 0"""
+    row = query_one("SELECT * FROM activities WHERE id=%s", (aid,))
+    if not row:
+        raise HTTPException(status_code=404, detail="活动不存在")
+    if current_user["role"] != 2 and row["poster_id"] != current_user["id"]:
+        raise HTTPException(status_code=403, detail="只有发布者或管理员可以撤回")
+    execute("UPDATE activities SET status=0 WHERE id=%s", (aid,))
+    return {"code": 0, "msg": "已撤回", "data": None}

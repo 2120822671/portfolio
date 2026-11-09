@@ -1,1 +1,138 @@
-IiIiCnVzZXJzLnB5IOKAlOKAlCDnlKjmiLfnrqHnkIYKVjIg5Yqg5Zu677yaVVBEQVRFIOWtl+auteeZveWQjeWNleOAgemYsui2iuadg+aTjeS9nOOAgeawuOS4jei/lOWbniBwYXNzd29yZAoiIiIKZnJvbSBkYXRldGltZSBpbXBvcnQgZGF0ZXRpbWUKZnJvbSBmYXN0YXBpIGltcG9ydCBBUElSb3V0ZXIsIERlcGVuZHMsIEhUVFBFeGNlcHRpb24KZnJvbSBweWRhbnRpYyBpbXBvcnQgQmFzZU1vZGVsCmZyb20gdHlwaW5nIGltcG9ydCBPcHRpb25hbAoKZnJvbSBkYXRhYmFzZSBpbXBvcnQgcXVlcnlfb25lLCBxdWVyeV9hbGwsIGV4ZWN1dGUsIGV4ZWN1dGVfcmV0dXJuX2lkCmZyb20gZGVwcyBpbXBvcnQgZ2V0X2N1cnJlbnRfdXNlciwgcmVxdWlyZV9yb2xlCgpyb3V0ZXIgPSBBUElSb3V0ZXIocHJlZml4PSIvYXBpL3VzZXJzIiwgdGFncz1bInVzZXJzIl0pCgojIFVQREFURSDnoaznvJbnoIHnmb3lkI3ljZXvvIznpoHmraLmi7/liY3nq68ga2V5IOebtOaOpeaLvCBTUUwKX0FMTE9XRURfVVBEQVRFX0ZJRUxEUyA9IHsibmlja25hbWUiLCAiYXZhdGFyIn0KCgojID09PT09PT09PT09PT09IFNjaGVtYSA9PT09PT09PT09PT09PQpjbGFzcyBVcGRhdGVQcm9maWxlQm9keShCYXNlTW9kZWwpOgogICAgbmlja25hbWU6IE9wdGlvbmFsW3N0cl0gPSBOb25lCiAgICBhdmF0YXI6IE9wdGlvbmFsW3N0cl0gPSBOb25lCgoKY2xhc3MgVXBkYXRlU3RhdHVzQm9keShCYXNlTW9kZWwpOgogICAgc3RhdHVzOiBpbnQgICMgMCDnpoHnlKggLyAxIOato+W4uAoKCmNsYXNzIFVwZGF0ZVJvbGVCb2R5KEJhc2VNb2RlbCk6CiAgICByb2xlOiBpbnQgICMgMS8yLzMKCgpjbGFzcyBSZXNldFBhc3N3b3JkQm9keShCYXNlTW9kZWwpOgogICAgbmV3X3Bhc3N3b3JkOiBzdHIKCgojID09PT09PT09PT09PT09IOaOpeWPoyA9PT09PT09PT09PT09PQpAcm91dGVyLnB1dCgiL21lIikKYXN5bmMgZGVmIHVwZGF0ZV9teV9wcm9maWxlKGJvZHk6IFVwZGF0ZVByb2ZpbGVCb2R5LCBjdXJyZW50X3VzZXI6IGRpY3QgPSBEZXBlbmRzKGdldF9jdXJyZW50X3VzZXIpKToKICAgICIiIuabtOaWsOiHquW3seeahOi1hOaWme+8iOS7hSBuaWNrbmFtZSAvIGF2YXRhciDkuKTkuKrlrZfmrrXlhYHorrjmlLnvvIkiIiIKICAgIGZpZWxkcyA9IGJvZHkubW9kZWxfZHVtcChleGNsdWRlX25vbmU9VHJ1ZSkKICAgIGlmIG5vdCBmaWVsZHM6CiAgICAgICAgcmFpc2UgSFRUUEV4Y2VwdGlvbihzdGF0dXNfY29kZT00MDAsIGRldGFpbD0i5rKh5pyJ5Y+v5pu05paw55qE5a2X5q61IikKCiAgICAjIOeZveWQjeWNleagoemqjAogICAgaW52YWxpZCA9IHNldChmaWVsZHMua2V5cygpKSAtIF9BTExPV0VEX1VQREFURV9GSUVMRFMKICAgIGlmIGludmFsaWQ6CiAgICAgICAgcmFpc2UgSFRUUEV4Y2VwdGlvbihzdGF0dXNfY29kZT00MDAsIGRldGFpbD1mIuS4jeWFgeiuuOabtOaWsOWtl+autToge2ludmFsaWR9IikKCiAgICBzZXRfY2xhdXNlID0gIiwgIi5qb2luKGYie2t9PSVzIiBmb3IgayBpbiBmaWVsZHMua2V5cygpKQogICAgYXJncyA9IGxpc3QoZmllbGRzLnZhbHVlcygpKSArIFtjdXJyZW50X3VzZXJbImlkIl1dCiAgICBleGVjdXRlKGYiVVBEQVRFIHVzZXJzIFNFVCB7c2V0X2NsYXVzZX0gV0hFUkUgaWQ9JXMiLCBhcmdzKQogICAgcmV0dXJuIHsiY29kZSI6IDAsICJtc2ciOiAi5pu05paw5oiQ5YqfIiwgImRhdGEiOiBOb25lfQoKCkByb3V0ZXIuZ2V0KCIiKQphc3luYyBkZWYgbGlzdF91c2VycygKICAgIHJvbGU6IE9wdGlvbmFsW2ludF0gPSBOb25lLAogICAgc3RhdHVzOiBPcHRpb25hbFtpbnRdID0gTm9uZSwKICAgIGtleXdvcmQ6IE9wdGlvbmFsW3N0cl0gPSBOb25lLAogICAgY3VycmVudF91c2VyOiBkaWN0ID0gRGVwZW5kcyhyZXF1aXJlX3JvbGUoMikpLCAgIyDku4XnrqHnkIblkZgKKToKICAgICIiIueUqOaIt+WIl+ihqO+8iOeuoeeQhuWRmO+8iSIiIgogICAgd2hlcmUgPSBbIjE9MSJdCiAgICBhcmdzID0gW10KICAgIGlmIHJvbGUgaXMgbm90IE5vbmU6CiAgICAgICAgd2hlcmUuYXBwZW5kKCJyb2xlPSVzIikKICAgICAgICBhcmdzLmFwcGVuZChyb2xlKQogICAgaWYgc3RhdHVzIGlzIG5vdCBOb25lOgogICAgICAgIHdoZXJlLmFwcGVuZCgic3RhdHVzPSVzIikKICAgICAgICBhcmdzLmFwcGVuZChzdGF0dXMpCiAgICBpZiBrZXl3b3JkOgogICAgICAgIHdoZXJlLmFwcGVuZCgiKHVzZXJuYW1lIExJS0UgJXMgT1Igbmlja25hbWUgTElLRSAlcykiKQogICAgICAgIGFyZ3MuZXh0ZW5kKFtmIiV7a2V5d29yZH0lIiwgZiIle2tleXdvcmR9JSJdKQoKICAgIHNxbCA9ICgKICAgICAgICAiU0VMRUNUIGlkLCB1c2VybmFtZSwgbmlja25hbWUsIGF2YXRhciwgcm9sZSwgc2NvcmUsIHN0YXR1cywgY3JlYXRlX3RpbWUgIgogICAgICAgIGYiRlJPTSB1c2VycyBXSEVSRSB7JyBBTkQgJy5qb2luKHdoZXJlKX0gT1JERVIgQlkgaWQgREVTQyIKICAgICkKICAgIHJvd3MgPSBxdWVyeV9hbGwoc3FsLCBhcmdzKQogICAgcmV0dXJuIHsiY29kZSI6IDAsICJtc2ciOiAib2siLCAiZGF0YSI6IHJvd3N9CgoKQHJvdXRlci5wdXQoIi97dXNlcl9pZH0vc3RhdHVzIikKYXN5bmMgZGVmIHVwZGF0ZV91c2VyX3N0YXR1cygKICAgIHVzZXJfaWQ6IGludCwgYm9keTogVXBkYXRlU3RhdHVzQm9keSwKICAgIGN1cnJlbnRfdXNlcjogZGljdCA9IERlcGVuZHMocmVxdWlyZV9yb2xlKDIpKSwKKToKICAgICIiIuWQr+eUqC/npoHnlKjnlKjmiLciIiIKICAgIGlmIGJvZHkuc3RhdHVzIG5vdCBpbiAoMCwgMSk6CiAgICAgICAgcmFpc2UgSFRUUEV4Y2VwdGlvbihzdGF0dXNfY29kZT00MDAsIGRldGFpbD0ic3RhdHVzIOWPquiDveaYryAwIOaIliAxIikKICAgIGV4ZWN1dGUoIlVQREFURSB1c2VycyBTRVQgc3RhdHVzPSVzIFdIRVJFIGlkPSVzIiwgKGJvZHkuc3RhdHVzLCB1c2VyX2lkKSkKICAgIHJldHVybiB7ImNvZGUiOiAwLCAibXNnIjogIuaTjeS9nOaIkOWKnyIsICJkYXRhIjogTm9uZX0KCgpAcm91dGVyLnB1dCgiL3t1c2VyX2lkfS9yb2xlIikKYXN5bmMgZGVmIHVwZGF0ZV91c2VyX3JvbGUoCiAgICB1c2VyX2lkOiBpbnQsIGJvZHk6IFVwZGF0ZVJvbGVCb2R5LAogICAgY3VycmVudF91c2VyOiBkaWN0ID0gRGVwZW5kcyhyZXF1aXJlX3JvbGUoMikpLAopOgogICAgIiIi5L+u5pS555So5oi36KeS6Imy77yI5rOo5oSP77ya5Y2H57qn5Li65piO5pif5pe26KaB5ZCM5q2l5bu6IGNlbGVicml0aWVzIOaho+ahiO+8iSIiIgogICAgaWYgYm9keS5yb2xlIG5vdCBpbiAoMSwgMiwgMyk6CiAgICAgICAgcmFpc2UgSFRUUEV4Y2VwdGlvbihzdGF0dXNfY29kZT00MDAsIGRldGFpbD0icm9sZSDlj6rog73mmK8gMS8yLzMiKQoKICAgIGV4ZWN1dGUoIlVQREFURSB1c2VycyBTRVQgcm9sZT0lcyBXSEVSRSBpZD0lcyIsIChib2R5LnJvbGUsIHVzZXJfaWQpKQoKICAgICMg5Y2H57qn5Li65piO5pifIOKGkiDoh6rliqjliJvlu7ogY2VsZWJyaXRpZXMg5qGj5qGIICsg57KJ5Lid5ZuiCiAgICBpZiBib2R5LnJvbGUgPT0gMzoKICAgICAgICBleGlzdHMgPSBxdWVyeV9vbmUoIlNFTEVDVCBpZCBGUk9NIGNlbGVicml0aWVzIFdIRVJFIHVzZXJfaWQ9JXMiLCAodXNlcl9pZCwpKQogICAgICAgIGlmIG5vdCBleGlzdHM6CiAgICAgICAgICAgIHVzZXIgPSBxdWVyeV9vbmUoIlNFTEVDVCBuaWNrbmFtZSBGUk9NIHVzZXJzIFdIRVJFIGlkPSVzIiwgKHVzZXJfaWQsKSkKICAgICAgICAgICAgbm93ID0gZGF0ZXRpbWUubm93KCkKICAgICAgICAgICAgY2lkID0gZXhlY3V0ZV9yZXR1cm5faWQoCiAgICAgICAgICAgICAgICAiIiJJTlNFUlQgSU5UTyBjZWxlYnJpdGllcyAodXNlcl9pZCwgc3RhZ2VfbmFtZSwgY2F0ZWdvcnksIGJpbywgc3RhdHVzLCBjcmVhdGVfdGltZSkKICAgICAgICAgICAgICAgICAgIFZBTFVFUyAoJXMsICVzLCAn5YW25LuWJywgJ+i/meS9jeaYjuaYn+W+iOelnuenmH4nLCAxLCAlcykiIiIsCiAgICAgICAgICAgICAgICAodXNlcl9pZCwgdXNlclsibmlja25hbWUiXSwgbm93KQogICAgICAgICAgICApCiAgICAgICAgICAgIGV4ZWN1dGVfcmV0dXJuX2lkKAogICAgICAgICAgICAgICAgIiIiSU5TRVJUIElOVE8gZmFuX2NsdWJzIChjZWxlYnJpdHlfaWQsIG5hbWUsIGRlc2NyaXB0aW9uLCBjcmVhdGVfdGltZSkKICAgICAgICAgICAgICAgICAgIFZBTFVFUyAoJXMsICVzLCAlcywgJXMpIiIiLAogICAgICAgICAgICAgICAgKGNpZCwgZiJ7dXNlclsnbmlja25hbWUnXX3nsonkuJ3lm6IiLCAi5qyi6L+O5Yqg5YWl57KJ5Lid5Zui77yBIiwgbm93KQogICAgICAgICAgICApCgogICAgcmV0dXJuIHsiY29kZSI6IDAsICJtc2ciOiAi6KeS6Imy5bey5pu05pawIiwgImRhdGEiOiBOb25lfQoKCkByb3V0ZXIucHV0KCIve3VzZXJfaWR9L3Jlc2V0LXBhc3N3b3JkIikKYXN5bmMgZGVmIHJlc2V0X3Bhc3N3b3JkKAogICAgdXNlcl9pZDogaW50LCBib2R5OiBSZXNldFBhc3N3b3JkQm9keSwKICAgIGN1cnJlbnRfdXNlcjogZGljdCA9IERlcGVuZHMocmVxdWlyZV9yb2xlKDIpKSwKKToKICAgICIiIumHjee9rueUqOaIt+WvhueggSIiIgogICAgaW1wb3J0IGhhc2hsaWIKICAgIGlmIGxlbihib2R5Lm5ld19wYXNzd29yZCkgPCA2OgogICAgICAgIHJhaXNlIEhUVFBFeGNlcHRpb24oc3RhdHVzX2NvZGU9NDAwLCBkZXRhaWw9IuWvhueggeiHs+WwkSA2IOS9jSIpCiAgICBtZDUgPSBoYXNobGliLm1kNShib2R5Lm5ld19wYXNzd29yZC5lbmNvZGUoKSkuaGV4ZGlnZXN0KCkKICAgIGV4ZWN1dGUoIlVQREFURSB1c2VycyBTRVQgcGFzc3dvcmQ9JXMgV0hFUkUgaWQ9JXMiLCAobWQ1LCB1c2VyX2lkKSkKICAgIHJldHVybiB7ImNvZGUiOiAwLCAibXNnIjogIuWvhueggeW3sumHjee9riIsICJkYXRhIjogTm9uZX0K
+"""
+users.py —— 用户管理
+V2 加固：UPDATE 字段白名单、防越权操作、永不返回 password
+"""
+from datetime import datetime
+from fastapi import APIRouter, Depends, HTTPException
+from pydantic import BaseModel
+from typing import Optional
+
+from database import query_one, query_all, execute, execute_return_id
+from deps import get_current_user, require_role
+
+router = APIRouter(prefix="/api/users", tags=["users"])
+
+# UPDATE 硬编码白名单，禁止拿前端 key 直接拼 SQL
+_ALLOWED_UPDATE_FIELDS = {"nickname", "avatar"}
+
+
+# ============== Schema ==============
+class UpdateProfileBody(BaseModel):
+    nickname: Optional[str] = None
+    avatar: Optional[str] = None
+
+
+class UpdateStatusBody(BaseModel):
+    status: int  # 0 禁用 / 1 正常
+
+
+class UpdateRoleBody(BaseModel):
+    role: int  # 1/2/3
+
+
+class ResetPasswordBody(BaseModel):
+    new_password: str
+
+
+# ============== 接口 ==============
+@router.put("/me")
+async def update_my_profile(body: UpdateProfileBody, current_user: dict = Depends(get_current_user)):
+    """更新自己的资料（仅 nickname / avatar 两个字段允许改）"""
+    fields = body.model_dump(exclude_none=True)
+    if not fields:
+        raise HTTPException(status_code=400, detail="没有可更新的字段")
+
+    # 白名单校验
+    invalid = set(fields.keys()) - _ALLOWED_UPDATE_FIELDS
+    if invalid:
+        raise HTTPException(status_code=400, detail=f"不允许更新字段: {invalid}")
+
+    set_clause = ", ".join(f"{k}=%s" for k in fields.keys())
+    args = list(fields.values()) + [current_user["id"]]
+    execute(f"UPDATE users SET {set_clause} WHERE id=%s", args)
+    return {"code": 0, "msg": "更新成功", "data": None}
+
+
+@router.get("")
+async def list_users(
+    role: Optional[int] = None,
+    status: Optional[int] = None,
+    keyword: Optional[str] = None,
+    current_user: dict = Depends(require_role(2)),  # 仅管理员
+):
+    """用户列表（管理员）"""
+    where = ["1=1"]
+    args = []
+    if role is not None:
+        where.append("role=%s")
+        args.append(role)
+    if status is not None:
+        where.append("status=%s")
+        args.append(status)
+    if keyword:
+        where.append("(username LIKE %s OR nickname LIKE %s)")
+        args.extend([f"%{keyword}%", f"%{keyword}%"])
+
+    sql = (
+        "SELECT id, username, nickname, avatar, role, score, status, create_time "
+        f"FROM users WHERE {' AND '.join(where)} ORDER BY id DESC"
+    )
+    rows = query_all(sql, args)
+    return {"code": 0, "msg": "ok", "data": rows}
+
+
+@router.put("/{user_id}/status")
+async def update_user_status(
+    user_id: int, body: UpdateStatusBody,
+    current_user: dict = Depends(require_role(2)),
+):
+    """启用/禁用用户"""
+    if body.status not in (0, 1):
+        raise HTTPException(status_code=400, detail="status 只能是 0 或 1")
+    execute("UPDATE users SET status=%s WHERE id=%s", (body.status, user_id))
+    return {"code": 0, "msg": "操作成功", "data": None}
+
+
+@router.put("/{user_id}/role")
+async def update_user_role(
+    user_id: int, body: UpdateRoleBody,
+    current_user: dict = Depends(require_role(2)),
+):
+    """修改用户角色（注意：升级为明星时要同步建 celebrities 档案）"""
+    if body.role not in (1, 2, 3):
+        raise HTTPException(status_code=400, detail="role 只能是 1/2/3")
+
+    execute("UPDATE users SET role=%s WHERE id=%s", (body.role, user_id))
+
+    # 升级为明星 → 自动创建 celebrities 档案 + 粉丝团
+    if body.role == 3:
+        exists = query_one("SELECT id FROM celebrities WHERE user_id=%s", (user_id,))
+        if not exists:
+            user = query_one("SELECT nickname FROM users WHERE id=%s", (user_id,))
+            now = datetime.now()
+            cid = execute_return_id(
+                """INSERT INTO celebrities (user_id, stage_name, category, bio, status, create_time)
+                   VALUES (%s, %s, '其他', '这位明星很神秘~', 1, %s)""",
+                (user_id, user["nickname"], now)
+            )
+            execute_return_id(
+                """INSERT INTO fan_clubs (celebrity_id, name, description, create_time)
+                   VALUES (%s, %s, %s, %s)""",
+                (cid, f"{user['nickname']}粉丝团", "欢迎加入粉丝团！", now)
+            )
+
+    return {"code": 0, "msg": "角色已更新", "data": None}
+
+
+@router.put("/{user_id}/reset-password")
+async def reset_password(
+    user_id: int, body: ResetPasswordBody,
+    current_user: dict = Depends(require_role(2)),
+):
+    """重置用户密码"""
+    import hashlib
+    if len(body.new_password) < 6:
+        raise HTTPException(status_code=400, detail="密码至少 6 位")
+    md5 = hashlib.md5(body.new_password.encode()).hexdigest()
+    execute("UPDATE users SET password=%s WHERE id=%s", (md5, user_id))
+    return {"code": 0, "msg": "密码已重置", "data": None}

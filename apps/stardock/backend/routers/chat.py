@@ -1,1 +1,143 @@
-IiIiCmNoYXQucHkg4oCU4oCUIOWOhuWPsua2iOaBryArIFdlYlNvY2tldCDlrp7ml7bogYrlpKkKIiIiCmltcG9ydCBhc3luY2lvCmltcG9ydCBqc29uCmZyb20gZGF0ZXRpbWUgaW1wb3J0IGRhdGV0aW1lCmZyb20gdHlwaW5nIGltcG9ydCBPcHRpb25hbApmcm9tIGZhc3RhcGkgaW1wb3J0IEFQSVJvdXRlciwgRGVwZW5kcywgSFRUUEV4Y2VwdGlvbiwgUXVlcnksIFdlYlNvY2tldCwgV2ViU29ja2V0RGlzY29ubmVjdApmcm9tIHB5ZGFudGljIGltcG9ydCBCYXNlTW9kZWwKCmZyb20gZGF0YWJhc2UgaW1wb3J0IHF1ZXJ5X29uZSwgcXVlcnlfYWxsLCBleGVjdXRlLCBleGVjdXRlX3JldHVybl9pZApmcm9tIGRlcHMgaW1wb3J0IGdldF9jdXJyZW50X3VzZXIsIHdzX2dldF9jdXJyZW50X3VzZXIKCnJvdXRlciA9IEFQSVJvdXRlcih0YWdzPVsiY2hhdCJdKQoKIyA9PT09PT09PT09PT09PSBXZWJTb2NrZXQg5oi/6Ze0566h55CG77yI5YaF5a2Y54mI77yJPT09PT09PT09PT09PT0KIyDnroDljJblrp7njrDvvJrmjIkgY2x1Yl9pZCDliIbmiL/pl7TvvIzlrZggc2V0W1dlYlNvY2tldF0KIyDnlJ/kuqfnjq/looPlj6/ku6XmjaIgUmVkaXMgUHViL1N1Ygpfcm9vbXM6IGRpY3RbaW50LCBzZXRbV2ViU29ja2V0XV0gPSB7fQoKCmRlZiBfZ2V0X29yX2NyZWF0ZV9yb29tKGNsdWJfaWQ6IGludCkgLT4gc2V0W1dlYlNvY2tldF06CiAgICBpZiBjbHViX2lkIG5vdCBpbiBfcm9vbXM6CiAgICAgICAgX3Jvb21zW2NsdWJfaWRdID0gc2V0KCkKICAgIHJldHVybiBfcm9vbXNbY2x1Yl9pZF0KCgojID09PT09PT09PT09PT09IEhUVFDvvJrljoblj7Lmtojmga8gPT09PT09PT09PT09PT0KQHJvdXRlci5nZXQoIi9hcGkvY2hhdC97Y2x1Yl9pZH0vaGlzdG9yeSIpCmFzeW5jIGRlZiBnZXRfaGlzdG9yeSgKICAgIGNsdWJfaWQ6IGludCwKICAgIHBhZ2U6IGludCA9IFF1ZXJ5KDEsIGdlPTEpLAogICAgc2l6ZTogaW50ID0gUXVlcnkoNTAsIGdlPTEsIGxlPTIwMCksCiAgICBjdXJyZW50X3VzZXI6IGRpY3QgPSBEZXBlbmRzKGdldF9jdXJyZW50X3VzZXIpLAopOgogICAgIiIi5ouJ5Y+W5Y6G5Y+y5raI5oGv77yI6ZyA6KaB5piv57KJ5Lid5Zui5oiQ5ZGYIOaIliDnrqHnkIblkZjvvIkiIiIKICAgIGNsdWIgPSBxdWVyeV9vbmUoIlNFTEVDVCBpZCBGUk9NIGZhbl9jbHVicyBXSEVSRSBpZD0lcyIsIChjbHViX2lkLCkpCiAgICBpZiBub3QgY2x1YjoKICAgICAgICByYWlzZSBIVFRQRXhjZXB0aW9uKHN0YXR1c19jb2RlPTQwNCwgZGV0YWlsPSLnsonkuJ3lm6LkuI3lrZjlnKgiKQoKICAgICMg6Ym05p2D77ya566h55CG5ZGY5Y+v55yL5omA5pyJ77yb5YW25LuW6KeS6Imy5b+F6aG75piv5oiQ5ZGYCiAgICBpZiBjdXJyZW50X3VzZXJbInJvbGUiXSAhPSAyOgogICAgICAgIGlzX21lbWJlciA9IHF1ZXJ5X29uZSgKICAgICAgICAgICAgIlNFTEVDVCBpZCBGUk9NIGZhbl9jbHViX21lbWJlcnMgV0hFUkUgY2x1Yl9pZD0lcyBBTkQgdXNlcl9pZD0lcyIsCiAgICAgICAgICAgIChjbHViX2lkLCBjdXJyZW50X3VzZXJbImlkIl0pCiAgICAgICAgKQogICAgICAgIGlmIG5vdCBpc19tZW1iZXI6CiAgICAgICAgICAgIHJhaXNlIEhUVFBFeGNlcHRpb24oc3RhdHVzX2NvZGU9NDAzLCBkZXRhaWw9IuS9oOS4jeaYr+ivpeeyieS4neWbouaIkOWRmCIpCgogICAgb2Zmc2V0ID0gKHBhZ2UgLSAxKSAqIHNpemUKICAgIG1zZ3MgPSBxdWVyeV9hbGwoCiAgICAgICAgIiIiU0VMRUNUIG0uaWQsIG0uY29udGVudCwgbS5tc2dfdHlwZSwgbS5jcmVhdGVfdGltZSwKICAgICAgICAgICAgICAgICAgdS5pZCBBUyB1c2VyX2lkLCB1Lm5pY2tuYW1lLCB1LmF2YXRhcgogICAgICAgICAgIEZST00gY2hhdF9tZXNzYWdlcyBtCiAgICAgICAgICAgSk9JTiB1c2VycyB1IE9OIHUuaWQgPSBtLnVzZXJfaWQKICAgICAgICAgICBXSEVSRSBtLmNsdWJfaWQ9JXMKICAgICAgICAgICBPUkRFUiBCWSBtLmlkIERFU0MKICAgICAgICAgICBMSU1JVCAlcyBPRkZTRVQgJXMiIiIsCiAgICAgICAgKGNsdWJfaWQsIHNpemUsIG9mZnNldCkKICAgICkKICAgICMg57+75Zue5q2j5bqP5pa55L6/5YmN56uv5riy5p+TCiAgICBtc2dzLnJldmVyc2UoKQogICAgcmV0dXJuIHsiY29kZSI6IDAsICJtc2ciOiAib2siLCAiZGF0YSI6IG1zZ3N9CgoKIyA9PT09PT09PT09PT09PSBXZWJTb2NrZXTvvJrlrp7ml7bogYrlpKkgPT09PT09PT09PT09PT0KQHJvdXRlci53ZWJzb2NrZXQoIi93cy9jaGF0L3tjbHViX2lkfSIpCmFzeW5jIGRlZiB3c19jaGF0KHdlYnNvY2tldDogV2ViU29ja2V0LCBjbHViX2lkOiBpbnQpOgogICAgYXdhaXQgd2Vic29ja2V0LmFjY2VwdCgpCgogICAgIyDpibTmnYPvvIjku44gcXVlcnkg6YeM5bimIHVzZXJfaWTvvIznroDljJbniYjvvIkKICAgIHRyeToKICAgICAgICB1c2VyID0gYXdhaXQgd3NfZ2V0X2N1cnJlbnRfdXNlcih3ZWJzb2NrZXQpCiAgICBleGNlcHQgRXhjZXB0aW9uOgogICAgICAgIGF3YWl0IHdlYnNvY2tldC5jbG9zZSgpCiAgICAgICAgcmV0dXJuCgogICAgIyDmo4Dmn6XnsonkuJ3lm6IKICAgIGNsdWIgPSBxdWVyeV9vbmUoIlNFTEVDVCBpZCBGUk9NIGZhbl9jbHVicyBXSEVSRSBpZD0lcyIsIChjbHViX2lkLCkpCiAgICBpZiBub3QgY2x1YjoKICAgICAgICBhd2FpdCB3ZWJzb2NrZXQuY2xvc2UoKQogICAgICAgIHJldHVybgoKICAgICMg5oiQ5ZGY5qCh6aqM77yI566h55CG5ZGY5Y+v6L+b5omA5pyJ77yJCiAgICBpZiB1c2VyWyJyb2xlIl0gIT0gMjoKICAgICAgICBpc19tZW1iZXIgPSBxdWVyeV9vbmUoCiAgICAgICAgICAgICJTRUxFQ1QgaWQgRlJPTSBmYW5fY2x1Yl9tZW1iZXJzIFdIRVJFIGNsdWJfaWQ9JXMgQU5EIHVzZXJfaWQ9JXMiLAogICAgICAgICAgICAoY2x1Yl9pZCwgdXNlclsiaWQiXSkKICAgICAgICApCiAgICAgICAgaWYgbm90IGlzX21lbWJlcjoKICAgICAgICAgICAgYXdhaXQgd2Vic29ja2V0LmNsb3NlKCkKICAgICAgICAgICAgcmV0dXJuCgogICAgIyDliqDlhaXmiL/pl7QKICAgIHJvb20gPSBfZ2V0X29yX2NyZWF0ZV9yb29tKGNsdWJfaWQpCiAgICByb29tLmFkZCh3ZWJzb2NrZXQpCgogICAgdHJ5OgogICAgICAgIHdoaWxlIFRydWU6CiAgICAgICAgICAgIHJhdyA9IGF3YWl0IHdlYnNvY2tldC5yZWNlaXZlX3RleHQoKQogICAgICAgICAgICB0cnk6CiAgICAgICAgICAgICAgICBkYXRhID0ganNvbi5sb2FkcyhyYXcpCiAgICAgICAgICAgIGV4Y2VwdCBFeGNlcHRpb246CiAgICAgICAgICAgICAgICBjb250aW51ZQoKICAgICAgICAgICAgY29udGVudCA9IChkYXRhLmdldCgiY29udGVudCIpIG9yICIiKS5zdHJpcCgpCiAgICAgICAgICAgIGlmIG5vdCBjb250ZW50IG9yIGxlbihjb250ZW50KSA+IDEwMDA6CiAgICAgICAgICAgICAgICBjb250aW51ZQoKICAgICAgICAgICAgIyDokL3lupMKICAgICAgICAgICAgbm93ID0gZGF0ZXRpbWUubm93KCkKICAgICAgICAgICAgbXNnX2lkID0gZXhlY3V0ZV9yZXR1cm5faWQoCiAgICAgICAgICAgICAgICAiIiJJTlNFUlQgSU5UTyBjaGF0X21lc3NhZ2VzIChjbHViX2lkLCB1c2VyX2lkLCBjb250ZW50LCBtc2dfdHlwZSwgY3JlYXRlX3RpbWUpCiAgICAgICAgICAgICAgICAgICBWQUxVRVMgKCVzLCAlcywgJXMsIDEsICVzKSIiIiwKICAgICAgICAgICAgICAgIChjbHViX2lkLCB1c2VyWyJpZCJdLCBjb250ZW50LCBub3cpCiAgICAgICAgICAgICkKCiAgICAgICAgICAgICMg5bm/5pKtCiAgICAgICAgICAgIHBheWxvYWQgPSBqc29uLmR1bXBzKHsKICAgICAgICAgICAgICAgICJ0eXBlIjogIm1lc3NhZ2UiLAogICAgICAgICAgICAgICAgImRhdGEiOiB7CiAgICAgICAgICAgICAgICAgICAgImlkIjogbXNnX2lkLAogICAgICAgICAgICAgICAgICAgICJjb250ZW50IjogY29udGVudCwKICAgICAgICAgICAgICAgICAgICAibXNnX3R5cGUiOiAxLAogICAgICAgICAgICAgICAgICAgICJjcmVhdGVfdGltZSI6IG5vdy5zdHJmdGltZSgiJVktJW0tJWQgJUg6JU06JVMiKSwKICAgICAgICAgICAgICAgICAgICAidXNlcl9pZCI6IHVzZXJbImlkIl0sCiAgICAgICAgICAgICAgICAgICAgIm5pY2tuYW1lIjogdXNlclsibmlja25hbWUiXSwKICAgICAgICAgICAgICAgICAgICAiYXZhdGFyIjogdXNlci5nZXQoImF2YXRhciIpLAogICAgICAgICAgICAgICAgfQogICAgICAgICAgICB9LCBlbnN1cmVfYXNjaWk9RmFsc2UpCgogICAgICAgICAgICBmb3IgY29ubiBpbiBsaXN0KHJvb20pOgogICAgICAgICAgICAgICAgdHJ5OgogICAgICAgICAgICAgICAgICAgIGF3YWl0IGNvbm4uc2VuZF90ZXh0KHBheWxvYWQpCiAgICAgICAgICAgICAgICBleGNlcHQgRXhjZXB0aW9uOgogICAgICAgICAgICAgICAgICAgIHBhc3MKCiAgICBleGNlcHQgV2ViU29ja2V0RGlzY29ubmVjdDoKICAgICAgICBwYXNzCiAgICBmaW5hbGx5OgogICAgICAgIHJvb20uZGlzY2FyZCh3ZWJzb2NrZXQpCiAgICAgICAgaWYgbm90IHJvb206CiAgICAgICAgICAgIF9yb29tcy5wb3AoY2x1Yl9pZCwgTm9uZSkK
+"""
+chat.py —— 历史消息 + WebSocket 实时聊天
+"""
+import asyncio
+import json
+from datetime import datetime
+from typing import Optional
+from fastapi import APIRouter, Depends, HTTPException, Query, WebSocket, WebSocketDisconnect
+from pydantic import BaseModel
+
+from database import query_one, query_all, execute, execute_return_id
+from deps import get_current_user, ws_get_current_user
+
+router = APIRouter(tags=["chat"])
+
+# ============== WebSocket 房间管理（内存版）==============
+# 简化实现：按 club_id 分房间，存 set[WebSocket]
+# 生产环境可以换 Redis Pub/Sub
+_rooms: dict[int, set[WebSocket]] = {}
+
+
+def _get_or_create_room(club_id: int) -> set[WebSocket]:
+    if club_id not in _rooms:
+        _rooms[club_id] = set()
+    return _rooms[club_id]
+
+
+# ============== HTTP：历史消息 ==============
+@router.get("/api/chat/{club_id}/history")
+async def get_history(
+    club_id: int,
+    page: int = Query(1, ge=1),
+    size: int = Query(50, ge=1, le=200),
+    current_user: dict = Depends(get_current_user),
+):
+    """拉取历史消息（需要是粉丝团成员 或 管理员）"""
+    club = query_one("SELECT id FROM fan_clubs WHERE id=%s", (club_id,))
+    if not club:
+        raise HTTPException(status_code=404, detail="粉丝团不存在")
+
+    # 鉴权：管理员可看所有；其他角色必须是成员
+    if current_user["role"] != 2:
+        is_member = query_one(
+            "SELECT id FROM fan_club_members WHERE club_id=%s AND user_id=%s",
+            (club_id, current_user["id"])
+        )
+        if not is_member:
+            raise HTTPException(status_code=403, detail="你不是该粉丝团成员")
+
+    offset = (page - 1) * size
+    msgs = query_all(
+        """SELECT m.id, m.content, m.msg_type, m.create_time,
+                  u.id AS user_id, u.nickname, u.avatar
+           FROM chat_messages m
+           JOIN users u ON u.id = m.user_id
+           WHERE m.club_id=%s
+           ORDER BY m.id DESC
+           LIMIT %s OFFSET %s""",
+        (club_id, size, offset)
+    )
+    # 翻回正序方便前端渲染
+    msgs.reverse()
+    return {"code": 0, "msg": "ok", "data": msgs}
+
+
+# ============== WebSocket：实时聊天 ==============
+@router.websocket("/ws/chat/{club_id}")
+async def ws_chat(websocket: WebSocket, club_id: int):
+    await websocket.accept()
+
+    # 鉴权（从 query 里带 user_id，简化版）
+    try:
+        user = await ws_get_current_user(websocket)
+    except Exception:
+        await websocket.close()
+        return
+
+    # 检查粉丝团
+    club = query_one("SELECT id FROM fan_clubs WHERE id=%s", (club_id,))
+    if not club:
+        await websocket.close()
+        return
+
+    # 成员校验（管理员可进所有）
+    if user["role"] != 2:
+        is_member = query_one(
+            "SELECT id FROM fan_club_members WHERE club_id=%s AND user_id=%s",
+            (club_id, user["id"])
+        )
+        if not is_member:
+            await websocket.close()
+            return
+
+    # 加入房间
+    room = _get_or_create_room(club_id)
+    room.add(websocket)
+
+    try:
+        while True:
+            raw = await websocket.receive_text()
+            try:
+                data = json.loads(raw)
+            except Exception:
+                continue
+
+            content = (data.get("content") or "").strip()
+            if not content or len(content) > 1000:
+                continue
+
+            # 落库
+            now = datetime.now()
+            msg_id = execute_return_id(
+                """INSERT INTO chat_messages (club_id, user_id, content, msg_type, create_time)
+                   VALUES (%s, %s, %s, 1, %s)""",
+                (club_id, user["id"], content, now)
+            )
+
+            # 广播
+            payload = json.dumps({
+                "type": "message",
+                "data": {
+                    "id": msg_id,
+                    "content": content,
+                    "msg_type": 1,
+                    "create_time": now.strftime("%Y-%m-%d %H:%M:%S"),
+                    "user_id": user["id"],
+                    "nickname": user["nickname"],
+                    "avatar": user.get("avatar"),
+                }
+            }, ensure_ascii=False)
+
+            for conn in list(room):
+                try:
+                    await conn.send_text(payload)
+                except Exception:
+                    pass
+
+    except WebSocketDisconnect:
+        pass
+    finally:
+        room.discard(websocket)
+        if not room:
+            _rooms.pop(club_id, None)

@@ -1,1 +1,66 @@
-IyAtKi0gY29kaW5nOiB1dGYtOCAtKi0KIiIiCuS9nOWTgembhiDCtyDkuIDplK7liJ3lp4vljJblm5vkuKrpobnnm67nmoQgTXlTUUwg5pWw5o2u5bqT77yI5bmC562J77yM5Y+v6YeN5aSN5omn6KGM77yJCuWJjee9ruadoeS7tu+8muacrOacuiBNeVNRTCA4LjAg5bey5ZCv5Yqo77yMcm9vdCDlr4bnoIHkuLogMTIzNDU277yI5LiO5ZCE6aG555uu6YWN572u5LiA6Ie077yJCui/kOihjO+8mnB5dGhvbiBpbml0X2RiLnB5CiIiIgppbXBvcnQgaW8KaW1wb3J0IG9zCmltcG9ydCBzdWJwcm9jZXNzCmltcG9ydCBzeXMKCmltcG9ydCBweW15c3FsCgpCQVNFID0gb3MucGF0aC5kaXJuYW1lKG9zLnBhdGguYWJzcGF0aChfX2ZpbGVfXykpCkNGRyA9IGRpY3QoaG9zdD0ibG9jYWxob3N0IiwgcG9ydD0zMzA2LCB1c2VyPSJyb290IiwgcGFzc3dvcmQ9IjEyMzQ1NiIsIGNoYXJzZXQ9InV0ZjhtYjQiKQoKCmRlZiBydW5fc3FsX2ZpbGUocGF0aDogc3RyKToKICAgICIiIuaMieWIhuWPt+WIh+WIhuaJp+ihjCBTUUwg5paH5Lu277yI6L+H5ruk57qv5rOo6YeK6KGM77yJIiIiCiAgICBjZmcgPSBkaWN0KENGRykKICAgIGNvbm4gPSBweW15c3FsLmNvbm5lY3QoKipjZmcpCiAgICBzcWwgPSBpby5vcGVuKHBhdGgsIGVuY29kaW5nPSJ1dGYtOCIpLnJlYWQoKQogICAgd2l0aCBjb25uLmN1cnNvcigpIGFzIGN1cjoKICAgICAgICBmb3Igc3RtdCBpbiBzcWwuc3BsaXQoIjsiKToKICAgICAgICAgICAgbGluZXMgPSBbbCBmb3IgbCBpbiBzdG10LnNwbGl0bGluZXMoKSBpZiBub3QgbC5zdHJpcCgpLnN0YXJ0c3dpdGgoIi0tIildCiAgICAgICAgICAgIHMgPSAiXG4iLmpvaW4obGluZXMpLnN0cmlwKCkKICAgICAgICAgICAgaWYgczoKICAgICAgICAgICAgICAgIGN1ci5leGVjdXRlKHMpCiAgICBjb25uLmNvbW1pdCgpCiAgICBjb25uLmNsb3NlKCkKICAgIHByaW50KGYi4pyFIHtvcy5wYXRoLmJhc2VuYW1lKHBhdGgpfSDmiafooYzlrozmiJAiKQoKCmRlZiBpbml0X2NsdWIoKToKICAgICIiIuekvuWboua0u+WKqOeZu+iusOezu+e7n+ayoeacieeOsOaIkCBTUUwg5paH5Lu277yM6L+Z6YeM5oyJ5YW25Luj56CB5a2X5q615bu65bqT5bu66KGoIiIiCiAgICBjb25uID0gcHlteXNxbC5jb25uZWN0KCoqQ0ZHKQogICAgd2l0aCBjb25uLmN1cnNvcigpIGFzIGN1cjoKICAgICAgICBjdXIuZXhlY3V0ZSgiQ1JFQVRFIERBVEFCQVNFIElGIE5PVCBFWElTVFMgdGVzdF9kYiBERUZBVUxUIENIQVJTRVQgdXRmOG1iNCBDT0xMQVRFIHV0ZjhtYjRfZ2VuZXJhbF9jaSIpCiAgICAgICAgY3VyLmV4ZWN1dGUoIlVTRSB0ZXN0X2RiIikKICAgICAgICBjdXIuZXhlY3V0ZSgiIiIKICAgICAgICAgICAgQ1JFQVRFIFRBQkxFIElGIE5PVCBFWElTVFMgYWN0aXZpdHkgKAogICAgICAgICAgICAgICAgaWQgSU5UIEFVVE9fSU5DUkVNRU5UIFBSSU1BUlkgS0VZLAogICAgICAgICAgICAgICAgYWN0aXZpdHlfbmFtZSBWQVJDSEFSKDEwMCkgTk9UIE5VTEwgQ09NTUVOVCAn5rS75Yqo5ZCN56ewJywKICAgICAgICAgICAgICAgIGFjdGl2aXR5X3R5cGUgVkFSQ0hBUig1MCkgTk9UIE5VTEwgQ09NTUVOVCAn5rS75Yqo57G75Z6LJywKICAgICAgICAgICAgICAgIGpvaW5fbnVtIElOVCBOT1QgTlVMTCBDT01NRU5UICflj4LkuI7kurrmlbAnCiAgICAgICAgICAgICkgRU5HSU5FPUlubm9EQiBERUZBVUxUIENIQVJTRVQ9dXRmOG1iNCBDT01NRU5UPSfnpL7lm6LmtLvliqjooagnCiAgICAgICAgIiIiKQogICAgY29ubi5jb21taXQoKQogICAgY29ubi5jbG9zZSgpCiAgICBwcmludCgi4pyFIHRlc3RfZGLvvIjnpL7lm6LmtLvliqjvvInliJ3lp4vljJblrozmiJAiKQoKCmlmIF9fbmFtZV9fID09ICJfX21haW5fXyI6CiAgICBwcmludCgiPT09PT0gMS80IOibi+ezlee6v+S4iuWVhuWfjiBjYWtlc2hvcCA9PT09PSIpCiAgICBzdWJwcm9jZXNzLnJ1bihbc3lzLmV4ZWN1dGFibGUsIG9zLnBhdGguam9pbihCQVNFLCAiYXBwcyIsICJtYWxsIiwgImJhY2tlbmQiLCAiZGIiLCAiaW5pdF9kYi5weSIpXSwgY2hlY2s9VHJ1ZSkKCiAgICBwcmludCgiPT09PT0gMi80IOaLm+i0ouiusOi0piBhY2NvdW50X2RiID09PT09IikKICAgIHJ1bl9zcWxfZmlsZShvcy5wYXRoLmpvaW4oQkFTRSwgImFwcHMiLCAiYWNjb3VudCIsICLlu7rooahTUUwuc3FsIikpCgogICAgcHJpbnQoIj09PT09IDMvNCDnpL7lm6LmtLvliqjnmbvorrAgdGVzdF9kYiA9PT09PSIpCiAgICBpbml0X2NsdWIoKQoKICAgIHByaW50KCI9PT09PSA0LzQg5pif5Z2eIFN0YXJEb2NrIHN0YXJkb2NrID09PT09IikKICAgIHJ1bl9zcWxfZmlsZShvcy5wYXRoLmpvaW4oQkFTRSwgImFwcHMiLCAic3RhcmRvY2siLCAiYmFja2VuZCIsICJpbml0LnNxbCIpKQoKICAgIHByaW50KCJcbvCfjokg5Zub5Liq6aG555uu5pWw5o2u5bqT5YWo6YOo5bCx57uq77yM5Y+v6L+Q6KGMIHB5dGhvbiBtYWluLnB5IOWQr+WKqOS9nOWTgembhiIpCg==
+# -*- coding: utf-8 -*-
+"""
+作品集 · 一键初始化四个项目的 MySQL 数据库（幂等，可重复执行）
+前置条件：本机 MySQL 8.0 已启动，root 密码为 123456（与各项目配置一致）
+运行：python init_db.py
+"""
+import io
+import os
+import subprocess
+import sys
+
+import pymysql
+
+BASE = os.path.dirname(os.path.abspath(__file__))
+CFG = dict(host="localhost", port=3306, user="root", password="123456", charset="utf8mb4")
+
+
+def run_sql_file(path: str):
+    """按分号切分执行 SQL 文件（过滤纯注释行）"""
+    cfg = dict(CFG)
+    conn = pymysql.connect(**cfg)
+    sql = io.open(path, encoding="utf-8").read()
+    with conn.cursor() as cur:
+        for stmt in sql.split(";"):
+            lines = [l for l in stmt.splitlines() if not l.strip().startswith("--")]
+            s = "\n".join(lines).strip()
+            if s:
+                cur.execute(s)
+    conn.commit()
+    conn.close()
+    print(f"✅ {os.path.basename(path)} 执行完成")
+
+
+def init_club():
+    """社团活动登记系统没有现成 SQL 文件，这里按其代码字段建库建表"""
+    conn = pymysql.connect(**CFG)
+    with conn.cursor() as cur:
+        cur.execute("CREATE DATABASE IF NOT EXISTS test_db DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci")
+        cur.execute("USE test_db")
+        cur.execute("""
+            CREATE TABLE IF NOT EXISTS activity (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                activity_name VARCHAR(100) NOT NULL COMMENT '活动名称',
+                activity_type VARCHAR(50) NOT NULL COMMENT '活动类型',
+                join_num INT NOT NULL COMMENT '参与人数'
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='社团活动表'
+        """)
+    conn.commit()
+    conn.close()
+    print("✅ test_db（社团活动）初始化完成")
+
+
+if __name__ == "__main__":
+    print("===== 1/4 蛋糕线上商城 cakeshop =====")
+    subprocess.run([sys.executable, os.path.join(BASE, "apps", "mall", "backend", "db", "init_db.py")], check=True)
+
+    print("===== 2/4 招财记账 account_db =====")
+    run_sql_file(os.path.join(BASE, "apps", "account", "建表SQL.sql"))
+
+    print("===== 3/4 社团活动登记 test_db =====")
+    init_club()
+
+    print("===== 4/4 星坞 StarDock stardock =====")
+    run_sql_file(os.path.join(BASE, "apps", "stardock", "backend", "init.sql"))
+
+    print("\n🎉 四个项目数据库全部就绪，可运行 python main.py 启动作品集")

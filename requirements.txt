@@ -1,1 +1,5 @@
-ZmFzdGFwaQp1dmljb3JuCnB5bXlzcWwKREJVdGlscwpweXRob24tbXVsdGlwYXJ0Cg==
+fastapi
+uvicorn
+pymysql
+DBUtils
+python-multipart

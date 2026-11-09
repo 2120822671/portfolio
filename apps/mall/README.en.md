@@ -1,1 +1,36 @@
-IyDom4vns5Xnur/kuIrllYbln44KCiMjIyMgRGVzY3JpcHRpb24K6JuL57OV57q/5LiK5ZWG5Z+OCgojIyMjIFNvZnR3YXJlIEFyY2hpdGVjdHVyZQpTb2Z0d2FyZSBhcmNoaXRlY3R1cmUgZGVzY3JpcHRpb24KCiMjIyMgSW5zdGFsbGF0aW9uCgoxLiAgeHh4eAoyLiAgeHh4eAozLiAgeHh4eAoKIyMjIyBJbnN0cnVjdGlvbnMKCjEuICB4eHh4CjIuICB4eHh4CjMuICB4eHh4CgojIyMjIENvbnRyaWJ1dGlvbgoKMS4gIEZvcmsgdGhlIHJlcG9zaXRvcnkKMi4gIENyZWF0ZSBGZWF0X3h4eCBicmFuY2gKMy4gIENvbW1pdCB5b3VyIGNvZGUKNC4gIENyZWF0ZSBQdWxsIFJlcXVlc3QKCgojIyMjIEdpdGVlIEZlYXR1cmUKCjEuICBZb3UgY2FuIHVzZSBSZWFkbWVcX1hYWC5tZCB0byBzdXBwb3J0IGRpZmZlcmVudCBsYW5ndWFnZXMsIHN1Y2ggYXMgUmVhZG1lXF9lbi5tZCwgUmVhZG1lXF96aC5tZAoyLiAgR2l0ZWUgYmxvZyBbYmxvZy5naXRlZS5jb21dKGh0dHBzOi8vYmxvZy5naXRlZS5jb20pCjMuICBFeHBsb3JlIG9wZW4gc291cmNlIHByb2plY3QgW2h0dHBzOi8vZ2l0ZWUuY29tL2V4cGxvcmVdKGh0dHBzOi8vZ2l0ZWUuY29tL2V4cGxvcmUpCjQuICBUaGUgbW9zdCB2YWx1YWJsZSBvcGVuIHNvdXJjZSBwcm9qZWN0IFtHVlBdKGh0dHBzOi8vZ2l0ZWUuY29tL2d2cCkKNS4gIFRoZSBtYW51YWwgb2YgR2l0ZWUgW2h0dHBzOi8vZ2l0ZWUuY29tL2hlbHBdKGh0dHBzOi8vZ2l0ZWUuY29tL2hlbHApCjYuICBUaGUgbW9zdCBwb3B1bGFyIG1lbWJlcnMgIFtodHRwczovL2dpdGVlLmNvbS9naXRlZS1zdGFycy9dKGh0dHBzOi8vZ2l0ZWUuY29tL2dpdGVlLXN0YXJzLykK
+# 蛋糕线上商城
+
+#### Description
+蛋糕线上商城
+
+#### Software Architecture
+Software architecture description
+
+#### Installation
+
+1.  xxxx
+2.  xxxx
+3.  xxxx
+
+#### Instructions
+
+1.  xxxx
+2.  xxxx
+3.  xxxx
+
+#### Contribution
+
+1.  Fork the repository
+2.  Create Feat_xxx branch
+3.  Commit your code
+4.  Create Pull Request
+
+
+#### Gitee Feature
+
+1.  You can use Readme\_XXX.md to support different languages, such as Readme\_en.md, Readme\_zh.md
+2.  Gitee blog [blog.gitee.com](https://blog.gitee.com)
+3.  Explore open source project [https://gitee.com/explore](https://gitee.com/explore)
+4.  The most valuable open source project [GVP](https://gitee.com/gvp)
+5.  The manual of Gitee [https://gitee.com/help](https://gitee.com/help)
+6.  The most popular members  [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)

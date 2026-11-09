@@ -1,1 +1,112 @@
-IiIiCmRhdGFiYXNlLnB5IOKAlOKAlCDmlbDmja7lupPov57mjqXmsaAgKyDnu5/kuIDlt6Xlhbflh73mlbAKVjIg5Yqg5Zu654mI77ya6L+e5o6l5rGg44CB5Y+C5pWw57uR5a6a44CB5LqL5Yqh5L+d5oqkCiIiIgppbXBvcnQgcHlteXNxbApmcm9tIGRidXRpbHMucG9vbGVkX2RiIGltcG9ydCBQb29sZWREQgoKIyA9PT09PT09PT09PT09PSDov57mjqXmsaDphY3nva4gPT09PT09PT09PT09PT0KREJfQ09ORklHID0gewogICAgImhvc3QiOiAiMTI3LjAuMC4xIiwKICAgICJwb3J0IjogMzMwNiwKICAgICJ1c2VyIjogInJvb3QiLAogICAgInBhc3N3b3JkIjogIjEyMzQ1NiIsCiAgICAiZGF0YWJhc2UiOiAic3RhcmRvY2siLAogICAgImNoYXJzZXQiOiAidXRmOG1iNCIsCiAgICAiY3Vyc29yY2xhc3MiOiBweW15c3FsLmN1cnNvcnMuRGljdEN1cnNvciwKICAgICJtYXhjb25uZWN0aW9ucyI6IDIwLCAgICAgIyDmnIDlpKfov57mjqXmlbAKICAgICJtaW5jYWNoZWQiOiAyLCAgICAgICAgICAgIyDliJ3lp4vnqbrpl7Lov57mjqXmlbAKICAgICJtYXhjYWNoZWQiOiAxMCwgICAgICAgICAgIyDmnIDlpKfnqbrpl7Lov57mjqXmlbAKICAgICJibG9ja2luZyI6IFRydWUsICAgICAgICAgIyDov57mjqXmsaDogJflsL3ml7bpmLvloZ7nrYnlvoUKfQoKIyDmh5LliqDovb3vvJrpgb/lhY0gaW1wb3J0IOaXtuWwsei/nuaOpeaVsOaNruW6kwpfcG9vbDogUG9vbGVkREIgfCBOb25lID0gTm9uZQoKCmRlZiBnZXRfcG9vbCgpIC0+IFBvb2xlZERCOgogICAgIiIi6I635Y+W6L+e5o6l5rGg5Y2V5L6LIiIiCiAgICBnbG9iYWwgX3Bvb2wKICAgIGlmIF9wb29sIGlzIE5vbmU6CiAgICAgICAgX3Bvb2wgPSBQb29sZWREQigKICAgICAgICAgICAgY3JlYXRvcj1weW15c3FsLAogICAgICAgICAgICBtYXhjb25uZWN0aW9ucz1EQl9DT05GSUdbIm1heGNvbm5lY3Rpb25zIl0sCiAgICAgICAgICAgIG1pbmNhY2hlZD1EQl9DT05GSUdbIm1pbmNhY2hlZCJdLAogICAgICAgICAgICBtYXhjYWNoZWQ9REJfQ09ORklHWyJtYXhjYWNoZWQiXSwKICAgICAgICAgICAgYmxvY2tpbmc9REJfQ09ORklHWyJibG9ja2luZyJdLAogICAgICAgICAgICBob3N0PURCX0NPTkZJR1siaG9zdCJdLAogICAgICAgICAgICBwb3J0PURCX0NPTkZJR1sicG9ydCJdLAogICAgICAgICAgICB1c2VyPURCX0NPTkZJR1sidXNlciJdLAogICAgICAgICAgICBwYXNzd29yZD1EQl9DT05GSUdbInBhc3N3b3JkIl0sCiAgICAgICAgICAgIGRhdGFiYXNlPURCX0NPTkZJR1siZGF0YWJhc2UiXSwKICAgICAgICAgICAgY2hhcnNldD1EQl9DT05GSUdbImNoYXJzZXQiXSwKICAgICAgICAgICAgY3Vyc29yY2xhc3M9REJfQ09ORklHWyJjdXJzb3JjbGFzcyJdLAogICAgICAgICkKICAgIHJldHVybiBfcG9vbAoKCmRlZiBfZ2V0X2Nvbm4oKToKICAgICIiIuS7jui/nuaOpeaxoOWPluS4gOS4qui/nuaOpSIiIgogICAgcmV0dXJuIGdldF9wb29sKCkuY29ubmVjdGlvbigpCgoKIyA9PT09PT09PT09PT09PSDnu5/kuIDlt6Xlhbflh73mlbAgPT09PT09PT09PT09PT0KCmRlZiBxdWVyeV9vbmUoc3FsOiBzdHIsIGFyZ3M9Tm9uZSkgLT4gZGljdCB8IE5vbmU6CiAgICAiIiLmn6XljZXmnaHvvIzov5Tlm54gZGljdCDmiJYgTm9uZSIiIgogICAgY29ubiA9IF9nZXRfY29ubigpCiAgICB0cnk6CiAgICAgICAgd2l0aCBjb25uLmN1cnNvcigpIGFzIGN1cjoKICAgICAgICAgICAgY3VyLmV4ZWN1dGUoc3FsLCBhcmdzKQogICAgICAgICAgICByZXR1cm4gY3VyLmZldGNob25lKCkKICAgIGZpbmFsbHk6CiAgICAgICAgY29ubi5jbG9zZSgpCgoKZGVmIHF1ZXJ5X2FsbChzcWw6IHN0ciwgYXJncz1Ob25lKSAtPiBsaXN0W2RpY3RdOgogICAgIiIi5p+l5aSa5p2h77yM6L+U5ZueIGxpc3RbZGljdF0iIiIKICAgIGNvbm4gPSBfZ2V0X2Nvbm4oKQogICAgdHJ5OgogICAgICAgIHdpdGggY29ubi5jdXJzb3IoKSBhcyBjdXI6CiAgICAgICAgICAgIGN1ci5leGVjdXRlKHNxbCwgYXJncykKICAgICAgICAgICAgcmV0dXJuIGN1ci5mZXRjaGFsbCgpCiAgICBmaW5hbGx5OgogICAgICAgIGNvbm4uY2xvc2UoKQoKCmRlZiBleGVjdXRlKHNxbDogc3RyLCBhcmdzPU5vbmUpIC0+IGludDoKICAgICIiIgogICAg5omn6KGM5YaZ5pON5L2c77yISU5TRVJUIC8gVVBEQVRFIC8gREVMRVRF77yJCiAgICDlhoXpg6ggdHJ5LWV4Y2VwdO+8muW8guW4uCByb2xsYmFja++8jOato+W4uCBjb21taXQKICAgIOi/lOWbnuWPl+W9seWTjeihjOaVsAogICAgIiIiCiAgICBjb25uID0gX2dldF9jb25uKCkKICAgIHRyeToKICAgICAgICB3aXRoIGNvbm4uY3Vyc29yKCkgYXMgY3VyOgogICAgICAgICAgICBhZmZlY3RlZCA9IGN1ci5leGVjdXRlKHNxbCwgYXJncykKICAgICAgICBjb25uLmNvbW1pdCgpCiAgICAgICAgcmV0dXJuIGFmZmVjdGVkCiAgICBleGNlcHQgRXhjZXB0aW9uOgogICAgICAgIGNvbm4ucm9sbGJhY2soKQogICAgICAgIHJhaXNlCiAgICBmaW5hbGx5OgogICAgICAgIGNvbm4uY2xvc2UoKQoKCmRlZiBleGVjdXRlX3JldHVybl9pZChzcWw6IHN0ciwgYXJncz1Ob25lKSAtPiBpbnQ6CiAgICAiIiIKICAgIOaPkuWFpeivreWPpe+8jOi/lOWbnuiHquWiniBJRAogICAg5ZCM5qC35YGa5LqL5Yqh5L+d5oqkCiAgICAiIiIKICAgIGNvbm4gPSBfZ2V0X2Nvbm4oKQogICAgdHJ5OgogICAgICAgIHdpdGggY29ubi5jdXJzb3IoKSBhcyBjdXI6CiAgICAgICAgICAgIGN1ci5leGVjdXRlKHNxbCwgYXJncykKICAgICAgICAgICAgbGFzdF9pZCA9IGN1ci5sYXN0cm93aWQKICAgICAgICBjb25uLmNvbW1pdCgpCiAgICAgICAgcmV0dXJuIGxhc3RfaWQKICAgIGV4Y2VwdCBFeGNlcHRpb246CiAgICAgICAgY29ubi5yb2xsYmFjaygpCiAgICAgICAgcmFpc2UKICAgIGZpbmFsbHk6CiAgICAgICAgY29ubi5jbG9zZSgpCg==
+"""
+database.py —— 数据库连接池 + 统一工具函数
+V2 加固版：连接池、参数绑定、事务保护
+"""
+import pymysql
+from dbutils.pooled_db import PooledDB
+
+# ============== 连接池配置 ==============
+DB_CONFIG = {
+    "host": "127.0.0.1",
+    "port": 3306,
+    "user": "root",
+    "password": "123456",
+    "database": "stardock",
+    "charset": "utf8mb4",
+    "cursorclass": pymysql.cursors.DictCursor,
+    "maxconnections": 20,     # 最大连接数
+    "mincached": 2,           # 初始空闲连接数
+    "maxcached": 10,          # 最大空闲连接数
+    "blocking": True,         # 连接池耗尽时阻塞等待
+}
+
+# 懒加载：避免 import 时就连接数据库
+_pool: PooledDB | None = None
+
+
+def get_pool() -> PooledDB:
+    """获取连接池单例"""
+    global _pool
+    if _pool is None:
+        _pool = PooledDB(
+            creator=pymysql,
+            maxconnections=DB_CONFIG["maxconnections"],
+            mincached=DB_CONFIG["mincached"],
+            maxcached=DB_CONFIG["maxcached"],
+            blocking=DB_CONFIG["blocking"],
+            host=DB_CONFIG["host"],
+            port=DB_CONFIG["port"],
+            user=DB_CONFIG["user"],
+            password=DB_CONFIG["password"],
+            database=DB_CONFIG["database"],
+            charset=DB_CONFIG["charset"],
+            cursorclass=DB_CONFIG["cursorclass"],
+        )
+    return _pool
+
+
+def _get_conn():
+    """从连接池取一个连接"""
+    return get_pool().connection()
+
+
+# ============== 统一工具函数 ==============
+
+def query_one(sql: str, args=None) -> dict | None:
+    """查单条，返回 dict 或 None"""
+    conn = _get_conn()
+    try:
+        with conn.cursor() as cur:
+            cur.execute(sql, args)
+            return cur.fetchone()
+    finally:
+        conn.close()
+
+
+def query_all(sql: str, args=None) -> list[dict]:
+    """查多条，返回 list[dict]"""
+    conn = _get_conn()
+    try:
+        with conn.cursor() as cur:
+            cur.execute(sql, args)
+            return cur.fetchall()
+    finally:
+        conn.close()
+
+
+def execute(sql: str, args=None) -> int:
+    """
+    执行写操作（INSERT / UPDATE / DELETE）
+    内部 try-except：异常 rollback，正常 commit
+    返回受影响行数
+    """
+    conn = _get_conn()
+    try:
+        with conn.cursor() as cur:
+            affected = cur.execute(sql, args)
+        conn.commit()
+        return affected
+    except Exception:
+        conn.rollback()
+        raise
+    finally:
+        conn.close()
+
+
+def execute_return_id(sql: str, args=None) -> int:
+    """
+    插入语句，返回自增 ID
+    同样做事务保护
+    """
+    conn = _get_conn()
+    try:
+        with conn.cursor() as cur:
+            cur.execute(sql, args)
+            last_id = cur.lastrowid
+        conn.commit()
+        return last_id
+    except Exception:
+        conn.rollback()
+        raise
+    finally:
+        conn.close()

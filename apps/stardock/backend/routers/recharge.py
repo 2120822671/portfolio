@@ -1,1 +1,197 @@
-IiIiCnJlY2hhcmdlLnB5IOKAlOKAlCDmqKHmi5/lhYXlgLzns7vnu58KLSDkuInnp43mlrnlvI/vvJrlvq7kv6EgLyDmlK/ku5jlrp0gLyDlhZHmjaLnoIEKLSDlvq7kv6Ev5pSv5LuY5a6d77ya55Sf5oiQ6K6i5Y2VIOKGkiDmqKHmi5/mlK/ku5jmiJDlip/vvIjngrki56uL5Y2z5pSv5LuYIuWNs+WIsOi0pu+8iQotIOWFkeaNouegge+8mui+k+WFpeeggeWQjueri+WNs+WIsOi0pgoiIiIKaW1wb3J0IHJhbmRvbQppbXBvcnQgc3RyaW5nCmZyb20gZGF0ZXRpbWUgaW1wb3J0IGRhdGV0aW1lCmZyb20gZmFzdGFwaSBpbXBvcnQgQVBJUm91dGVyLCBEZXBlbmRzLCBIVFRQRXhjZXB0aW9uLCBRdWVyeQpmcm9tIHB5ZGFudGljIGltcG9ydCBCYXNlTW9kZWwKZnJvbSB0eXBpbmcgaW1wb3J0IE9wdGlvbmFsCgpmcm9tIGRhdGFiYXNlIGltcG9ydCBxdWVyeV9vbmUsIHF1ZXJ5X2FsbCwgZXhlY3V0ZSwgZXhlY3V0ZV9yZXR1cm5faWQKZnJvbSBkZXBzIGltcG9ydCBnZXRfY3VycmVudF91c2VyLCByZXF1aXJlX3JvbGUKCnJvdXRlciA9IEFQSVJvdXRlcihwcmVmaXg9Ii9hcGkvcmVjaGFyZ2UiLCB0YWdzPVsicmVjaGFyZ2UiXSkKCgojID09PT09PT09PT09PT09IOmihOe9ruWFkeaNouegge+8iOaooeaLn+i/kOiQpeWPkeaUvu+8iT09PT09PT09PT09PT09CiMg55yf5a6e6aG555uu5bqU6K+l5a2Y5pWw5o2u5bqT5YGa5qC46ZSA77yM6L+Z6YeM5YGa5YaF5a2Y5a2X5YW4ICsg5bey5L2/55So6ZuG5ZCICl9WQUxJRF9DT0RFUyA9IHsKICAgICJTVEFSMTAwMCI6IDEwMDAsCiAgICAiU1RBUjUwMDAiOiA1MDAwLAogICAgIlNUQVIxMDAwMCI6IDEwMDAwLAogICAgIlNUQVJfTkVXIjogIDIwMDAsICAjIOaWsOeUqOaIt+ekvOWMhQogICAgIkxVTkFfRkFOIjogMzAwMCwgICAjIEx1bmHnsonkuJ3lm6LkuJPlsZ4KfQpfVVNFRF9DT0RFUzogc2V0W3N0cl0gPSBzZXQoKQoKCiMgPT09PT09PT09PT09PT0g5aWX6aSQ6YWN572u77yI5YmN56uv5Lmf55So77yJPT09PT09PT09PT09PT0KUkVDSEFSR0VfUExBTlMgPSBbCiAgICB7ImlkIjogMSwgIm5hbWUiOiAi5paw5omL56S85YyFIiwgICJhbW91bnQiOiAxMDAwLCAicHJpY2UiOiAxMCwgICJib251cyI6IDB9LAogICAgeyJpZCI6IDIsICJuYW1lIjogIue7j+WFuOWll+mkkCIsICAiYW1vdW50IjogMzAwMCwgInByaWNlIjogMjUsICAiYm9udXMiOiAwfSwKICAgIHsiaWQiOiAzLCAibmFtZSI6ICLng63pl6jlpZfppJAiLCAgImFtb3VudCI6IDUwMDAsICJwcmljZSI6IDQ4LCAgImJvbnVzIjogMjAwfSwKICAgIHsiaWQiOiA0LCAibmFtZSI6ICLlsIrkuqvlpZfppJAiLCAgImFtb3VudCI6IDEwMDAwLCJwcmljZSI6IDg4LCAgImJvbnVzIjogNjAwfSwKICAgIHsiaWQiOiA1LCAibmFtZSI6ICLkvKDor7TlpZfppJAiLCAgImFtb3VudCI6IDMwMDAwLCJwcmljZSI6IDIzOCwgImJvbnVzIjogMzAwMH0sCl0KCgojID09PT09PT09PT09PT09IFNjaGVtYSA9PT09PT09PT09PT09PQpjbGFzcyBDcmVhdGVPcmRlckJvZHkoQmFzZU1vZGVsKToKICAgIHBsYW5faWQ6IGludCAgICAgICAgIyDlpZfppJAgaWQKICAgIHBheV90eXBlOiBpbnQgICAgICAgIyAx5b6u5L+hLzLmlK/ku5jlrp0KCgpjbGFzcyBTaW11bGF0ZVBheUJvZHkoQmFzZU1vZGVsKToKICAgIG9yZGVyX25vOiBzdHIKCgpjbGFzcyBSZWRlZW1Cb2R5KEJhc2VNb2RlbCk6CiAgICBjb2RlOiBzdHIKCgojID09PT09PT09PT09PT09IOW3peWFtyA9PT09PT09PT09PT09PQpkZWYgX2dlbl9vcmRlcl9ubygpIC0+IHN0cjoKICAgIHRzID0gZGF0ZXRpbWUubm93KCkuc3RyZnRpbWUoIiVZJW0lZCVIJU0lUyIpCiAgICByYW5kID0gIiIuam9pbihyYW5kb20uY2hvaWNlcyhzdHJpbmcuZGlnaXRzLCBrPTYpKQogICAgcmV0dXJuIGYiU0R7dHN9e3JhbmR9IgoKCmRlZiBfYWRkX3Njb3JlKHVzZXJfaWQ6IGludCwgYW1vdW50OiBpbnQsIHJlYXNvbjogc3RyKSAtPiBOb25lOgogICAgIiIi57uZ55So5oi35Yqg56ev5YiG77yI5bim5pel5b+X77yJIiIiCiAgICBleGVjdXRlKCJVUERBVEUgdXNlcnMgU0VUIHNjb3JlID0gc2NvcmUgKyAlcyBXSEVSRSBpZD0lcyIsIChhbW91bnQsIHVzZXJfaWQpKQoKCiMgPT09PT09PT09PT09PT0g5o6l5Y+jID09PT09PT09PT09PT09CkByb3V0ZXIuZ2V0KCIvcGxhbnMiKQphc3luYyBkZWYgZ2V0X3BsYW5zKCk6CiAgICAiIiLliY3nq6/nlKjnmoTlpZfppJDliJfooajvvIjnuq/pnZnmgIHvvIzkuI3pnIDopoHpibTmnYPvvIkiIiIKICAgIHJldHVybiB7ImNvZGUiOiAwLCAibXNnIjogIm9rIiwgImRhdGEiOiBSRUNIQVJHRV9QTEFOU30KCgpAcm91dGVyLnBvc3QoIi9vcmRlciIpCmFzeW5jIGRlZiBjcmVhdGVfb3JkZXIoYm9keTogQ3JlYXRlT3JkZXJCb2R5LCBjdXJyZW50X3VzZXI6IGRpY3QgPSBEZXBlbmRzKGdldF9jdXJyZW50X3VzZXIpKToKICAgICIiIuWIm+W7uuWFheWAvOiuouWNlSIiIgogICAgcGxhbiA9IG5leHQoKHAgZm9yIHAgaW4gUkVDSEFSR0VfUExBTlMgaWYgcFsiaWQiXSA9PSBib2R5LnBsYW5faWQpLCBOb25lKQogICAgaWYgbm90IHBsYW46CiAgICAgICAgcmFpc2UgSFRUUEV4Y2VwdGlvbihzdGF0dXNfY29kZT00MDAsIGRldGFpbD0i5aWX6aSQ5LiN5a2Y5ZyoIikKICAgIGlmIGJvZHkucGF5X3R5cGUgbm90IGluICgxLCAyKToKICAgICAgICByYWlzZSBIVFRQRXhjZXB0aW9uKHN0YXR1c19jb2RlPTQwMCwgZGV0YWlsPSJwYXlfdHlwZSDlj6rog73mmK8gMSDmiJYgMiIpCgogICAgb3JkZXJfbm8gPSBfZ2VuX29yZGVyX25vKCkKICAgICMgYW1vdW50ID0g5Z+656GAICsg6LWg6YCBCiAgICB0b3RhbCA9IHBsYW5bImFtb3VudCJdICsgcGxhblsiYm9udXMiXQogICAgZXhlY3V0ZV9yZXR1cm5faWQoCiAgICAgICAgIiIiSU5TRVJUIElOVE8gcmVjaGFyZ2Vfb3JkZXJzIChvcmRlcl9ubywgdXNlcl9pZCwgYW1vdW50LCBwYXlfdHlwZSwgc3RhdHVzLCBjcmVhdGVfdGltZSkKICAgICAgICAgICBWQUxVRVMgKCVzLCAlcywgJXMsICVzLCAwLCAlcykiIiIsCiAgICAgICAgKG9yZGVyX25vLCBjdXJyZW50X3VzZXJbImlkIl0sIHRvdGFsLCBib2R5LnBheV90eXBlLCBkYXRldGltZS5ub3coKSkKICAgICkKICAgIHBheV9uYW1lcyA9IHsxOiAi5b6u5L+h5pSv5LuYIiwgMjogIuaUr+S7mOWunSJ9CiAgICByZXR1cm4gewogICAgICAgICJjb2RlIjogMCwgIm1zZyI6ICLorqLljZXliJvlu7rmiJDlip8iLAogICAgICAgICJkYXRhIjogewogICAgICAgICAgICAib3JkZXJfbm8iOiBvcmRlcl9ubywKICAgICAgICAgICAgImFtb3VudCI6IHRvdGFsLAogICAgICAgICAgICAicGxhbl9uYW1lIjogcGxhblsibmFtZSJdLAogICAgICAgICAgICAicGF5X25hbWUiOiBwYXlfbmFtZXNbYm9keS5wYXlfdHlwZV0sCiAgICAgICAgICAgICJwcmljZSI6IHBsYW5bInByaWNlIl0sCiAgICAgICAgfQogICAgfQoKCkByb3V0ZXIucG9zdCgiL3BheSIpCmFzeW5jIGRlZiBzaW11bGF0ZV9wYXkoYm9keTogU2ltdWxhdGVQYXlCb2R5LCBjdXJyZW50X3VzZXI6IGRpY3QgPSBEZXBlbmRzKGdldF9jdXJyZW50X3VzZXIpKToKICAgICIiIuaooeaLn+aUr+S7mOaIkOWKnyDigJTigJQg5YWF5YC85Yiw6LSmIiIiCiAgICBvcmRlciA9IHF1ZXJ5X29uZSgKICAgICAgICAiU0VMRUNUICogRlJPTSByZWNoYXJnZV9vcmRlcnMgV0hFUkUgb3JkZXJfbm89JXMgQU5EIHVzZXJfaWQ9JXMiLAogICAgICAgIChib2R5Lm9yZGVyX25vLCBjdXJyZW50X3VzZXJbImlkIl0pCiAgICApCiAgICBpZiBub3Qgb3JkZXI6CiAgICAgICAgcmFpc2UgSFRUUEV4Y2VwdGlvbihzdGF0dXNfY29kZT00MDQsIGRldGFpbD0i6K6i5Y2V5LiN5a2Y5ZyoIikKICAgIGlmIG9yZGVyWyJzdGF0dXMiXSA9PSAxOgogICAgICAgIHJhaXNlIEhUVFBFeGNlcHRpb24oc3RhdHVzX2NvZGU9NDAwLCBkZXRhaWw9IuiuouWNleW3suaUr+S7mCIpCiAgICBpZiBvcmRlclsic3RhdHVzIl0gPT0gMjoKICAgICAgICByYWlzZSBIVFRQRXhjZXB0aW9uKHN0YXR1c19jb2RlPTQwMCwgZGV0YWlsPSLorqLljZXlt7Llj5bmtogiKQoKICAgICMg5qCH6K6w6K6i5Y2V5bey5pSv5LuYICsg57uZ55So5oi35Yqg56ev5YiGCiAgICBleGVjdXRlKCJVUERBVEUgcmVjaGFyZ2Vfb3JkZXJzIFNFVCBzdGF0dXM9MSwgcGF5X3RpbWU9JXMgV0hFUkUgaWQ9JXMiLCAoZGF0ZXRpbWUubm93KCksIG9yZGVyWyJpZCJdKSkKICAgIF9hZGRfc2NvcmUoY3VycmVudF91c2VyWyJpZCJdLCBvcmRlclsiYW1vdW50Il0sICLlhYXlgLzliLDotKYiKQoKICAgICMg5p+l5pyA5paw5L2Z6aKd77yI5YmN56uv5LiN55So5YaN6aKd5aSW6LCDIC9hcGkvYXV0aC9tZe+8iQogICAgdXNlcl9ub3cgPSBxdWVyeV9vbmUoIlNFTEVDVCBzY29yZSBGUk9NIHVzZXJzIFdIRVJFIGlkPSVzIiwgKGN1cnJlbnRfdXNlclsiaWQiXSwpKQoKICAgIHJldHVybiB7CiAgICAgICAgImNvZGUiOiAwLCAibXNnIjogZiLlhYXlgLzmiJDlip/vvIHliLDotKYge29yZGVyWydhbW91bnQnXX0g56ev5YiGIiwKICAgICAgICAiZGF0YSI6IHsKICAgICAgICAgICAgImFtb3VudCI6IG9yZGVyWyJhbW91bnQiXSwKICAgICAgICAgICAgInJlbWFpbl9iYWxhbmNlIjogdXNlcl9ub3dbInNjb3JlIl0sCiAgICAgICAgfQogICAgfQoKCkByb3V0ZXIucG9zdCgiL3JlZGVlbSIpCmFzeW5jIGRlZiByZWRlZW0oYm9keTogUmVkZWVtQm9keSwgY3VycmVudF91c2VyOiBkaWN0ID0gRGVwZW5kcyhnZXRfY3VycmVudF91c2VyKSk6CiAgICAiIiLlhZHmjaLnoIHlhYXlgLwiIiIKICAgIGNvZGUgPSBib2R5LmNvZGUuc3RyaXAoKS51cHBlcigpCiAgICBpZiBjb2RlIGluIF9VU0VEX0NPREVTOgogICAgICAgIHJhaXNlIEhUVFBFeGNlcHRpb24oc3RhdHVzX2NvZGU9NDAwLCBkZXRhaWw9IuWFkeaNoueggeW3suiiq+S9v+eUqCIpCiAgICBpZiBjb2RlIG5vdCBpbiBfVkFMSURfQ09ERVM6CiAgICAgICAgcmFpc2UgSFRUUEV4Y2VwdGlvbihzdGF0dXNfY29kZT00MDAsIGRldGFpbD0i5YWR5o2i56CB5peg5pWIIikKCiAgICBhbW91bnQgPSBfVkFMSURfQ09ERVNbY29kZV0KICAgIF9VU0VEX0NPREVTLmFkZChjb2RlKQoKICAgICMg5YaZ5LiA5p2h6K6i5Y2V6K6w5b2V5L6/5LqO6L+96LiqCiAgICBleGVjdXRlX3JldHVybl9pZCgKICAgICAgICAiIiJJTlNFUlQgSU5UTyByZWNoYXJnZV9vcmRlcnMgKG9yZGVyX25vLCB1c2VyX2lkLCBhbW91bnQsIHBheV90eXBlLCBwYXlfY29kZSwgc3RhdHVzLCBjcmVhdGVfdGltZSwgcGF5X3RpbWUpCiAgICAgICAgICAgVkFMVUVTICglcywgJXMsICVzLCAzLCAlcywgMSwgJXMsICVzKSIiIiwKICAgICAgICAoX2dlbl9vcmRlcl9ubygpLCBjdXJyZW50X3VzZXJbImlkIl0sIGFtb3VudCwgY29kZSwgZGF0ZXRpbWUubm93KCksIGRhdGV0aW1lLm5vdygpKQogICAgKQogICAgX2FkZF9zY29yZShjdXJyZW50X3VzZXJbImlkIl0sIGFtb3VudCwgIuWFkeaNoueggeWIsOi0piIpCiAgICB1c2VyX25vdyA9IHF1ZXJ5X29uZSgiU0VMRUNUIHNjb3JlIEZST00gdXNlcnMgV0hFUkUgaWQ9JXMiLCAoY3VycmVudF91c2VyWyJpZCJdLCkpCiAgICByZXR1cm4gewogICAgICAgICJjb2RlIjogMCwgIm1zZyI6IGYi5YWR5o2i5oiQ5Yqf77yB5Yiw6LSmIHthbW91bnR9IOenr+WIhiIsCiAgICAgICAgImRhdGEiOiB7ImFtb3VudCI6IGFtb3VudCwgInJlbWFpbl9iYWxhbmNlIjogdXNlcl9ub3dbInNjb3JlIl19CiAgICB9CgoKQHJvdXRlci5nZXQoIi9teS1vcmRlcnMiKQphc3luYyBkZWYgbXlfb3JkZXJzKAogICAgcGFnZTogaW50ID0gUXVlcnkoMSwgZ2U9MSksCiAgICBzaXplOiBpbnQgPSBRdWVyeSgyMCwgZ2U9MSwgbGU9MTAwKSwKICAgIGN1cnJlbnRfdXNlcjogZGljdCA9IERlcGVuZHMoZ2V0X2N1cnJlbnRfdXNlciksCik6CiAgICAiIiLmiJHnmoTlhYXlgLzorrDlvZUiIiIKICAgIG9mZnNldCA9IChwYWdlIC0gMSkgKiBzaXplCiAgICByb3dzID0gcXVlcnlfYWxsKAogICAgICAgICIiIlNFTEVDVCAqIEZST00gcmVjaGFyZ2Vfb3JkZXJzCiAgICAgICAgICAgV0hFUkUgdXNlcl9pZD0lcwogICAgICAgICAgIE9SREVSIEJZIGlkIERFU0MKICAgICAgICAgICBMSU1JVCAlcyBPRkZTRVQgJXMiIiIsCiAgICAgICAgKGN1cnJlbnRfdXNlclsiaWQiXSwgc2l6ZSwgb2Zmc2V0KQogICAgKQogICAgcmV0dXJuIHsiY29kZSI6IDAsICJtc2ciOiAib2siLCAiZGF0YSI6IHJvd3N9CgoKIyA9PT09PT09PT09PT09PSDnrqHnkIblkZjvvJrnlJ/miJDlhZHmjaLnoIEgPT09PT09PT09PT09PT0KQHJvdXRlci5wb3N0KCIvYWRtaW4vZ2VuLWNvZGUiKQphc3luYyBkZWYgYWRtaW5fZ2VuX2NvZGUoYm9keTogZGljdCwgY3VycmVudF91c2VyOiBkaWN0ID0gRGVwZW5kcyhyZXF1aXJlX3JvbGUoMikpKToKICAgICIiIueuoeeQhuWRmOeUn+aIkOWFkeaNouegge+8iOS4tOaXtu+8muebtOaOpeW+gCBfVkFMSURfQ09ERVMg6YeM5Yqg77yJIiIiCiAgICBhbW91bnQgPSBib2R5LmdldCgiYW1vdW50IiwgMTAwMCkKICAgIGNvdW50ID0gYm9keS5nZXQoImNvdW50IiwgMSkKICAgIGlmIGFtb3VudCA8IDEwMCBvciBjb3VudCA+IDIwOgogICAgICAgIHJhaXNlIEhUVFBFeGNlcHRpb24oc3RhdHVzX2NvZGU9NDAwLCBkZXRhaWw9IuWPguaVsOS4jeWQiOazlSIpCgogICAgbmV3X2NvZGVzID0ge30KICAgIGZvciBfIGluIHJhbmdlKGNvdW50KToKICAgICAgICB3aGlsZSBUcnVlOgogICAgICAgICAgICBjID0gIlNEIiArICIiLmpvaW4ocmFuZG9tLmNob2ljZXMoc3RyaW5nLmFzY2lpX3VwcGVyY2FzZSArIHN0cmluZy5kaWdpdHMsIGs9OCkpCiAgICAgICAgICAgIGlmIGMgbm90IGluIF9WQUxJRF9DT0RFUzoKICAgICAgICAgICAgICAgIGJyZWFrCiAgICAgICAgX1ZBTElEX0NPREVTW2NdID0gYW1vdW50CiAgICAgICAgbmV3X2NvZGVzW2NdID0gYW1vdW50CgogICAgcmV0dXJuIHsiY29kZSI6IDAsICJtc2ciOiBmIuW3sueUn+aIkCB7Y291bnR9IOS4quWFkeaNoueggSIsICJkYXRhIjogbmV3X2NvZGVzfQo=
+"""
+recharge.py —— 模拟充值系统
+- 三种方式：微信 / 支付宝 / 兑换码
+- 微信/支付宝：生成订单 → 模拟支付成功（点"立即支付"即到账）
+- 兑换码：输入码后立即到账
+"""
+import random
+import string
+from datetime import datetime
+from fastapi import APIRouter, Depends, HTTPException, Query
+from pydantic import BaseModel
+from typing import Optional
+
+from database import query_one, query_all, execute, execute_return_id
+from deps import get_current_user, require_role
+
+router = APIRouter(prefix="/api/recharge", tags=["recharge"])
+
+
+# ============== 预置兑换码（模拟运营发放）==============
+# 真实项目应该存数据库做核销，这里做内存字典 + 已使用集合
+_VALID_CODES = {
+    "STAR1000": 1000,
+    "STAR5000": 5000,
+    "STAR10000": 10000,
+    "STAR_NEW":  2000,  # 新用户礼包
+    "LUNA_FAN": 3000,   # Luna粉丝团专属
+}
+_USED_CODES: set[str] = set()
+
+
+# ============== 套餐配置（前端也用）==============
+RECHARGE_PLANS = [
+    {"id": 1, "name": "新手礼包",  "amount": 1000, "price": 10,  "bonus": 0},
+    {"id": 2, "name": "经典套餐",  "amount": 3000, "price": 25,  "bonus": 0},
+    {"id": 3, "name": "热门套餐",  "amount": 5000, "price": 48,  "bonus": 200},
+    {"id": 4, "name": "尊享套餐",  "amount": 10000,"price": 88,  "bonus": 600},
+    {"id": 5, "name": "传说套餐",  "amount": 30000,"price": 238, "bonus": 3000},
+]
+
+
+# ============== Schema ==============
+class CreateOrderBody(BaseModel):
+    plan_id: int        # 套餐 id
+    pay_type: int       # 1微信/2支付宝
+
+
+class SimulatePayBody(BaseModel):
+    order_no: str
+
+
+class RedeemBody(BaseModel):
+    code: str
+
+
+# ============== 工具 ==============
+def _gen_order_no() -> str:
+    ts = datetime.now().strftime("%Y%m%d%H%M%S")
+    rand = "".join(random.choices(string.digits, k=6))
+    return f"SD{ts}{rand}"
+
+
+def _add_score(user_id: int, amount: int, reason: str) -> None:
+    """给用户加积分（带日志）"""
+    execute("UPDATE users SET score = score + %s WHERE id=%s", (amount, user_id))
+
+
+# ============== 接口 ==============
+@router.get("/plans")
+async def get_plans():
+    """前端用的套餐列表（纯静态，不需要鉴权）"""
+    return {"code": 0, "msg": "ok", "data": RECHARGE_PLANS}
+
+
+@router.post("/order")
+async def create_order(body: CreateOrderBody, current_user: dict = Depends(get_current_user)):
+    """创建充值订单"""
+    plan = next((p for p in RECHARGE_PLANS if p["id"] == body.plan_id), None)
+    if not plan:
+        raise HTTPException(status_code=400, detail="套餐不存在")
+    if body.pay_type not in (1, 2):
+        raise HTTPException(status_code=400, detail="pay_type 只能是 1 或 2")
+
+    order_no = _gen_order_no()
+    # amount = 基础 + 赠送
+    total = plan["amount"] + plan["bonus"]
+    execute_return_id(
+        """INSERT INTO recharge_orders (order_no, user_id, amount, pay_type, status, create_time)
+           VALUES (%s, %s, %s, %s, 0, %s)""",
+        (order_no, current_user["id"], total, body.pay_type, datetime.now())
+    )
+    pay_names = {1: "微信支付", 2: "支付宝"}
+    return {
+        "code": 0, "msg": "订单创建成功",
+        "data": {
+            "order_no": order_no,
+            "amount": total,
+            "plan_name": plan["name"],
+            "pay_name": pay_names[body.pay_type],
+            "price": plan["price"],
+        }
+    }
+
+
+@router.post("/pay")
+async def simulate_pay(body: SimulatePayBody, current_user: dict = Depends(get_current_user)):
+    """模拟支付成功 —— 充值到账"""
+    order = query_one(
+        "SELECT * FROM recharge_orders WHERE order_no=%s AND user_id=%s",
+        (body.order_no, current_user["id"])
+    )
+    if not order:
+        raise HTTPException(status_code=404, detail="订单不存在")
+    if order["status"] == 1:
+        raise HTTPException(status_code=400, detail="订单已支付")
+    if order["status"] == 2:
+        raise HTTPException(status_code=400, detail="订单已取消")
+
+    # 标记订单已支付 + 给用户加积分
+    execute("UPDATE recharge_orders SET status=1, pay_time=%s WHERE id=%s", (datetime.now(), order["id"]))
+    _add_score(current_user["id"], order["amount"], "充值到账")
+
+    # 查最新余额（前端不用再额外调 /api/auth/me）
+    user_now = query_one("SELECT score FROM users WHERE id=%s", (current_user["id"],))
+
+    return {
+        "code": 0, "msg": f"充值成功！到账 {order['amount']} 积分",
+        "data": {
+            "amount": order["amount"],
+            "remain_balance": user_now["score"],
+        }
+    }
+
+
+@router.post("/redeem")
+async def redeem(body: RedeemBody, current_user: dict = Depends(get_current_user)):
+    """兑换码充值"""
+    code = body.code.strip().upper()
+    if code in _USED_CODES:
+        raise HTTPException(status_code=400, detail="兑换码已被使用")
+    if code not in _VALID_CODES:
+        raise HTTPException(status_code=400, detail="兑换码无效")
+
+    amount = _VALID_CODES[code]
+    _USED_CODES.add(code)
+
+    # 写一条订单记录便于追踪
+    execute_return_id(
+        """INSERT INTO recharge_orders (order_no, user_id, amount, pay_type, pay_code, status, create_time, pay_time)
+           VALUES (%s, %s, %s, 3, %s, 1, %s, %s)""",
+        (_gen_order_no(), current_user["id"], amount, code, datetime.now(), datetime.now())
+    )
+    _add_score(current_user["id"], amount, "兑换码到账")
+    user_now = query_one("SELECT score FROM users WHERE id=%s", (current_user["id"],))
+    return {
+        "code": 0, "msg": f"兑换成功！到账 {amount} 积分",
+        "data": {"amount": amount, "remain_balance": user_now["score"]}
+    }
+
+
+@router.get("/my-orders")
+async def my_orders(
+    page: int = Query(1, ge=1),
+    size: int = Query(20, ge=1, le=100),
+    current_user: dict = Depends(get_current_user),
+):
+    """我的充值记录"""
+    offset = (page - 1) * size
+    rows = query_all(
+        """SELECT * FROM recharge_orders
+           WHERE user_id=%s
+           ORDER BY id DESC
+           LIMIT %s OFFSET %s""",
+        (current_user["id"], size, offset)
+    )
+    return {"code": 0, "msg": "ok", "data": rows}
+
+
+# ============== 管理员：生成兑换码 ==============
+@router.post("/admin/gen-code")
+async def admin_gen_code(body: dict, current_user: dict = Depends(require_role(2))):
+    """管理员生成兑换码（临时：直接往 _VALID_CODES 里加）"""
+    amount = body.get("amount", 1000)
+    count = body.get("count", 1)
+    if amount < 100 or count > 20:
+        raise HTTPException(status_code=400, detail="参数不合法")
+
+    new_codes = {}
+    for _ in range(count):
+        while True:
+            c = "SD" + "".join(random.choices(string.ascii_uppercase + string.digits, k=8))
+            if c not in _VALID_CODES:
+                break
+        _VALID_CODES[c] = amount
+        new_codes[c] = amount
+
+    return {"code": 0, "msg": f"已生成 {count} 个兑换码", "data": new_codes}

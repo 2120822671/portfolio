@@ -1,1 +1,92 @@
-IiIiCmZhbl9jbHVicy5weSDigJTigJQg57KJ5Lid5Zui77ya6K+m5oOF44CB5Yqg5YWl44CB6YCA5Ye6CiIiIgpmcm9tIGRhdGV0aW1lIGltcG9ydCBkYXRldGltZQpmcm9tIGZhc3RhcGkgaW1wb3J0IEFQSVJvdXRlciwgRGVwZW5kcywgSFRUUEV4Y2VwdGlvbgpmcm9tIGZhc3RhcGkucmVzcG9uc2VzIGltcG9ydCBKU09OUmVzcG9uc2UKCmZyb20gZGF0YWJhc2UgaW1wb3J0IHF1ZXJ5X29uZSwgcXVlcnlfYWxsLCBleGVjdXRlLCBleGVjdXRlX3JldHVybl9pZApmcm9tIGRlcHMgaW1wb3J0IGdldF9jdXJyZW50X3VzZXIKCnJvdXRlciA9IEFQSVJvdXRlcihwcmVmaXg9Ii9hcGkvZmFuLWNsdWJzIiwgdGFncz1bImZhbl9jbHVicyJdKQoKCkByb3V0ZXIuZ2V0KCIve2NsdWJfaWR9IikKYXN5bmMgZGVmIGdldF9mYW5fY2x1YihjbHViX2lkOiBpbnQpOgogICAgIiIi57KJ5Lid5Zui6K+m5oOFICsg5oiQ5ZGY5YiX6KGoIiIiCiAgICBjbHViID0gcXVlcnlfb25lKAogICAgICAgICIiIlNFTEVDVCBmYy5pZCwgZmMubmFtZSwgZmMuZGVzY3JpcHRpb24sIGZjLm1lbWJlcl9jb3VudCwgZmMuY3JlYXRlX3RpbWUsCiAgICAgICAgICAgICAgICAgIGMuc3RhZ2VfbmFtZSwgYy5jYXRlZ29yeSwgYy5jb3Zlcl9pbWFnZSwgYy5pZCBBUyBjZWxlYnJpdHlfaWQKICAgICAgICAgICBGUk9NIGZhbl9jbHVicyBmYwogICAgICAgICAgIEpPSU4gY2VsZWJyaXRpZXMgYyBPTiBjLmlkID0gZmMuY2VsZWJyaXR5X2lkCiAgICAgICAgICAgV0hFUkUgZmMuaWQ9JXMiIiIsCiAgICAgICAgKGNsdWJfaWQsKQogICAgKQogICAgaWYgbm90IGNsdWI6CiAgICAgICAgcmFpc2UgSFRUUEV4Y2VwdGlvbihzdGF0dXNfY29kZT00MDQsIGRldGFpbD0i57KJ5Lid5Zui5LiN5a2Y5ZyoIikKCiAgICBtZW1iZXJzID0gcXVlcnlfYWxsKAogICAgICAgICIiIlNFTEVDVCB1LmlkLCB1Lm5pY2tuYW1lLCB1LmF2YXRhciwgdS5yb2xlLAogICAgICAgICAgICAgICAgICBmY20ubmlja19pbl9jbHViLCBmY20uam9pbl90aW1lCiAgICAgICAgICAgRlJPTSBmYW5fY2x1Yl9tZW1iZXJzIGZjbQogICAgICAgICAgIEpPSU4gdXNlcnMgdSBPTiB1LmlkID0gZmNtLnVzZXJfaWQKICAgICAgICAgICBXSEVSRSBmY20uY2x1Yl9pZD0lcwogICAgICAgICAgIE9SREVSIEJZIGZjbS5qb2luX3RpbWUgQVNDIiIiLAogICAgICAgIChjbHViX2lkLCkKICAgICkKICAgIGNsdWJbIm1lbWJlcnMiXSA9IG1lbWJlcnMKICAgIHJldHVybiB7ImNvZGUiOiAwLCAibXNnIjogIm9rIiwgImRhdGEiOiBjbHVifQoKCkByb3V0ZXIucG9zdCgiL3tjbHViX2lkfS9qb2luIikKYXN5bmMgZGVmIGpvaW5fY2x1YihjbHViX2lkOiBpbnQsIGN1cnJlbnRfdXNlcjogZGljdCA9IERlcGVuZHMoZ2V0X2N1cnJlbnRfdXNlcikpOgogICAgIiIi5Yqg5YWl57KJ5Lid5ZuiIiIiCiAgICBjbHViID0gcXVlcnlfb25lKCJTRUxFQ1QgaWQsIG1lbWJlcl9jb3VudCBGUk9NIGZhbl9jbHVicyBXSEVSRSBpZD0lcyIsIChjbHViX2lkLCkpCiAgICBpZiBub3QgY2x1YjoKICAgICAgICByYWlzZSBIVFRQRXhjZXB0aW9uKHN0YXR1c19jb2RlPTQwNCwgZGV0YWlsPSLnsonkuJ3lm6LkuI3lrZjlnKgiKQoKICAgIGV4aXN0cyA9IHF1ZXJ5X29uZSgKICAgICAgICAiU0VMRUNUIGlkIEZST00gZmFuX2NsdWJfbWVtYmVycyBXSEVSRSBjbHViX2lkPSVzIEFORCB1c2VyX2lkPSVzIiwKICAgICAgICAoY2x1Yl9pZCwgY3VycmVudF91c2VyWyJpZCJdKQogICAgKQogICAgaWYgZXhpc3RzOgogICAgICAgIHJhaXNlIEhUVFBFeGNlcHRpb24oc3RhdHVzX2NvZGU9NDAwLCBkZXRhaWw9IuS9oOW3sue7j+WcqOi/meS4queyieS4neWboumHjOS6hiIpCgogICAgbm93ID0gZGF0ZXRpbWUubm93KCkKICAgIGV4ZWN1dGVfcmV0dXJuX2lkKAogICAgICAgICIiIklOU0VSVCBJTlRPIGZhbl9jbHViX21lbWJlcnMgKGNsdWJfaWQsIHVzZXJfaWQsIGpvaW5fdGltZSkKICAgICAgICAgICBWQUxVRVMgKCVzLCAlcywgJXMpIiIiLAogICAgICAgIChjbHViX2lkLCBjdXJyZW50X3VzZXJbImlkIl0sIG5vdykKICAgICkKICAgICMg5YaX5L2Z5a2X5q61ICsxCiAgICBleGVjdXRlKCJVUERBVEUgZmFuX2NsdWJzIFNFVCBtZW1iZXJfY291bnQgPSBtZW1iZXJfY291bnQgKyAxIFdIRVJFIGlkPSVzIiwgKGNsdWJfaWQsKSkKICAgICMg5piO5pif57KJ5Lid5pWwICsxCiAgICBleGVjdXRlKAogICAgICAgICIiIlVQREFURSBjZWxlYnJpdGllcyBTRVQgZmFuX2NvdW50ID0gZmFuX2NvdW50ICsgMQogICAgICAgICAgIFdIRVJFIGlkPShTRUxFQ1QgY2VsZWJyaXR5X2lkIEZST00gZmFuX2NsdWJzIFdIRVJFIGlkPSVzKSIiIiwKICAgICAgICAoY2x1Yl9pZCwpCiAgICApCiAgICByZXR1cm4geyJjb2RlIjogMCwgIm1zZyI6ICLliqDlhaXmiJDlip8iLCAiZGF0YSI6IE5vbmV9CgoKQHJvdXRlci5wb3N0KCIve2NsdWJfaWR9L2xlYXZlIikKYXN5bmMgZGVmIGxlYXZlX2NsdWIoY2x1Yl9pZDogaW50LCBjdXJyZW50X3VzZXI6IGRpY3QgPSBEZXBlbmRzKGdldF9jdXJyZW50X3VzZXIpKToKICAgICIiIumAgOWHuueyieS4neWboiDigJTigJQg5bimIHVzZXJfaWQg6Ziy6LaK5p2DIiIiCiAgICBjbHViID0gcXVlcnlfb25lKCJTRUxFQ1QgaWQgRlJPTSBmYW5fY2x1YnMgV0hFUkUgaWQ9JXMiLCAoY2x1Yl9pZCwpKQogICAgaWYgbm90IGNsdWI6CiAgICAgICAgcmFpc2UgSFRUUEV4Y2VwdGlvbihzdGF0dXNfY29kZT00MDQsIGRldGFpbD0i57KJ5Lid5Zui5LiN5a2Y5ZyoIikKCiAgICBhZmZlY3RlZCA9IGV4ZWN1dGUoCiAgICAgICAgIkRFTEVURSBGUk9NIGZhbl9jbHViX21lbWJlcnMgV0hFUkUgY2x1Yl9pZD0lcyBBTkQgdXNlcl9pZD0lcyIsCiAgICAgICAgKGNsdWJfaWQsIGN1cnJlbnRfdXNlclsiaWQiXSkKICAgICkKICAgIGlmIGFmZmVjdGVkID09IDA6CiAgICAgICAgcmFpc2UgSFRUUEV4Y2VwdGlvbihzdGF0dXNfY29kZT00MDAsIGRldGFpbD0i5L2g5LiN5Zyo6L+Z5Liq57KJ5Lid5Zui6YeMIikKCiAgICBleGVjdXRlKCJVUERBVEUgZmFuX2NsdWJzIFNFVCBtZW1iZXJfY291bnQgPSBHUkVBVEVTVChtZW1iZXJfY291bnQgLSAxLCAwKSBXSEVSRSBpZD0lcyIsIChjbHViX2lkLCkpCiAgICBleGVjdXRlKAogICAgICAgICIiIlVQREFURSBjZWxlYnJpdGllcyBTRVQgZmFuX2NvdW50ID0gR1JFQVRFU1QoZmFuX2NvdW50IC0gMSwgMCkKICAgICAgICAgICBXSEVSRSBpZD0oU0VMRUNUIGNlbGVicml0eV9pZCBGUk9NIGZhbl9jbHVicyBXSEVSRSBpZD0lcykiIiIsCiAgICAgICAgKGNsdWJfaWQsKQogICAgKQogICAgcmV0dXJuIHsiY29kZSI6IDAsICJtc2ciOiAi5bey6YCA5Ye6IiwgImRhdGEiOiBOb25lfQo=
+"""
+fan_clubs.py —— 粉丝团：详情、加入、退出
+"""
+from datetime import datetime
+from fastapi import APIRouter, Depends, HTTPException
+from fastapi.responses import JSONResponse
+
+from database import query_one, query_all, execute, execute_return_id
+from deps import get_current_user
+
+router = APIRouter(prefix="/api/fan-clubs", tags=["fan_clubs"])
+
+
+@router.get("/{club_id}")
+async def get_fan_club(club_id: int):
+    """粉丝团详情 + 成员列表"""
+    club = query_one(
+        """SELECT fc.id, fc.name, fc.description, fc.member_count, fc.create_time,
+                  c.stage_name, c.category, c.cover_image, c.id AS celebrity_id
+           FROM fan_clubs fc
+           JOIN celebrities c ON c.id = fc.celebrity_id
+           WHERE fc.id=%s""",
+        (club_id,)
+    )
+    if not club:
+        raise HTTPException(status_code=404, detail="粉丝团不存在")
+
+    members = query_all(
+        """SELECT u.id, u.nickname, u.avatar, u.role,
+                  fcm.nick_in_club, fcm.join_time
+           FROM fan_club_members fcm
+           JOIN users u ON u.id = fcm.user_id
+           WHERE fcm.club_id=%s
+           ORDER BY fcm.join_time ASC""",
+        (club_id,)
+    )
+    club["members"] = members
+    return {"code": 0, "msg": "ok", "data": club}
+
+
+@router.post("/{club_id}/join")
+async def join_club(club_id: int, current_user: dict = Depends(get_current_user)):
+    """加入粉丝团"""
+    club = query_one("SELECT id, member_count FROM fan_clubs WHERE id=%s", (club_id,))
+    if not club:
+        raise HTTPException(status_code=404, detail="粉丝团不存在")
+
+    exists = query_one(
+        "SELECT id FROM fan_club_members WHERE club_id=%s AND user_id=%s",
+        (club_id, current_user["id"])
+    )
+    if exists:
+        raise HTTPException(status_code=400, detail="你已经在这个粉丝团里了")
+
+    now = datetime.now()
+    execute_return_id(
+        """INSERT INTO fan_club_members (club_id, user_id, join_time)
+           VALUES (%s, %s, %s)""",
+        (club_id, current_user["id"], now)
+    )
+    # 冗余字段 +1
+    execute("UPDATE fan_clubs SET member_count = member_count + 1 WHERE id=%s", (club_id,))
+    # 明星粉丝数 +1
+    execute(
+        """UPDATE celebrities SET fan_count = fan_count + 1
+           WHERE id=(SELECT celebrity_id FROM fan_clubs WHERE id=%s)""",
+        (club_id,)
+    )
+    return {"code": 0, "msg": "加入成功", "data": None}
+
+
+@router.post("/{club_id}/leave")
+async def leave_club(club_id: int, current_user: dict = Depends(get_current_user)):
+    """退出粉丝团 —— 带 user_id 防越权"""
+    club = query_one("SELECT id FROM fan_clubs WHERE id=%s", (club_id,))
+    if not club:
+        raise HTTPException(status_code=404, detail="粉丝团不存在")
+
+    affected = execute(
+        "DELETE FROM fan_club_members WHERE club_id=%s AND user_id=%s",
+        (club_id, current_user["id"])
+    )
+    if affected == 0:
+        raise HTTPException(status_code=400, detail="你不在这个粉丝团里")
+
+    execute("UPDATE fan_clubs SET member_count = GREATEST(member_count - 1, 0) WHERE id=%s", (club_id,))
+    execute(
+        """UPDATE celebrities SET fan_count = GREATEST(fan_count - 1, 0)
+           WHERE id=(SELECT celebrity_id FROM fan_clubs WHERE id=%s)""",
+        (club_id,)
+    )
+    return {"code": 0, "msg": "已退出", "data": None}

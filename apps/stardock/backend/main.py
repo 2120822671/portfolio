@@ -1,1 +1,124 @@
-IiIiCm1haW4ucHkg4oCU4oCUIOWFpeWPo+S4ieS7tuWllwoxLiDkuK3pl7Tku7bvvJpTZXNzaW9uTWlkZGxld2FyZSArIENPUlNNaWRkbGV3YXJlCjIuIOWFqOWxgOW8guW4uOWkhOeQhuWZqO+8iOe7n+S4gCBKU09OIOi/lOWbnu+8iQozLiDot6/nlLHms6jlhozvvIhBUEkg6Lev55Sx5b+F6aG75ZyoIFN0YXRpY0ZpbGVzIG1vdW50IOS5i+WJje+8ge+8iQo0LiDmnIDlkI7mjILovb3pnZnmgIHmlofku7bvvIjmlL7mnIDlkI7vvIHlkKbliJnkvJrlkJ7mjokgL2FwaS8qIOivt+axgu+8iQoiIiIKaW1wb3J0IG9zCmltcG9ydCB0cmFjZWJhY2sKZnJvbSBmYXN0YXBpIGltcG9ydCBGYXN0QVBJLCBIVFRQRXhjZXB0aW9uLCBSZXF1ZXN0CmZyb20gZmFzdGFwaS5taWRkbGV3YXJlLmNvcnMgaW1wb3J0IENPUlNNaWRkbGV3YXJlCmZyb20gc3RhcmxldHRlLm1pZGRsZXdhcmUuc2Vzc2lvbnMgaW1wb3J0IFNlc3Npb25NaWRkbGV3YXJlCmZyb20gc3RhcmxldHRlLnN0YXRpY2ZpbGVzIGltcG9ydCBTdGF0aWNGaWxlcwpmcm9tIHN0YXJsZXR0ZS5yZXNwb25zZXMgaW1wb3J0IEpTT05SZXNwb25zZQoKIyA9PT09PT09PT09PT09PSDliJvlu7ogRmFzdEFQSSDlrp7kvosgPT09PT09PT09PT09PT0KYXBwID0gRmFzdEFQSSh0aXRsZT0i5pif5Z2eIFN0YXJEb2NrIiwgdmVyc2lvbj0iMS4wLjAiKQoKCiMgPT09PT09PT09PT09PT0g5Lit6Ze05Lu2ID09PT09PT09PT09PT09CmFwcC5hZGRfbWlkZGxld2FyZSgKICAgIFNlc3Npb25NaWRkbGV3YXJlLAogICAgc2VjcmV0X2tleT0ic3RhcmRvY2stc2VjcmV0LWtleS1jaGFuZ2UtaW4tcHJvZHVjdGlvbiIsCiAgICBzZXNzaW9uX2Nvb2tpZT0ic3RhcmRvY2tfc2Vzc2lvbiIsCiAgICBtYXhfYWdlPTYwICogNjAgKiAyNCAqIDcsCikKCmFwcC5hZGRfbWlkZGxld2FyZSgKICAgIENPUlNNaWRkbGV3YXJlLAogICAgYWxsb3dfb3JpZ2lucz1bIioiXSwKICAgIGFsbG93X2NyZWRlbnRpYWxzPVRydWUsCiAgICBhbGxvd19tZXRob2RzPVsiKiJdLAogICAgYWxsb3dfaGVhZGVycz1bIioiXSwKKQoKCiMgPT09PT09PT09PT09PT0g5YWo5bGA5byC5bi45aSE55CG5ZmoID09PT09PT09PT09PT09CkBhcHAuZXhjZXB0aW9uX2hhbmRsZXIoSFRUUEV4Y2VwdGlvbikKYXN5bmMgZGVmIGh0dHBfZXhjZXB0aW9uX2hhbmRsZXIocmVxdWVzdDogUmVxdWVzdCwgZXhjOiBIVFRQRXhjZXB0aW9uKToKICAgIGlmIGV4Yy5zdGF0dXNfY29kZSBpbiAoNDAxLCA0MDMpOgogICAgICAgIGNvZGUgPSBleGMuc3RhdHVzX2NvZGUKICAgIGVsaWYgZXhjLnN0YXR1c19jb2RlID09IDQwNDoKICAgICAgICBjb2RlID0gMQogICAgZWxzZToKICAgICAgICBjb2RlID0gZXhjLnN0YXR1c19jb2RlCiAgICByZXR1cm4gSlNPTlJlc3BvbnNlKAogICAgICAgIHN0YXR1c19jb2RlPTIwMCwKICAgICAgICBjb250ZW50PXsiY29kZSI6IGNvZGUsICJtc2ciOiBleGMuZGV0YWlsLCAiZGF0YSI6IE5vbmV9LAogICAgKQoKCkBhcHAuZXhjZXB0aW9uX2hhbmRsZXIoRXhjZXB0aW9uKQphc3luYyBkZWYgZ2xvYmFsX2V4Y2VwdGlvbl9oYW5kbGVyKHJlcXVlc3Q6IFJlcXVlc3QsIGV4YzogRXhjZXB0aW9uKToKICAgIHRyYWNlYmFjay5wcmludF9leGMoKQogICAgIyDkuLTml7bvvJrokL3nm5jml6Xlv5fkvr/kuo7mjpLmn6XvvIjlkI7nu63lj6/liKDvvIkKICAgIGltcG9ydCBvcwogICAgZnJvbSBkYXRldGltZSBpbXBvcnQgZGF0ZXRpbWUgYXMgX2R0CiAgICBfbG9nID0gb3MucGF0aC5qb2luKG9zLnBhdGguZGlybmFtZShfX2ZpbGVfXyksICJlcnJvci5sb2ciKQogICAgd2l0aCBvcGVuKF9sb2csICJhIiwgZW5jb2Rpbmc9InV0Zi04IikgYXMgZjoKICAgICAgICBmLndyaXRlKGYiXG49PT09PSB7X2R0Lm5vdygpfSB7cmVxdWVzdC51cmwucGF0aH0gPT09PT1cbiIpCiAgICAgICAgdHJhY2ViYWNrLnByaW50X2V4YyhmaWxlPWYpCiAgICByZXR1cm4gSlNPTlJlc3BvbnNlKAogICAgICAgIHN0YXR1c19jb2RlPTIwMCwKICAgICAgICBjb250ZW50PXsiY29kZSI6IDUwMCwgIm1zZyI6ICLmnI3liqHlmajlhoXpg6jplJnor68iLCAiZGF0YSI6IE5vbmV9LAogICAgKQoKCiMgPT09PT09PT09PT09PT0gQVBJIOi3r+eUse+8iOW/hemhu+WcqCBTdGF0aWNGaWxlcyBtb3VudCDkuYvliY3vvIHvvIk9PT09PT09PT09PT09PQpmcm9tIHJvdXRlcnMgaW1wb3J0IGF1dGgsIHVzZXJzLCBjZWxlYnJpdGllcywgZmFuX2NsdWJzLCBjaGF0LCBnYWNoYSwgYWN0aXZpdGllcywgcmVjaGFyZ2UKCmFwcC5pbmNsdWRlX3JvdXRlcihhdXRoLnJvdXRlcikKYXBwLmluY2x1ZGVfcm91dGVyKHVzZXJzLnJvdXRlcikKYXBwLmluY2x1ZGVfcm91dGVyKGNlbGVicml0aWVzLnJvdXRlcikKYXBwLmluY2x1ZGVfcm91dGVyKGZhbl9jbHVicy5yb3V0ZXIpCmFwcC5pbmNsdWRlX3JvdXRlcihjaGF0LnJvdXRlcikKYXBwLmluY2x1ZGVfcm91dGVyKGdhY2hhLnJvdXRlcikKYXBwLmluY2x1ZGVfcm91dGVyKGFjdGl2aXRpZXMucm91dGVyKQphcHAuaW5jbHVkZV9yb3V0ZXIocmVjaGFyZ2Uucm91dGVyKQoKCiMg5YGl5bq35qOA5p+l77yI5Lmf5pivIEFQSSDot6/nlLHvvIzmlL4gbW91bnQg5LmL5YmN77yJCkBhcHAuZ2V0KCIvYXBpL2hlYWx0aCIpCmFzeW5jIGRlZiBoZWFsdGgoKToKICAgIHJldHVybiB7ImNvZGUiOiAwLCAibXNnIjogIm9rIiwgImRhdGEiOiBOb25lfQoKCiMgPT09PT09PT09PT09PT0g6Z2Z5oCB6LWE5rqQ56aB57yT5a2Y5Lit6Ze05Lu2ID09PT09PT09PT09PT09CiMg5L+d6K+B5rWP6KeI5Zmo5q+P5qyh6YO95ou/5pyA5paw55qEIEhUTUwvSlMvQ1NT77yM6YG/5YWN5pS55LqG5Luj56CB5YmN56uv6L+Y5piv5pen54mICmZyb20gc3RhcmxldHRlLm1pZGRsZXdhcmUuYmFzZSBpbXBvcnQgQmFzZUhUVFBNaWRkbGV3YXJlCgoKY2xhc3MgTm9DYWNoZVN0YXRpY01pZGRsZXdhcmUoQmFzZUhUVFBNaWRkbGV3YXJlKToKICAgIGFzeW5jIGRlZiBkaXNwYXRjaChzZWxmLCByZXF1ZXN0LCBjYWxsX25leHQpOgogICAgICAgIHJlc3BvbnNlID0gYXdhaXQgY2FsbF9uZXh0KHJlcXVlc3QpCiAgICAgICAgcGF0aCA9IHJlcXVlc3QudXJsLnBhdGgKICAgICAgICBpZiBub3QgcGF0aC5zdGFydHN3aXRoKCIvYXBpIikgYW5kICgKICAgICAgICAgICAgcGF0aC5lbmRzd2l0aCgiLmh0bWwiKSBvciBwYXRoLmVuZHN3aXRoKCIuanMiKQogICAgICAgICAgICBvciBwYXRoLmVuZHN3aXRoKCIuY3NzIikgb3IgcGF0aCA9PSAiLyIKICAgICAgICApOgogICAgICAgICAgICByZXNwb25zZS5oZWFkZXJzWyJDYWNoZS1Db250cm9sIl0gPSAibm8tY2FjaGUsIG11c3QtcmV2YWxpZGF0ZSIKICAgICAgICByZXR1cm4gcmVzcG9uc2UKCgphcHAuYWRkX21pZGRsZXdhcmUoTm9DYWNoZVN0YXRpY01pZGRsZXdhcmUpCgoKIyA9PT09PT09PT09PT09PSDmoLnot6/lvoTot7PovazvvIjkvZzlk4Hpm4bmlbTlkIjvvIkgPT09PT09PT09PT09PT0KZnJvbSBmYXN0YXBpLnJlc3BvbnNlcyBpbXBvcnQgUmVkaXJlY3RSZXNwb25zZQoKCkBhcHAuZ2V0KCIvIikKYXN5bmMgZGVmIGluZGV4X3JlZGlyZWN0KCk6CiAgICByZXR1cm4gUmVkaXJlY3RSZXNwb25zZSh1cmw9Ii9zdGFyZG9jay9ob21lLmh0bWwiKQoKCiMgPT09PT09PT09PT09PT0g5oyC6L296Z2Z5oCB5paH5Lu277yI5b+F6aG75pS+5pyA5ZCO77yB77yJPT09PT09PT09PT09PT0KX3N0YXRpY19kaXIgPSBvcy5wYXRoLmpvaW4ob3MucGF0aC5kaXJuYW1lKG9zLnBhdGguZGlybmFtZShfX2ZpbGVfXykpLCAiaHRkb2NzIikKYXBwLm1vdW50KCIvIiwgU3RhdGljRmlsZXMoZGlyZWN0b3J5PV9zdGF0aWNfZGlyLCBodG1sPVRydWUpLCBuYW1lPSJzdGF0aWMiKQoKCiMgPT09PT09PT09PT09PT0g5ZCv5Yqo5YWl5Y+jID09PT09PT09PT09PT09CmlmIF9fbmFtZV9fID09ICJfX21haW5fXyI6CiAgICBpbXBvcnQgdXZpY29ybgogICAgdXZpY29ybi5ydW4oIm1haW46YXBwIiwgaG9zdD0iMC4wLjAuMCIsIHBvcnQ9ODAwMCwgcmVsb2FkPVRydWUpCg==
+"""
+main.py —— 入口三件套
+1. 中间件：SessionMiddleware + CORSMiddleware
+2. 全局异常处理器（统一 JSON 返回）
+3. 路由注册（API 路由必须在 StaticFiles mount 之前！）
+4. 最后挂载静态文件（放最后！否则会吞掉 /api/* 请求）
+"""
+import os
+import traceback
+from fastapi import FastAPI, HTTPException, Request
+from fastapi.middleware.cors import CORSMiddleware
+from starlette.middleware.sessions import SessionMiddleware
+from starlette.staticfiles import StaticFiles
+from starlette.responses import JSONResponse
+
+# ============== 创建 FastAPI 实例 ==============
+app = FastAPI(title="星坞 StarDock", version="1.0.0")
+
+
+# ============== 中间件 ==============
+app.add_middleware(
+    SessionMiddleware,
+    secret_key="stardock-secret-key-change-in-production",
+    session_cookie="stardock_session",
+    max_age=60 * 60 * 24 * 7,
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
+# ============== 全局异常处理器 ==============
+@app.exception_handler(HTTPException)
+async def http_exception_handler(request: Request, exc: HTTPException):
+    if exc.status_code in (401, 403):
+        code = exc.status_code
+    elif exc.status_code == 404:
+        code = 1
+    else:
+        code = exc.status_code
+    return JSONResponse(
+        status_code=200,
+        content={"code": code, "msg": exc.detail, "data": None},
+    )
+
+
+@app.exception_handler(Exception)
+async def global_exception_handler(request: Request, exc: Exception):
+    traceback.print_exc()
+    # 临时：落盘日志便于排查（后续可删）
+    import os
+    from datetime import datetime as _dt
+    _log = os.path.join(os.path.dirname(__file__), "error.log")
+    with open(_log, "a", encoding="utf-8") as f:
+        f.write(f"\n===== {_dt.now()} {request.url.path} =====\n")
+        traceback.print_exc(file=f)
+    return JSONResponse(
+        status_code=200,
+        content={"code": 500, "msg": "服务器内部错误", "data": None},
+    )
+
+
+# ============== API 路由（必须在 StaticFiles mount 之前！）==============
+from routers import auth, users, celebrities, fan_clubs, chat, gacha, activities, recharge
+
+app.include_router(auth.router)
+app.include_router(users.router)
+app.include_router(celebrities.router)
+app.include_router(fan_clubs.router)
+app.include_router(chat.router)
+app.include_router(gacha.router)
+app.include_router(activities.router)
+app.include_router(recharge.router)
+
+
+# 健康检查（也是 API 路由，放 mount 之前）
+@app.get("/api/health")
+async def health():
+    return {"code": 0, "msg": "ok", "data": None}
+
+
+# ============== 静态资源禁缓存中间件 ==============
+# 保证浏览器每次都拿最新的 HTML/JS/CSS，避免改了代码前端还是旧版
+from starlette.middleware.base import BaseHTTPMiddleware
+
+
+class NoCacheStaticMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request, call_next):
+        response = await call_next(request)
+        path = request.url.path
+        if not path.startswith("/api") and (
+            path.endswith(".html") or path.endswith(".js")
+            or path.endswith(".css") or path == "/"
+        ):
+            response.headers["Cache-Control"] = "no-cache, must-revalidate"
+        return response
+
+
+app.add_middleware(NoCacheStaticMiddleware)
+
+
+# ============== 根路径跳转（作品集整合） ==============
+from fastapi.responses import RedirectResponse
+
+
+@app.get("/")
+async def index_redirect():
+    return RedirectResponse(url="/stardock/home.html")
+
+
+# ============== 挂载静态文件（必须放最后！）==============
+_static_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "htdocs")
+app.mount("/", StaticFiles(directory=_static_dir, html=True), name="static")
+
+
+# ============== 启动入口 ==============
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)

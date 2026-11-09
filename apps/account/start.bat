@@ -1,1 +1,44 @@
-QGVjaG8gb2ZmDQp0aXRsZSBGb3J0dW5lLUNhdCBCb29ra2VlcGluZw0KDQplY2hvID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09DQplY2hvICAgRm9ydHVuZS1DYXQgQm9va2tlZXBpbmcgLSBPbmUtQ2xpY2sgU3RhcnQNCmVjaG8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0NCg0KcmVtIC0tLS0tLS0tLS0gMS4gTXlTUUwgc2VydmljZSAtLS0tLS0tLS0tDQpzZXQgTVlTUUxfT0s9MA0Kc2MgcXVlcnkgbXlzcWw4IHwgZmluZCAiUlVOTklORyIgPm51bCAmJiBzZXQgTVlTUUxfT0s9MQ0KaWYgJU1ZU1FMX09LJT09MSAoDQogICAgZWNobyBbT0tdIE15U1FMIHNlcnZpY2UgaXMgcnVubmluZw0KKSBlbHNlICgNCiAgICBlY2hvIFsuLl0gU3RhcnRpbmcgTXlTUUwgc2VydmljZSAuLi4NCiAgICBuZXQgc3RhcnQgbXlzcWw4ID5udWwgMj4mMQ0KICAgIHNjIHF1ZXJ5IG15c3FsOCB8IGZpbmQgIlJVTk5JTkciID5udWwgJiYgc2V0IE1ZU1FMX09LPTENCikNCmlmICVNWVNRTF9PSyU9PTAgKA0KICAgIGVjaG8gW1dBUk5dIE15U1FMIGZhaWxlZCB0byBzdGFydC4gUmlnaHQtY2xpY2sgdGhpcyBiYXQsICJSdW4gYXMgYWRtaW5pc3RyYXRvciIsIHRoZW4gdHJ5IGFnYWluLg0KKQ0KDQpyZW0gLS0tLS0tLS0tLSAyLiBCYWNrZW5kIG9uIHBvcnQgODAwNSAtLS0tLS0tLS0tDQpzZXQgQkFDS0VORF9PSz0wDQpuZXRzdGF0IC1hbm8gfCBmaW5kICI6ODAwNSAiIHwgZmluZCAiTElTVEVOSU5HIiA+bnVsICYmIHNldCBCQUNLRU5EX09LPTENCmlmICVCQUNLRU5EX09LJT09MCAoDQogICAgZWNobyBbLi5dIFN0YXJ0aW5nIGJhY2tlbmQsIGEgbWluaW1pemVkIHdpbmRvdyB3aWxsIGFwcGVhciwgZG8gTk9UIGNsb3NlIGl0IC4uLg0KICAgIHN0YXJ0ICJib29ra2VlcGluZy1iYWNrZW5kIiAvbWluIGNtZCAvYyAiY2QgL2QgJX5kcDAgJiYgcHl0aG9uIG1haW4ucHkiDQogICAgdGltZW91dCAvdCA1IC9ub2JyZWFrID5udWwNCiAgICBuZXRzdGF0IC1hbm8gfCBmaW5kICI6ODAwNSAiIHwgZmluZCAiTElTVEVOSU5HIiA+bnVsICYmIHNldCBCQUNLRU5EX09LPTENCikNCmlmICVCQUNLRU5EX09LJT09MSAoDQogICAgZWNobyBbT0tdIEJhY2tlbmQgaXMgcnVubmluZyBvbiBwb3J0IDgwMDUNCikgZWxzZSAoDQogICAgZWNobyBbV0FSTl0gQmFja2VuZCBmYWlsZWQgdG8gc3RhcnQuIFBsZWFzZSBjaGVjayBweXRob24gaXMgaW5zdGFsbGVkLg0KKQ0KDQpyZW0gLS0tLS0tLS0tLSAzLiBPcGVuIHRoZSBwYWdlIC0tLS0tLS0tLS0NCmVjaG8gW09LXSBPcGVuaW5nIHRoZSBwYWdlIC4uLg0Kc3RhcnQgIiIgIiV+ZHAwaW5kZXguaHRtbCINCg0KZWNobyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQ0KZWNobyAgIERvbmUhIERhdGEgaXMgc3RvcmVkIGluIGxvY2FsIE15U1FMLCB3b3JrcyBvZmZsaW5lLg0KZWNobyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQ0KdGltZW91dCAvdCAzID5udWwNCg==
+@echo off
+title Fortune-Cat Bookkeeping
+
+echo ============================================
+echo   Fortune-Cat Bookkeeping - One-Click Start
+echo ============================================
+
+rem ---------- 1. MySQL service ----------
+set MYSQL_OK=0
+sc query mysql8 | find "RUNNING" >nul && set MYSQL_OK=1
+if %MYSQL_OK%==1 (
+    echo [OK] MySQL service is running
+) else (
+    echo [..] Starting MySQL service ...
+    net start mysql8 >nul 2>&1
+    sc query mysql8 | find "RUNNING" >nul && set MYSQL_OK=1
+)
+if %MYSQL_OK%==0 (
+    echo [WARN] MySQL failed to start. Right-click this bat, "Run as administrator", then try again.
+)
+
+rem ---------- 2. Backend on port 8005 ----------
+set BACKEND_OK=0
+netstat -ano | find ":8005 " | find "LISTENING" >nul && set BACKEND_OK=1
+if %BACKEND_OK%==0 (
+    echo [..] Starting backend, a minimized window will appear, do NOT close it ...
+    start "bookkeeping-backend" /min cmd /c "cd /d %~dp0 && python main.py"
+    timeout /t 5 /nobreak >nul
+    netstat -ano | find ":8005 " | find "LISTENING" >nul && set BACKEND_OK=1
+)
+if %BACKEND_OK%==1 (
+    echo [OK] Backend is running on port 8005
+) else (
+    echo [WARN] Backend failed to start. Please check python is installed.
+)
+
+rem ---------- 3. Open the page ----------
+echo [OK] Opening the page ...
+start "" "%~dp0index.html"
+
+echo ============================================
+echo   Done! Data is stored in local MySQL, works offline.
+echo ============================================
+timeout /t 3 >nul

@@ -1,1 +1,85 @@
-IiIiCuaxguiBjOS9nOWTgembhiDCtyDogZrlkIjlhaXlj6MK5oqK5Zub5Liq6aG555uu5L2c5Li65a2Q5bqU55So5oyC6L295Zyo57uf5LiA5YmN57yA5LiL77yM5Y2V56uv5Y+j5ZCv5Yqo77yaCgogIC8gICAgICAgICAg6Zeo5oi36aaW6aG1ICsg566A5Y6G6aG1CiAgL21hbGwgICAgICDom4vns5Xnur/kuIrllYbln44KICAvYWNjb3VudCAgIOaLm+i0ouiusOi0piDCtyDkuKrkurrorrDotKblsI/ns7vnu58KICAvY2x1YiAgICAgIOWtpueUn+ekvuWboua0u+WKqOeZu+iusOezu+e7nwogIC9zdGFyZG9jayAg5pif5Z2eIFN0YXJEb2NrCgrlkK/liqjvvJpweXRob24gbWFpbi5weSAgICDorr/pl67vvJpodHRwOi8vMTI3LjAuMC4xOjgwMDAKIiIiCmltcG9ydCBhc3luY2lvCmltcG9ydCBpbXBvcnRsaWIudXRpbAppbXBvcnQgb3MKaW1wb3J0IHN5cwoKQkFTRSA9IG9zLnBhdGguZGlybmFtZShvcy5wYXRoLmFic3BhdGgoX19maWxlX18pKQpBUFBTID0gb3MucGF0aC5qb2luKEJBU0UsICJhcHBzIikKCiMg5pif5Z2eIGJhY2tlbmQg5YaF6YOo5L2/55So6aG25bGC5a+85YWl77yIcm91dGVycyAvIGRhdGFiYXNlIC8gZGVwc++8ie+8jOmcgOimgeWKoOWFpSBzeXMucGF0aApzeXMucGF0aC5pbnNlcnQoMCwgb3MucGF0aC5qb2luKEFQUFMsICJzdGFyZG9jayIsICJiYWNrZW5kIikpCgoKZGVmIGxvYWRfYXBwKG1vZHVsZV9uYW1lOiBzdHIsIGZpbGVfcGF0aDogc3RyKToKICAgICIiIuS7peeLrOeri+aooeWdl+WQjeWKoOi9veWtkOmhueebrueahCBGYXN0QVBJIOW6lOeUqO+8iOmBv+WFjeWQjOWQjSBtYWluIOWGsueqge+8iSIiIgogICAgc3BlYyA9IGltcG9ydGxpYi51dGlsLnNwZWNfZnJvbV9maWxlX2xvY2F0aW9uKG1vZHVsZV9uYW1lLCBmaWxlX3BhdGgpCiAgICBtb2QgPSBpbXBvcnRsaWIudXRpbC5tb2R1bGVfZnJvbV9zcGVjKHNwZWMpCiAgICBzeXMubW9kdWxlc1ttb2R1bGVfbmFtZV0gPSBtb2QKICAgIHNwZWMubG9hZGVyLmV4ZWNfbW9kdWxlKG1vZCkKICAgIHJldHVybiBtb2QKCgpmcm9tIGZhc3RhcGkgaW1wb3J0IEZhc3RBUEkKZnJvbSBmYXN0YXBpLnN0YXRpY2ZpbGVzIGltcG9ydCBTdGF0aWNGaWxlcwpmcm9tIGZhc3RhcGkucmVzcG9uc2VzIGltcG9ydCBGaWxlUmVzcG9uc2UKCiMgLS0tLS0tLS0tLSDliqDovb3lm5vkuKrlrZDlupTnlKggLS0tLS0tLS0tLQptYWxsX2FwcCA9IGxvYWRfYXBwKCJtYWxsX2FwcCIsIG9zLnBhdGguam9pbihBUFBTLCAibWFsbCIsICJiYWNrZW5kIiwgIm1haW4ucHkiKSkuYXBwCmFjY291bnRfYXBwID0gbG9hZF9hcHAoImFjY291bnRfYXBwIiwgb3MucGF0aC5qb2luKEFQUFMsICJhY2NvdW50IiwgIm1haW4ucHkiKSkuYXBwCmNsdWJfYXBwID0gbG9hZF9hcHAoImNsdWJfYXBwIiwgb3MucGF0aC5qb2luKEFQUFMsICJjbHViIiwgIm1haW4ucHkiKSkuYXBwCnN0YXJkb2NrX2FwcCA9IGxvYWRfYXBwKCJzdGFyZG9ja19hcHAiLCBvcy5wYXRoLmpvaW4oQVBQUywgInN0YXJkb2NrIiwgImJhY2tlbmQiLCAibWFpbi5weSIpKS5hcHAKCmFwcCA9IEZhc3RBUEkodGl0bGU9IuaxguiBjOS9nOWTgembhiIsIHZlcnNpb249IjEuMC4wIikKCiMgLS0tLS0tLS0tLSDmjILovb3lrZDlupTnlKggLS0tLS0tLS0tLQphcHAubW91bnQoIi9tYWxsIiwgbWFsbF9hcHApCmFwcC5tb3VudCgiL2FjY291bnQiLCBhY2NvdW50X2FwcCkKYXBwLm1vdW50KCIvY2x1YiIsIGNsdWJfYXBwKQphcHAubW91bnQoIi9zdGFyZG9jayIsIHN0YXJkb2NrX2FwcCkKCiMg6JuL57OV5ZWG5Z+O5YmN56uv5L2/55SoIC9zdGF0aWMvLi4uIOe7neWvuei3r+W+hO+8iOWQq+aVsOaNruW6k+mHjOWtmOeahOWbvueJh+WcsOWdgO+8ie+8jAojIOWcqOmXqOaIt+agueS4i+WGjeaMguS4gOS7ve+8jOS/neivgeWVhuWfjumhtemdouS7juS7u+aEj+WFpeWPo+i/m+WFpei1hOa6kOmDveWPr+eUqAphcHAubW91bnQoIi9zdGF0aWMiLCBTdGF0aWNGaWxlcyhkaXJlY3Rvcnk9b3MucGF0aC5qb2luKEFQUFMsICJtYWxsIiwgImZyb250ZW5kIiwgInN0YXRpYyIpKSwKICAgICAgICAgIG5hbWU9Im1hbGwtc3RhdGljIikKCgojIC0tLS0tLS0tLS0g6Zeo5oi36aG16Z2iIC0tLS0tLS0tLS0KQGFwcC5nZXQoIi8iKQphc3luYyBkZWYgcG9ydGFsKCk6CiAgICByZXR1cm4gRmlsZVJlc3BvbnNlKG9zLnBhdGguam9pbihCQVNFLCAiaW5kZXguaHRtbCIpKQoKCkBhcHAuZ2V0KCIvcmVzdW1lLmh0bWwiKQphc3luYyBkZWYgcmVzdW1lX3BhZ2UoKToKICAgIHJldHVybiBGaWxlUmVzcG9uc2Uob3MucGF0aC5qb2luKEJBU0UsICJyZXN1bWUuaHRtbCIpKQoKCiMgLS0tLS0tLS0tLSDnlJ/lkb3lkajmnJ/vvJrlkK/liqjom4vns5XllYbln47nmoTorqLljZXotoXml7boh6rliqjlj5bmtojlkI7lj7Dku7vliqEgLS0tLS0tLS0tLQojIOWtkOW6lOeUqOaMgui9veWQjuWFtiBzdGFydHVwIOS6i+S7tuS4jeS8muinpuWPke+8jOi/memHjOaJi+WKqOWQr+WKqApAYXBwLm9uX2V2ZW50KCJzdGFydHVwIikKYXN5bmMgZGVmIHN0YXJ0X2JhY2tncm91bmRfdGFza3MoKToKICAgIGZyb20gbWFsbF9hcHAgaW1wb3J0IF9hdXRvX2NhbmNlbF9leHBpcmVkX29yZGVycyAgIyBub3FhCiAgICBhc3luY2lvLmNyZWF0ZV90YXNrKF9hdXRvX2NhbmNlbF9leHBpcmVkX29yZGVycygpKQoKCmlmIF9fbmFtZV9fID09ICJfX21haW5fXyI6CiAgICBpbXBvcnQgdXZpY29ybgogICAgdXZpY29ybi5ydW4oYXBwLCBob3N0PSIwLjAuMC4wIiwgcG9ydD04MDAwKQo=
+"""
+求职作品集 · 聚合入口
+把四个项目作为子应用挂载在统一前缀下，单端口启动：
+
+  /          门户首页 + 简历页
+  /mall      蛋糕线上商城
+  /account   招财记账 · 个人记账小系统
+  /club      学生社团活动登记系统
+  /stardock  星坞 StarDock
+
+启动：python main.py    访问：http://127.0.0.1:8000
+"""
+import asyncio
+import importlib.util
+import os
+import sys
+
+BASE = os.path.dirname(os.path.abspath(__file__))
+APPS = os.path.join(BASE, "apps")
+
+# 星坞 backend 内部使用顶层导入（routers / database / deps），需要加入 sys.path
+sys.path.insert(0, os.path.join(APPS, "stardock", "backend"))
+
+
+def load_app(module_name: str, file_path: str):
+    """以独立模块名加载子项目的 FastAPI 应用（避免同名 main 冲突）"""
+    spec = importlib.util.spec_from_file_location(module_name, file_path)
+    mod = importlib.util.module_from_spec(spec)
+    sys.modules[module_name] = mod
+    spec.loader.exec_module(mod)
+    return mod
+
+
+from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+
+# ---------- 加载四个子应用 ----------
+mall_app = load_app("mall_app", os.path.join(APPS, "mall", "backend", "main.py")).app
+account_app = load_app("account_app", os.path.join(APPS, "account", "main.py")).app
+club_app = load_app("club_app", os.path.join(APPS, "club", "main.py")).app
+stardock_app = load_app("stardock_app", os.path.join(APPS, "stardock", "backend", "main.py")).app
+
+app = FastAPI(title="求职作品集", version="1.0.0")
+
+# ---------- 挂载子应用 ----------
+app.mount("/mall", mall_app)
+app.mount("/account", account_app)
+app.mount("/club", club_app)
+app.mount("/stardock", stardock_app)
+
+# 蛋糕商城前端使用 /static/... 绝对路径（含数据库里存的图片地址），
+# 在门户根下再挂一份，保证商城页面从任意入口进入资源都可用
+app.mount("/static", StaticFiles(directory=os.path.join(APPS, "mall", "frontend", "static")),
+          name="mall-static")
+
+
+# ---------- 门户页面 ----------
+@app.get("/")
+async def portal():
+    return FileResponse(os.path.join(BASE, "index.html"))
+
+
+@app.get("/resume.html")
+async def resume_page():
+    return FileResponse(os.path.join(BASE, "resume.html"))
+
+
+@app.get("/resume.docx")
+async def resume_docx():
+    return FileResponse(os.path.join(BASE, "resume", "个人简历.docx"),
+                        filename="陈振华-个人简历.docx")
+
+
+# ---------- 生命周期：启动蛋糕商城的订单超时自动取消后台任务 ----------
+# 子应用挂载后其 startup 事件不会触发，这里手动启动
+@app.on_event("startup")
+async def start_background_tasks():
+    from mall_app import _auto_cancel_expired_orders  # noqa
+    asyncio.create_task(_auto_cancel_expired_orders())
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)

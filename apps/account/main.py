@@ -1,1 +1,396 @@
-IiIiCuS4quS6uuiusOi0puWwj+ezu+e7nyDCtyBGYXN0QVBJIOWQjuerrwrnq6/lj6PvvJo4MDA1CiIiIgoKaW1wb3J0IHN5cwppbXBvcnQgb3MKCiMg5oqK5pys5ZywIGxpYnMg55uu5b2V5Yqg5YWl5pCc57Si6Lev5b6E77yIcHlteXNxbCDlronoo4XlnKjov5nph4zvvIkKc3lzLnBhdGguaW5zZXJ0KDAsIG9zLnBhdGguam9pbihvcy5wYXRoLmRpcm5hbWUoX19maWxlX18pLCAibGlicyIpKQoKZnJvbSBmYXN0YXBpIGltcG9ydCBGYXN0QVBJLCBIVFRQRXhjZXB0aW9uCmZyb20gZmFzdGFwaS5yZXNwb25zZXMgaW1wb3J0IEpTT05SZXNwb25zZSwgUmVkaXJlY3RSZXNwb25zZQpmcm9tIGZhc3RhcGkubWlkZGxld2FyZS5jb3JzIGltcG9ydCBDT1JTTWlkZGxld2FyZQpmcm9tIGZhc3RhcGkuc3RhdGljZmlsZXMgaW1wb3J0IFN0YXRpY0ZpbGVzCmZyb20gcHlkYW50aWMgaW1wb3J0IEJhc2VNb2RlbApmcm9tIHR5cGluZyBpbXBvcnQgT3B0aW9uYWwKaW1wb3J0IHB5bXlzcWwKZnJvbSBkYXRldGltZSBpbXBvcnQgZGF0ZXRpbWUsIHRpbWVkZWx0YSwgdGltZQoKIyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KIyDmlbDmja7lupPov57mjqXphY3nva7vvIjmoLnmja7lrp7pmYXmg4XlhrXkv67mlLnvvIkKIyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KREJfQ09ORklHID0gewogICAgImhvc3QiOiAibG9jYWxob3N0IiwKICAgICJwb3J0IjogMzMwNiwKICAgICJ1c2VyIjogInJvb3QiLAogICAgInBhc3N3b3JkIjogIjEyMzQ1NiIsCiAgICAiZGF0YWJhc2UiOiAiYWNjb3VudF9kYiIsCiAgICAiY2hhcnNldCI6ICJ1dGY4bWI0IiwKICAgICJjdXJzb3JjbGFzcyI6IHB5bXlzcWwuY3Vyc29ycy5EaWN0Q3Vyc29yLAp9CgphcHAgPSBGYXN0QVBJKHRpdGxlPSLkuKrkurrorrDotKblsI/ns7vnu58gQVBJIikKCiMg5YWB6K646Leo5Z+f77yI5YmN56uv6aG16Z2i5omT5byA5pe25Y+v5Lul55u05o6l6LCD5o6l5Y+j77yJCmFwcC5hZGRfbWlkZGxld2FyZSgKICAgIENPUlNNaWRkbGV3YXJlLAogICAgYWxsb3dfb3JpZ2lucz1bIioiXSwKICAgIGFsbG93X21ldGhvZHM9WyIqIl0sCiAgICBhbGxvd19oZWFkZXJzPVsiKiJdLAopCgojID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQojIOmdmeaAgemhtemdouaMgui9ve+8iOS9nOWTgembhuaVtOWQiO+8muWJjeerr+aWh+S7tuWcqOacrOebruW9leS4i++8iQojID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQpfQkFTRV9ESVIgPSBvcy5wYXRoLmRpcm5hbWUob3MucGF0aC5hYnNwYXRoKF9fZmlsZV9fKSkKCgpAYXBwLmdldCgiLyIpCmFzeW5jIGRlZiBpbmRleF9yZWRpcmVjdCgpOgogICAgcmV0dXJuIFJlZGlyZWN0UmVzcG9uc2UodXJsPSIvYWNjb3VudC9zdGF0aWMvaW5kZXguaHRtbCIpCgoKYXBwLm1vdW50KCIvc3RhdGljIiwgU3RhdGljRmlsZXMoZGlyZWN0b3J5PV9CQVNFX0RJUiwgaHRtbD1UcnVlKSwgbmFtZT0ic3RhdGljIikKCgojID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQojIOaVsOaNruW6k+i/nuaOpeW3peWFtwojID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQpkZWYgZ2V0X2Nvbm4oKToKICAgIHJldHVybiBweW15c3FsLmNvbm5lY3QoKipEQl9DT05GSUcpCgoKIyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KIyDor7fmsYLmqKHlnosKIyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KY2xhc3MgUmVjb3JkQ3JlYXRlKEJhc2VNb2RlbCk6CiAgICAiIiLmlrDlop4gLyDmm7TmlrDorrDotKborrDlvZXnmoTlhaXlj4IiIiIKICAgIHR5cGU6IGludCAgICAgICAgICAgICAgICAgICAgICAgICAgIyAxPeaUtuWFpSwgMj3mlK/lh7oKICAgIGFtb3VudDogZmxvYXQgICAgICAgICAgICAgICAgICAgICAgIyDph5Hpop0KICAgIGNhdGVnb3J5OiBzdHIgICAgICAgICAgICAgICAgICAgICAgIyDliIbnsbvlkI3np7AKICAgIHJlbWFyazogT3B0aW9uYWxbc3RyXSA9IE5vbmUgICAgICAgIyDlpIfms6jvvIzlj6/nqboKICAgIHJlY29yZFRpbWU6IHN0ciAgICAgICAgICAgICAgICAgICAgIyDotKbnm67lj5HnlJ/ml7bpl7QgIjIwMjYtMTEtMDQgMTI6MzA6MDAiCgoKY2xhc3MgQ2hhdEluKEJhc2VNb2RlbCk6CiAgICAiIiJQT1NUIC9hcGkvY2hhdCDlhaXlj4LvvIjlpKfmqKHlnovop6PmnpDpooTnlZnmjqXlj6PvvIkiIiIKICAgIHRleHQ6IHN0cgoKCiMgPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CiMg5bel5YW35Ye95pWwCiMgPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CmRlZiByb3dfdG9fZGljdChyb3c6IGRpY3QpIC0+IGRpY3Q6CiAgICAiIiLmiormlbDmja7lupPooYzvvIhyZWNvcmRfdGltZe+8iei9rOaIkCBBUEkg6L+U5Zue77yIcmVjb3JkVGltZe+8iSIiIgogICAgaWYgcm93IGlzIE5vbmU6CiAgICAgICAgcmV0dXJuIE5vbmUKICAgIHJldHVybiB7CiAgICAgICAgImlkIjogcm93WyJpZCJdLAogICAgICAgICJ0eXBlIjogcm93WyJ0eXBlIl0sCiAgICAgICAgImFtb3VudCI6IGZsb2F0KHJvd1siYW1vdW50Il0pLAogICAgICAgICJjYXRlZ29yeSI6IHJvd1siY2F0ZWdvcnkiXSwKICAgICAgICAicmVtYXJrIjogcm93WyJyZW1hcmsiXSwKICAgICAgICAicmVjb3JkVGltZSI6IHJvd1sicmVjb3JkX3RpbWUiXS5zdHJmdGltZSgiJVktJW0tJWQgJUg6JU06JVMiKQogICAgICAgICAgICAgICAgICAgICAgIGlmIHJvd1sicmVjb3JkX3RpbWUiXSBlbHNlIE5vbmUsCiAgICAgICAgImNyZWF0ZVRpbWUiOiByb3dbImNyZWF0ZV90aW1lIl0uc3RyZnRpbWUoIiVZLSVtLSVkICVIOiVNOiVTIikKICAgICAgICAgICAgICAgICAgICAgICBpZiByb3dbImNyZWF0ZV90aW1lIl0gZWxzZSBOb25lLAogICAgfQoKCmRlZiB2YWxpZGF0ZV9yZWNvcmQocmVxOiBSZWNvcmRDcmVhdGUpIC0+IGRhdGV0aW1lOgogICAgIiIi5qCh6aqM6LSm55uu5a2X5q6177yM6L+U5Zue6Kej5p6Q5ZCO55qEIHJlY29yZF90aW1l77yI5paw5aKe5LiO5pu05paw5YWx55So77yJIiIiCiAgICBpZiByZXEudHlwZSBpcyBOb25lOgogICAgICAgIHJhaXNlIEhUVFBFeGNlcHRpb24oc3RhdHVzX2NvZGU9NDAwLCBkZXRhaWw9InR5cGUg5LiN6IO95Li656m6IikKICAgIGlmIHJlcS5hbW91bnQgaXMgTm9uZSBvciByZXEuYW1vdW50IDw9IDA6CiAgICAgICAgcmFpc2UgSFRUUEV4Y2VwdGlvbihzdGF0dXNfY29kZT00MDAsIGRldGFpbD0iYW1vdW50IOS4jeiDveS4uuepuuS4lOW/hemhu+Wkp+S6jiAwIikKICAgIGlmIG5vdCByZXEuY2F0ZWdvcnkgb3Igbm90IHJlcS5jYXRlZ29yeS5zdHJpcCgpOgogICAgICAgIHJhaXNlIEhUVFBFeGNlcHRpb24oc3RhdHVzX2NvZGU9NDAwLCBkZXRhaWw9ImNhdGVnb3J5IOS4jeiDveS4uuepuiIpCiAgICBpZiBub3QgcmVxLnJlY29yZFRpbWUgb3Igbm90IHJlcS5yZWNvcmRUaW1lLnN0cmlwKCk6CiAgICAgICAgcmFpc2UgSFRUUEV4Y2VwdGlvbihzdGF0dXNfY29kZT00MDAsIGRldGFpbD0icmVjb3JkVGltZSDkuI3og73kuLrnqboiKQogICAgaWYgcmVxLnR5cGUgbm90IGluICgxLCAyKToKICAgICAgICByYWlzZSBIVFRQRXhjZXB0aW9uKHN0YXR1c19jb2RlPTQwMCwgZGV0YWlsPSJ0eXBlIOW/hemhu+aYryAxKOaUtuWFpSkg5oiWIDIo5pSv5Ye6KSIpCgogICAgdHJ5OgogICAgICAgIHJldHVybiBkYXRldGltZS5zdHJwdGltZShyZXEucmVjb3JkVGltZSwgIiVZLSVtLSVkICVIOiVNOiVTIikKICAgIGV4Y2VwdCBWYWx1ZUVycm9yOgogICAgICAgIHJhaXNlIEhUVFBFeGNlcHRpb24oc3RhdHVzX2NvZGU9NDAwLCBkZXRhaWw9InJlY29yZFRpbWUg5qC85byP6ZSZ6K+v77yM5bqU5Li6IHl5eXktTU0tZGQgSEg6bW06c3MiKQoKCmRlZiBwYXJzZV9kYXRlKHZhbHVlOiBzdHIsIGZpZWxkOiBzdHIpIC0+IGRhdGV0aW1lOgogICAgIiIi5oqKIHl5eXktTU0tZGQg6Kej5p6Q5Li65b2T5aSpIDAwOjAw77yM5aSx6LSl5oqbIDQwMCIiIgogICAgdHJ5OgogICAgICAgIHJldHVybiBkYXRldGltZS5zdHJwdGltZSh2YWx1ZSwgIiVZLSVtLSVkIikKICAgIGV4Y2VwdCBWYWx1ZUVycm9yOgogICAgICAgIHJhaXNlIEhUVFBFeGNlcHRpb24oc3RhdHVzX2NvZGU9NDAwLCBkZXRhaWw9ZiJ7ZmllbGR9IOagvOW8j+mUmeivr++8jOW6lOS4uiB5eXl5LU1NLWRkIikKCgpkZWYgZmV0Y2hfb25lKGN1cnNvciwgcmVjb3JkX2lkOiBpbnQpIC0+IE9wdGlvbmFsW2RpY3RdOgogICAgY3Vyc29yLmV4ZWN1dGUoIlNFTEVDVCAqIEZST00gYWNjb3VudF9yZWNvcmQgV0hFUkUgaWQgPSAlcyIsIChyZWNvcmRfaWQsKSkKICAgIHJldHVybiBjdXJzb3IuZmV0Y2hvbmUoKQoKCiMgPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CiMg5o6l5Y+jIDHvvJrmlrDlop7kuIDmnaHorrDotKborrDlvZUKIyBQT1NUIC9hcGkvcmVjb3JkcwojID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQpAYXBwLnBvc3QoIi9hcGkvcmVjb3JkcyIpCmRlZiBjcmVhdGVfcmVjb3JkKHJlcTogUmVjb3JkQ3JlYXRlKToKICAgIHJlY29yZF90aW1lID0gdmFsaWRhdGVfcmVjb3JkKHJlcSkKCiAgICBjb25uID0gZ2V0X2Nvbm4oKQogICAgdHJ5OgogICAgICAgIHdpdGggY29ubi5jdXJzb3IoKSBhcyBjdXJzb3I6CiAgICAgICAgICAgIGN1cnNvci5leGVjdXRlKCIiIgogICAgICAgICAgICAgICAgSU5TRVJUIElOVE8gYWNjb3VudF9yZWNvcmQKICAgICAgICAgICAgICAgICh0eXBlLCBhbW91bnQsIGNhdGVnb3J5LCByZW1hcmssIHJlY29yZF90aW1lKQogICAgICAgICAgICAgICAgVkFMVUVTICglcywgJXMsICVzLCAlcywgJXMpCiAgICAgICAgICAgICIiIiwgKHJlcS50eXBlLCByZXEuYW1vdW50LCByZXEuY2F0ZWdvcnksIHJlcS5yZW1hcmssIHJlY29yZF90aW1lKSkKICAgICAgICAgICAgY29ubi5jb21taXQoKQogICAgICAgICAgICByb3cgPSBmZXRjaF9vbmUoY3Vyc29yLCBjdXJzb3IubGFzdHJvd2lkKQogICAgZmluYWxseToKICAgICAgICBjb25uLmNsb3NlKCkKCiAgICByZXR1cm4gSlNPTlJlc3BvbnNlKHN0YXR1c19jb2RlPTIwMCwgY29udGVudD17CiAgICAgICAgImNvZGUiOiAyMDAsCiAgICAgICAgIm1lc3NhZ2UiOiAi5re75Yqg5oiQ5YqfIiwKICAgICAgICAiZGF0YSI6IHJvd190b19kaWN0KHJvdyksCiAgICB9KQoKCiMgPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CiMg5o6l5Y+jIDLvvJrmn6Xor6LmlLbmlK/mtYHmsLTliJfooagKIyBHRVQgL2FwaS9yZWNvcmRzP3BhZ2VOdW09MSZwYWdlU2l6ZT0xMCZ0eXBlPSZrZXl3b3JkPSZzdGFydERhdGU9JmVuZERhdGU9CiMgPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CkBhcHAuZ2V0KCIvYXBpL3JlY29yZHMiKQpkZWYgbGlzdF9yZWNvcmRzKAogICAgcGFnZU51bTogaW50ID0gMSwKICAgIHBhZ2VTaXplOiBpbnQgPSAxMCwKICAgIHR5cGU6IE9wdGlvbmFsW2ludF0gPSBOb25lLAogICAga2V5d29yZDogT3B0aW9uYWxbc3RyXSA9IE5vbmUsCiAgICBzdGFydERhdGU6IE9wdGlvbmFsW3N0cl0gPSBOb25lLAogICAgZW5kRGF0ZTogT3B0aW9uYWxbc3RyXSA9IE5vbmUsCik6CiAgICBpZiBwYWdlTnVtIDwgMToKICAgICAgICBwYWdlTnVtID0gMQogICAgaWYgcGFnZVNpemUgPCAxOgogICAgICAgIHBhZ2VTaXplID0gMTAKICAgIGlmIHBhZ2VTaXplID4gMTAwOgogICAgICAgIHBhZ2VTaXplID0gMTAwCiAgICBpZiB0eXBlIGlzIG5vdCBOb25lIGFuZCB0eXBlIG5vdCBpbiAoMSwgMik6CiAgICAgICAgcmFpc2UgSFRUUEV4Y2VwdGlvbihzdGF0dXNfY29kZT00MDAsIGRldGFpbD0idHlwZSDlv4XpobvmmK8gMSjmlLblhaUpIOaIliAyKOaUr+WHuikiKQoKICAgICMg5Yqo5oCB5ou85o6l562b6YCJ5p2h5Lu277yI5YWo6YOo5L2/55So5Y+C5pWw5YyW77yM6Ziy5rOo5YWl77yJCiAgICB3aGVyZSA9IFtdCiAgICBwYXJhbXMgPSBbXQoKICAgIGlmIHR5cGUgaXMgbm90IE5vbmU6CiAgICAgICAgd2hlcmUuYXBwZW5kKCJ0eXBlID0gJXMiKQogICAgICAgIHBhcmFtcy5hcHBlbmQodHlwZSkKCiAgICBpZiBrZXl3b3JkIGFuZCBrZXl3b3JkLnN0cmlwKCk6CiAgICAgICAgd2hlcmUuYXBwZW5kKCIoY2F0ZWdvcnkgTElLRSAlcyBPUiByZW1hcmsgTElLRSAlcykiKQogICAgICAgIGt3ID0gZiIle2tleXdvcmQuc3RyaXAoKX0lIgogICAgICAgIHBhcmFtcy5leHRlbmQoW2t3LCBrd10pCgogICAgaWYgc3RhcnREYXRlOgogICAgICAgIHdoZXJlLmFwcGVuZCgicmVjb3JkX3RpbWUgPj0gJXMiKQogICAgICAgIHBhcmFtcy5hcHBlbmQocGFyc2VfZGF0ZShzdGFydERhdGUsICJzdGFydERhdGUiKSkKCiAgICBpZiBlbmREYXRlOgogICAgICAgICMg57uT5p2f5pel5pyf5b2T5aSp5Lmf566X77yM55SoIDwg5qyh5pel6Zu254K5CiAgICAgICAgd2hlcmUuYXBwZW5kKCJyZWNvcmRfdGltZSA8ICVzIikKICAgICAgICBwYXJhbXMuYXBwZW5kKHBhcnNlX2RhdGUoZW5kRGF0ZSwgImVuZERhdGUiKSArIHRpbWVkZWx0YShkYXlzPTEpKQoKICAgIHdoZXJlX3NxbCA9ICgiV0hFUkUgIiArICIgQU5EICIuam9pbih3aGVyZSkpIGlmIHdoZXJlIGVsc2UgIiIKICAgIG9mZnNldCA9IChwYWdlTnVtIC0gMSkgKiBwYWdlU2l6ZQoKICAgIGNvbm4gPSBnZXRfY29ubigpCiAgICB0cnk6CiAgICAgICAgd2l0aCBjb25uLmN1cnNvcigpIGFzIGN1cnNvcjoKICAgICAgICAgICAgY3Vyc29yLmV4ZWN1dGUoZiJTRUxFQ1QgQ09VTlQoKikgQVMgY250IEZST00gYWNjb3VudF9yZWNvcmQge3doZXJlX3NxbH0iLCBwYXJhbXMpCiAgICAgICAgICAgIHRvdGFsID0gY3Vyc29yLmZldGNob25lKClbImNudCJdCgogICAgICAgICAgICBjdXJzb3IuZXhlY3V0ZShmIiIiCiAgICAgICAgICAgICAgICBTRUxFQ1QgKiBGUk9NIGFjY291bnRfcmVjb3JkCiAgICAgICAgICAgICAgICB7d2hlcmVfc3FsfQogICAgICAgICAgICAgICAgT1JERVIgQlkgcmVjb3JkX3RpbWUgREVTQywgaWQgREVTQwogICAgICAgICAgICAgICAgTElNSVQgJXMgT0ZGU0VUICVzCiAgICAgICAgICAgICIiIiwgcGFyYW1zICsgW3BhZ2VTaXplLCBvZmZzZXRdKQogICAgICAgICAgICByb3dzID0gY3Vyc29yLmZldGNoYWxsKCkKICAgIGZpbmFsbHk6CiAgICAgICAgY29ubi5jbG9zZSgpCgogICAgcmV0dXJuIEpTT05SZXNwb25zZShzdGF0dXNfY29kZT0yMDAsIGNvbnRlbnQ9ewogICAgICAgICJjb2RlIjogMjAwLAogICAgICAgICJtZXNzYWdlIjogIuafpeivouaIkOWKnyIsCiAgICAgICAgImRhdGEiOiB7CiAgICAgICAgICAgICJ0b3RhbCI6IHRvdGFsLAogICAgICAgICAgICAibGlzdCI6IFtyb3dfdG9fZGljdChyKSBmb3IgciBpbiByb3dzXSwKICAgICAgICB9LAogICAgfSkKCgojID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQojIOaOpeWPoyAz77ya5oyJ5pel5pyf5rGH5oC777yI5oub6LSi54yr5pKt5oqlIC8g5qaC6KeI5Y2h77yJCiMgR0VUIC9hcGkvcmVjb3Jkcy9zdW1tYXJ5P2RhdGU9MjAyNi0xMS0wOAojIOazqOaEj++8muW/hemhu+WumuS5ieWcqCAvYXBpL3JlY29yZHMve3JlY29yZF9pZH0g5LmL5YmNCiMgPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CkBhcHAuZ2V0KCIvYXBpL3JlY29yZHMvc3VtbWFyeSIpCmRlZiByZWNvcmRzX3N1bW1hcnkoZGF0ZTogT3B0aW9uYWxbc3RyXSA9IE5vbmUpOgogICAgaWYgZGF0ZToKICAgICAgICBkYXkgPSBwYXJzZV9kYXRlKGRhdGUsICJkYXRlIikuZGF0ZSgpCiAgICBlbHNlOgogICAgICAgIGRheSA9IGRhdGV0aW1lLm5vdygpLmRhdGUoKQoKICAgIHN0YXJ0ID0gZGF0ZXRpbWUuY29tYmluZShkYXksIHRpbWUubWluKQogICAgZW5kID0gc3RhcnQgKyB0aW1lZGVsdGEoZGF5cz0xKQoKICAgIGNvbm4gPSBnZXRfY29ubigpCiAgICB0cnk6CiAgICAgICAgd2l0aCBjb25uLmN1cnNvcigpIGFzIGN1cnNvcjoKICAgICAgICAgICAgY3Vyc29yLmV4ZWN1dGUoIiIiCiAgICAgICAgICAgICAgICBTRUxFQ1QKICAgICAgICAgICAgICAgICAgQ09BTEVTQ0UoU1VNKENBU0UgV0hFTiB0eXBlID0gMSBUSEVOIGFtb3VudCBFTkQpLCAwKSBBUyBpbmNvbWUsCiAgICAgICAgICAgICAgICAgIENPQUxFU0NFKFNVTShDQVNFIFdIRU4gdHlwZSA9IDIgVEhFTiBhbW91bnQgRU5EKSwgMCkgQVMgZXhwZW5zZSwKICAgICAgICAgICAgICAgICAgQ09VTlQoKikgQVMgY250CiAgICAgICAgICAgICAgICBGUk9NIGFjY291bnRfcmVjb3JkCiAgICAgICAgICAgICAgICBXSEVSRSByZWNvcmRfdGltZSA+PSAlcyBBTkQgcmVjb3JkX3RpbWUgPCAlcwogICAgICAgICAgICAiIiIsIChzdGFydCwgZW5kKSkKICAgICAgICAgICAgc3RhdCA9IGN1cnNvci5mZXRjaG9uZSgpCgogICAgICAgICAgICBjdXJzb3IuZXhlY3V0ZSgiIiIKICAgICAgICAgICAgICAgIFNFTEVDVCAqIEZST00gYWNjb3VudF9yZWNvcmQKICAgICAgICAgICAgICAgIFdIRVJFIHJlY29yZF90aW1lID49ICVzIEFORCByZWNvcmRfdGltZSA8ICVzCiAgICAgICAgICAgICAgICBPUkRFUiBCWSByZWNvcmRfdGltZSBERVNDLCBpZCBERVNDCiAgICAgICAgICAgICAgICBMSU1JVCAzCiAgICAgICAgICAgICIiIiwgKHN0YXJ0LCBlbmQpKQogICAgICAgICAgICByZWNlbnQgPSBjdXJzb3IuZmV0Y2hhbGwoKQogICAgZmluYWxseToKICAgICAgICBjb25uLmNsb3NlKCkKCiAgICBpbmNvbWUgPSBmbG9hdChzdGF0WyJpbmNvbWUiXSkKICAgIGV4cGVuc2UgPSBmbG9hdChzdGF0WyJleHBlbnNlIl0pCgogICAgcmV0dXJuIEpTT05SZXNwb25zZShzdGF0dXNfY29kZT0yMDAsIGNvbnRlbnQ9ewogICAgICAgICJjb2RlIjogMjAwLAogICAgICAgICJtZXNzYWdlIjogIuafpeivouaIkOWKnyIsCiAgICAgICAgImRhdGEiOiB7CiAgICAgICAgICAgICJkYXRlIjogZGF5LnN0cmZ0aW1lKCIlWS0lbS0lZCIpLAogICAgICAgICAgICAiaW5jb21lIjogaW5jb21lLAogICAgICAgICAgICAiZXhwZW5zZSI6IGV4cGVuc2UsCiAgICAgICAgICAgICJiYWxhbmNlIjogcm91bmQoaW5jb21lIC0gZXhwZW5zZSwgMiksCiAgICAgICAgICAgICJjb3VudCI6IHN0YXRbImNudCJdLAogICAgICAgICAgICAicmVjZW50IjogW3Jvd190b19kaWN0KHIpIGZvciByIGluIHJlY2VudF0sCiAgICAgICAgfSwKICAgIH0pCgoKIyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KIyDmjqXlj6MgNO+8muafpeivouWNleadoeiusOW9le+8iOaKveWxieWbnuaYvu+8iQojIEdFVCAvYXBpL3JlY29yZHMve3JlY29yZF9pZH0KIyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KQGFwcC5nZXQoIi9hcGkvcmVjb3Jkcy97cmVjb3JkX2lkfSIpCmRlZiBnZXRfcmVjb3JkKHJlY29yZF9pZDogaW50KToKICAgIGNvbm4gPSBnZXRfY29ubigpCiAgICB0cnk6CiAgICAgICAgd2l0aCBjb25uLmN1cnNvcigpIGFzIGN1cnNvcjoKICAgICAgICAgICAgcm93ID0gZmV0Y2hfb25lKGN1cnNvciwgcmVjb3JkX2lkKQogICAgZmluYWxseToKICAgICAgICBjb25uLmNsb3NlKCkKCiAgICBpZiByb3cgaXMgTm9uZToKICAgICAgICByYWlzZSBIVFRQRXhjZXB0aW9uKHN0YXR1c19jb2RlPTQwNCwgZGV0YWlsPSLorrDlvZXkuI3lrZjlnKgiKQoKICAgIHJldHVybiBKU09OUmVzcG9uc2Uoc3RhdHVzX2NvZGU9MjAwLCBjb250ZW50PXsKICAgICAgICAiY29kZSI6IDIwMCwKICAgICAgICAibWVzc2FnZSI6ICLmn6Xor6LmiJDlip8iLAogICAgICAgICJkYXRhIjogcm93X3RvX2RpY3Qocm93KSwKICAgIH0pCgoKIyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KIyDmjqXlj6MgNe+8muabtOaWsOS4gOadoeiusOW9lQojIFBVVCAvYXBpL3JlY29yZHMve3JlY29yZF9pZH0KIyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KQGFwcC5wdXQoIi9hcGkvcmVjb3Jkcy97cmVjb3JkX2lkfSIpCmRlZiB1cGRhdGVfcmVjb3JkKHJlY29yZF9pZDogaW50LCByZXE6IFJlY29yZENyZWF0ZSk6CiAgICByZWNvcmRfdGltZSA9IHZhbGlkYXRlX3JlY29yZChyZXEpCgogICAgY29ubiA9IGdldF9jb25uKCkKICAgIHRyeToKICAgICAgICB3aXRoIGNvbm4uY3Vyc29yKCkgYXMgY3Vyc29yOgogICAgICAgICAgICBpZiBmZXRjaF9vbmUoY3Vyc29yLCByZWNvcmRfaWQpIGlzIE5vbmU6CiAgICAgICAgICAgICAgICByYWlzZSBIVFRQRXhjZXB0aW9uKHN0YXR1c19jb2RlPTQwNCwgZGV0YWlsPSLorrDlvZXkuI3lrZjlnKgiKQoKICAgICAgICAgICAgY3Vyc29yLmV4ZWN1dGUoIiIiCiAgICAgICAgICAgICAgICBVUERBVEUgYWNjb3VudF9yZWNvcmQKICAgICAgICAgICAgICAgIFNFVCB0eXBlID0gJXMsIGFtb3VudCA9ICVzLCBjYXRlZ29yeSA9ICVzLCByZW1hcmsgPSAlcywgcmVjb3JkX3RpbWUgPSAlcwogICAgICAgICAgICAgICAgV0hFUkUgaWQgPSAlcwogICAgICAgICAgICAiIiIsIChyZXEudHlwZSwgcmVxLmFtb3VudCwgcmVxLmNhdGVnb3J5LCByZXEucmVtYXJrLCByZWNvcmRfdGltZSwgcmVjb3JkX2lkKSkKICAgICAgICAgICAgY29ubi5jb21taXQoKQogICAgICAgICAgICByb3cgPSBmZXRjaF9vbmUoY3Vyc29yLCByZWNvcmRfaWQpCiAgICBmaW5hbGx5OgogICAgICAgIGNvbm4uY2xvc2UoKQoKICAgIHJldHVybiBKU09OUmVzcG9uc2Uoc3RhdHVzX2NvZGU9MjAwLCBjb250ZW50PXsKICAgICAgICAiY29kZSI6IDIwMCwKICAgICAgICAibWVzc2FnZSI6ICLkv67mlLnmiJDlip8iLAogICAgICAgICJkYXRhIjogcm93X3RvX2RpY3Qocm93KSwKICAgIH0pCgoKIyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KIyDmjqXlj6MgNu+8muWIoOmZpOS4gOadoeiusOW9lQojIERFTEVURSAvYXBpL3JlY29yZHMve3JlY29yZF9pZH0KIyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KQGFwcC5kZWxldGUoIi9hcGkvcmVjb3Jkcy97cmVjb3JkX2lkfSIpCmRlZiBkZWxldGVfcmVjb3JkKHJlY29yZF9pZDogaW50KToKICAgIGNvbm4gPSBnZXRfY29ubigpCiAgICB0cnk6CiAgICAgICAgd2l0aCBjb25uLmN1cnNvcigpIGFzIGN1cnNvcjoKICAgICAgICAgICAgaWYgZmV0Y2hfb25lKGN1cnNvciwgcmVjb3JkX2lkKSBpcyBOb25lOgogICAgICAgICAgICAgICAgcmFpc2UgSFRUUEV4Y2VwdGlvbihzdGF0dXNfY29kZT00MDQsIGRldGFpbD0i6K6w5b2V5LiN5a2Y5ZyoIikKCiAgICAgICAgICAgIGN1cnNvci5leGVjdXRlKCJERUxFVEUgRlJPTSBhY2NvdW50X3JlY29yZCBXSEVSRSBpZCA9ICVzIiwgKHJlY29yZF9pZCwpKQogICAgICAgICAgICBjb25uLmNvbW1pdCgpCiAgICBmaW5hbGx5OgogICAgICAgIGNvbm4uY2xvc2UoKQoKICAgIHJldHVybiBKU09OUmVzcG9uc2Uoc3RhdHVzX2NvZGU9MjAwLCBjb250ZW50PXsKICAgICAgICAiY29kZSI6IDIwMCwKICAgICAgICAibWVzc2FnZSI6ICLliKDpmaTmiJDlip8iLAogICAgICAgICJkYXRhIjogeyJpZCI6IHJlY29yZF9pZH0sCiAgICB9KQoKCiMgPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CiMg5o6l5Y+jIDfvvJroh6rnhLbor63oqIDop6PmnpDvvIjpooTnlZnlpKfmqKHlnovlvIDlhbPvvIkKIyBQT1NUIC9hcGkvY2hhdAojIOacqumFjee9riBMTE1fQVBJX0tFWSDml7bov5Tlm54gbW9kZT1ydWxl77yM55Sx5YmN56uv55So5pys5Zyw6KeE5YiZ6Kej5p6QCiMgPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CkBhcHAucG9zdCgiL2FwaS9jaGF0IikKZGVmIGNoYXQocmVxOiBDaGF0SW4pOgogICAgaWYgbm90IHJlcS50ZXh0IG9yIG5vdCByZXEudGV4dC5zdHJpcCgpOgogICAgICAgIHJhaXNlIEhUVFBFeGNlcHRpb24oc3RhdHVzX2NvZGU9NDAwLCBkZXRhaWw9InRleHQg5LiN6IO95Li656m6IikKCiAgICBpZiBub3Qgb3MuZ2V0ZW52KCJMTE1fQVBJX0tFWSIpOgogICAgICAgIHJldHVybiBKU09OUmVzcG9uc2Uoc3RhdHVzX2NvZGU9MjAwLCBjb250ZW50PXsKICAgICAgICAgICAgImNvZGUiOiAyMDAsCiAgICAgICAgICAgICJtb2RlIjogInJ1bGUiLAogICAgICAgICAgICAibWVzc2FnZSI6ICLmnKrlkK/nlKjlpKfmqKHlnovop6PmnpDvvIzor7fkvb/nlKjliY3nq6/op4TliJnop6PmnpAiLAogICAgICAgICAgICAiZGF0YSI6IE5vbmUsCiAgICAgICAgfSkKCiAgICAjIOmFjee9riBLZXkg5ZCO5Zyo5q2k5o6l5YWl5aSn5qih5Z6L77yM6L+U5Zue57uT5p6E6ZyA5LiO5YmN56uv57qm5a6a5LiA6Ie077yaCiAgICAjIHsidHlwZSI6IDF8MiwgImFtb3VudCI6IGZsb2F0LCAiY2F0ZWdvcnkiOiBzdHIsICJyZW1hcmsiOiBzdHIsICJyZWNvcmRUaW1lIjogInl5eXktTU0tZGQgSEg6bW06c3MifQogICAgcmFpc2UgSFRUUEV4Y2VwdGlvbihzdGF0dXNfY29kZT01MDEsIGRldGFpbD0i5aSn5qih5Z6L6Kej5p6Q5bCa5pyq5a6e546wIikKCgojID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQojIOWQr+WKqOWFpeWPo++8muerr+WPoyA4MDA1CiMgPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CmlmIF9fbmFtZV9fID09ICJfX21haW5fXyI6CiAgICBpbXBvcnQgdXZpY29ybgogICAgdXZpY29ybi5ydW4oYXBwLCBob3N0PSIwLjAuMC4wIiwgcG9ydD04MDA1KQo=
+"""
+个人记账小系统 · FastAPI 后端
+端口：8005
+"""
+
+import sys
+import os
+
+# 把本地 libs 目录加入搜索路径（pymysql 安装在这里）
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "libs"))
+
+from fastapi import FastAPI, HTTPException
+from fastapi.responses import JSONResponse, RedirectResponse
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from pydantic import BaseModel
+from typing import Optional
+import pymysql
+from datetime import datetime, timedelta, time
+
+# ==========================================
+# 数据库连接配置（根据实际情况修改）
+# ==========================================
+DB_CONFIG = {
+    "host": "localhost",
+    "port": 3306,
+    "user": "root",
+    "password": "123456",
+    "database": "account_db",
+    "charset": "utf8mb4",
+    "cursorclass": pymysql.cursors.DictCursor,
+}
+
+app = FastAPI(title="个人记账小系统 API")
+
+# 允许跨域（前端页面打开时可以直接调接口）
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# ==========================================
+# 静态页面挂载（作品集整合：前端文件在本目录下）
+# ==========================================
+_BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+
+@app.get("/")
+async def index_redirect():
+    return RedirectResponse(url="/account/static/index.html")
+
+
+app.mount("/static", StaticFiles(directory=_BASE_DIR, html=True), name="static")
+
+
+# ==========================================
+# 数据库连接工具
+# ==========================================
+def get_conn():
+    return pymysql.connect(**DB_CONFIG)
+
+
+# ==========================================
+# 请求模型
+# ==========================================
+class RecordCreate(BaseModel):
+    """新增 / 更新记账记录的入参"""
+    type: int                          # 1=收入, 2=支出
+    amount: float                      # 金额
+    category: str                      # 分类名称
+    remark: Optional[str] = None       # 备注，可空
+    recordTime: str                    # 账目发生时间 "2026-11-04 12:30:00"
+
+
+class ChatIn(BaseModel):
+    """POST /api/chat 入参（大模型解析预留接口）"""
+    text: str
+
+
+# ==========================================
+# 工具函数
+# ==========================================
+def row_to_dict(row: dict) -> dict:
+    """把数据库行（record_time）转成 API 返回（recordTime）"""
+    if row is None:
+        return None
+    return {
+        "id": row["id"],
+        "type": row["type"],
+        "amount": float(row["amount"]),
+        "category": row["category"],
+        "remark": row["remark"],
+        "recordTime": row["record_time"].strftime("%Y-%m-%d %H:%M:%S")
+                       if row["record_time"] else None,
+        "createTime": row["create_time"].strftime("%Y-%m-%d %H:%M:%S")
+                       if row["create_time"] else None,
+    }
+
+
+def validate_record(req: RecordCreate) -> datetime:
+    """校验账目字段，返回解析后的 record_time（新增与更新共用）"""
+    if req.type is None:
+        raise HTTPException(status_code=400, detail="type 不能为空")
+    if req.amount is None or req.amount <= 0:
+        raise HTTPException(status_code=400, detail="amount 不能为空且必须大于 0")
+    if not req.category or not req.category.strip():
+        raise HTTPException(status_code=400, detail="category 不能为空")
+    if not req.recordTime or not req.recordTime.strip():
+        raise HTTPException(status_code=400, detail="recordTime 不能为空")
+    if req.type not in (1, 2):
+        raise HTTPException(status_code=400, detail="type 必须是 1(收入) 或 2(支出)")
+
+    try:
+        return datetime.strptime(req.recordTime, "%Y-%m-%d %H:%M:%S")
+    except ValueError:
+        raise HTTPException(status_code=400, detail="recordTime 格式错误，应为 yyyy-MM-dd HH:mm:ss")
+
+
+def parse_date(value: str, field: str) -> datetime:
+    """把 yyyy-MM-dd 解析为当天 00:00，失败抛 400"""
+    try:
+        return datetime.strptime(value, "%Y-%m-%d")
+    except ValueError:
+        raise HTTPException(status_code=400, detail=f"{field} 格式错误，应为 yyyy-MM-dd")
+
+
+def fetch_one(cursor, record_id: int) -> Optional[dict]:
+    cursor.execute("SELECT * FROM account_record WHERE id = %s", (record_id,))
+    return cursor.fetchone()
+
+
+# ==========================================
+# 接口 1：新增一条记账记录
+# POST /api/records
+# ==========================================
+@app.post("/api/records")
+def create_record(req: RecordCreate):
+    record_time = validate_record(req)
+
+    conn = get_conn()
+    try:
+        with conn.cursor() as cursor:
+            cursor.execute("""
+                INSERT INTO account_record
+                (type, amount, category, remark, record_time)
+                VALUES (%s, %s, %s, %s, %s)
+            """, (req.type, req.amount, req.category, req.remark, record_time))
+            conn.commit()
+            row = fetch_one(cursor, cursor.lastrowid)
+    finally:
+        conn.close()
+
+    return JSONResponse(status_code=200, content={
+        "code": 200,
+        "message": "添加成功",
+        "data": row_to_dict(row),
+    })
+
+
+# ==========================================
+# 接口 2：查询收支流水列表
+# GET /api/records?pageNum=1&pageSize=10&type=&keyword=&startDate=&endDate=
+# ==========================================
+@app.get("/api/records")
+def list_records(
+    pageNum: int = 1,
+    pageSize: int = 10,
+    type: Optional[int] = None,
+    keyword: Optional[str] = None,
+    startDate: Optional[str] = None,
+    endDate: Optional[str] = None,
+):
+    if pageNum < 1:
+        pageNum = 1
+    if pageSize < 1:
+        pageSize = 10
+    if pageSize > 100:
+        pageSize = 100
+    if type is not None and type not in (1, 2):
+        raise HTTPException(status_code=400, detail="type 必须是 1(收入) 或 2(支出)")
+
+    # 动态拼接筛选条件（全部使用参数化，防注入）
+    where = []
+    params = []
+
+    if type is not None:
+        where.append("type = %s")
+        params.append(type)
+
+    if keyword and keyword.strip():
+        where.append("(category LIKE %s OR remark LIKE %s)")
+        kw = f"%{keyword.strip()}%"
+        params.extend([kw, kw])
+
+    if startDate:
+        where.append("record_time >= %s")
+        params.append(parse_date(startDate, "startDate"))
+
+    if endDate:
+        # 结束日期当天也算，用 < 次日零点
+        where.append("record_time < %s")
+        params.append(parse_date(endDate, "endDate") + timedelta(days=1))
+
+    where_sql = ("WHERE " + " AND ".join(where)) if where else ""
+    offset = (pageNum - 1) * pageSize
+
+    conn = get_conn()
+    try:
+        with conn.cursor() as cursor:
+            cursor.execute(f"SELECT COUNT(*) AS cnt FROM account_record {where_sql}", params)
+            total = cursor.fetchone()["cnt"]
+
+            cursor.execute(f"""
+                SELECT * FROM account_record
+                {where_sql}
+                ORDER BY record_time DESC, id DESC
+                LIMIT %s OFFSET %s
+            """, params + [pageSize, offset])
+            rows = cursor.fetchall()
+    finally:
+        conn.close()
+
+    return JSONResponse(status_code=200, content={
+        "code": 200,
+        "message": "查询成功",
+        "data": {
+            "total": total,
+            "list": [row_to_dict(r) for r in rows],
+        },
+    })
+
+
+# ==========================================
+# 接口 3：按日期汇总（招财猫播报 / 概览卡）
+# GET /api/records/summary?date=2026-11-08
+# 注意：必须定义在 /api/records/{record_id} 之前
+# ==========================================
+@app.get("/api/records/summary")
+def records_summary(date: Optional[str] = None):
+    if date:
+        day = parse_date(date, "date").date()
+    else:
+        day = datetime.now().date()
+
+    start = datetime.combine(day, time.min)
+    end = start + timedelta(days=1)
+
+    conn = get_conn()
+    try:
+        with conn.cursor() as cursor:
+            cursor.execute("""
+                SELECT
+                  COALESCE(SUM(CASE WHEN type = 1 THEN amount END), 0) AS income,
+                  COALESCE(SUM(CASE WHEN type = 2 THEN amount END), 0) AS expense,
+                  COUNT(*) AS cnt
+                FROM account_record
+                WHERE record_time >= %s AND record_time < %s
+            """, (start, end))
+            stat = cursor.fetchone()
+
+            cursor.execute("""
+                SELECT * FROM account_record
+                WHERE record_time >= %s AND record_time < %s
+                ORDER BY record_time DESC, id DESC
+                LIMIT 3
+            """, (start, end))
+            recent = cursor.fetchall()
+    finally:
+        conn.close()
+
+    income = float(stat["income"])
+    expense = float(stat["expense"])
+
+    return JSONResponse(status_code=200, content={
+        "code": 200,
+        "message": "查询成功",
+        "data": {
+            "date": day.strftime("%Y-%m-%d"),
+            "income": income,
+            "expense": expense,
+            "balance": round(income - expense, 2),
+            "count": stat["cnt"],
+            "recent": [row_to_dict(r) for r in recent],
+        },
+    })
+
+
+# ==========================================
+# 接口 4：查询单条记录（抽屉回显）
+# GET /api/records/{record_id}
+# ==========================================
+@app.get("/api/records/{record_id}")
+def get_record(record_id: int):
+    conn = get_conn()
+    try:
+        with conn.cursor() as cursor:
+            row = fetch_one(cursor, record_id)
+    finally:
+        conn.close()
+
+    if row is None:
+        raise HTTPException(status_code=404, detail="记录不存在")
+
+    return JSONResponse(status_code=200, content={
+        "code": 200,
+        "message": "查询成功",
+        "data": row_to_dict(row),
+    })
+
+
+# ==========================================
+# 接口 5：更新一条记录
+# PUT /api/records/{record_id}
+# ==========================================
+@app.put("/api/records/{record_id}")
+def update_record(record_id: int, req: RecordCreate):
+    record_time = validate_record(req)
+
+    conn = get_conn()
+    try:
+        with conn.cursor() as cursor:
+            if fetch_one(cursor, record_id) is None:
+                raise HTTPException(status_code=404, detail="记录不存在")
+
+            cursor.execute("""
+                UPDATE account_record
+                SET type = %s, amount = %s, category = %s, remark = %s, record_time = %s
+                WHERE id = %s
+            """, (req.type, req.amount, req.category, req.remark, record_time, record_id))
+            conn.commit()
+            row = fetch_one(cursor, record_id)
+    finally:
+        conn.close()
+
+    return JSONResponse(status_code=200, content={
+        "code": 200,
+        "message": "修改成功",
+        "data": row_to_dict(row),
+    })
+
+
+# ==========================================
+# 接口 6：删除一条记录
+# DELETE /api/records/{record_id}
+# ==========================================
+@app.delete("/api/records/{record_id}")
+def delete_record(record_id: int):
+    conn = get_conn()
+    try:
+        with conn.cursor() as cursor:
+            if fetch_one(cursor, record_id) is None:
+                raise HTTPException(status_code=404, detail="记录不存在")
+
+            cursor.execute("DELETE FROM account_record WHERE id = %s", (record_id,))
+            conn.commit()
+    finally:
+        conn.close()
+
+    return JSONResponse(status_code=200, content={
+        "code": 200,
+        "message": "删除成功",
+        "data": {"id": record_id},
+    })
+
+
+# ==========================================
+# 接口 7：自然语言解析（预留大模型开关）
+# POST /api/chat
+# 未配置 LLM_API_KEY 时返回 mode=rule，由前端用本地规则解析
+# ==========================================
+@app.post("/api/chat")
+def chat(req: ChatIn):
+    if not req.text or not req.text.strip():
+        raise HTTPException(status_code=400, detail="text 不能为空")
+
+    if not os.getenv("LLM_API_KEY"):
+        return JSONResponse(status_code=200, content={
+            "code": 200,
+            "mode": "rule",
+            "message": "未启用大模型解析，请使用前端规则解析",
+            "data": None,
+        })
+
+    # 配置 Key 后在此接入大模型，返回结构需与前端约定一致：
+    # {"type": 1|2, "amount": float, "category": str, "remark": str, "recordTime": "yyyy-MM-dd HH:mm:ss"}
+    raise HTTPException(status_code=501, detail="大模型解析尚未实现")
+
+
+# ==========================================
+# 启动入口：端口 8005
+# ==========================================
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8005)
