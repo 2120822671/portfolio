@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>作品集 · 在线演示与项目文档</title>
+<style>
+  :root { --ink:#1f2328; --muted:#5b6470; --line:#e3e0d8; --paper:#f6f3ea; --accent:#2f7d6d; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink);
+         font:16px/1.7 "PingFang SC","Microsoft YaHei",system-ui,sans-serif; }
+  .wrap { max-width:900px; margin:0 auto; padding:56px 24px 80px; }
+  h1 { font-size:34px; margin:0 0 8px; letter-spacing:-.5px; }
+  .sub { color:var(--muted); margin:0 0 40px; }
+  h2 { font-size:14px; letter-spacing:.18em; color:var(--accent); text-transform:uppercase;
+       margin:40px 0 14px; padding-bottom:8px; border-bottom:1px solid var(--line); }
+  .card { display:flex; align-items:center; gap:16px; padding:16px 18px; background:#fff;
+          border:1px solid var(--line); border-radius:10px; margin-bottom:10px; text-decoration:none;
+          color:inherit; transition:border-color .15s, transform .15s; }
+  .card:hover { border-color:var(--accent); transform:translateX(3px); }
+  .card .icon { font-size:26px; }
+  .card .t { font-weight:600; }
+  .card .d { color:var(--muted); font-size:13px; }
+  .card .go { margin-left:auto; color:var(--accent); font-weight:600; font-size:13px; white-space:nowrap; }
+  .tag { display:inline-block; font-size:11px; padding:1px 8px; border-radius:99px;
+         background:#e7f2ee; color:var(--accent); margin-left:8px; vertical-align:2px; }
+  footer { margin-top:48px; color:var(--muted); font-size:13px; border-top:1px solid var(--line); padding-top:18px; }
+  a.plain { color:var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>五个系统 · 在线演示与文档</h1>
+  <p class="sub">FastAPI + MySQL 全栈项目的静态演示与说明文档。完整可运行版本需本地启动后端。</p>
+
+  <h2>在线演示</h2>
+  <a class="card" href="./demo/farm/">
+    <span class="icon">🌾</span>
+    <span>
+      <span class="t">像素农场 Online</span><span class="tag">前端演示</span>
+      <span class="d">种植、收获、商店、图鉴、动物、每日任务、排行榜（数据为浏览器内模拟）</span>
+    </span>
+    <span class="go">进入 →</span>
+  </a>
+
+  <h2>项目文档</h2>
+  <a class="card" href="https://github.com/2120822671/portfolio/blob/main/docs/01-%E5%83%8F%E7%B4%A0%E5%86%9C%E5%9C%BA.md">
+    <span class="icon">🌾</span><span><span class="t">01 像素农场</span><span class="d">游戏化经营 · SQLite</span></span><span class="go">查看 →</span>
+  </a>
+  <a class="card" href="https://github.com/2120822671/portfolio/blob/main/docs/02-%E6%98%9F%E5%9D%9EStarDock.md">
+    <span class="icon">⭐</span><span><span class="t">02 星坞 StarDock</span><span class="d">粉丝社区 · MySQL · WebSocket</span></span><span class="go">查看 →</span>
+  </a>
+  <a class="card" href="https://github.com/2120822671/portfolio/blob/main/docs/03-%E6%A0%A1%E6%B7%98%E9%9B%86%E5%B8%82.md">
+    <span class="icon">🛒</span><span><span class="t">03 校淘集市</span><span class="d">二手交易 · 事务与超时关单</span></span><span class="go">查看 →</span>
+  </a>
+  <a class="card" href="https://github.com/2120822671/portfolio/blob/main/docs/04-%E6%8B%9B%E8%B4%A2%E8%AE%B0%E8%B4%A6.md">
+    <span class="icon">🐱</span><span><span class="t">04 招财记账</span><span class="d">个人财务 · MySQL</span></span><span class="go">查看 →</span>
+  </a>
+  <a class="card" href="https://github.com/2120822671/portfolio/blob/main/docs/05-%E5%A2%A8%E9%A6%99%E4%B9%A6%E9%98%81.md">
+    <span class="icon">📚</span><span><span class="t">05 墨香书阁</span><span class="d">图书借阅与阅读测验 · JSON 存储</span></span><span class="go">查看 →</span>
+  </a>
+
+  <footer>
+    作品集主页：<a class="plain" href="https://37lixloirzejy43lagp.traesite.cn/">37lixloirzejy43lagp.traesite.cn</a> ·
+    源码：<a class="plain" href="https://github.com/2120822671/portfolio">github.com/2120822671/portfolio</a>
+  </footer>
+</div>
+</body>
+</html>
