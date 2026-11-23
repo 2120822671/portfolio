@@ -2,11 +2,20 @@
    个人记账小系统 · 前端逻辑
    ========================================================== */
 
-const API_BASE = "/account";
+/* API 基址：
+   - 页面由后端托管（http://localhost:8005/）→ 用相对路径，同源，零跨域问题
+   - 页面以 file:// 直接打开                → 用绝对地址，指向本机后端
+   两种情况都做了兜底探测，避免出现 "Failed to fetch" */
+const API_BASE = (location.protocol === "file:")
+    ? "http://localhost:8005"
+    : "/account";              // 作品集整合：子应用挂载前缀
 const API = API_BASE + "/api/records";
 
-// 招财猫解析模式：rule = 本地规则；llm = 调用后端 /api/chat（未配置 Key 时自动回落规则）
-const PARSE_MODE = "rule";
+// 招财猫解析模式：
+//   auto = 调用后端 /api/chat（后端优先用大模型，失败自动回落规则，规则也失败再回落本地解析）
+//   rule = 只用前端本地规则（完全离线）
+//   llm  = 强制走后端大模型（未配置 Key 时后端会回落规则）
+const PARSE_MODE = "auto";
 
 const state = {
     pageNum: 1,
@@ -20,6 +29,7 @@ const state = {
     drawerRecord: null,
     lastCategory: null,
     summaryCache: null,
+    accountId: 1,
 };
 
 /* ========================= 通用工具 ========================= */
@@ -46,7 +56,12 @@ function toast(text, type = "") {
 }
 
 async function apiFetch(url, options) {
-    const res = await fetch(url, options);
+    let res;
+    try {
+        res = await fetch(url, options);
+    } catch (e) {
+        throw new Error(buildNetError(url));
+    }
     let data = null;
     try { data = await res.json(); } catch (e) { data = null; }
 
@@ -58,6 +73,15 @@ async function apiFetch(url, options) {
         throw new Error(typeof msg === "string" ? msg : "请求失败");
     }
     return data;
+}
+
+/**
+ * fetch 抛异常时（连不上后端）生成可读提示，而不是干巴巴的 "Failed to fetch"
+ */
+function buildNetError(url) {
+    const isFile = location.protocol === "file:";
+    const target = isFile ? "http://localhost:8005" : (location.origin || "当前地址");
+    return "连不上后端服务（" + target + "）——请先双击 start.bat 启动后端，或运行 python main.py，然后重试";
 }
 
 /* 服务端时间 "yyyy-MM-dd HH:mm:ss" → datetime-local 需要的 "yyyy-MM-ddTHH:mm" */
@@ -83,7 +107,7 @@ function nowInputValue() {
 
 async function loadSummary() {
     try {
-        const res = await apiFetch(API + "/summary");
+        const res = await apiFetch(API + "/summary?accountId=" + state.accountId);
         const d = res.data;
         state.summaryCache = d;
         document.getElementById("sumIncome").textContent = money(d.income);
@@ -106,6 +130,7 @@ function buildListQuery() {
     if (state.keyword) q.set("keyword", state.keyword);
     if (state.startDate) q.set("startDate", state.startDate);
     if (state.endDate) q.set("endDate", state.endDate);
+    if (state.accountId) q.set("accountId", state.accountId);
     return API + "?" + q.toString();
 }
 
@@ -214,6 +239,7 @@ function bindForm() {
             category: document.getElementById("category").value.trim(),
             remark: document.getElementById("remark").value.trim() || null,
             recordTime: toApiTime(document.getElementById("recordTime").value),
+            accountId: state.accountId,
         };
 
         if (!body.amount || body.amount <= 0 || !body.category || !body.recordTime) {
@@ -233,10 +259,50 @@ function bindForm() {
             state.pageNum = 1;
             loadList();
             loadSummary();
+            refreshDashboard();
         } catch (err) {
             toast("添加失败：" + err.message, "error");
         }
     });
+}
+
+/* 快捷金额 / 快捷分类按钮 */
+function bindQuickButtons() {
+    const amtWrap = document.getElementById("quickAmounts");
+    if (amtWrap) {
+        amtWrap.addEventListener("click", e => {
+            const btn = e.target.closest("button[data-amt]");
+            if (!btn) return;
+            const v = btn.dataset.amt;
+            const input = document.getElementById("amount");
+            if (v === "clear") {
+                input.value = "";
+                input.focus();
+                return;
+            }
+            input.value = v;
+            sanitizeAmountInput(input);
+            input.focus();
+        });
+    }
+
+    const catWrap = document.getElementById("quickCategories");
+    if (catWrap) {
+        catWrap.addEventListener("click", e => {
+            const btn = e.target.closest("button[data-cat]");
+            if (!btn) return;
+            const cat = btn.dataset.cat;
+            const input = document.getElementById("category");
+            input.value = cat;
+            // 选「工资」自动切成收入，省一次点击
+            if (cat === "工资") {
+                document.getElementById("type").value = "1";
+            } else if (document.getElementById("type").value === "1") {
+                document.getElementById("type").value = "2";
+            }
+            input.focus();
+        });
+    }
 }
 
 /* ========================= 筛选 / 分页绑定 ========================= */
@@ -385,6 +451,7 @@ function renderDrawer(mode) {
                 category: document.getElementById("dCategory").value.trim(),
                 remark: document.getElementById("dRemark").value.trim() || null,
                 recordTime: toApiTime(document.getElementById("dRecordTime").value),
+                accountId: state.accountId,
             };
             if (!payload.amount || payload.amount <= 0 || !payload.category || !payload.recordTime) {
                 toast("请填写完整（金额、分类、发生时间）", "error");
@@ -441,6 +508,7 @@ function bindDrawerActions() {
                     closeDrawer();
                     loadList();
                     loadSummary();
+                    refreshDashboard();
                 } catch (err) {
                     toast("删除失败：" + err.message, "error");
                 }
@@ -579,13 +647,14 @@ function addBubble(html, who) {
     return div;
 }
 
-function addConfirmCard(rec) {
+function addConfirmCard(rec, index = 0, total = 1) {
     const body = document.getElementById("chatBody");
     const isIncome = rec.type === 1;
     const card = document.createElement("div");
     card.className = "confirm-card";
+    const title = total > 1 ? `第 ${index + 1} 笔 / 共 ${total} 笔 · 请确认` : "请确认这笔账";
     card.innerHTML = `
-        <div class="cf-title">请确认这笔账</div>
+        <div class="cf-title">${title}</div>
         <div class="cf-main">
             <span class="cf-amount" style="color:${isIncome ? '#00a884' : '#c0392b'}">
                 ${isIncome ? "+" : "-"}¥${Number(rec.amount).toFixed(2)}
@@ -616,17 +685,23 @@ function addConfirmCard(rec) {
                     category: rec.category,
                     remark: rec.remark,
                     recordTime: rec.recordTime,
+                    accountId: state.accountId,
                 }),
             });
             state.lastCategory = rec.category;
             card.querySelector(".cf-actions").innerHTML =
                 '<span style="color:#00a884;font-size:13px;">✅ 已记入账本</span>';
             catHappy();
-            addCatBubble("记好啦！金币已经收进账本喵～ 💰");
+            if (total === 1) {
+                addCatBubble("记好啦！金币已经收进账本喵～ 💰");
+            } else {
+                addCatBubble(`第 ${index + 1} 笔记好啦喵～ 💰`);
+            }
             toast("记账成功 🎉", "success");
             state.pageNum = 1;
             loadList();
             loadSummary();
+            refreshDashboard();
         } catch (err) {
             btns.forEach(b => b.disabled = false);
             addCatBubble("喵…写入失败了：" + esc(err.message));
@@ -678,40 +753,68 @@ async function handleUserText(text) {
 
     addUserBubble(esc(raw));
     document.getElementById("chatText").value = "";
+    setCatState("thinking");
 
     let parsed = null;
 
-    if (PARSE_MODE === "llm") {
+    // 优先走后端智能体（大模型可用则大模型，不可用自动回落规则）
+    if (PARSE_MODE === "auto" || PARSE_MODE === "llm") {
         try {
             const res = await apiFetch(API_BASE + "/api/chat", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ text: raw }),
+                body: JSON.stringify({ text: raw, accountId: state.accountId }),
             });
-            if (res.mode === "rule" || !res.data) {
-                parsed = parseRecord(raw);
+            if (res.data && res.data.intent) {
+                parsed = res.data;
+                if (res.data.mode) state.lastParseMode = res.data.mode;
             } else {
-                parsed = Object.assign({ intent: "record", remark: raw }, res.data);
+                parsed = parseRecord(raw);
             }
         } catch (err) {
+            console.warn("后端解析失败，回落本地规则", err);
             parsed = parseRecord(raw);
         }
     } else {
         parsed = parseRecord(raw);
     }
 
+    setCatState("");
+
+    // 意图：查询
     if (parsed.intent === "query") {
-        setCatState("thinking");
-        const s = await loadSummary();
-        state.summaryCache = s;
-        setCatState("");
-        reportSummary();
+        const reply = parsed.reply || "";
+        if (reply) {
+            addCatBubble(esc(reply).replace(/\n/g, "<br>"));
+        } else {
+            await loadSummary();
+            reportSummary();
+        }
         return;
     }
 
-    if (parsed.intent === "record") {
-        addCatBubble("听明白啦～ 你这是要记一笔" + (parsed.type === 1 ? "收入" : "支出") + "，确认一下喵：");
-        addConfirmCard(parsed);
+    // 意图：消费分析
+    if (parsed.intent === "analysis") {
+        const reply = parsed.reply || "";
+        addCatBubble("🐱 " + esc(reply).replace(/\n/g, "<br>"));
+        return;
+    }
+
+    // 意图：闲聊
+    if (parsed.intent === "chat") {
+        addCatBubble("🐱 " + esc(parsed.reply || "喵～我在呢，随时可以帮你记账。"));
+        return;
+    }
+
+    // 意图：记账（可能多笔）
+    if (parsed.intent === "record" && parsed.records && parsed.records.length) {
+        if (parsed.records.length > 1) {
+            addCatBubble("喵～听明白啦，这是 " + parsed.records.length + " 笔账，一笔笔确认喵：");
+        } else {
+            const t = parsed.records[0].type;
+            addCatBubble("听明白啦～ 你这是要记一笔" + (t === 1 ? "收入" : "支出") + "，确认一下喵：");
+        }
+        parsed.records.forEach((rec, i) => addConfirmCard(rec, i, parsed.records.length));
         return;
     }
 
@@ -761,8 +864,11 @@ const PET_WORDS = {
     head: ["喵～摸摸头，今天财运旺旺", "呼噜呼噜…最舒服了喵", "头毛梳得亮亮的，好运自然来"],
     belly: ["肚子圆圆，金币满满", "喵呜～别挠啦，好痒！", "摸肚子会招财哦，再摸一下"],
     bell: ["叮铃～招财铃响了！", "铃铛一响，黄金万两", "叮～财运 +1"],
-    paw: ["击掌！一起发财喵", "钱爪已举起，接住好运", "啪！击掌成交"],
+    paw: ["击掌！一起发财喵", "握住小锤子，敲出好运来", "啪！击掌成交"],
     coin: ["招财进宝，钱钱快来", "金币擦得亮，钱包鼓起来", "财源滚滚喵～"],
+    body: ["抱抱！今天也是圆滚滚的一天", "喵～整个人都软乎乎的", "蹭蹭你，沾点财气"],
+    scarf: ["红围巾真暖和，财运也红彤彤", "围巾被我蹭得更有福气了喵", "红红火火，财气滚滚"],
+    feet: ["踩踩肉垫，招财猫的印章喵", "肉垫软软的，踩一个脚印一枚金币", "咕叽咕叽～"],
 };
 
 function petTodayKey() {
@@ -788,17 +894,38 @@ function petCat(e) {
     document.getElementById("petCount").textContent = cur;
 
     // 分部位反应
-    if (zone === "bell") {
-        playBellSound();
+    if (zone === "paw") {
+        // 敲小金锤：晃一下 + 金币
+        const hand = document.querySelector(".cat-hand-right");
+        if (hand) {
+            hand.classList.remove("tap");
+            void hand.getBoundingClientRect();
+            hand.classList.add("tap");
+            setTimeout(() => hand.classList.remove("tap"), 600);
+        }
+        burstCoins();
+    } else if (zone === "coin") {
+        // 摸钱袋：袋子晃一晃
+        const hand = document.querySelector(".cat-hand-left");
+        if (hand) {
+            hand.classList.remove("shake");
+            void hand.getBoundingClientRect();
+            hand.classList.add("shake");
+            setTimeout(() => hand.classList.remove("shake"), 600);
+        }
+        burstCoins();
+    } else if (zone === "bell") {
+        // 摸铃铛：铃铛晃一晃 + 铃声
         const bell = document.querySelector(".cat-bell");
         if (bell) {
             bell.classList.remove("swing");
             void bell.getBoundingClientRect();
             bell.classList.add("swing");
-            setTimeout(() => bell.classList.remove("swing"), 700);
+            setTimeout(() => bell.classList.remove("swing"), 600);
         }
-    } else if (zone === "paw" || zone === "coin") {
-        burstCoins();
+        playBellSound();
+    } else if (zone === "feet") {
+        playBellSound();
     }
 
     if (cat) {
@@ -808,7 +935,7 @@ function petCat(e) {
         setTimeout(() => cat.classList.remove("wiggle", "wobble"), 680);
     }
 
-    floatHearts(btn, zone === "bell" ? 2 : 3);
+    floatHearts(btn, zone === "feet" ? 2 : 3);
     const words = PET_WORDS[zone] || PET_WORDS.head;
     catSay(btn, words[Math.floor(Math.random() * words.length)]);
 }
@@ -930,7 +1057,7 @@ function strikeWoodfish() {
     void btn.offsetWidth;   // 触发动画重排
     btn.classList.add("strike");
     fish.classList.add("strike");
-    setTimeout(() => { btn.classList.remove("strike"); fish.classList.remove("strike"); }, 320);
+    setTimeout(() => { btn.classList.remove("strike"); fish.classList.remove("strike"); }, 520);
 
     playWoodfishSound();
 
@@ -951,12 +1078,23 @@ function strikeWoodfish() {
 
 /* ========================= 初始化 ========================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+/**
+ * 初始化入口
+ * 注意：本文件可能是「动态加载」的（脚本插入时 DOMContentLoaded 已经触发过），
+ * 所以不能只依赖 DOMContentLoaded 事件，必须同时判断 document.readyState。
+ */
+function initApp() {
+    if (initApp._done) return;
+    initApp._done = true;
+
     document.getElementById("recordTime").value = nowInputValue();
     bindForm();
     bindFilter();
     loadList();
     loadSummary();
+
+    // 快捷金额 / 快捷分类
+    bindQuickButtons();
 
     // 抽屉关闭
     document.getElementById("drawerClose").addEventListener("click", closeDrawer);
@@ -999,6 +1137,44 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.key === "Escape") {
             closeDrawer();
             closeChat();
+            if (typeof closeReportPanel === "function") closeReportPanel();
         }
     });
-});
+}
+
+/* 立即初始化：DOM 已就绪则直接跑，否则等 DOMContentLoaded */
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initApp);
+} else {
+    initApp();
+}
+
+/* ==========================================================
+   与 dashboard.js 的桥接（账本切换时同步全局状态）
+   ========================================================== */
+
+/** dashboard.js 调用：切换全局账本 */
+window.setGlobalBook = function (bookId) {
+    state.accountId = bookId;
+    const nameEl = document.getElementById("boardBookName");
+    if (nameEl && typeof D !== "undefined") {
+        const b = D.books.find(x => x.id === bookId);
+        nameEl.textContent = b ? b.name : "日常账本";
+    }
+};
+
+/** dashboard.js 调用：刷新流水与概览 */
+window.refreshRecords = function () {
+    state.pageNum = 1;
+    loadList();
+    loadSummary();
+};
+
+/** app.js 调用：刷新看板与自动化面板 */
+function refreshDashboard() {
+    if (typeof loadDashboard === "function") {
+        loadDashboard();
+        loadBudgets();
+        loadCheckin();
+    }
+}

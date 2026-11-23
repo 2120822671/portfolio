@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "book_id": 1,
+    "book_title": "三体",
+    "borrower": "陈振华",
+    "borrowed_at": "2026-11-14 15:17:10",
+    "returned_at": "2026-11-14 15:18:54"
+  },
+  {
+    "id": 2,
+    "book_id": 9,
+    "book_title": "思考，快与慢",
+    "borrower": "陈振华",
+    "borrowed_at": "2026-11-14 15:18:14",
+    "returned_at": "2026-11-14 15:55:26"
+  }
+]

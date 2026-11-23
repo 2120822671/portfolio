@@ -1,0 +1,2099 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>墨香书阁 · Ink & Fragrance Library</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+SC:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ==================== 设计令牌 ==================== */
+    :root {
+      --walnut: #5C4033;
+      --walnut-dark: #3E2A20;
+      --walnut-light: #8B6F5A;
+      --cream: #FAF6F0;
+      --cream-dark: #F0E9DC;
+      --parchment: #F5EFE4;
+      --forest: #2F5233;
+      --forest-light: #4A7C59;
+      --gold: #C9A961;
+      --gold-light: #E5CD9A;
+      --ink: #2C2418;
+      --ink-sub: #6B5E4F;
+      --ink-muted: #A89884;
+      --danger: #B54B3A;
+      --danger-bg: #F6E8E4;
+      --radius-sm: 6px;
+      --radius: 10px;
+      --radius-lg: 16px;
+      --shadow-soft: 0 2px 12px rgba(62, 42, 32, 0.08), 0 8px 28px rgba(62, 42, 32, 0.05);
+      --shadow-float: 0 6px 20px rgba(62, 42, 32, 0.12), 0 20px 48px rgba(62, 42, 32, 0.08);
+      --shadow-cover: 4px 6px 14px rgba(44, 36, 24, 0.25), 2px 3px 6px rgba(44, 36, 24, 0.15);
+    }
+
+    /* ==================== 基础样式 ==================== */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Noto Serif SC", serif;
+      background: var(--cream);
+      color: var(--ink);
+      min-height: 100vh;
+      font-size: 14px;
+      line-height: 1.6;
+      position: relative;
+    }
+    /* 纸张纹理背景 */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(ellipse at 20% 10%, rgba(201, 169, 97, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 90%, rgba(47, 82, 51, 0.06) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ==================== 顶栏 ==================== */
+    .topbar {
+      height: 72px;
+      background: linear-gradient(135deg, var(--walnut-dark) 0%, var(--walnut) 100%);
+      display: flex;
+      align-items: center;
+      padding: 0 36px;
+      box-shadow: 0 4px 20px rgba(62, 42, 32, 0.25);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      position: relative;
+    }
+    .topbar::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Playfair Display", serif;
+      font-weight: 700;
+      color: var(--walnut-dark);
+      font-size: 22px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      flex-shrink: 0;
+    }
+    .brand-text .zh {
+      font-family: "Noto Serif SC", serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--cream);
+      letter-spacing: 3px;
+    }
+    .brand-text .en {
+      font-family: "Playfair Display", serif;
+      font-size: 10px;
+      font-weight: 400;
+      color: var(--gold-light);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+    .topbar .spacer { flex: 1; }
+    .topbar-user {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--cream-dark);
+      font-size: 13px;
+    }
+    .topbar-user .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--forest) 0%, var(--forest-light) 100%);
+      color: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 14px;
+      border: 2px solid var(--gold);
+    }
+
+    /* ==================== 布局 ==================== */
+    .layout {
+      display: flex;
+      position: relative;
+      z-index: 1;
+    }
+    .sidebar {
+      width: 200px;
+      padding: 24px 14px;
+      flex-shrink: 0;
+    }
+    .nav-section {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 11px;
+      font-style: italic;
+      color: var(--ink-muted);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0 12px 10px;
+      margin-top: 18px;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      color: var(--ink-sub);
+      font-size: 14px;
+      margin-bottom: 2px;
+      transition: all 0.2s ease;
+      border: none;
+      width: 100%;
+      background: transparent;
+      text-align: left;
+      font-family: inherit;
+    }
+    .nav-item:hover {
+      background: var(--parchment);
+      color: var(--walnut-dark);
+    }
+    .nav-item.active {
+      background: var(--walnut);
+      color: var(--cream);
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(62, 42, 32, 0.2);
+    }
+    .nav-item .nav-icon {
+      font-size: 16px;
+      width: 20px;
+      text-align: center;
+    }
+
+    .main {
+      flex: 1;
+      padding: 28px 36px 48px;
+      min-width: 0;
+    }
+
+    /* ==================== 统计卡片 ==================== */
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+    .stat-card {
+      background: linear-gradient(135deg, #fff 0%, var(--parchment) 100%);
+      border-radius: var(--radius-lg);
+      padding: 24px 28px;
+      box-shadow: var(--shadow-soft);
+      border-left: 4px solid var(--walnut);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .stat-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-float);
+    }
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      right: -20px;
+      top: -20px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(201, 169, 97, 0.08);
+    }
+    .stat-card.green { border-left-color: var(--forest); }
+    .stat-card.gold { border-left-color: var(--gold); }
+    .stat-card .num {
+      font-family: "Playfair Display", serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--walnut);
+      line-height: 1.1;
+    }
+    .stat-card.green .num { color: var(--forest); }
+    .stat-card.gold .num { color: var(--gold); }
+    .stat-card .label {
+      font-size: 12px;
+      color: var(--ink-sub);
+      margin-top: 6px;
+      letter-spacing: 1px;
+    }
+    .stat-card .quote {
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-size: 11px;
+      color: var(--ink-muted);
+      margin-top: 10px;
+      border-top: 1px dashed var(--cream-dark);
+      padding-top: 8px;
+    }
+
+    /* ==================== 通用卡片 ==================== */
+    .card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-soft);
+      margin-bottom: 24px;
+      border: 1px solid var(--cream-dark);
+    }
+    .card-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: "Playfair Display", "Noto Serif SC", serif;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: var(--walnut-dark);
+    }
+    .card-title::before {
+      content: '';
+      width: 4px;
+      height: 20px;
+      background: linear-gradient(180deg, var(--gold), var(--walnut));
+      border-radius: 2px;
+    }
+    .card-title .en-sub {
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-size: 13px;
+      color: var(--ink-muted);
+      font-weight: 400;
+      margin-left: 4px;
+    }
+
+    /* Tab 面板 */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    /* ==================== 表单 ==================== */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 24px;
+    }
+    .form-grid .full { grid-column: 1 / -1; }
+    .field-group-title {
+      grid-column: 1 / -1;
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-size: 12px;
+      color: var(--walnut);
+      letter-spacing: 2px;
+      padding: 16px 0 8px;
+      border-bottom: 1px dashed var(--cream-dark);
+      margin-bottom: 4px;
+    }
+    .field label {
+      display: block;
+      font-size: 12px;
+      color: var(--ink-sub);
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+    }
+    .field label .req { color: var(--danger); margin-left: 2px; }
+    .field input {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid var(--cream-dark);
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+      transition: all 0.2s ease;
+      background: var(--parchment);
+      color: var(--ink);
+    }
+    .field input:focus {
+      border-color: var(--walnut);
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(92, 64, 51, 0.1);
+    }
+    .field.invalid input {
+      border-color: var(--danger);
+      background: var(--danger-bg);
+    }
+    .field .hint {
+      font-size: 12px;
+      color: var(--danger);
+      margin-top: 4px;
+      min-height: 14px;
+    }
+
+    /* ==================== 按钮 ==================== */
+    .btn {
+      padding: 10px 24px;
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-size: 14px;
+      font-family: inherit;
+      font-weight: 500;
+      background: var(--walnut);
+      color: var(--cream);
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 6px rgba(62, 42, 32, 0.2);
+    }
+    .btn:hover {
+      background: var(--walnut-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(62, 42, 32, 0.25);
+    }
+    .btn:active { transform: translateY(0); }
+    .btn:disabled {
+      background: var(--ink-muted);
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    .btn.ghost {
+      background: transparent;
+      color: var(--walnut);
+      border: 1px solid var(--walnut-light);
+      box-shadow: none;
+    }
+    .btn.ghost:hover {
+      background: var(--parchment);
+      color: var(--walnut-dark);
+      border-color: var(--walnut);
+    }
+    .btn.danger {
+      background: var(--danger);
+    }
+    .btn.danger:hover { background: #9A3E30; }
+    .btn-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+      align-items: center;
+    }
+
+    /* ==================== 工具栏 ==================== */
+    .toolbar {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+    .search-box { position: relative; width: 300px; }
+    .search-box input {
+      width: 100%;
+      padding: 10px 34px 10px 14px;
+      border: 1px solid var(--cream-dark);
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      outline: none;
+      transition: all 0.2s ease;
+      background: var(--parchment);
+      font-family: inherit;
+    }
+    .search-box input:focus {
+      border-color: var(--walnut);
+      background: #fff;
+    }
+    .search-box .search-icon {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--ink-muted);
+      font-size: 14px;
+      pointer-events: none;
+    }
+    .search-box .clear {
+      position: absolute;
+      right: 6px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: var(--ink-muted);
+      color: #fff;
+      cursor: pointer;
+      font-size: 11px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .search-box.has-value .clear { display: flex; }
+    .toolbar .select,
+    .toolbar input[type="text"] {
+      padding: 9px 14px;
+      border: 1px solid var(--cream-dark);
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      background: var(--parchment);
+      color: var(--ink);
+      outline: none;
+      font-family: inherit;
+    }
+    .toolbar input[type="date"] {
+      padding: 8px 12px;
+      border: 1px solid var(--cream-dark);
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      background: var(--parchment);
+      color: var(--ink);
+      outline: none;
+    }
+    .view-toggle {
+      margin-left: auto;
+      display: flex;
+      background: var(--parchment);
+      border-radius: var(--radius-sm);
+      padding: 3px;
+    }
+    .view-toggle button {
+      padding: 6px 14px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      font-size: 13px;
+      color: var(--ink-sub);
+      border-radius: 4px;
+      font-family: inherit;
+      transition: all 0.2s ease;
+    }
+    .view-toggle button.active {
+      background: #fff;
+      color: var(--walnut);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+
+    /* ==================== 表格视图 ==================== */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    th, td {
+      padding: 14px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+    th {
+      background: var(--parchment);
+      color: var(--ink-sub);
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    tbody tr {
+      transition: background 0.15s;
+    }
+    tbody tr:hover {
+      background: rgba(201, 169, 97, 0.05);
+    }
+    .book-thumb {
+      width: 40px;
+      height: 52px;
+      border-radius: 3px;
+      object-fit: cover;
+      box-shadow: var(--shadow-cover);
+      vertical-align: middle;
+    }
+    .book-thumb-placeholder {
+      width: 40px;
+      height: 52px;
+      border-radius: 3px;
+      background: linear-gradient(135deg, var(--walnut-light), var(--walnut));
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cream);
+      font-size: 18px;
+      font-family: "Playfair Display", serif;
+      box-shadow: var(--shadow-cover);
+    }
+
+    /* 徽章 */
+    .badge {
+      display: inline-block;
+      padding: 3px 12px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    .badge.ok {
+      background: #E8F0EB;
+      color: var(--forest);
+    }
+    .badge.warn {
+      background: var(--danger-bg);
+      color: var(--danger);
+    }
+
+    /* 操作按钮 */
+    .op-btn {
+      padding: 4px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      margin-right: 5px;
+      transition: all 0.15s;
+      color: #fff;
+      font-family: inherit;
+    }
+    .op-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+    .op-btn:active { transform: translateY(0); }
+    .op-btn:disabled {
+      background: var(--ink-muted) !important;
+      cursor: not-allowed;
+      opacity: 1;
+      transform: none;
+    }
+    .op-btn.borrow { background: var(--forest); }
+    .op-btn.back { background: var(--gold); color: var(--walnut-dark); }
+    .op-btn.edit { background: var(--walnut); }
+    .op-btn.del { background: var(--danger); }
+
+    /* ==================== 卡片视图（书籍网格） ==================== */
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 28px 24px;
+    }
+    .book-card {
+      background: transparent;
+      cursor: pointer;
+    }
+    .book-cover-wrap {
+      position: relative;
+      aspect-ratio: 3/4;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      box-shadow: var(--shadow-cover);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: linear-gradient(135deg, var(--walnut-light), var(--walnut-dark));
+    }
+    .book-card:hover .book-cover-wrap {
+      transform: translateY(-6px) rotate(-1deg);
+      box-shadow: 8px 12px 24px rgba(44, 36, 24, 0.3), 4px 6px 10px rgba(44, 36, 24, 0.2);
+    }
+    .book-cover-wrap::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 8px;
+      background: linear-gradient(90deg, rgba(0,0,0,0.3), transparent);
+      z-index: 2;
+    }
+    .book-cover-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .book-cover-fallback {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      text-align: center;
+      background: linear-gradient(135deg, var(--walnut), var(--walnut-dark));
+    }
+    .book-cover-fallback .bf-title {
+      font-family: "Noto Serif SC", serif;
+      color: var(--cream);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+    .book-cover-fallback .bf-author {
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      color: var(--gold-light);
+      font-size: 11px;
+      opacity: 0.8;
+    }
+    .book-card-info {
+      margin-top: 12px;
+    }
+    .book-card-info .bc-title {
+      font-weight: 600;
+      color: var(--ink);
+      font-size: 14px;
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .book-card-info .bc-author {
+      font-size: 12px;
+      color: var(--ink-sub);
+      margin-top: 4px;
+      font-style: italic;
+    }
+    .book-card-info .bc-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 8px;
+    }
+    .book-card-info .bc-stock {
+      font-size: 11px;
+      color: var(--ink-muted);
+    }
+    .book-card-info .bc-actions {
+      display: flex;
+      gap: 4px;
+      margin-top: 10px;
+    }
+    .book-card-info .bc-actions .op-btn {
+      margin-right: 0;
+      padding: 4px 8px;
+      font-size: 11px;
+    }
+
+    /* ==================== 分页 ==================== */
+    .pager {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 14px;
+      padding-top: 20px;
+      margin-top: 8px;
+      font-size: 13px;
+      color: var(--ink-sub);
+    }
+    .pager button {
+      padding: 6px 16px;
+      border: 1px solid var(--cream-dark);
+      background: #fff;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-size: 13px;
+      color: var(--ink);
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+    .pager button:hover:not(:disabled) {
+      border-color: var(--walnut);
+      color: var(--walnut);
+      background: var(--parchment);
+    }
+    .pager button:disabled {
+      color: var(--ink-muted);
+      cursor: not-allowed;
+    }
+
+    /* ==================== 空状态 ==================== */
+    .empty {
+      text-align: center;
+      color: var(--ink-muted);
+      padding: 60px 20px;
+      font-size: 13px;
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+    }
+    .empty .icon {
+      font-size: 40px;
+      margin-bottom: 12px;
+      opacity: 0.4;
+    }
+
+    /* ==================== 弹窗 ==================== */
+    .modal-mask {
+      position: fixed;
+      inset: 0;
+      background: rgba(44, 36, 24, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-mask.show { display: flex; }
+    .modal {
+      background: var(--cream);
+      border-radius: var(--radius-lg);
+      width: 460px;
+      max-width: calc(100vw - 40px);
+      padding: 32px;
+      box-shadow: 0 20px 60px rgba(44, 36, 24, 0.4);
+      animation: modalIn 0.25s ease-out;
+      border-top: 4px solid var(--gold);
+    }
+    @keyframes modalIn {
+      from { transform: scale(0.9) translateY(10px); opacity: 0; }
+      to { transform: none; opacity: 1; }
+    }
+    .modal h4 {
+      font-family: "Playfair Display", "Noto Serif SC", serif;
+      font-size: 18px;
+      margin-bottom: 12px;
+      color: var(--walnut-dark);
+    }
+    .modal p {
+      font-size: 13.5px;
+      color: var(--ink-sub);
+      line-height: 1.8;
+      margin-bottom: 6px;
+    }
+    .modal .btn-row { justify-content: flex-end; }
+    .modal .field { margin-top: 14px; }
+    .modal .field input { width: 100%; }
+
+    /* ==================== Toast ==================== */
+    #toastBox {
+      position: fixed;
+      top: 88px;
+      right: 28px;
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .toast {
+      min-width: 240px;
+      padding: 12px 20px;
+      border-radius: var(--radius-sm);
+      background: #fff;
+      font-size: 13px;
+      box-shadow: var(--shadow-float);
+      border-left: 4px solid var(--walnut);
+      animation: slideIn 0.3s ease-out;
+      font-family: inherit;
+    }
+    .toast.success { border-left-color: var(--forest); }
+    .toast.error { border-left-color: var(--danger); }
+    @keyframes slideIn {
+      from { transform: translateX(40px); opacity: 0; }
+      to { transform: none; opacity: 1; }
+    }
+
+    /* ==================== Loading ==================== */
+    #loadingMask {
+      position: fixed;
+      inset: 0;
+      background: rgba(250, 246, 240, 0.85);
+      backdrop-filter: blur(6px);
+      z-index: 150;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+    }
+    #loadingMask.show { display: flex; }
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--cream-dark);
+      border-top-color: var(--walnut);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    #loadingMask span {
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-size: 14px;
+      color: var(--ink-sub);
+    }
+
+    .tip {
+      font-size: 12px;
+      color: var(--ink-sub);
+      background: var(--parchment);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      margin-bottom: 18px;
+      line-height: 1.8;
+      border-left: 3px solid var(--gold);
+      font-style: italic;
+    }
+
+    /* ==================== 响应式 ==================== */
+    @media (max-width: 992px) {
+      .layout { flex-direction: column; }
+      .sidebar {
+        width: 100%;
+        display: flex;
+        gap: 8px;
+        padding: 14px 20px;
+        border-bottom: 1px solid var(--cream-dark);
+      }
+      .nav-section { display: none; }
+      .nav-item { width: auto; margin-bottom: 0; font-size: 13px; padding: 8px 14px; }
+      .main { padding: 20px; }
+      .stat-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .books-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 18px 14px; }
+      .topbar { padding: 0 20px; height: 60px; }
+      .brand-text .zh { font-size: 16px; letter-spacing: 2px; }
+      table { font-size: 12px; }
+      th, td { padding: 10px 8px; }
+    }
+
+    /* 入场动画 */
+    .fade-up {
+      animation: fadeUp 0.5s ease-out both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    /* ==================== 成就徽章墙 ==================== */
+    .achievements-summary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      padding: 20px 0 28px;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, var(--parchment) 0%, #fff 100%);
+      border-radius: var(--radius);
+      border: 1px solid var(--cream-dark);
+    }
+    .sum-item { text-align: center; }
+    .sum-num {
+      font-family: "Playfair Display", serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--walnut);
+      display: block;
+      line-height: 1.2;
+    }
+    .sum-label {
+      font-size: 12px;
+      color: var(--ink-sub);
+      letter-spacing: 1px;
+      margin-top: 4px;
+    }
+    .sum-divider {
+      width: 1px;
+      height: 40px;
+      background: var(--cream-dark);
+    }
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 20px;
+    }
+    .achievement-badge {
+      background: linear-gradient(135deg, #fff, var(--parchment));
+      border-radius: var(--radius);
+      padding: 22px 18px;
+      text-align: center;
+      border: 2px solid var(--cream-dark);
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .achievement-badge::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(201,169,97,0.08), transparent);
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .achievement-badge:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-float);
+    }
+    .achievement-badge:hover::before { opacity: 1; }
+    .achievement-badge.locked {
+      opacity: 0.55;
+      filter: grayscale(0.85);
+    }
+    .achievement-badge.unlocked {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 1px var(--gold), 0 4px 16px rgba(201,169,97,0.25);
+    }
+    .achievement-icon {
+      font-size: 42px;
+      line-height: 1;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+    .achievement-badge.unlocked .achievement-icon {
+      filter: drop-shadow(0 2px 6px rgba(201,169,97,0.4));
+    }
+    .achievement-name {
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--ink);
+      margin-bottom: 4px;
+      position: relative;
+      z-index: 1;
+    }
+    .achievement-desc {
+      font-size: 12px;
+      color: var(--ink-sub);
+      line-height: 1.5;
+      min-height: 36px;
+      position: relative;
+      z-index: 1;
+    }
+    .achievement-hint {
+      font-size: 11px;
+      color: var(--ink-muted);
+      font-style: italic;
+      margin-top: 8px;
+      position: relative;
+      z-index: 1;
+    }
+    .achievement-badge .progress-bar {
+      height: 4px;
+      background: var(--cream-dark);
+      border-radius: 2px;
+      margin-top: 12px;
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+    }
+    .achievement-badge .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--walnut-light), var(--gold));
+      border-radius: 2px;
+      transition: width 0.4s ease;
+    }
+    .achievement-badge.unlocked .progress-fill {
+      background: linear-gradient(90deg, var(--gold), var(--forest-light));
+    }
+    .achievement-unlock-time {
+      font-size: 10px;
+      color: var(--gold);
+      margin-top: 6px;
+      font-family: "Cormorant Garamond", serif;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* 问答弹窗 */
+    .quiz-modal .modal {
+      width: 520px;
+      max-height: 85vh;
+      overflow-y: auto;
+    }
+    .quiz-question {
+      margin-bottom: 20px;
+    }
+    .quiz-q-num {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 12px;
+      color: var(--walnut);
+      font-style: italic;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+    .quiz-q-text {
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+    .quiz-options {
+      margin-top: 12px;
+    }
+    .quiz-option {
+      display: block;
+      width: 100%;
+      padding: 10px 14px;
+      margin-bottom: 8px;
+      border: 1px solid var(--cream-dark);
+      border-radius: var(--radius-sm);
+      background: #fff;
+      font-size: 13px;
+      font-family: inherit;
+      color: var(--ink);
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.15s;
+    }
+    .quiz-option:hover {
+      border-color: var(--walnut-light);
+      background: var(--parchment);
+    }
+    .quiz-option.selected {
+      border-color: var(--walnut);
+      background: var(--cream-dark);
+      font-weight: 600;
+      color: var(--walnut-dark);
+    }
+    .quiz-option.correct {
+      border-color: var(--forest);
+      background: #E8F0EB;
+      color: var(--forest);
+    }
+    .quiz-option.wrong {
+      border-color: var(--danger);
+      background: var(--danger-bg);
+      color: var(--danger);
+    }
+    .quiz-result-score {
+      text-align: center;
+      padding: 16px 0;
+    }
+    .quiz-result-score .big-num {
+      font-family: "Playfair Display", serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--walnut);
+    }
+    .quiz-result-score .big-num.pass { color: var(--forest); }
+    .quiz-result-score .big-num.fail { color: var(--danger); }
+    .quiz-result-msg {
+      text-align: center;
+      font-size: 13px;
+      color: var(--ink-sub);
+      margin-top: 10px;
+      line-height: 1.8;
+    }
+
+    /* 书卡上的"读完"按钮标记 */
+    .bc-finished-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      background: var(--forest);
+      color: #fff;
+      font-size: 10px;
+      border-radius: 999px;
+      margin-top: 6px;
+      letter-spacing: 0.5px;
+    }
+    .op-btn.read { background: var(--forest); }
+    .op-btn.finished { background: var(--forest-light); cursor: default; }
+  </style>
+</head>
+<body>
+
+  <!-- 顶栏 -->
+  <a href="/" class="portal-back" style="position:fixed;left:14px;bottom:14px;z-index:9999;background:rgba(201,169,97,.95);color:#3E2A20;text-decoration:none;font-size:12px;font-weight:700;padding:8px 14px;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.25)">← 作品集</a>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-logo">墨</div>
+      <div class="brand-text">
+        <div class="zh">墨香书阁</div>
+        <div class="en">Ink &amp; Fragrance Library</div>
+      </div>
+    </div>
+    <div class="spacer"></div>
+    <div class="topbar-user">
+      <div class="avatar">阁</div>
+      <span>墨香阁主理人</span>
+    </div>
+  </header>
+
+  <div class="layout">
+    <!-- 侧边栏 -->
+    <aside class="sidebar">
+      <div class="nav-section">Navigation</div>
+      <button class="nav-item active" data-tab="books" onclick="switchTab('books')">
+        <span class="nav-icon">📚</span>典藏书目
+      </button>
+      <button class="nav-item" data-tab="borrow" onclick="switchTab('borrow')">
+        <span class="nav-icon">✒️</span>借阅登记
+      </button>
+      <button class="nav-item" data-tab="records" onclick="switchTab('records')">
+        <span class="nav-icon">📜</span>借阅记录
+      </button>
+      <button class="nav-item" data-tab="achievements" onclick="switchTab('achievements')">
+        <span class="nav-icon">🏅</span>成就徽章
+      </button>
+    </aside>
+
+    <main class="main">
+      <!-- 统计看板 -->
+      <div class="stat-row">
+        <div class="stat-card fade-up" style="animation-delay: 0.05s">
+          <div class="num" id="statTotal">—</div>
+          <div class="label">典藏书目 · 种</div>
+          <div class="quote">"凡读书，须整顿几案，令洁净端正"</div>
+        </div>
+        <div class="stat-card gold fade-up" style="animation-delay: 0.1s">
+          <div class="num" id="statBorrowed">—</div>
+          <div class="label">外借中 · 册</div>
+          <div class="quote">"书非借不能读也"</div>
+        </div>
+        <div class="stat-card green fade-up" style="animation-delay: 0.15s">
+          <div class="num" id="statAvailable">—</div>
+          <div class="label">在架可借 · 册</div>
+          <div class="quote">"藏书不难，能读为难"</div>
+        </div>
+      </div>
+
+      <!-- Tab1 图书管理 -->
+      <section id="tab-books" class="tab-panel active">
+        <div class="card">
+          <div class="card-title">
+            典藏录入
+            <span class="en-sub">Catalogue Entry</span>
+          </div>
+          <div class="form-grid">
+            <div class="field-group-title">书目信息</div>
+            <div class="field" id="f-title">
+              <label>书名<span class="req">*</span></label>
+              <input id="title" placeholder="例如：百年孤独" oninput="liveCheck('title')" />
+              <div class="hint" id="hint-title"></div>
+            </div>
+            <div class="field" id="f-author">
+              <label>作者<span class="req">*</span></label>
+              <input id="author" placeholder="例如：加西亚·马尔克斯" oninput="liveCheck('author')" />
+              <div class="hint" id="hint-author"></div>
+            </div>
+            <div class="field-group-title">馆藏编号</div>
+            <div class="field" id="f-isbn">
+              <label>ISBN<span class="req">*</span></label>
+              <input id="isbn" placeholder="10 或 13 位" oninput="liveCheck('isbn')" />
+              <div class="hint" id="hint-isbn"></div>
+            </div>
+            <div class="field" id="f-stock">
+              <label>库存数量<span class="req">*</span></label>
+              <input id="stock" type="number" min="1" value="1" oninput="liveCheck('stock')" />
+              <div class="hint" id="hint-stock"></div>
+            </div>
+          </div>
+          <div class="btn-row">
+            <button class="btn" id="btnCreate" onclick="createBook()">入藏</button>
+            <button class="btn ghost" onclick="resetCreateForm()">重置</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">
+            书目浏览
+            <span class="en-sub">Collection Browse</span>
+          </div>
+          <div class="toolbar">
+            <div class="search-box" id="searchBox">
+              <input id="search" placeholder="搜书名、作者..." oninput="onSearchInput()" />
+              <span class="search-icon">🔍</span>
+              <button class="clear" title="清空" onclick="clearSearch()">✕</button>
+            </div>
+            <div class="view-toggle">
+              <button class="active" onclick="switchView('grid')">📖 书架</button>
+              <button onclick="switchView('table')">📋 列表</button>
+            </div>
+          </div>
+
+          <!-- 卡片视图 -->
+          <div id="booksGrid" class="books-grid"></div>
+
+          <!-- 表格视图 -->
+          <div id="booksTableWrap" style="display:none;">
+            <table>
+              <thead>
+                <tr><th style="width:60px;">封面</th><th>书名</th><th>作者</th><th>ISBN</th><th>库存</th><th>状态</th><th style="width:260px;">操作</th></tr>
+              </thead>
+              <tbody id="bookTable"></tbody>
+            </table>
+          </div>
+
+          <div class="pager" id="bookPager"></div>
+        </div>
+      </section>
+
+      <!-- Tab2 借阅操作 -->
+      <section id="tab-borrow" class="tab-panel">
+        <div class="card">
+          <div class="card-title">
+            借阅登记
+            <span class="en-sub">Lending Record</span>
+          </div>
+          <div class="tip">
+            · 也可在「典藏书目」页面的书籍卡片上直接点击【借阅】<br>
+            · 同一借阅人对同一本书在未归还前不可重复借阅<br>
+            · 书香致远，阅者当惜
+          </div>
+          <div class="form-grid">
+            <div class="field" id="f-bBookId">
+              <label>图书编号<span class="req">*</span></label>
+              <input id="bBookId" type="number" min="1" placeholder="请输入图书 ID" oninput="liveCheck('bBookId')" />
+              <div class="hint" id="hint-bBookId"></div>
+            </div>
+            <div class="field" id="f-borrower">
+              <label>借阅人姓名<span class="req">*</span></label>
+              <input id="borrower" placeholder="请输入借阅人姓名" oninput="liveCheck('borrower')" />
+              <div class="hint" id="hint-borrower"></div>
+            </div>
+            <div class="field full">
+              <label>借阅日期（自动填入）</label>
+              <input id="bDate" readonly />
+            </div>
+          </div>
+          <div class="btn-row">
+            <button class="btn" id="btnBorrow" onclick="borrowManual()">确认借阅</button>
+            <button class="btn ghost" onclick="resetBorrowForm()">重置</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tab3 借阅记录 -->
+      <section id="tab-records" class="tab-panel">
+        <div class="card">
+          <div class="card-title">
+            借阅流水
+            <span class="en-sub">Borrowing Ledger</span>
+          </div>
+          <div class="toolbar">
+            <input id="rBorrower" class="select" type="text" placeholder="借阅人" style="width:140px;" />
+            <input id="rBook" class="select" type="text" placeholder="书名模糊" style="width:160px;" />
+            <select id="rStatus" class="select">
+              <option value="">全部状态</option>
+              <option value="active">未归还</option>
+              <option value="returned">已归还</option>
+            </select>
+            <input id="rStart" type="date" title="借阅开始日期" />
+            <input id="rEnd" type="date" title="借阅结束日期" />
+            <button class="btn" onclick="reloadRecords()">查询</button>
+            <button class="btn ghost" onclick="resetRecordFilter()">重置</button>
+            <button class="btn ghost" onclick="exportRecords()">导出 CSV</button>
+          </div>
+          <table>
+            <thead>
+              <tr><th>流水号</th><th>书名</th><th>借阅人</th><th>借出时间</th><th>归还时间</th><th>状态</th></tr>
+            </thead>
+            <tbody id="recordTable"></tbody>
+          </table>
+          <div class="pager" id="recordPager"></div>
+        </div>
+      </section>
+
+      <!-- Tab4 成就徽章 -->
+      <section id="tab-achievements" class="tab-panel">
+        <div class="card">
+          <div class="card-title">
+            读者徽章墙
+            <span class="en-sub">Reader Achievements</span>
+          </div>
+          <div class="achievements-summary" id="achSummary">
+            <div class="sum-item">
+              <span class="sum-num" id="achUnlocked">0</span>
+              <span class="sum-label">已解锁</span>
+            </div>
+            <div class="sum-divider"></div>
+            <div class="sum-item">
+              <span class="sum-num" id="achTotal">0</span>
+              <span class="sum-label">总徽章</span>
+            </div>
+            <div class="sum-divider"></div>
+            <div class="sum-item">
+              <span class="sum-num" id="achScore">0%</span>
+              <span class="sum-label">完成率</span>
+            </div>
+          </div>
+
+          <div class="achievements-grid" id="achievementsGrid"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">
+            完书档案
+            <span class="en-sub">Reading Completions</span>
+          </div>
+          <table>
+            <thead>
+              <tr><th>流水</th><th>书名</th><th>完书人</th><th>答题</th><th>正确率</th><th>完书时间</th></tr>
+            </thead>
+            <tbody id="completionTable"></tbody>
+          </table>
+          <div class="empty" id="completionEmpty" style="display:none;">暂无完书记录，快去读书吧！</div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-mask" id="modalMask"><div class="modal" id="modalBox"></div></div>
+  <div id="toastBox"></div>
+  <div id="loadingMask"><div class="spinner"></div><span>纸翻云中...</span></div>
+
+<script>
+  /* ==================== 基础设施 ==================== */
+
+  const APP_PREFIX = '/book';
+  async function api(url, options = {}) {
+    const res = await fetch(APP_PREFIX + url, options);
+    let body = null;
+    try { body = await res.json(); } catch (e) {}
+    if (body && typeof body.code !== 'undefined') {
+      if (body.code === 0) return body.data;
+      throw new Error(body.msg || '请求失败');
+    }
+    if (res.ok) return body;
+    throw new Error('网络请求失败（' + res.status + '）');
+  }
+
+  function toast(msg, type) {
+    const box = document.getElementById('toastBox');
+    const el = document.createElement('div');
+    el.className = 'toast ' + (type || '');
+    el.textContent = msg;
+    box.appendChild(el);
+    setTimeout(() => el.remove(), 3000);
+  }
+
+  let loadingCount = 0;
+  function loadingOn() { loadingCount++; document.getElementById('loadingMask').classList.add('show'); }
+  function loadingOff() { loadingCount = Math.max(0, loadingCount - 1); if (!loadingCount) document.getElementById('loadingMask').classList.remove('show'); }
+  async function withLoading(fn) {
+    loadingOn();
+    try { return await fn(); }
+    catch (e) { toast(e.message || '操作失败', 'error'); }
+    finally { loadingOff(); }
+  }
+
+  let modalResolve = null;
+  function showModal(html) {
+    document.getElementById('modalBox').innerHTML = html;
+    document.getElementById('modalMask').classList.add('show');
+    return new Promise(r => modalResolve = r);
+  }
+  function closeModal(result) {
+    document.getElementById('modalMask').classList.remove('show');
+    if (modalResolve) { modalResolve(result); modalResolve = null; }
+  }
+  function showConfirm(title, text, confirmText, danger) {
+    return showModal(`
+      <h4>${title}</h4><p>${text}</p>
+      <div class="btn-row">
+        <button class="btn ghost" onclick="closeModal(false)">取消</button>
+        <button class="btn ${danger ? 'danger' : ''}" onclick="closeModal(true)">${confirmText}</button>
+      </div>`);
+  }
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c =>
+      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+
+  /* ==================== Tab 切换 ==================== */
+  function switchTab(name) {
+    document.querySelectorAll('.nav-item').forEach(b =>
+      b.classList.toggle('active', b.dataset.tab === name));
+    document.querySelectorAll('.tab-panel').forEach(p =>
+      p.classList.toggle('active', p.id === 'tab-' + name));
+    if (name === 'records') loadRecords();
+    if (name === 'books') loadBooks();
+    if (name === 'achievements') loadAchievements();
+  }
+
+  /* ==================== 视图切换 ==================== */
+  let currentView = 'grid';
+  function switchView(v) {
+    currentView = v;
+    document.querySelectorAll('.view-toggle button').forEach((b, i) =>
+      b.classList.toggle('active', (v === 'grid' && i === 0) || (v === 'table' && i === 1)));
+    document.getElementById('booksGrid').style.display = (v === 'grid') ? 'grid' : 'none';
+    document.getElementById('booksTableWrap').style.display = (v === 'table') ? 'block' : 'none';
+    loadBooks();
+  }
+
+  /* ==================== 表单校验 ==================== */
+  function isValidIsbn(v) {
+    const s = v.replace(/-/g, '');
+    return /^(97[89]\d{10}|\d{9}[\dXx])$/.test(s);
+  }
+  const validators = {
+    title: v => v ? '' : '书名不能为空',
+    author: v => v ? '' : '作者不能为空',
+    isbn: v => !v ? 'ISBN 不能为空' : (isValidIsbn(v) ? '' : 'ISBN 格式不正确'),
+    stock: v => (v !== '' && Number.isInteger(Number(v)) && Number(v) >= 1) ? '' : '库存必须为正整数',
+    bBookId: v => (v !== '' && Number(v) >= 1) ? '' : '请输入有效图书 ID',
+    borrower: v => v ? '' : '借阅人姓名不能为空',
+  };
+  function liveCheck(key) {
+    const v = document.getElementById(key).value.trim();
+    const err = validators[key](v);
+    const hint = document.getElementById('hint-' + key);
+    const field = document.getElementById('f-' + key);
+    if (hint) hint.textContent = err;
+    if (field) field.classList.toggle('invalid', !!err);
+    return !err;
+  }
+  function checkAll(keys) {
+    let allOk = true;
+    keys.forEach(k => { if (!liveCheck(k)) allOk = false; });
+    return allOk;
+  }
+  function clearHints(keys) {
+    keys.forEach(k => {
+      const hint = document.getElementById('hint-' + k);
+      const field = document.getElementById('f-' + k);
+      if (hint) hint.textContent = '';
+      if (field) field.classList.remove('invalid');
+    });
+  }
+
+  /* ==================== 统计 ==================== */
+  async function loadStats() {
+    await withLoading(async () => {
+      const s = await api('/stats');
+      document.getElementById('statTotal').textContent = s.total_books;
+      document.getElementById('statBorrowed').textContent = s.borrowed;
+      document.getElementById('statAvailable').textContent = s.available;
+    });
+  }
+
+  /* ==================== 图书管理 ==================== */
+  let bookPage = 1;
+  function onSearchInput() {
+    document.getElementById('searchBox').classList.toggle(
+      'has-value', !!document.getElementById('search').value);
+    clearTimeout(window._searchTimer);
+    window._searchTimer = setTimeout(() => { bookPage = 1; loadBooks(); }, 300);
+  }
+  function clearSearch() {
+    document.getElementById('search').value = '';
+    document.getElementById('searchBox').classList.remove('has-value');
+    bookPage = 1; loadBooks();
+  }
+
+  let completedBookIds = new Set();
+  let currentQuizBookId = null;
+
+  async function loadBooks() {
+    await withLoading(async () => {
+      // 先缓存完书过的书籍 id（书架上显示已读完标记）
+      try {
+        const comps = await api('/completions');
+        completedBookIds = new Set(comps.map(c => c.book_id));
+      } catch (e) { completedBookIds = new Set(); }
+
+      const keyword = document.getElementById('search').value.trim();
+      const qs = new URLSearchParams({ page: bookPage, page_size: currentView === 'grid' ? 12 : 5 });
+      if (keyword) qs.set('keyword', keyword);
+      const data = await api('/books?' + qs.toString());
+      if (currentView === 'grid') {
+        renderBooksGrid(data.list);
+      } else {
+        renderBookTable(data.list);
+      }
+      renderPager('bookPager', data, p => { bookPage = p; loadBooks(); });
+    });
+  }
+
+  // 卡片视图（书架）
+  function renderBooksGrid(list) {
+    const grid = document.getElementById('booksGrid');
+    grid.innerHTML = '';
+    if (!list.length) {
+      grid.innerHTML = '<div class="empty" style="grid-column:1/-1;"><div class="icon">📚</div>书架空空如也，快去录入几本好书吧</div>';
+      return;
+    }
+    list.forEach((b, idx) => {
+      const inStock = b.stock > 0;
+      const hasActive = b.active_borrows > 0;
+      const isCompleted = completedBookIds.has(b.id);
+      const card = document.createElement('div');
+      card.className = 'book-card fade-up';
+      card.style.animationDelay = (idx * 0.03) + 's';
+      const cover = b.cover_url
+        ? `<div class="book-cover-wrap">
+            <img src="${escapeHtml(APP_PREFIX + b.cover_url)}" alt="${escapeHtml(b.title)}" loading="lazy"
+              onerror="this.parentElement.innerHTML='<div class=book-cover-fallback><div class=bf-title>${escapeHtml(b.title)}</div><div class=bf-author>${escapeHtml(b.author)}</div></div>'">
+          </div>`
+        : `<div class="book-cover-wrap">
+            <div class="book-cover-fallback">
+              <div class="bf-title">${escapeHtml(b.title)}</div>
+              <div class="bf-author">${escapeHtml(b.author)}</div>
+            </div>
+          </div>`;
+      const readBtn = isCompleted
+        ? `<button class="op-btn finished" title="已读完 · 不可重复标记">已读完</button>`
+        : `<button class="op-btn read"
+              onclick="event.stopPropagation();openQuizModal(${b.id}, '${escapeHtml(b.title)}')">读完 +</button>`;
+      const finishedTag = isCompleted ? `<span class="bc-finished-tag">✓ 已读完</span>` : '';
+      card.innerHTML = `
+        ${cover}
+        <div class="book-card-info">
+          <div class="bc-title">${escapeHtml(b.title)}</div>
+          <div class="bc-author">${escapeHtml(b.author)}</div>
+          <div class="bc-meta">
+            <span class="bc-stock">库存 ${b.stock} 册</span>
+            <span class="badge ${inStock ? 'ok' : 'warn'}">${inStock ? '在架' : '已空'}</span>
+          </div>
+          ${finishedTag}
+          <div class="bc-actions">
+            <button class="op-btn borrow" ${inStock ? '' : 'disabled'}
+              onclick="event.stopPropagation();openBorrowModal(${b.id}, '${escapeHtml(b.title)}')">借阅</button>
+            <button class="op-btn back" ${hasActive ? '' : 'disabled'}
+              onclick="event.stopPropagation();openReturnModal(${b.id}, '${escapeHtml(b.title)}')">归还</button>
+            ${readBtn}
+            <button class="op-btn edit" onclick="event.stopPropagation();openEditModal(${b.id})">编</button>
+            <button class="op-btn del" ${hasActive ? 'disabled' : ''}
+              onclick="event.stopPropagation();confirmDelete(${b.id}, '${escapeHtml(b.title)}')">删</button>
+          </div>
+        </div>`;
+      grid.appendChild(card);
+    });
+  }
+
+  // 表格视图
+  function renderBookTable(list) {
+    const tbody = document.getElementById('bookTable');
+    tbody.innerHTML = '';
+    if (!list.length) {
+      tbody.innerHTML = '<tr><td colspan="7"><div class="empty"><div class="icon">📚</div>暂无图书数据</div></td></tr>';
+      return;
+    }
+    list.forEach(b => {
+      const inStock = b.stock > 0;
+      const hasActive = b.active_borrows > 0;
+      const safeTitle = escapeHtml(b.title);
+      let coverHtml;
+      if (b.cover_url) {
+        coverHtml = `<img class="book-thumb" src="${escapeHtml(APP_PREFIX + b.cover_url)}" alt="" onerror="this.outerHTML='<span class=book-thumb-placeholder>${b.title.charAt(0)}</span>'">`;
+      } else {
+        coverHtml = `<span class="book-thumb-placeholder">${b.title.charAt(0)}</span>`;
+      }
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${coverHtml}</td>
+        <td>${safeTitle}</td>
+        <td>${escapeHtml(b.author)}</td>
+        <td>${escapeHtml(b.isbn)}</td>
+        <td>${b.stock}</td>
+        <td><span class="badge ${inStock ? 'ok' : 'warn'}">${inStock ? '可借' : '已借出'}</span></td>
+        <td>
+          <button class="op-btn borrow" ${inStock ? '' : 'disabled'}
+            onclick="openBorrowModal(${b.id}, '${safeTitle}')">借阅</button>
+          <button class="op-btn back" ${hasActive ? '' : 'disabled'}
+            onclick="openReturnModal(${b.id}, '${safeTitle}')">归还</button>
+          <button class="op-btn edit" onclick="openEditModal(${b.id})">编辑</button>
+          <button class="op-btn del" ${hasActive ? 'disabled' : ''}
+            onclick="confirmDelete(${b.id}, '${safeTitle}')">删除</button>
+        </td>`;
+      tbody.appendChild(tr);
+    });
+  }
+
+  function renderPager(id, data, onChange) {
+    const el = document.getElementById(id);
+    el.innerHTML = '';
+    if (!data.total) return;
+    const prev = document.createElement('button');
+    prev.textContent = '← 上一页';
+    prev.disabled = data.page <= 1;
+    prev.onclick = () => onChange(data.page - 1);
+    const next = document.createElement('button');
+    next.textContent = '下一页 →';
+    next.disabled = data.page >= data.pages;
+    next.onclick = () => onChange(data.page + 1);
+    const info = document.createElement('span');
+    info.textContent = `${data.page} / ${data.pages} · 共 ${data.total}`;
+    el.append(prev, info, next);
+  }
+
+  async function createBook() {
+    if (!checkAll(['title', 'author', 'isbn', 'stock'])) return;
+    const btn = document.getElementById('btnCreate');
+    btn.disabled = true;
+    await withLoading(async () => {
+      const book = await api('/books', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title: document.getElementById('title').value.trim(),
+          author: document.getElementById('author').value.trim(),
+          isbn: document.getElementById('isbn').value.trim(),
+          stock: Number(document.getElementById('stock').value),
+        }),
+      });
+      toast(`入藏成功（编号：${book.id}）`, 'success');
+      resetCreateForm();
+      refreshAll();
+    });
+    btn.disabled = false;
+  }
+
+  function resetCreateForm() {
+    ['title', 'author', 'isbn'].forEach(k => document.getElementById(k).value = '');
+    document.getElementById('stock').value = 1;
+    clearHints(['title', 'author', 'isbn', 'stock']);
+  }
+
+  /* ==================== 借阅 / 归还 ==================== */
+  function openBorrowModal(bookId, title) {
+    showModal(`
+      <h4>借阅确认</h4>
+      <p>书名：《${title}》（编号：${bookId}）</p>
+      <div class="field">
+        <label>借阅人<span class="req">*</span></label>
+        <input id="mBorrower" placeholder="请输入姓名" />
+      </div>
+      <div class="btn-row">
+        <button class="btn ghost" onclick="closeModal(null)">取消</button>
+        <button class="btn" onclick="confirmBorrow(${bookId})">确认借阅</button>
+      </div>`);
+    setTimeout(() => { const el = document.getElementById('mBorrower'); if (el) el.focus(); }, 60);
+  }
+
+  async function confirmBorrow(bookId) {
+    const borrower = document.getElementById('mBorrower').value.trim();
+    if (!borrower) { toast('请输入借阅人姓名', 'error'); return; }
+    closeModal(null);
+    await withLoading(async () => {
+      await api(`/books/${bookId}/borrow`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ borrower }),
+      });
+      toast('借阅成功 · 且读且珍惜', 'success');
+      refreshAll();
+    });
+  }
+
+  function openReturnModal(bookId, title) {
+    showModal(`
+      <h4>归还确认</h4>
+      <p>书名：《${title}》（编号：${bookId}）</p>
+      <p style="font-size:12px;color:var(--ink-muted);">归还人留空时，将归还最早一条未归还记录。</p>
+      <div class="field">
+        <label>归还人（可选）</label>
+        <input id="mReturner" placeholder="留空则归还最早一条" />
+      </div>
+      <div class="btn-row">
+        <button class="btn ghost" onclick="closeModal(null)">取消</button>
+        <button class="btn" onclick="confirmReturn(${bookId})">确认归还</button>
+      </div>`);
+  }
+
+  async function confirmReturn(bookId) {
+    const borrower = (document.getElementById('mReturner').value || '').trim();
+    closeModal(null);
+    await withLoading(async () => {
+      const qs = borrower ? '?borrower=' + encodeURIComponent(borrower) : '';
+      await api(`/books/${bookId}/return${qs}`, { method: 'POST' });
+      toast('归还成功 · 书香永续', 'success');
+      refreshAll();
+    });
+  }
+
+  async function openEditModal(bookId) {
+    await withLoading(async () => {
+      const data = await api('/books?page=1&page_size=100');
+      const book = data.list.find(b => b.id === bookId);
+      if (!book) { toast('未找到该图书', 'error'); return; }
+      showModal(`
+        <h4>编辑书目（编号：${bookId}）</h4>
+        <div class="form-grid">
+          <div class="field full" id="f-eTitle"><label>书名<span class="req">*</span></label>
+            <input id="eTitle" value="${escapeHtml(book.title)}" /><div class="hint" id="hint-eTitle"></div></div>
+          <div class="field full" id="f-eAuthor"><label>作者<span class="req">*</span></label>
+            <input id="eAuthor" value="${escapeHtml(book.author)}" /><div class="hint" id="hint-eAuthor"></div></div>
+          <div class="field full" id="f-eIsbn"><label>ISBN<span class="req">*</span></label>
+            <input id="eIsbn" value="${escapeHtml(book.isbn)}" /><div class="hint" id="hint-eIsbn"></div></div>
+          <div class="field full" id="f-eStock"><label>库存<span class="req">*</span></label>
+            <input id="eStock" type="number" min="0" value="${book.stock}" /><div class="hint" id="hint-eStock"></div></div>
+        </div>
+        <div class="btn-row">
+          <button class="btn ghost" onclick="closeModal(null)">取消</button>
+          <button class="btn" onclick="saveEdit(${bookId})">保存</button>
+        </div>`);
+    });
+  }
+
+  async function saveEdit(bookId) {
+    const values = {
+      title: document.getElementById('eTitle').value.trim(),
+      author: document.getElementById('eAuthor').value.trim(),
+      isbn: document.getElementById('eIsbn').value.trim(),
+      stock: document.getElementById('eStock').value,
+    };
+    const checks = [
+      ['eTitle', validators.title(values.title)],
+      ['eAuthor', validators.author(values.author)],
+      ['eIsbn', validators.isbn(values.isbn)],
+      ['eStock', validators.stock(values.stock)],
+    ];
+    let okFlag = true;
+    checks.forEach(([k, err]) => {
+      document.getElementById('hint-' + k).textContent = err || '';
+      document.getElementById('f-' + k).classList.toggle('invalid', !!err);
+      if (err) okFlag = false;
+    });
+    if (!okFlag) return;
+    closeModal(null);
+    await withLoading(async () => {
+      await api(`/books/${bookId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...values, stock: Number(values.stock) }),
+      });
+      toast('书目已更新', 'success');
+      refreshAll();
+    });
+  }
+
+  async function confirmDelete(bookId, title) {
+    const confirmed = await showConfirm(
+      '确认下架',
+      `确定从藏书中移除《${title}》（编号：${bookId}）吗？此操作不可恢复。`,
+      '下架', true);
+    if (!confirmed) return;
+    await withLoading(async () => {
+      await api(`/books/${bookId}`, { method: 'DELETE' });
+      toast('已下架', 'success');
+      refreshAll();
+    });
+  }
+
+  /* ==================== 手动借阅 ==================== */
+  async function borrowManual() {
+    if (!checkAll(['bBookId', 'borrower'])) return;
+    const bookId = Number(document.getElementById('bBookId').value);
+    const borrower = document.getElementById('borrower').value.trim();
+    const btn = document.getElementById('btnBorrow');
+    btn.disabled = true;
+    await withLoading(async () => {
+      await api(`/books/${bookId}/borrow`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ borrower }),
+      });
+      toast('借阅成功', 'success');
+      resetBorrowForm();
+      refreshAll();
+    });
+    btn.disabled = false;
+  }
+
+  function resetBorrowForm() {
+    ['bBookId', 'borrower'].forEach(k => document.getElementById(k).value = '');
+    clearHints(['bBookId', 'borrower']);
+  }
+
+  /* ==================== 借阅记录 ==================== */
+  let recordPage = 1;
+  function recordQuery() {
+    const qs = new URLSearchParams({ page: recordPage, page_size: 8 });
+    const borrower = document.getElementById('rBorrower').value.trim();
+    const book = document.getElementById('rBook').value.trim();
+    const status = document.getElementById('rStatus').value;
+    const start = document.getElementById('rStart').value;
+    const end = document.getElementById('rEnd').value;
+    if (borrower) qs.set('borrower', borrower);
+    if (book) qs.set('book', book);
+    if (status) qs.set('status', status);
+    if (start) qs.set('start', start);
+    if (end) qs.set('end', end);
+    return qs;
+  }
+  async function loadRecords() {
+    await withLoading(async () => {
+      const data = await api('/borrows?' + recordQuery().toString());
+      renderRecordTable(data.list);
+      renderPager('recordPager', data, p => { recordPage = p; loadRecords(); });
+    });
+  }
+  function reloadRecords() { recordPage = 1; loadRecords(); }
+  function resetRecordFilter() {
+    ['rBorrower', 'rBook', 'rStart', 'rEnd'].forEach(k => document.getElementById(k).value = '');
+    document.getElementById('rStatus').value = '';
+    recordPage = 1; loadRecords();
+  }
+  function renderRecordTable(list) {
+    const tbody = document.getElementById('recordTable');
+    tbody.innerHTML = '';
+    if (!list.length) {
+      tbody.innerHTML = '<tr><td colspan="6"><div class="empty"><div class="icon">📜</div>暂无符合条件的借阅流水</div></td></tr>';
+      return;
+    }
+    list.forEach(r => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${r.id}</td>
+        <td>${escapeHtml(r.book_title)}</td>
+        <td>${escapeHtml(r.borrower)}</td>
+        <td>${r.borrowed_at}</td>
+        <td>${r.returned_at || '—'}</td>
+        <td><span class="badge ${r.returned_at ? 'ok' : 'warn'}">${r.returned_at ? '已归还' : '未归还'}</span></td>`;
+      tbody.appendChild(tr);
+    });
+  }
+  function exportRecords() {
+    const qs = new URLSearchParams(recordQuery());
+    qs.delete('page'); qs.delete('page_size');
+    window.open('/borrows/export?' + qs.toString());
+  }
+
+  /* ==================== 初始化 ==================== */
+  document.getElementById('bDate').value = new Date().toLocaleDateString('zh-CN');
+  function refreshAll() {
+    loadStats();
+    if (document.getElementById('tab-books').classList.contains('active')) loadBooks();
+    if (document.getElementById('tab-records').classList.contains('active')) loadRecords();
+  }
+
+  loadStats();
+  loadBooks();
+
+  /* ==================== 成就系统 ==================== */
+
+  // ---- 问答弹窗 ----
+
+  async function openQuizModal(bookId, title) {
+    // 先让用户填入完书人姓名
+    const prefillName = localStorage.getItem('lastBorrower') || '';
+    currentQuizBookId = bookId;
+    let borrower = prefillName;
+
+    // 如果没有预设完书人，要求输入
+    if (!borrower) {
+      const html = `
+        <h4>完书登记</h4>
+        <p>《${escapeHtml(title)}》 — 请先填完书人姓名，然后通过问答验证</p>
+        <div class="field">
+          <label>完书人姓名<span class="req">*</span></label>
+          <input id="quizBorrower" placeholder="谁读完了这本书？" value="${escapeHtml(prefillName)}" />
+        </div>
+        <div class="btn-row">
+          <button class="btn ghost" onclick="closeModal(null)">取消</button>
+          <button class="btn" onclick="startQuiz()">开始答题</button>
+        </div>`;
+      showModal(html);
+      setTimeout(() => { const el = document.getElementById('quizBorrower'); if (el) el.focus(); }, 60);
+      return;
+    }
+
+    localStorage.setItem('lastBorrower', borrower);
+    await startQuiz();
+  }
+
+  async function startQuiz() {
+    const prefillName = localStorage.getItem('lastBorrower') || '';
+    const borrower = prefillName || (document.getElementById('quizBorrower')?.value || '').trim();
+    if (!borrower) { toast('请输入完书人姓名', 'error'); return; }
+
+    await withLoading(async () => {
+      let quiz;
+      try {
+        quiz = await api(`/books/${currentQuizBookId}/quiz`);
+      } catch (e) {
+        closeModal(null);
+        toast(e.message || '该书暂无问答题库', 'error');
+        return;
+      }
+      // 渲染问答弹窗
+      showQuizQuestions(quiz, borrower);
+    });
+  }
+
+  function showQuizQuestions(quiz, borrower) {
+    let html = `<div class="quiz-modal">
+      <h4>📖 完书验证</h4>
+      <p style="font-size:13px;color:var(--ink-sub);margin-bottom:16px;">
+        完书人：<b>${escapeHtml(borrower)}</b> · 答 ${quiz.questions.length} 题，正确率 ≥ 60% 即可标记读完
+      </p>`;
+    quiz.questions.forEach((q, i) => {
+      html += `
+      <div class="quiz-question" data-idx="${i}">
+        <div class="quiz-q-num">QUESTION ${i + 1} / ${quiz.questions.length}</div>
+        <div class="quiz-q-text">${escapeHtml(q.question)}</div>
+        <div class="quiz-options">
+          ${q.options.map((opt, j) =>
+            `<button class="quiz-option" data-idx="${i}" data-opt="${j}"
+               onclick="selectOption(this)">${String.fromCharCode(65 + j)}. ${escapeHtml(opt)}</button>`
+          ).join('')}
+        </div>
+      </div>`;
+    });
+    html += `<div class="btn-row">
+      <button class="btn ghost" onclick="closeModal(null)">取消</button>
+      <button class="btn" onclick="submitQuiz('${escapeHtml(borrower)}')">提交答案</button>
+    </div></div>`;
+    showModal(html);
+  }
+
+  function selectOption(btn) {
+    const idx = btn.dataset.idx;
+    // 同组内取消其他选择
+    document.querySelectorAll(`.quiz-option[data-idx="${idx}"]`).forEach(o => o.classList.remove('selected'));
+    btn.classList.add('selected');
+  }
+
+  async function submitQuiz(borrower) {
+    // 收集答案
+    const answers = [];
+    document.querySelectorAll('.quiz-question').forEach(q => {
+      const sel = q.querySelector('.quiz-option.selected');
+      answers.push(sel ? parseInt(sel.dataset.opt) : -1);
+    });
+    if (answers.includes(-1)) {
+      toast('请全部作答', 'error');
+      return;
+    }
+
+    await withLoading(async () => {
+      try {
+        const result = await api(`/books/${currentQuizBookId}/complete`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ borrower, answers }),
+        });
+        showQuizResult(result, true);
+        refreshAll();
+        // 刷新成就（如果在成就 Tab）
+        if (document.getElementById('tab-achievements').classList.contains('active')) {
+          loadAchievements();
+        }
+      } catch (e) {
+        // 失败时也展示结果（可能是未及格，服务端返回的错误信息里有分数）
+        showQuizResult(null, false, e.message);
+      }
+    });
+  }
+
+  function showQuizResult(result, pass, failMsg) {
+    let html = '<div class="quiz-modal">';
+    if (pass && result) {
+      const pct = result.score;
+      const bigClass = pct >= 80 ? 'pass' : (pct >= 60 ? 'pass' : 'fail');
+      const bigNum = bigClass === 'pass' ? '✓' : '✗';
+      const msg = pct >= 80
+        ? `恭喜！答题正确率 ${pct}%，完书记录已登记！<br><b>「${escapeHtml(result.book_title)}」</b> 从今天起就是你的藏书了 📚`
+        : pct >= 60
+        ? `不错！正确率 ${pct}%，已达成完书标准 ✅`
+        : `很遗憾，正确率只有 ${pct}%，未达 60% 及格线`;
+      html += `
+        <div class="quiz-result-score">
+          <div class="big-num pass">${bigNum}</div>
+          <div style="font-size:18px;font-weight:600;margin-top:6px;">${pct}%</div>
+        </div>
+        <div class="quiz-result-msg">${msg}</div>
+        <div style="margin-top:16px;padding-top:16px;border-top:1px dashed var(--cream-dark);font-size:12px;color:var(--ink-muted);text-align:center;">
+          答对 ${result.correct_count} / ${result.total_count} · 完书时间 ${result.completed_at}
+        </div>`;
+      toast(`完书成功！正确率 ${pct}%`, 'success');
+    } else {
+      html += `
+        <div class="quiz-result-score">
+          <div class="big-num fail">✗</div>
+        </div>
+        <div class="quiz-result-msg">${escapeHtml(failMsg || '答题未通过')}</div>
+        <div style="font-size:12px;color:var(--ink-muted);text-align:center;margin-top:12px;">
+          再接再厉，不妨回到书中重温一下再来！
+        </div>`;
+      toast('答题未通过，再接再厉', 'error');
+    }
+    html += `<div class="btn-row" style="justify-content:center;margin-top:20px;">
+      <button class="btn" onclick="closeModal(null)">好的</button>
+    </div></div>`;
+    showModal(html);
+  }
+
+  // ---- 成就徽章墙 ----
+
+  async function loadAchievements() {
+    await withLoading(async () => {
+      const [achs, comps] = await Promise.all([
+        api('/achievements'),
+        api('/completions').catch(() => []),
+      ]);
+      renderAchievements(achs, comps);
+    });
+  }
+
+  function renderAchievements(achs, comps) {
+    const unlocked = achs.filter(a => a.unlocked).length;
+    const total = achs.length;
+    const pct = total ? Math.round(unlocked / total * 100) : 0;
+
+    document.getElementById('achUnlocked').textContent = unlocked;
+    document.getElementById('achTotal').textContent = total;
+    document.getElementById('achScore').textContent = pct + '%';
+
+    const grid = document.getElementById('achievementsGrid');
+    grid.innerHTML = '';
+    if (!achs.length) {
+      grid.innerHTML = '<div class="empty" style="grid-column:1/-1;"><div class="icon">🏅</div>暂无成就定义</div>';
+    } else {
+      // 先已解锁，按类别分组
+      achs.forEach((a, idx) => {
+        const card = document.createElement('div');
+        card.className = 'achievement-badge ' + (a.unlocked ? 'unlocked' : 'locked') + ' fade-up';
+        card.style.animationDelay = (idx * 0.04) + 's';
+        const progressPct = a.target > 0 ? Math.min(100, (a.progress / a.target) * 100) : 0;
+        const unlockTime = a.unlocked_at
+          ? `<div class="achievement-unlock-time">✓ ${a.unlocked_at}</div>` : '';
+        card.innerHTML = `
+          <div class="achievement-icon">${a.icon}</div>
+          <div class="achievement-name">${escapeHtml(a.name)}</div>
+          <div class="achievement-desc">${escapeHtml(a.description)}</div>
+          <div class="achievement-hint">${escapeHtml(a.hint)}</div>
+          <div class="progress-bar"><div class="progress-fill" style="width:${progressPct}%"></div></div>
+          <div class="achievement-hint">进度 ${a.progress}/${a.target}</div>
+          ${unlockTime}
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // 完书档案表格
+    const tbody = document.getElementById('completionTable');
+    const empty = document.getElementById('completionEmpty');
+    tbody.innerHTML = '';
+    if (!comps.length) {
+      empty.style.display = 'block';
+    } else {
+      empty.style.display = 'none';
+      comps.forEach(c => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${c.id}</td>
+          <td>${escapeHtml(c.book_title)}</td>
+          <td>${escapeHtml(c.borrower)}</td>
+          <td>${c.correct_count}/${c.total_count}</td>
+          <td><span class="badge ${c.score >= 80 ? 'ok' : (c.score >= 60 ? 'ok' : 'warn')}">${c.score}%</span></td>
+          <td>${c.completed_at}</td>`;
+        tbody.appendChild(tr);
+      });
+    }
+  }
+</script>
+</body>
+</html>

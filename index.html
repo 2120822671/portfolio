@@ -3,183 +3,481 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>个人作品集 · 全栈项目集合</title>
+<meta name="description" content="陈振华：独立开发 5 个可运行的 Python 全栈系统与 16 款 AI 智能体，附个人简历。">
+<title>陈振华 · 独立开发 5 个全栈系统</title>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft Yahei", sans-serif;
-    background: #0f1222; color: #e8eaf2; min-height: 100vh;
+  :root{
+    --bg:#f5f2ea;
+    --ink:#23211c;
+    --ink-2:#413d35;
+    --muted:#7a7468;
+    --line:rgba(35,33,28,.13);
+    --line-2:rgba(35,33,28,.26);
+    --acc:#1f6f60;
+    --acc-soft:rgba(31,111,96,.09);
   }
-  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);color:var(--ink);
+    font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  ::selection{background:rgba(31,111,96,.22)}
 
-  /* 顶部导航 */
-  nav {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(15,18,34,.8); backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255,255,255,.08);
+  .bg{position:fixed;inset:0;z-index:-1;pointer-events:none}
+  .bg::before{
+    content:"";position:absolute;inset:0;
+    background-image:
+      linear-gradient(rgba(35,33,28,.045) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(35,33,28,.045) 1px,transparent 1px);
+    background-size:72px 72px;
+    mask-image:radial-gradient(circle at 32% 0%,#000 0%,transparent 74%);
+    -webkit-mask-image:radial-gradient(circle at 32% 0%,#000 0%,transparent 74%);
   }
-  .nav-inner { display: flex; align-items: center; gap: 24px; height: 60px; }
-  .logo { font-weight: 700; font-size: 17px; }
-  .nav-inner a { color: rgba(232,234,242,.75); text-decoration: none; font-size: 14px; transition: color .2s; }
-  .nav-inner a:hover { color: #fff; }
-  .nav-inner .spacer { flex: 1; }
-
-  /* Hero */
-  .hero { padding: 72px 0 40px; }
-  .hero h1 { font-size: 38px; line-height: 1.3; }
-  .hero h1 .grad {
-    background: linear-gradient(90deg, #ff6b6b, #f59e0b, #2dd4bf, #8b5cf6);
-    -webkit-background-clip: text; background-clip: text; color: transparent;
+  .bg::after{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(680px 420px at 82% -10%,rgba(31,111,96,.10),transparent 72%),
+      radial-gradient(560px 420px at 4% 30%,rgba(180,85,58,.06),transparent 74%);
   }
-  .hero p { margin-top: 14px; color: rgba(232,234,242,.65); font-size: 16px; max-width: 640px; line-height: 1.7; }
-  .badges { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 10px; }
-  .badge {
-    font-size: 12.5px; padding: 6px 14px; border-radius: 999px;
-    background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); color: rgba(232,234,242,.85);
-  }
-
-  /* 项目卡片 */
-  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 28px 0 48px; }
-  @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
-  .card {
-    position: relative; overflow: hidden; border-radius: 16px; padding: 26px;
-    background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.09);
-    display: flex; flex-direction: column; gap: 12px;
-    transition: transform .2s, border-color .2s, background .2s;
-  }
-  .card:hover { transform: translateY(-4px); background: rgba(255,255,255,.06); border-color: var(--ac); }
-  .card::before {
-    content: ""; position: absolute; inset: 0 0 auto 0; height: 3px;
-    background: var(--ac); opacity: .9;
-  }
-  .card .icon { font-size: 34px; }
-  .card h2 { font-size: 19px; }
-  .card h2 .path { font-size: 12px; color: rgba(232,234,242,.45); font-weight: 400; margin-left: 8px; }
-  .card p { color: rgba(232,234,242,.65); font-size: 14px; line-height: 1.75; flex: 1; }
-  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
-  .tag {
-    font-size: 11.5px; padding: 3px 10px; border-radius: 999px;
-    color: var(--ac); background: color-mix(in srgb, var(--ac) 14%, transparent);
-    border: 1px solid color-mix(in srgb, var(--ac) 35%, transparent);
-  }
-  .card .enter {
-    align-self: flex-start; margin-top: 4px; text-decoration: none; font-size: 14px; font-weight: 600;
-    color: #0f1222; background: var(--ac); padding: 9px 20px; border-radius: 10px;
-    transition: filter .2s;
-  }
-  .card .enter:hover { filter: brightness(1.1); }
-
-  /* 简历卡片 */
-  .resume-card {
-    margin: 0 0 56px; border-radius: 16px; padding: 28px 30px;
-    background: linear-gradient(120deg, rgba(139,92,246,.12), rgba(45,212,191,.08));
-    border: 1px solid rgba(139,92,246,.3);
-    display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
-  }
-  .resume-card .icon { font-size: 40px; }
-  .resume-card .txt { flex: 1; min-width: 240px; }
-  .resume-card h2 { font-size: 19px; margin-bottom: 6px; }
-  .resume-card p { color: rgba(232,234,242,.65); font-size: 14px; line-height: 1.7; }
-  .resume-card a {
-    text-decoration: none; font-weight: 600; font-size: 14px; color: #0f1222;
-    background: #8b5cf6; padding: 10px 22px; border-radius: 10px;
-  }
-  .resume-card a:hover { filter: brightness(1.1); }
-  .pending-tag {
-    display: inline-block; margin-left: 10px; font-size: 11px; font-weight: 500;
-    color: #f59e0b; background: rgba(245,158,11,.12); border: 1px solid rgba(245,158,11,.4);
-    border-radius: 999px; padding: 3px 10px; vertical-align: middle;
+  .grain{
+    position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.02;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
-  footer { border-top: 1px solid rgba(255,255,255,.08); padding: 26px 0 40px; color: rgba(232,234,242,.45); font-size: 13px; line-height: 1.8; }
+  .wrap{width:min(1200px,calc(100% - 56px));margin:0 auto}
+
+  /* ---------- 导航 ---------- */
+  header{
+    position:sticky;top:0;z-index:40;
+    background:rgba(245,242,234,.86);
+    backdrop-filter:blur(16px) saturate(120%);
+    -webkit-backdrop-filter:blur(16px) saturate(120%);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;gap:28px;height:66px}
+  .brand{display:flex;align-items:center;gap:12px;min-width:0}
+  .seal{
+    width:34px;height:34px;flex:none;border:1px solid var(--acc);
+    display:grid;place-items:center;color:var(--acc);
+    font-family:"Songti SC","SimSun",serif;font-size:18px;font-weight:700;
+  }
+  .brand b{
+    font-family:"Songti SC","SimSun",serif;font-size:16px;letter-spacing:.06em;font-weight:700;
+    white-space:nowrap;
+  }
+  .brand small{display:block;font-family:ui-monospace,Consolas,monospace;font-size:9.5px;
+    letter-spacing:.22em;color:var(--muted);margin-top:2px}
+  .nav nav{display:flex;gap:26px;margin-left:auto;font-size:13px;color:var(--ink-2)}
+  .nav nav a{position:relative;transition:color .2s}
+  .nav nav a::after{content:"";position:absolute;left:0;bottom:-6px;height:1px;width:0;
+    background:var(--acc);transition:width .25s}
+  .nav nav a:hover{color:var(--acc)}
+  .nav nav a:hover::after{width:100%}
+  .cta{
+    font-size:12.5px;font-weight:600;letter-spacing:.04em;padding:9px 18px;
+    border:1px solid var(--line-2);border-radius:2px;transition:.22s;white-space:nowrap;
+  }
+  .cta:hover{background:var(--acc);border-color:var(--acc);color:#fff}
+
+  /* ---------- HERO ---------- */
+  .hero{display:grid;grid-template-columns:88px 1fr;gap:44px;padding:64px 0 56px}
+  .rail{
+    border-right:1px solid var(--line);padding-right:22px;
+    display:flex;flex-direction:column;justify-content:space-between;
+    font-family:ui-monospace,Consolas,monospace;font-size:10.5px;letter-spacing:.24em;
+    color:var(--muted);
+  }
+  .rail .vert{writing-mode:vertical-rl;text-orientation:mixed;letter-spacing:.36em;color:var(--ink-2)}
+  .rail .dot{width:6px;height:6px;background:var(--acc);border-radius:50%;box-shadow:0 0 0 4px rgba(31,111,96,.14)}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:ui-monospace,Consolas,monospace;font-size:11px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--acc);margin-bottom:20px;
+  }
+  .eyebrow::before{content:"";width:34px;height:1px;background:var(--acc)}
+
+  .hero-cols{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(300px,.88fr);gap:48px;align-items:start}
+  h1{
+    font-family:"Songti SC","SimSun","Noto Serif SC",serif;
+    font-size:clamp(36px,5.2vw,64px);line-height:1.14;font-weight:700;letter-spacing:-.01em;
+  }
+  h1 em{font-style:normal;color:var(--acc)}
+  .lead{margin-top:22px;font-size:15px;color:var(--ink-2);line-height:1.95;max-width:560px}
+  .lead b{color:var(--ink);font-weight:600}
+  .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;font-size:13.5px;font-weight:600;
+    padding:13px 22px;border-radius:2px;transition:.22s;
+  }
+  .btn.solid{background:var(--ink);color:var(--bg)}
+  .btn.solid:hover{background:var(--acc);transform:translateY(-2px)}
+  .btn.line{border:1px solid var(--line-2);color:var(--ink)}
+  .btn.line:hover{border-color:var(--ink);transform:translateY(-2px)}
+  .btn .ar{transition:transform .22s}
+  .btn:hover .ar{transform:translate(3px,-3px)}
+
+  /* 能力清单 */
+  .panel{
+    border:1px solid var(--line-2);background:rgba(255,255,255,.55);
+    padding:22px 26px 8px;
+  }
+  .panel .pk{
+    display:flex;justify-content:space-between;align-items:baseline;
+    font-family:ui-monospace,Consolas,monospace;font-size:10.5px;letter-spacing:.18em;
+    color:var(--acc);padding-bottom:14px;
+  }
+  .panel .pk span:last-child{color:var(--muted);letter-spacing:.08em}
+  .panel dl{display:block}
+  .panel .item{padding:13px 0;border-top:1px solid var(--line)}
+  .panel .item dt{font-size:13.5px;font-weight:600;display:flex;gap:8px;align-items:baseline}
+  .panel .item dt i{
+    font-style:normal;font-family:ui-monospace,Consolas,monospace;
+    font-size:10px;color:var(--muted);letter-spacing:.06em;
+  }
+  .panel .item dd{font-size:12.5px;color:var(--muted);line-height:1.75;margin-top:3px}
+
+  /* 指标条 */
+  .spec{
+    margin-top:36px;display:grid;grid-template-columns:repeat(4,1fr);
+    border-top:1px solid var(--line);border-left:1px solid var(--line);
+    background:rgba(255,255,255,.42);
+  }
+  .spec div{padding:16px 20px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .spec dt{font-family:ui-monospace,Consolas,monospace;font-size:10px;letter-spacing:.14em;color:var(--muted);margin-bottom:6px}
+  .spec dd{font-family:"Songti SC","SimSun",serif;font-size:27px;font-weight:700;line-height:1.1}
+  .spec dd span{font-size:12px;color:var(--acc);margin-left:3px;font-family:"Segoe UI",sans-serif}
+
+  /* ---------- 区块头 ---------- */
+  section.block{padding:30px 0 10px}
+  .sec-head{display:flex;align-items:center;gap:18px;margin-bottom:14px}
+  .sec-head .no{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--acc);letter-spacing:.18em}
+  .sec-head h2{font-family:"Songti SC","SimSun",serif;font-size:clamp(24px,3vw,32px);font-weight:700;letter-spacing:.03em}
+  .sec-head .ln{flex:1;height:1px;background:var(--line)}
+  .sec-head .note{font-family:ui-monospace,Consolas,monospace;font-size:10.5px;letter-spacing:.16em;color:var(--muted)}
+
+  /* ---------- 项目行 ---------- */
+  .rows{list-style:none;border-top:1px solid var(--line-2)}
+  .row{border-bottom:1px solid var(--line)}
+  .row-link{
+    position:relative;display:grid;grid-template-columns:56px 1fr 196px 44px;
+    gap:22px;align-items:center;padding:26px 18px 26px 12px;
+    transition:background .3s,padding .3s;
+  }
+  .row-link::before{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--dot);
+    transform:scaleY(0);transform-origin:top;transition:transform .35s;
+  }
+  .row-link:hover{background:rgba(255,255,255,.55);padding-left:24px}
+  .row-link:hover::before{transform:scaleY(1)}
+  .idx{
+    font-family:ui-monospace,Consolas,monospace;font-size:12px;letter-spacing:.14em;
+    color:var(--muted);display:flex;align-items:center;gap:8px;transition:color .3s;
+  }
+  .idx::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--dot);flex:none}
+  .row-link:hover .idx{color:var(--ink)}
+  .row-body h3{
+    font-family:"Songti SC","SimSun",serif;font-size:21px;font-weight:700;letter-spacing:.02em;
+    display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
+  }
+  .row-body h3 code{
+    font-family:ui-monospace,Consolas,monospace;font-size:10.5px;letter-spacing:.06em;
+    color:var(--dot);border:1px solid color-mix(in srgb,var(--dot) 40%,transparent);
+    padding:2px 7px;border-radius:2px;transform:translateY(-2px);
+  }
+  .row-body .tagline{font-size:13px;color:var(--muted);margin-top:4px}
+  .did{list-style:none;margin-top:9px;display:grid;gap:3px}
+  .did li{position:relative;padding-left:16px;font-size:13px;color:var(--ink-2);line-height:1.7}
+  .did li::before{content:"—";position:absolute;left:0;color:var(--dot);font-weight:700}
+  .did b{color:var(--ink);font-weight:600}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}
+  .tags span{
+    font-family:ui-monospace,Consolas,monospace;font-size:10px;letter-spacing:.06em;
+    color:var(--muted);border:1px solid var(--line);padding:3px 8px;border-radius:2px;
+    background:rgba(255,255,255,.4);
+  }
+  .row-meta{
+    font-family:ui-monospace,Consolas,monospace;font-size:10.5px;line-height:1.95;
+    letter-spacing:.05em;color:var(--muted);text-align:right;
+  }
+  .row-meta b{display:block;color:var(--ink-2);font-weight:600;letter-spacing:.08em;margin-bottom:4px}
+  .go{
+    width:36px;height:36px;border:1px solid var(--line-2);border-radius:50%;
+    display:grid;place-items:center;font-size:15px;color:var(--ink-2);
+    transition:.28s;justify-self:end;
+  }
+  .row-link:hover .go{background:var(--dot);border-color:var(--dot);color:#fff;transform:rotate(45deg)}
+
+  /* ---------- 简历 ---------- */
+  .resume{
+    margin-top:52px;border:1px solid var(--line-2);padding:34px 38px;
+    display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;
+    background:linear-gradient(100deg,var(--acc-soft),rgba(255,255,255,.35) 62%);
+    position:relative;overflow:hidden;
+  }
+  .resume::after{
+    content:"CV";position:absolute;right:26px;top:-30px;font-family:"Songti SC",serif;
+    font-size:150px;font-weight:700;color:rgba(35,33,28,.045);pointer-events:none;line-height:1;
+  }
+  .resume .k{font-family:ui-monospace,Consolas,monospace;font-size:10.5px;letter-spacing:.22em;color:var(--acc)}
+  .resume h2{font-family:"Songti SC","SimSun",serif;font-size:26px;font-weight:700;margin:8px 0 10px}
+  .resume p{font-size:13.5px;color:var(--ink-2);max-width:600px}
+  .resume-btns{display:flex;gap:10px;flex-wrap:wrap;position:relative;z-index:1}
+
+  footer{margin-top:70px;border-top:1px solid var(--line);padding:26px 0 44px}
+  .foot{display:flex;justify-content:space-between;gap:22px;flex-wrap:wrap;
+    font-family:ui-monospace,Consolas,monospace;font-size:10.5px;letter-spacing:.1em;color:var(--muted)}
+  .foot b{color:var(--ink-2);font-weight:600}
+  .chips{display:flex;flex-wrap:wrap;gap:7px}
+  .chips span{border:1px solid var(--line);padding:3px 9px;border-radius:2px;background:rgba(255,255,255,.4)}
+
+  .reveal{opacity:0;transform:translateY(16px);animation:rise .65s cubic-bezier(.2,.8,.2,1) forwards}
+  @keyframes rise{to{opacity:1;transform:none}}
+  .d1{animation-delay:.04s}.d2{animation-delay:.12s}.d3{animation-delay:.2s}
+  .d4{animation-delay:.28s}.d5{animation-delay:.36s}.d6{animation-delay:.44s}.d7{animation-delay:.52s}
+
+  @media (max-width:1040px){
+    .hero-cols{grid-template-columns:1fr;gap:34px}
+    .panel{max-width:560px}
+  }
+  @media (max-width:960px){
+    .hero{grid-template-columns:1fr;gap:0;padding:44px 0 40px}
+    .rail{display:none}
+    .nav nav{display:none}
+    .spec{grid-template-columns:repeat(2,1fr)}
+    .row-link{grid-template-columns:40px 1fr 36px;gap:14px;padding:22px 8px}
+    .row-meta{display:none}
+    .resume{grid-template-columns:1fr;padding:26px 22px}
+  }
+  @media (max-width:560px){
+    .wrap{width:calc(100% - 32px)}
+    .spec dd{font-size:22px}
+    .row-body h3{font-size:18px}
+    .cta{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+  }
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="wrap nav-inner">
-    <span class="logo">💼 我的作品集</span>
-    <a href="#projects">项目</a>
-    <a href="/resume.html">个人简历</a>
-    <span class="spacer"></span>
-    <span class="badge" style="font-size:11px;">FastAPI · MySQL · 原生前端</span>
-  </div>
-</nav>
+<div class="bg"></div>
+<div class="grain"></div>
 
-<header class="hero wrap">
-  <h1>四个可运行的<span class="grad">全栈项目</span>，一个入口</h1>
-  <p>全部基于 Python FastAPI + MySQL 8.0 + 原生 HTML/CSS/JavaScript 开发，每个项目均可登录、交互、持久化数据，本页即统一入口，点击卡片直接体验。</p>
-  <div class="badges">
-    <span class="badge">Python / FastAPI</span>
-    <span class="badge">MySQL 8.0 · PyMySQL</span>
-    <span class="badge">Session 认证</span>
-    <span class="badge">RESTful API</span>
-    <span class="badge">原生 JS · fetch</span>
-    <span class="badge">响应式布局</span>
+<header>
+  <div class="wrap nav">
+    <a href="/" class="brand">
+      <span class="seal">陈</span>
+      <span><b>陈振华 · 工程档案</b><small>PYTHON FULL-STACK</small></span>
+    </a>
+    <nav>
+      <a href="#projects">5 个项目</a>
+      <a href="#skills">能力清单</a>
+      <a href="#resume">个人简历</a>
+    </nav>
+    <a href="/resume.html" class="cta">个人简历 ↗</a>
   </div>
 </header>
 
-<main id="projects" class="wrap grid">
+<main class="wrap">
 
-  <div class="card" style="--ac:#ff6b6b;">
-    <span class="icon">🍰</span>
-    <h2>蛋糕线上商城 <span class="path">/mall</span></h2>
-    <p>完整的电商业务闭环：商品浏览与搜索、购物车、收货地址、下单防超卖（事务 + 行锁）、模拟支付、订单超时自动取消（后台定时任务）、商品评价、收藏，以及管理员后台（商品/分类/订单/用户/评论管理）。</p>
-    <div class="tags">
-      <span class="tag">Session 登录</span><span class="tag">事务与防超卖</span><span class="tag">定时任务</span><span class="tag">管理后台</span>
+  <section class="hero">
+    <div class="rail reveal">
+      <span class="dot"></span>
+      <span class="vert">PYTHON FULL-STACK / FASTAPI</span>
+      <span>NO.05</span>
     </div>
-    <a class="enter" href="/mall/static/index.html">进入项目 →</a>
-  </div>
 
-  <div class="card" style="--ac:#f59e0b;">
-    <span class="icon">🐱</span>
-    <h2>招财记账 · 个人记账 <span class="path">/account</span></h2>
-    <p>单页记账应用：收支记录、分类管理、按时间区间动态筛选与分页查询、收支概览统计，并预留大模型自然语言记账接口（本地规则解析）。招财猫 SVG 与木鱼交互，界面活泼有趣。</p>
-    <div class="tags">
-      <span class="tag">分页查询</span><span class="tag">动态筛选</span><span class="tag">参数校验</span><span class="tag">交互设计</span>
-    </div>
-    <a class="enter" href="/account/static/index.html">进入项目 →</a>
-  </div>
+    <div class="hero-main">
+      <div class="hero-cols">
+        <div>
+          <p class="eyebrow reveal d1">求职方向 · Python 后端 / AI 应用开发</p>
+          <h1 class="reveal d2">独立开发<br><em>5 个可运行</em><br>全栈系统</h1>
+          <p class="lead reveal d3">
+            蛋糕商城、粉丝社区、二手交易、个人记账、图书借阅 —— 每个都包含
+            <b>注册登录、数据库持久化、完整业务流程与管理后台</b>；
+            另有 <b>16 款</b>已上线的 Coze 智能体。全部源码公开，可现场运行演示。
+          </p>
+          <div class="actions reveal d4">
+            <a href="#projects" class="btn solid">看这 5 个项目 <span class="ar">↓</span></a>
+            <a href="/resume.html" class="btn line">我的简历 <span class="ar">↗</span></a>
+          </div>
+        </div>
 
-  <div class="card" style="--ac:#2dd4bf;">
-    <span class="icon">🏫</span>
-    <h2>学生社团活动登记 <span class="path">/club</span></h2>
-    <p>社团活动信息登记与查询平台：活动新增、列表实时刷新、参与人数统计。后端使用 Pydantic 完成字段长度与人数上限校验（1-9999），严格参数化查询防 SQL 注入，前端修复 XSS 隐患。</p>
-    <div class="tags">
-      <span class="tag">Pydantic 校验</span><span class="tag">防 SQL 注入</span><span class="tag">XSS 防护</span>
-    </div>
-    <a class="enter" href="/club/static/index.html">进入项目 →</a>
-  </div>
+        <aside class="panel reveal d4" id="skills">
+          <div class="pk"><span>我做了什么</span><span>WHAT I BUILT</span></div>
+          <div class="item">
+            <dt>全栈系统 <i>05</i></dt>
+            <dd>从表结构、接口到页面完整实现：FastAPI + 原生 JS，含登录、权限、CRUD 与后台。</dd>
+          </div>
+          <div class="item">
+            <dt>数据库与并发 <i>MySQL / SQLite</i></dt>
+            <dd>MySQL 事务与索引优化、DBUtils 连接池；SQLite 异步 ORM（SQLAlchemy 2.0）。</dd>
+          </div>
+          <div class="item">
+            <dt>实时与调度 <i>WebSocket</i></dt>
+            <dd>WebSocket 房间聊天与在线状态；APScheduler 周期任务与超时自动关单。</dd>
+          </div>
+          <div class="item">
+            <dt>AI 应用 <i>16 agents</i></dt>
+            <dd>Coze 智能体、垂直知识库、提示词工程与工作流编排，覆盖 5 类业务场景。</dd>
+          </div>
+          <div class="item">
+            <dt>前端与可视化 <i>Vanilla JS</i></dt>
+            <dd>原生单页应用与前后端联调、Canvas 数据看板、响应式布局。</dd>
+          </div>
+        </aside>
+      </div>
 
-  <div class="card" style="--ac:#8b5cf6;">
-    <span class="icon">⭐</span>
-    <h2>星坞 StarDock 粉丝社区 <span class="path">/stardock</span></h2>
-    <p>多模块明星粉丝社区：注册登录（粉丝/管理员/明星三角色）、明星主页、粉丝团、WebSocket 实时聊天、抽卡系统（可配置卡池与权重）、积分充值、社区活动，管理员具备用户/卡池/活动管理能力。</p>
-    <div class="tags">
-      <span class="tag">三角色权限</span><span class="tag">WebSocket 实时聊天</span><span class="tag">连接池 DBUtils</span><span class="tag">抽卡系统</span>
+      <dl class="spec reveal d5">
+        <div><dt>RUNNABLE SYSTEMS</dt><dd>05<span>个</span></dd></div>
+        <div><dt>AI AGENTS</dt><dd>16<span>款</span></dd></div>
+        <div><dt>MYSQL DATABASES</dt><dd>03<span>个</span></dd></div>
+        <div><dt>DEVELOPED BY</dt><dd>01<span>人独立</span></dd></div>
+      </dl>
     </div>
-    <a class="enter" href="/stardock/home.html">进入项目 →</a>
-  </div>
+  </section>
+
+  <section class="block" id="projects">
+    <div class="sec-head reveal">
+      <span class="no">01 / PROJECTS</span>
+      <h2>五个项目，分别做了什么</h2>
+      <span class="ln"></span>
+      <span class="note">点击进入</span>
+    </div>
+
+    <ol class="rows">
+      <li class="row reveal d2" style="--dot:#b4553a">
+        <a class="row-link" href="/farm/">
+          <span class="idx">01</span>
+          <div class="row-body">
+            <h3>像素农场 Online <code>/farm</code></h3>
+            <div class="tagline">在线农场经营游戏 · 独立开发（全栈）</div>
+            <ul class="did">
+              <li><b>后端：</b>农场格子状态机（空地/生长/成熟/枯萎）、作物与动物产出计时、扩建与金币经济</li>
+              <li><b>系统：</b>JWT 注册登录、每日任务与签到、财富榜/周榜、管理员后台配置作物与商品</li>
+              <li><b>前端：</b>实时倒计时、种植/收获/喂养交互、背包与商店单页应用</li>
+            </ul>
+            <div class="tags"><span>FastAPI</span><span>SQLAlchemy 2.0</span><span>SQLite</span><span>JWT</span><span>Pydantic v2</span></div>
+          </div>
+          <div class="row-meta"><b>独立开发 · 全栈</b>SQLite 零配置<br>注册即玩</div>
+          <span class="go">↗</span>
+        </a>
+      </li>
+
+      <li class="row reveal d3" style="--dot:#6b5fc4">
+        <a class="row-link" href="/stardock/home.html">
+          <span class="idx">02</span>
+          <div class="row-body">
+            <h3>星坞 StarDock <code>/stardock</code></h3>
+            <div class="tagline">明星粉丝社区 · 后端核心开发</div>
+            <ul class="did">
+              <li><b>权限：</b>粉丝 / 管理员 / 明星三角色，明星主页、粉丝团创建与加入退出</li>
+              <li><b>实时：</b>WebSocket 房间聊天、历史消息与在线状态</li>
+              <li><b>运营：</b>抽卡卡池与权重配置、我的卡牌、积分充值、活动报名、后台管理</li>
+            </ul>
+            <div class="tags"><span>WebSocket</span><span>MySQL</span><span>DBUtils 连接池</span><span>Session</span></div>
+          </div>
+          <div class="row-meta"><b>后端核心 · 实时</b>MySQL / stardock<br>注册即玩</div>
+          <span class="go">↗</span>
+        </a>
+      </li>
+
+      <li class="row reveal d4" style="--dot:#3d76ad">
+        <a class="row-link" href="/secondhand/static/index.html">
+          <span class="idx">03</span>
+          <div class="row-body">
+            <h3>校淘集市 · 二手交易 <code>/secondhand</code></h3>
+            <div class="tagline">校园二手交易平台 · 独立开发（全栈）</div>
+            <ul class="did">
+              <li><b>交易：</b>商品发布与审核、购物车、下单、模拟支付、确认收货完整闭环</li>
+              <li><b>稳定性：</b>未支付订单超时自动关闭（APScheduler）、事务与统一错误码</li>
+              <li><b>风控与后台：</b>Redis 限流与举报去重、收藏/聊天砍价、举报处理与运营统计</li>
+            </ul>
+            <div class="tags"><span>SQLAlchemy</span><span>MySQL</span><span>Redis</span><span>APScheduler</span><span>JWT</span></div>
+          </div>
+          <div class="row-meta"><b>独立开发 · 全栈</b>MySQL / campus_secondhand<br>测试账号 test001</div>
+          <span class="go">↗</span>
+        </a>
+      </li>
+
+      <li class="row reveal d5" style="--dot:#b07a2c">
+        <a class="row-link" href="/account/">
+          <span class="idx">04</span>
+          <div class="row-body">
+            <h3>招财记账 · 个人记账 <code>/account</code></h3>
+            <div class="tagline">个人记账与数据分析 · 独立开发（全栈）</div>
+            <ul class="did">
+              <li><b>记账：</b>多账本、收支流水筛选分页、周期账单自动入账</li>
+              <li><b>分析：</b>分类预算、Canvas 收支看板、每日日报与连续打卡</li>
+              <li><b>智能：</b>自然语言记账，大模型意图解析 + 规则兜底，无密钥也可用</li>
+            </ul>
+            <div class="tags"><span>PyMySQL</span><span>APScheduler</span><span>Canvas 图表</span><span>LLM</span></div>
+          </div>
+          <div class="row-meta"><b>独立开发 · 全栈</b>MySQL / account_db<br>打开即用</div>
+          <span class="go">↗</span>
+        </a>
+      </li>
+
+      <li class="row reveal d6" style="--dot:#7a6a45">
+        <a class="row-link" href="/book/">
+          <span class="idx">05</span>
+          <div class="row-body">
+            <h3>墨香书阁 · 图书借阅 <code>/book</code></h3>
+            <div class="tagline">图书借阅与阅读成就 · 独立开发（全栈）</div>
+            <ul class="did">
+              <li><b>管理：</b>图书录入编辑、借阅归还与库存联动、搜索筛选分页、CSV 导出</li>
+              <li><b>阅读：</b>答题完书验证、十枚成就徽章、15 张封面资源</li>
+              <li><b>存储：</b>JSON 文件存储，原子写 + 文件锁保证并发安全，无需数据库</li>
+            </ul>
+            <div class="tags"><span>Pydantic</span><span>JSON 存储</span><span>线程安全</span><span>CSV 导出</span></div>
+          </div>
+          <div class="row-meta"><b>独立开发 · 全栈</b>JSON 文件存储<br>打开即用</div>
+          <span class="go">↗</span>
+        </a>
+      </li>
+    </ol>
+  </section>
+
+  <section class="resume reveal" id="resume">
+    <div>
+      <div class="k">02 / RESUME</div>
+      <h2>个人简历 · 陈振华</h2>
+      <p>Python 后端 / AI 应用开发方向。含技术技能、项目经历、校园经历与个人荣誉，可在线查看或下载 Word 原件。</p>
+    </div>
+    <div class="resume-btns">
+      <a href="/resume.html" class="btn solid">在线查看 <span class="ar">↗</span></a>
+      <a href="/resume.docx" class="btn line">下载 DOCX <span class="ar">↓</span></a>
+    </div>
+  </section>
 
 </main>
 
-<div class="wrap">
-  <div class="resume-card">
-    <span class="icon">📄</span>
-    <div class="txt">
-      <h2>个人简历</h2>
-      <p>陈振华 · AI 应用开发 / Python 后端实习方向。含个人技能、项目经历（16 款上线智能体 + 星坞社区平台）、校园经历与个人荣誉，可在线查看并下载 docx 原件。</p>
-    </div>
-    <a href="/resume.html">查看简历 →</a>
-  </div>
-</div>
-
 <footer>
-  <div class="wrap">
-    技术栈：Python · FastAPI · MySQL 8.0 · PyMySQL · DBUtils · SessionMiddleware · WebSocket · 原生 JavaScript<br>
-    本站为四个独立项目的整合入口，各项目数据相互独立，可完整体验登录与业务流程。
+  <div class="wrap foot">
+    <div>
+      <b>TECH STACK</b><br>
+      Python · FastAPI · SQLAlchemy · PyMySQL · DBUtils · Redis · APScheduler · WebSocket · JWT · 原生 JavaScript
+    </div>
+    <div class="chips">
+      <span>FastAPI</span><span>MySQL 8.0</span><span>SQLite</span><span>Redis</span><span>WebSocket</span><span>原生 JS</span>
+    </div>
   </div>
 </footer>
 
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const el = document.querySelector(a.getAttribute('href'));
+      if (!el) return;
+      e.preventDefault();
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
 </body>
 </html>

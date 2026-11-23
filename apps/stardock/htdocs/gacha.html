@@ -3,29 +3,214 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>抽卡 —— 星坞</title>
+  <title>抽卡 —— 星坞 StarDock</title>
   <link rel="stylesheet" href="/stardock/css/style.css">
+  <style>
+    .gacha-wrap { padding: 20px 0 60px; }
+
+    /* 卡池 tab */
+    .pool-tabs {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .pool-tab {
+      padding: 12px 28px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,215,0,0.2);
+      border-radius: 30px;
+      color: var(--text-secondary);
+      font-weight: 500;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .pool-tab:hover { border-color: rgba(255,215,0,0.5); color: var(--star-gold); }
+    .pool-tab.active {
+      background: linear-gradient(135deg, var(--star-gold), var(--star-gold-deep));
+      color: var(--bg-deep-3);
+      font-weight: 700;
+      border-color: transparent;
+      box-shadow: 0 4px 20px rgba(255,215,0,0.4);
+    }
+    .pool-tab:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* 卡池信息区 */
+    .pool-info {
+      text-align: center;
+      padding: 32px 24px;
+      background: linear-gradient(135deg, rgba(26,35,126,0.6), rgba(13,21,71,0.8));
+      border: 1px solid rgba(255,215,0,0.25);
+      border-radius: 20px;
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .pool-info::before {
+      content: "";
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle, rgba(255,215,0,0.08) 0%, transparent 60%);
+      animation: poolSpin 20s linear infinite;
+    }
+    @keyframes poolSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .pool-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+      text-shadow: 0 0 20px rgba(255,215,0,0.3);
+    }
+    .pool-desc { color: var(--text-secondary); font-size: 14px; margin-bottom: 24px; position: relative; z-index: 1; }
+
+    .draw-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+    .draw-btn {
+      padding: 18px 36px;
+      border-radius: 16px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+    .draw-btn-single {
+      background: linear-gradient(135deg, #1976d2, #0d47a1);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(25,118,210,0.4);
+    }
+    .draw-btn-single:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(25,118,210,0.6); }
+    .draw-btn-ten {
+      background: linear-gradient(135deg, var(--star-gold), var(--star-gold-deep));
+      color: var(--bg-deep-3);
+      box-shadow: 0 4px 20px rgba(255,215,0,0.4);
+      position: relative;
+    }
+    .draw-btn-ten:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(255,215,0,0.6); }
+    .draw-btn-ten::before {
+      content: "✨";
+      position: absolute;
+      top: -10px; right: -10px;
+      font-size: 20px;
+      animation: sparkle 1.5s ease-in-out infinite;
+    }
+    @keyframes sparkle {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.2) rotate(20deg); }
+    }
+    .draw-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+    /* 结果区 */
+    .result-section { margin-top: 32px; text-align: center; }
+    .result-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, var(--star-gold), #fff, var(--star-gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 2px;
+    }
+
+    /* 抽卡全屏动画 */
+    .gacha-overlay {
+      position: fixed; inset: 0;
+      background: radial-gradient(circle, rgba(5,10,42,0.95) 0%, rgba(0,0,0,0.98) 100%);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .gacha-overlay.active { display: flex; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .gacha-sparkle {
+      font-size: 80px;
+      animation: spinCard 1s ease-out;
+    }
+    @keyframes spinCard {
+      0% { transform: rotateY(0deg) scale(0.5); opacity: 0; }
+      50% { transform: rotateY(360deg) scale(1.2); opacity: 1; }
+      100% { transform: rotateY(720deg) scale(1); opacity: 1; }
+    }
+
+    .ssr-burst {
+      position: absolute; inset: 0;
+      pointer-events: none;
+    }
+    .ssr-burst::before, .ssr-burst::after {
+      content: "";
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 4px; height: 300px;
+      background: linear-gradient(180deg, transparent, var(--star-gold), transparent);
+      animation: ssrRay 1.5s ease-out forwards;
+      transform-origin: center;
+    }
+    .ssr-burst::after { animation-delay: 0.2s; background: linear-gradient(180deg, transparent, var(--star-rose), transparent); }
+    @keyframes ssrRay {
+      0% { transform: translate(-50%, -50%) rotate(0deg); opacity: 0; }
+      30% { opacity: 1; }
+      100% { transform: translate(-50%, -50%) rotate(180deg); opacity: 0; }
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 14px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+  </style>
 </head>
 <body>
+<a href="/" class="portal-back" style="position:fixed;left:14px;bottom:14px;z-index:9999;background:#b388ff;color:#1a1035;text-decoration:none;font-size:12px;font-weight:700;padding:8px 14px;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.35)">← 作品集</a>
   <div id="navbar"></div>
-  <div class="container">
-    <h2 style="margin-bottom:16px">🎴 抽卡</h2>
+  <div class="container gacha-wrap">
+    <h2 style="text-align:center;margin-bottom:24px">🎴 抽 卡 机 🎴</h2>
 
-    <div style="display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap" id="poolTabs"></div>
+    <!-- 卡池 tab -->
+    <div class="pool-tabs" id="poolTabs"></div>
 
-    <div id="poolArea" class="card" style="display:none">
-      <h3 id="poolName"></h3>
-      <p id="poolDesc" style="color:#aaa;margin:8px 0"></p>
-      <div style="margin:16px 0">
-        <button class="btn" onclick="doDraw(1)" id="draw1Btn">单抽 💎 <span id="cost1">100</span></button>
-        <button class="btn btn-secondary" onclick="doDraw(10)" id="draw10Btn" style="margin-left:12px">十连 💎 <span id="cost10">900</span></button>
+    <!-- 卡池信息 + 抽卡按钮 -->
+    <div id="poolArea" class="pool-info" style="display:none">
+      <div class="pool-title" id="poolName"></div>
+      <div class="pool-desc" id="poolDesc"></div>
+      <div class="draw-buttons">
+        <button class="draw-btn draw-btn-single" onclick="doDraw(1)" id="draw1Btn">
+          单 抽 &nbsp;💎 <span id="cost1">100</span>
+        </button>
+        <button class="draw-btn draw-btn-ten" onclick="doDraw(10)" id="draw10Btn">
+          十 连 &nbsp;💎 <span id="cost10">900</span>
+        </button>
       </div>
     </div>
 
-    <div id="resultArea" style="margin-top:24px;display:none">
-      <h3>✨ 抽卡结果 ✨</h3>
-      <div id="resultCards"></div>
+    <!-- 结果区 -->
+    <div id="resultArea" class="result-section" style="display:none">
+      <div class="result-title">✨ 抽卡结果 ✨</div>
+      <div class="card-grid" id="resultCards"></div>
     </div>
+  </div>
+
+  <!-- 抽卡遮罩动画 -->
+  <div class="gacha-overlay" id="gachaOverlay">
+    <div class="ssr-burst" id="ssrBurst" style="display:none"></div>
+    <div class="gacha-sparkle" id="gachaSparkle">🎴</div>
   </div>
 
   <script src="/stardock/js/common.js"></script>
@@ -46,20 +231,26 @@
         const res = await fetchJSON("/api/gacha/pools");
         const pools = res.data;
 
-        document.getElementById("poolTabs").innerHTML = pools.map(p => `
-          <button class="btn ${p.is_active === 1 ? "" : "btn-secondary"}" data-id="${p.id}" ${p.is_active !== 1 ? "disabled" : ""}>
-            ${p.name}
-          </button>
-        `).join("");
-
-        // 点击切换
-        document.querySelectorAll("#poolTabs button").forEach(btn => {
-          btn.addEventListener("click", () => loadPoolDetail(btn.dataset.id));
+        const tabsEl = document.getElementById("poolTabs");
+        pools.forEach(p => {
+          const btn = document.createElement("button");
+          btn.className = "pool-tab";
+          if (p.is_active !== 1) { btn.disabled = true; }
+          btn.textContent = p.name;
+          btn.dataset.id = p.id;
+          btn.addEventListener("click", () => {
+            document.querySelectorAll(".pool-tab").forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+            loadPoolDetail(p.id);
+          });
+          tabsEl.appendChild(btn);
         });
 
-        // 默认加载第一个激活的
         const active = pools.find(p => p.is_active === 1);
-        if (active) await loadPoolDetail(active.id);
+        if (active) {
+          document.querySelector(`.pool-tab[data-id="${active.id}"]`).classList.add("active");
+          await loadPoolDetail(active.id);
+        }
       } catch (e) {}
     }
 
@@ -70,9 +261,11 @@
         currentPool = p;
         document.getElementById("poolArea").style.display = "block";
         setText("poolName", p.name);
-        setText("poolDesc", p.description || "");
+        setText("poolDesc", p.description || "神秘卡池，等你探索~");
         setText("cost1", p.cost_per_draw);
         setText("cost10", p.cost_per_ten);
+        // 清空上次结果
+        document.getElementById("resultArea").style.display = "none";
       } catch (e) {}
     }
 
@@ -83,33 +276,70 @@
       const btn = document.getElementById(count === 1 ? "draw1Btn" : "draw10Btn");
       btnLoading(btn, true, "抽取中...");
 
+      // 播放全屏抽卡动画
+      const overlay = document.getElementById("gachaOverlay");
+      const sparkle = document.getElementById("gachaSparkle");
+      const burst = document.getElementById("ssrBurst");
+      sparkle.textContent = count === 10 ? "🎴🎴🎴" : "🎴";
+      burst.style.display = "none";
+      overlay.classList.add("active");
+
       try {
         const res = await fetchJSON("/api/gacha/draw", {
           method: "POST",
           body: { pool_id: currentPool.id, count }
         });
-        showResult(res.data.drawn);
-        // 轻量更新积分（零网络请求，也不重绘导航栏）
-        updateUserScore(res.data.remain_score);
+
+        // 检测是否有 SSR，触发光效
+        const hasSSR = res.data.drawn.some(c => c.rarity === 4);
+        if (hasSSR) {
+          burst.style.display = "block";
+          sparkle.textContent = "🌟";
+        }
+
+        setTimeout(() => {
+          overlay.classList.remove("active");
+          burst.style.display = "none";
+          showResult(res.data.drawn);
+          updateUserScore(res.data.remain_score);
+        }, 800);
       } catch (e) {
-        // fetchJSON 已经 toast
+        overlay.classList.remove("active");
       } finally {
         btnLoading(btn, false);
         btn.innerHTML = count === 1
-          ? `单抽 💎 <span id="cost1">${currentPool.cost_per_draw}</span>`
-          : `十连 💎 <span id="cost10">${currentPool.cost_per_ten}</span>`;
+          ? `单 抽 &nbsp;💎 <span id="cost1">${currentPool.cost_per_draw}</span>`
+          : `十 连 &nbsp;💎 <span id="cost10">${currentPool.cost_per_ten}</span>`;
       }
     }
 
     function showResult(drawn) {
       document.getElementById("resultArea").style.display = "block";
-      const html = drawn.map(c => `
-        <div class="card-reveal rarity-${c.rarity}">
-          <div style="font-size:12px">${c.rarity_name}</div>
-          <div style="font-weight:bold">${c.name}</div>
-        </div>
-      `).join("");
-      document.getElementById("resultCards").innerHTML = html;
+      const grid = document.getElementById("resultCards");
+      grid.innerHTML = "";
+
+      // 从稀有度低到高排序，SSR 最后出现有悬念
+      const sorted = [...drawn].sort((a, b) => a.rarity - b.rarity);
+
+      sorted.forEach((c, i) => {
+        setTimeout(() => {
+          const el = document.createElement("div");
+          el.className = `card-reveal rarity-${c.rarity}`;
+          el.style.animationDelay = "0s";
+
+          const rarityTag = document.createElement("div");
+          rarityTag.style.cssText = "font-size:11px;letter-spacing:2px;opacity:0.9;margin-bottom:6px";
+          rarityTag.textContent = c.rarity_name;
+
+          const nameTag = document.createElement("div");
+          nameTag.style.cssText = "font-weight:bold;font-size:14px";
+          nameTag.textContent = c.name;
+
+          el.appendChild(rarityTag);
+          el.appendChild(nameTag);
+          grid.appendChild(el);
+        }, i * 150);
+      });
     }
   </script>
 </body>

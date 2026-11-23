@@ -1,0 +1,41 @@
+# ============================================================
+# 像素农场 Online — 依赖清单
+# Python 版本要求: >= 3.11
+# ============================================================
+
+# ---------- Web 框架 ----------
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+
+# ---------- 数据库 ORM ----------
+# [asyncio] extra 会自动拉 greenlet（SQLAlchemy 异步必需依赖）
+SQLAlchemy[asyncio]>=2.0.32
+greenlet>=3.0.0
+# 异步 MySQL 驱动（生产使用）
+aiomysql>=0.2.0
+# 异步 SQLite 驱动（开发/测试使用，零依赖）
+aiosqlite>=0.20.0
+# 数据库迁移
+alembic>=1.13.0
+
+# ---------- 数据校验 ----------
+pydantic>=2.9.0
+pydantic-settings>=2.5.0
+
+# ---------- 认证 & 安全 ----------
+# bcrypt 必须 <5.0，5.0+ 与 passlib 不兼容（passlib 模块加载期的 bug 检测会触发 72 字节限制）
+bcrypt>=4.0,<5.0
+python-jose[cryptography]>=3.3.0
+passlib[bcrypt]>=1.7.4
+
+# ---------- 跨域 & 中间件 ----------
+python-multipart>=0.0.9
+
+# ---------- 工具库 ----------
+python-dotenv>=1.0.1
+email-validator>=2.2.0
+
+# ---------- 开发 & 测试 ----------
+pytest>=8.3.0
+pytest-asyncio>=0.24.0
+httpx>=0.27.0

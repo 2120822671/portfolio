@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌾 像素农场 Online</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/farm/css/style.css">
+</head>
+<body>
+
+<a href="/" style="position:fixed;top:14px;left:14px;z-index:99999;display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:10px;background:rgba(20,26,20,.82);border:1px solid rgba(255,255,255,.28);color:#f5f5e8;font:600 13px/1 'Microsoft YaHei',sans-serif;text-decoration:none;backdrop-filter:blur(6px);box-shadow:0 4px 14px rgba(0,0,0,.25)">← 返回作品集</a>
+<!-- ============================================================ -->
+<!-- 登录 / 注册 界面 -->
+<!-- ============================================================ -->
+<div id="auth-screen" class="auth-screen hidden">
+  <div class="sky-bg"></div>
+  <div class="clouds">
+    <span class="cloud">☁️</span>
+    <span class="cloud cloud-2">☁️</span>
+    <span class="cloud cloud-3">☁️</span>
+  </div>
+
+  <div class="auth-card">
+    <div class="logo-row">
+      <span class="logo-icon">🌾</span>
+      <h1 class="logo-title">像素农场</h1>
+    </div>
+    <p class="logo-subtitle">PIXEL FARM ONLINE</p>
+
+    <div class="tab-switch">
+      <button id="tab-login" class="tab-btn active" data-tab="login">登录</button>
+      <button id="tab-register" class="tab-btn" data-tab="register">注册</button>
+    </div>
+
+    <!-- 登录表单 -->
+    <form id="login-form" class="auth-form">
+      <div class="form-field">
+        <label>用户名</label>
+        <input type="text" name="username" placeholder="👤  输入用户名" required>
+      </div>
+      <div class="form-field">
+        <label>密码</label>
+        <input type="password" name="password" placeholder="🔑  输入密码" required>
+      </div>
+      <button type="submit" class="pixel-btn primary">
+        <span class="btn-icon">▶</span> 进入农场
+      </button>
+    </form>
+
+    <!-- 注册表单 -->
+    <form id="register-form" class="auth-form hidden">
+      <div class="form-field">
+        <label>用户名（3~32 字符）</label>
+        <input type="text" name="username" placeholder="👤  创建用户名" minlength="3" maxlength="32" required>
+      </div>
+      <div class="form-field">
+        <label>密码（至少 6 位）</label>
+        <input type="password" name="password" placeholder="🔑  设置密码" minlength="6" required>
+      </div>
+      <button type="submit" class="pixel-btn primary">
+        <span class="btn-icon">★</span> 创建农场
+      </button>
+    </form>
+
+    <div id="auth-message" class="auth-message"></div>
+
+    <div class="admin-hint">
+      🛡️ 管理员: <code>admin</code> / <code>admin123</code>
+    </div>
+  </div>
+
+  <div class="ground-row">
+    <span>🌱</span><span>🌿</span><span>🌾</span><span>🌱</span><span>🌿</span>
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- 游戏主界面 -->
+<!-- ============================================================ -->
+<div id="game-screen" class="game-screen hidden">
+
+  <!-- 顶栏 -->
+  <header class="top-bar">
+    <div class="top-left">
+      <span class="game-title">🌾 像素农场</span>
+      <span id="player-level" class="level-badge">Lv.1</span>
+    </div>
+    <div class="top-center">
+      <div class="gold-display">
+        <span class="coin-icon">💰</span>
+        <span id="gold-text" class="gold-amount">100</span>
+      </div>
+    </div>
+    <div class="top-right">
+      <span id="player-name" class="player-name">player</span>
+      <button id="btn-logout" class="pixel-btn small ghost">退出</button>
+    </div>
+  </header>
+
+  <!-- 主内容：农场 + 侧栏 -->
+  <main class="main-area">
+
+    <!-- 农场格子区 -->
+    <section class="farm-section">
+      <div class="farm-header">
+        <h2>🏡 我的农场</h2>
+        <div class="farm-stats">
+          <span class="stat ready">✨ 成熟 <b id="stat-ready">0</b></span>
+          <span class="stat growing">🌱 生长 <b id="stat-growing">0</b></span>
+          <span class="stat withered">🍂 枯萎 <b id="stat-withered">0</b></span>
+        </div>
+      </div>
+      <p class="farm-hint">🌾 作物成熟后 24 小时内未收获会枯萎，记得及时收菜；点锁定地块可直接扩建。</p>
+      <div id="farm-grid" class="farm-grid"></div>
+
+      <!-- 选中格子时显示的操作栏 -->
+      <div id="cell-action-bar" class="cell-action-bar hidden">
+        <div class="action-info">
+          <span>🖱️ 已选中格子 <b id="action-cell-idx">-</b></span>
+          <span id="action-cell-status">-</span>
+          <span id="action-cell-hint" class="action-hint"></span>
+        </div>
+        <div class="action-btns">
+          <button id="btn-plant" class="pixel-btn" disabled>🌰 播种</button>
+          <button id="btn-harvest" class="pixel-btn primary" disabled>🧺 收获</button>
+          <button id="btn-clear" class="pixel-btn danger" disabled>🧹 清理</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 侧栏 -->
+    <aside class="side-panel">
+      <div class="panel-tabs">
+        <button class="panel-tab active" data-tab="shop">🛒 商店</button>
+        <button class="panel-tab" data-tab="inventory">🎒 背包</button>
+        <button class="panel-tab" data-tab="tasks">📋 任务<span id="badge-tasks" class="tab-badge hidden">0</span></button>
+        <button class="panel-tab" data-tab="rank">🏆 排行</button>
+        <button class="panel-tab" data-tab="animals">🐔 动物<span id="badge-animals" class="tab-badge hidden">0</span></button>
+      </div>
+
+      <!-- 商店 -->
+      <div class="panel-content" id="panel-shop">
+        <div class="panel-section">
+          <h3>🌰 种子</h3>
+          <div id="shop-seed" class="shop-list"></div>
+        </div>
+        <div class="panel-section">
+          <h3>🐾 动物</h3>
+          <div id="shop-animal" class="shop-list"></div>
+        </div>
+        <div class="panel-section">
+          <h3>🧰 工具</h3>
+          <div id="shop-tool" class="shop-list"></div>
+        </div>
+      </div>
+
+      <!-- 背包 -->
+      <div class="panel-content hidden" id="panel-inventory">
+        <div class="panel-section">
+          <h3>🎒 我的物品</h3>
+          <div id="inv-list" class="inv-list"></div>
+        </div>
+        <div class="panel-section">
+          <h3>🏡 土地扩建</h3>
+          <button id="btn-expand" class="pixel-btn full">🟩 扩建 1 块地 <span class="cost">500 💰</span></button>
+        </div>
+      </div>
+
+      <!-- 任务 -->
+      <div class="panel-content hidden" id="panel-tasks">
+        <div class="panel-section">
+          <h3>📅 今日任务</h3>
+          <div id="task-list" class="task-list"></div>
+        </div>
+      </div>
+
+      <!-- 排行榜 -->
+      <div class="panel-content hidden" id="panel-rank">
+        <div class="panel-section">
+          <h3>🏆 财富榜 TOP 10</h3>
+          <div id="rank-list" class="rank-list"></div>
+        </div>
+      </div>
+
+      <!-- 动物 -->
+      <div class="panel-content hidden" id="panel-animals">
+        <div class="panel-section">
+          <h3>🐾 我的动物</h3>
+          <div id="animal-list" class="animal-list"></div>
+          <button id="btn-feed-all" class="pixel-btn full">🍚 喂养全部</button>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- 种子选择弹窗 -->
+  <div id="seed-modal" class="modal hidden">
+    <div class="modal-backdrop"></div>
+    <div class="modal-box">
+      <h3>🌰 选择要播种的种子</h3>
+      <div id="seed-choices" class="seed-choices"></div>
+      <button class="pixel-btn ghost" data-close-modal="seed-modal">取消</button>
+    </div>
+  </div>
+
+  <!-- 购买数量弹窗 -->
+  <div id="buy-modal" class="modal hidden">
+    <div class="modal-backdrop" data-close-modal="buy-modal"></div>
+    <div class="modal-box">
+      <div class="buy-head">
+        <span id="buy-emoji" class="buy-emoji">📦</span>
+        <div>
+          <h3 id="buy-name">商品</h3>
+          <p id="buy-desc" class="buy-desc"></p>
+        </div>
+      </div>
+      <div class="qty-row">
+        <button id="buy-minus" class="qty-btn" type="button">−</button>
+        <span id="buy-qty" class="qty-value">1</span>
+        <button id="buy-plus" class="qty-btn" type="button">＋</button>
+        <span id="buy-total" class="buy-total">合计 0 💰</span>
+      </div>
+      <div class="buy-meta">
+        <span id="buy-balance">余额 0 💰</span>
+        <span id="buy-hint"></span>
+      </div>
+      <div class="modal-actions">
+        <button class="pixel-btn ghost" data-close-modal="buy-modal">取消</button>
+        <button id="buy-confirm" class="pixel-btn primary">确认购买</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast 通知 -->
+  <div id="toast-container" class="toast-container"></div>
+
+</div>
+
+<script src="/farm/js/app.js"></script>
+</body>
+</html>

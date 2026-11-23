@@ -3,26 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>用户管理 —— 星坞</title>
+  <title>用户管理 —— 星坞 StarDock</title>
   <link rel="stylesheet" href="/stardock/css/style.css">
+  <style>
+    .filter-row {
+      display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap;
+    }
+    .filter-row input, .filter-row select {
+      flex: 1; min-width: 140px; padding: 10px 14px;
+    }
+    .filter-row .btn { padding: 10px 24px; }
+    .card-table { padding: 0; overflow-x: auto; }
+    th, td { padding: 12px 16px; white-space: nowrap; }
+    td.role-1 { color: #81c784; }
+    td.role-2 { color: #ef5350; }
+    td.role-3 { color: #ffb74d; }
+    td.status-1 { color: #69f0ae; }
+    td.status-0 { color: #ff8a80; }
+  </style>
 </head>
 <body>
+<a href="/" class="portal-back" style="position:fixed;left:14px;bottom:14px;z-index:9999;background:#b388ff;color:#1a1035;text-decoration:none;font-size:12px;font-weight:700;padding:8px 14px;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.35)">← 作品集</a>
   <div id="navbar"></div>
   <div class="container">
-    <h2 style="margin-bottom:16px">🛡️ 用户管理</h2>
+    <h2>🛡️ 用 户 管 理</h2>
 
-    <div style="margin-bottom:16px;display:flex;gap:8px">
-      <input type="text" id="keyword" placeholder="搜索用户名/昵称" style="flex:1;padding:8px;border-radius:6px;border:none;background:rgba(255,255,255,0.1);color:#fff">
-      <select id="filterRole" style="padding:8px;border-radius:6px;border:none;background:rgba(255,255,255,0.1);color:#fff">
+    <div class="filter-row">
+      <input type="text" id="keyword" placeholder="🔍 搜索用户名 / 昵称">
+      <select id="filterRole">
         <option value="">全部角色</option>
         <option value="1">粉丝</option>
         <option value="2">管理员</option>
         <option value="3">明星</option>
       </select>
-      <button class="btn btn-sm" onclick="loadList()">查询</button>
+      <button class="btn" onclick="loadList()">查询</button>
     </div>
 
-    <div class="card" style="padding:0;overflow-x:auto">
+    <div class="card card-table">
       <table>
         <thead>
           <tr>
@@ -57,54 +74,84 @@
       try {
         const res = await fetchJSON("/api/users?" + params.toString());
         const list = res.data;
-        document.getElementById("tbody").innerHTML = list.map(u => `
-          <tr>
-            <td>${u.id}</td>
-            <td>${u.username}</td>
-            <td>${u.nickname}</td>
-            <td>${roleMap[u.role] || "?"}</td>
-            <td>${u.score}</td>
-            <td>${statusMap[u.status]}</td>
-            <td>${fmt(u.create_time)}</td>
-            <td>
-              <button class="btn btn-sm ${u.status === 1 ? "btn-danger" : ""}" data-action="toggle-status" data-id="${u.id}" data-status="${u.status}">
-                ${u.status === 1 ? "禁用" : "启用"}
-              </button>
-              <button class="btn btn-sm btn-secondary" data-action="toggle-role" data-id="${u.id}" data-role="${u.role}">
-                切角色
-              </button>
-            </td>
-          </tr>
-        `).join("");
+        const tbody = document.getElementById("tbody");
+        tbody.innerHTML = "";
 
-        document.querySelectorAll("button[data-action]").forEach(btn => {
-          btn.addEventListener("click", () => handleAction(btn.dataset));
+        list.forEach(u => {
+          const tr = document.createElement("tr");
+          tr.appendChild(_td(u.id));
+          tr.appendChild(_td(u.username));
+          tr.appendChild(_td(u.nickname));
+          const roleTd = _td(roleMap[u.role] || "?");
+          roleTd.className = `role-${u.role}`;
+          tr.appendChild(roleTd);
+          tr.appendChild(_td((u.score || 0).toLocaleString()));
+          const statusTd = _td(statusMap[u.status]);
+          statusTd.className = `status-${u.status}`;
+          tr.appendChild(statusTd);
+          tr.appendChild(_td(fmt(u.create_time)));
+
+          const ops = document.createElement("td");
+          const toggleBtn = document.createElement("button");
+          toggleBtn.className = `btn btn-sm ${u.status === 1 ? "btn-danger" : ""}`;
+          toggleBtn.textContent = u.status === 1 ? "禁用" : "启用";
+          toggleBtn.onclick = () => toggleStatus(u.id, u.status);
+
+          const roleBtn = document.createElement("button");
+          roleBtn.className = "btn btn-sm btn-secondary";
+          roleBtn.textContent = "切角色";
+          roleBtn.onclick = () => toggleRole(u.id, u.role);
+
+          ops.appendChild(toggleBtn);
+          ops.appendChild(document.createTextNode(" "));
+          ops.appendChild(roleBtn);
+          tr.appendChild(ops);
+
+          tbody.appendChild(tr);
         });
+
+        if (list.length === 0) {
+          const tr = document.createElement("tr");
+          const td = document.createElement("td");
+          td.colSpan = 8;
+          td.style.textAlign = "center";
+          td.style.padding = "32px";
+          td.style.color = "var(--text-muted)";
+          td.textContent = "暂无数据";
+          tr.appendChild(td);
+          tbody.appendChild(tr);
+        }
       } catch (e) {}
     }
 
-    async function handleAction(data) {
-      if (data.action === "toggle-status") {
-        const newStatus = data.status === "1" ? 0 : 1;
-        try {
-          await fetchJSON(`/api/users/${data.id}/status`, {
-            method: "PUT", body: { status: newStatus }
-          });
-          await loadList();
-        } catch (e) {}
-      } else if (data.action === "toggle-role") {
-        const roles = [1, 2, 3];
-        const idx = roles.indexOf(parseInt(data.role));
-        const next = roles[(idx + 1) % 3];
-        if (!confirm(`确定要把用户升级为 ${roleMap[next]} 吗？`)) return;
-        try {
-          await fetchJSON(`/api/users/${data.id}/role`, {
-            method: "PUT", body: { role: next }
-          });
-          alert("角色已更新");
-          await loadList();
-        } catch (e) {}
-      }
+    function _td(text) {
+      const td = document.createElement("td");
+      td.textContent = text;
+      return td;
+    }
+
+    async function toggleStatus(id, current) {
+      const newStatus = current === 1 ? 0 : 1;
+      try {
+        await fetchJSON(`/api/users/${id}/status`, {
+          method: "PUT", body: { status: newStatus }
+        });
+        toast(`已${newStatus === 1 ? "启用" : "禁用"}`, "success");
+        await loadList();
+      } catch (e) {}
+    }
+
+    async function toggleRole(id, currentRole) {
+      const roles = [1, 2, 3];
+      const next = roles[(roles.indexOf(currentRole) + 1) % 3];
+      if (!confirm(`确定要把用户升级为 ${roleMap[next]} 吗？`)) return;
+      try {
+        await fetchJSON(`/api/users/${id}/role`, {
+          method: "PUT", body: { role: next }
+        });
+        toast("✅ 角色已更新", "success");
+        await loadList();
+      } catch (e) {}
     }
   </script>
 </body>

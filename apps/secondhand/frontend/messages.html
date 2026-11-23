@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>校淘集市 - 消息与聊天</title>
+  <link rel="stylesheet" href="css/style.css?v=2026111703">
+  <style>
+    .notice { background: var(--card); border: 1.5px solid var(--border); border-radius: 12px 12px 3px 12px; box-shadow: var(--shadow); padding: 14px 18px; margin-bottom: 12px; display: flex; gap: 12px; align-items: flex-start; cursor: pointer; transition: transform .2s; }
+    .notice:hover { transform: translateX(4px); border-color: var(--green); }
+    .notice .ic { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .notice .ic.msg { background: var(--green-soft); } .notice .ic.like { background: var(--orange-soft); }
+    .notice .txt { flex: 1; font-size: 14px; line-height: 1.6; }
+    .notice .txt b { color: var(--green); }
+    .notice .txt .goods { color: var(--blue); }
+    .notice .time { color: var(--muted); font-size: 12px; white-space: nowrap; }
+    .unread-pill { display: inline-block; background: var(--orange); color: #fffdf8; font-size: 12px; padding: 2px 10px; border-radius: 10px; margin-left: 8px; vertical-align: middle; }
+  </style>
+</head>
+<body>
+<a href="/" class="portal-back" style="position:fixed;left:14px;bottom:14px;z-index:9999;background:#2f6df6;color:#fff;text-decoration:none;font-size:12px;font-weight:700;padding:8px 14px;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.25)">← 作品集</a>
+  <header id="navbar"></header>
+
+  <div class="container">
+    <h2 class="page-title">💬 消息与聊天<span class="unread-pill" id="cnt" style="display:none;"></span></h2>
+
+    <div class="msg-tabs" id="msg-tabs">
+      <button data-tab="chat" class="cur" onclick="switchTab('chat')">💬 聊天</button>
+      <button data-tab="notice" onclick="switchTab('notice')">🔔 通知</button>
+    </div>
+
+    <!-- 聊天 -->
+    <div id="pane-chat">
+      <div class="chat-wrap">
+        <aside class="chat-side">
+          <div class="chat-side-head">我的会话</div>
+          <div id="conv-list"></div>
+          <div class="chat-side-empty" id="conv-empty" style="display:none;">
+            还没有聊天记录，去商品页点「💬 聊聊 / 砍价」找卖家吧
+          </div>
+        </aside>
+        <section class="chat-main">
+          <div class="chat-placeholder" id="chat-placeholder">
+            <div class="big">💬</div><p>选择左侧会话开始聊天</p>
+          </div>
+          <div class="chat-panel" id="chat-panel" style="display:none;">
+            <div class="chat-head" id="chat-head"></div>
+            <div class="chat-body" id="chat-body"></div>
+            <div class="chat-actions" id="chat-actions">
+              <button class="chat-act" onclick="openBargain()">🔪 砍价</button>
+              <button class="chat-act" onclick="openSwapPicker()">🔁 换物</button>
+            </div>
+            <div class="chat-form">
+              <input id="chat-input" maxlength="500" placeholder="和卖家聊聊…">
+              <button onclick="sendText()">发送</button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- 通知 -->
+    <div id="pane-notice" style="display:none;">
+      <div id="notice-list"></div>
+      <div class="empty" id="notice-empty" style="display:none;">
+        <div class="big">📭</div><p>暂时还没有人骚扰你的小摊，安静得可爱</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 砍价弹窗 -->
+  <div class="modal-mask" id="bargain-modal">
+    <div class="modal">
+      <h3>🔪 出个价</h3>
+      <p class="modal-sub" id="bargain-sub"></p>
+      <div class="form-item"><label>你的心理价（元）</label>
+        <input id="bargain-price" type="number" min="0.01" step="0.01" placeholder="例如 199"></div>
+      <div class="actions">
+        <button onclick="closeBargain()">取消</button>
+        <button class="ok" onclick="submitBargain()">发出砍价</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 换物弹窗 -->
+  <div class="modal-mask" id="swap-modal">
+    <div class="modal">
+      <h3>🔁 以物换物</h3>
+      <p class="modal-sub">选一件你的在售宝贝，向 TA 发起换物提议</p>
+      <div class="swap-pick" id="swap-pick"></div>
+      <div class="actions"><button onclick="closeSwapPicker()">取消</button></div>
+    </div>
+  </div>
+
+  <script src="js/app.js?v=2026111703"></script>
+  <script>
+    renderNav("msg");
+
+    const TYPE_BADGE = {
+      bargain: "🔪 砍价", bargain_accept: "🤝 同意砍价", bargain_reject: "🙅 婉拒",
+      swap: "🔁 换物", swap_accept: "🤝 同意换物", swap_reject: "🙅 不换了",
+    };
+
+    let current = null;      // { goods_id, other_id, goods, other, items }
+    let pollTimer = null;
+    let myGoods = [];
+
+    /* ---------- 标签切换 ---------- */
+    function switchTab(tab) {
+      document.querySelectorAll("#msg-tabs button").forEach(b =>
+        b.classList.toggle("cur", b.dataset.tab === tab));
+      document.getElementById("pane-chat").style.display = tab === "chat" ? "block" : "none";
+      document.getElementById("pane-notice").style.display = tab === "notice" ? "block" : "none";
+      if (tab === "notice") loadNotices();
+      else loadConvs();
+    }
+
+    /* ---------- 会话列表 ---------- */
+    async function loadConvs() {
+      const u = getUser();
+      if (!u) {
+        document.getElementById("conv-empty").style.display = "block";
+        document.getElementById("conv-empty").textContent = "登录后查看你的聊天";
+        requireLogin();
+        return;
+      }
+      try {
+        const d = await request("/chat/conversations");
+        renderConvs(d);
+      } catch (e) { toast(e.message, "err"); }
+    }
+
+    function renderConvs(d) {
+      const pill = document.getElementById("cnt");
+      pill.style.display = d.unread ? "inline-block" : "none";
+      pill.textContent = `${d.unread} 条未读`;
+      document.getElementById("conv-empty").style.display = d.items.length ? "none" : "block";
+      document.getElementById("conv-list").innerHTML = d.items.map(c => {
+        const active = current && current.goods_id === c.goods_id && current.other_id === c.other_id;
+        return `<div class="conv ${active ? "cur" : ""}" onclick="openChat(${c.goods_id}, ${c.other_id})">
+          <div class="conv-avatar">${esc(c.other_nickname.slice(0, 1))}</div>
+          <div class="conv-main">
+            <div class="conv-top"><b>${esc(c.other_nickname)}</b>
+              <span class="conv-time">${fmtTime(c.last_at)}</span></div>
+            <div class="conv-goods">${esc(c.goods_title)}</div>
+            <div class="conv-last">${esc(c.last_content)}</div>
+          </div>
+          ${c.unread ? `<span class="conv-unread">${c.unread}</span>` : ""}
+        </div>`;
+      }).join("");
+    }
+
+    /* ---------- 会话内容 ---------- */
+    async function openChat(goodsId, otherId) {
+      if (!requireLogin()) return;
+      current = { goods_id: Number(goodsId), other_id: Number(otherId), items: [] };
+      document.getElementById("chat-placeholder").style.display = "none";
+      document.getElementById("chat-panel").style.display = "flex";
+      await loadMessages(true);
+      loadConvs();
+      clearInterval(pollTimer);
+      pollTimer = setInterval(() => loadMessages(false), 6000);
+    }
+
+    async function loadMessages(showLoading) {
+      if (!current) return;
+      const body = document.getElementById("chat-body");
+      if (showLoading) body.innerHTML = '<div class="chat-loading">加载中…</div>';
+      try {
+        const d = await request(`/chat/messages?goods_id=${current.goods_id}&other_id=${current.other_id}`);
+        current.goods = d.goods;
+        current.other = d.other;
+        current.items = d.items;
+        renderChatHead();
+        renderMessages(d.items);
+      } catch (e) { toast(e.message, "err"); }
+    }
+
+    function renderChatHead() {
+      const g = current.goods, o = current.other, u = getUser();
+      const iAmSeller = g && u && g.seller_id === u.id;
+      const statusText = { 1: "", 2: "已售出", 3: "已下架", 4: "已预订" }[g.status] || "";
+      document.getElementById("chat-head").innerHTML = `
+        ${g.cover ? `<img class="chat-goods-img" src="${API}${g.cover}" alt="">`
+                  : '<span class="chat-goods-img ph">🛍️</span>'}
+        <div class="chat-head-info">
+          <a class="chat-goods-title" href="detail.html?id=${g.id}">${esc(g.title)}</a>
+          <div class="chat-head-meta">${iAmSeller ? "买家" : "卖家"}：${esc(o.nickname)}
+            · 信用分 ${o.credit_score} · ￥${g.price}
+            ${statusText ? ` · <span class="chat-off">${statusText}</span>` : ""}</div>
+        </div>
+        <button class="mini-btn" onclick="location.href='detail.html?id=${g.id}'">看宝贝</button>`;
+      document.getElementById("chat-actions").style.display = iAmSeller ? "none" : "flex";
+      document.getElementById("chat-input").placeholder = iAmSeller ? "回复买家…" : "和卖家聊聊…";
+    }
+
+    function renderMessages(items) {
+      const body = document.getElementById("chat-body");
+      if (!items.length) {
+        const o = current.other;
+        body.innerHTML = `<div class="chat-hello">👋 和「${esc(o.nickname)}」打个招呼吧，可以聊聊成色、砍砍价，或者发起换物～</div>`;
+        return;
+      }
+      body.innerHTML = items.map(m => {
+        const badge = TYPE_BADGE[m.msg_type] || "";
+        const cls = m.mine ? "mine" : "";
+        const typeCls = m.msg_type !== "text" ? "bubble-" + m.msg_type : "";
+        let actions = "";
+        if (!m.mine && !m.replied && m.msg_type === "bargain") {
+          actions = `<div class="bubble-actions">
+            <button onclick="respond('bargain_accept', ${m.id})">🤝 同意</button>
+            <button onclick="respond('bargain_reject', ${m.id})">🙅 婉拒</button></div>`;
+        } else if (!m.mine && !m.replied && m.msg_type === "swap") {
+          actions = `<div class="bubble-actions">
+            <button onclick="respond('swap_accept', ${m.id})">🤝 愿意换</button>
+            <button onclick="respond('swap_reject', ${m.id})">🙅 再想想</button></div>`;
+        }
+        return `<div class="bubble-row ${cls}">
+          <div class="bubble ${typeCls}">
+            ${badge ? `<span class="chat-tag">${badge}</span>` : ""}
+            <span class="bubble-text">${esc(m.content)}</span>
+            ${actions}
+            <span class="bubble-time">${m.created_at}</span>
+          </div>
+        </div>`;
+      }).join("");
+      body.scrollTop = body.scrollHeight;
+    }
+
+    async function sendMsg(type, content, extra) {
+      if (!current) return;
+      try {
+        await request("/chat/messages", { method: "POST", body: {
+          goods_id: current.goods_id,
+          to_user_id: current.other_id,
+          content, msg_type: type, extra: extra || null,
+        } });
+        await loadMessages(false);
+        loadConvs();
+      } catch (e) { toast(e.message, "err"); }
+    }
+
+    async function sendText() {
+      const input = document.getElementById("chat-input");
+      const text = input.value.trim();
+      if (!text) { toast("说点什么吧～", "err"); return; }
+      input.value = "";
+      await sendMsg("text", text);
+    }
+
+    /* ---------- 砍价 ---------- */
+    function openBargain() {
+      if (!requireLogin() || !current) return;
+      if (current.goods.seller_id === getUser().id) { toast("砍价是买家发起的哦", "info"); return; }
+      if (current.goods.status !== 1) { toast("宝贝已不在售，无法发起砍价", "info"); return; }
+      document.getElementById("bargain-sub").textContent =
+        `宝贝《${current.goods.title}》标价 ￥${current.goods.price}，出个你觉得合适的价吧`;
+      document.getElementById("bargain-price").value = "";
+      document.getElementById("bargain-modal").classList.add("show");
+    }
+    function closeBargain() { document.getElementById("bargain-modal").classList.remove("show"); }
+    async function submitBargain() {
+      const price = Number(document.getElementById("bargain-price").value);
+      if (!price || price <= 0) { toast("请输入有效的价格", "err"); return; }
+      closeBargain();
+      await sendMsg("bargain", `我出 ￥${price.toFixed(2)}，可以吗？`, { price: price.toFixed(2) });
+    }
+
+    /* ---------- 换物 ---------- */
+    async function openSwapPicker() {
+      if (!requireLogin() || !current) return;
+      if (current.goods.seller_id === getUser().id) { toast("换物由买家发起哦", "info"); return; }
+      if (current.goods.status !== 1) { toast("宝贝已不在售，无法发起换物", "info"); return; }
+      document.getElementById("swap-modal").classList.add("show");
+      const box = document.getElementById("swap-pick");
+      box.innerHTML = '<div class="chat-loading">加载你的宝贝…</div>';
+      try {
+        const d = await request(`/goods?seller_id=${getUser().id}&status=1&page_size=50`);
+        myGoods = d.items.filter(g => g.id !== current.goods_id);
+        box.innerHTML = myGoods.length
+          ? myGoods.map((g, i) => `<button class="swap-item" onclick="sendSwap(${i})">
+              ${g.cover ? `<img src="${API}${g.cover}" alt="">` : "🛍️"}${esc(g.title)}</button>`).join("")
+          : '<p class="swap-hint">你还没有在售的宝贝，先去发布一件吧～</p>';
+      } catch (e) { box.innerHTML = `<p class="swap-hint">${esc(e.message)}</p>`; }
+    }
+    function closeSwapPicker() { document.getElementById("swap-modal").classList.remove("show"); }
+    async function sendSwap(idx) {
+      const g = myGoods[idx];
+      if (!g) return;
+      closeSwapPicker();
+      await sendMsg("swap",
+        `想用我的《${g.title}》换你的《${current.goods.title}》，成不成？`,
+        { my_goods_id: g.id, my_goods_title: g.title });
+    }
+
+    function msgById(id) { return (current && current.items || []).find(m => m.id === id); }
+
+    async function respond(kind, refId) {
+      const m = msgById(refId);
+      if (!m) return;
+      const price = m.extra && m.extra.price ? m.extra.price : "";
+      const myGoodsTitle = m.extra && m.extra.my_goods_title ? m.extra.my_goods_title : "我的宝贝";
+      if (kind === "bargain_accept") {
+        if (!(await confirmDialog("同意这个价格？",
+          `商品标价将调整为 <b>￥${price}</b>，买家可直接按此价下单。`))) return;
+        await sendMsg("bargain_accept",
+          `可以，￥${price} 成交～标价已改成这个价，直接下单就行`, { ref: refId, price });
+      } else if (kind === "bargain_reject") {
+        await sendMsg("bargain_reject", "这个价有点低啦，再加上一点点？", { ref: refId, price });
+      } else if (kind === "swap_accept") {
+        if (!(await confirmDialog("同意换物？", `用你的《${current.goods.title}》换对方的《${myGoodsTitle}》，约个时间面交交换`))) return;
+        await sendMsg("swap_accept",
+          `可以呀，用你的《${myGoodsTitle}》换我的《${current.goods.title}》，约个时间见面交换吧`,
+          { ref: refId });
+      } else if (kind === "swap_reject") {
+        await sendMsg("swap_reject", "这件暂时不想换，谢谢你啦～", { ref: refId });
+      }
+    }
+
+    /* ---------- 通知 ---------- */
+    async function loadNotices() {
+      const u = getUser();
+      if (!u) { requireLogin(); return; }
+      try {
+        const data = await request("/goods/notifications");
+        document.getElementById("notice-empty").style.display = data.items.length ? "none" : "block";
+        document.getElementById("notice-list").innerHTML = data.items.map(n => `
+          <div class="notice" onclick="location.href='detail.html?id=${n.goods_id}'">
+            <span class="ic ${n.type === "留言" ? "msg" : "like"}">${n.icon}</span>
+            <div class="txt">
+              <b>${esc(n.from)}</b> ${n.type === "留言"
+                ? (/^[🍋🔪😭🔥🤝]/.test(n.text) ? `<span class="big-sticker">${esc(n.text)}</span>`
+                  : n.text.startsWith("🔁") ? `<span class="swap-notice">🔁 发起了换换提案：${esc(n.text.slice(1)).trim()}</span>`
+                  : "留言：" + esc(n.text))
+                : n.text}
+              <div>商品：<span class="goods">${esc(n.goods_title)}</span></div>
+            </div>
+            <span class="time">${fmtTime(n.created_at)}</span>
+          </div>`).join("");
+      } catch (e) { toast(e.message, "err"); }
+    }
+
+    /* ---------- 初始化 ---------- */
+    document.getElementById("chat-input").addEventListener("keydown", e => {
+      if (e.key === "Enter") sendText();
+    });
+    document.getElementById("bargain-modal").addEventListener("click", e => {
+      if (e.target.id === "bargain-modal") closeBargain();
+    });
+    document.getElementById("swap-modal").addEventListener("click", e => {
+      if (e.target.id === "swap-modal") closeSwapPicker();
+    });
+
+    loadConvs();
+    /* 聊天面板可见时定时刷新会话列表，及时看到新买家/新消息 */
+    setInterval(() => {
+      if (getUser() && document.getElementById("pane-chat").style.display !== "none") loadConvs();
+    }, 15000);
+
+    const params = new URLSearchParams(location.search);
+    if (params.get("goods") && params.get("to")) {
+      openChat(params.get("goods"), params.get("to")).then(() => {
+        if (params.get("action") === "swap") openSwapPicker();
+      });
+    }
+  </script>
+</body>
+</html>

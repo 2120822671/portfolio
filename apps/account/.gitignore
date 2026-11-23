@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+*.log
+.screenshots/
+.trae-html-share-packages/
+libs/
+.DS_Store

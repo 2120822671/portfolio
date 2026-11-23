@@ -66,7 +66,7 @@ async def global_exception_handler(request: Request, exc: Exception):
 
 
 # ============== API 路由（必须在 StaticFiles mount 之前！）==============
-from routers import auth, users, celebrities, fan_clubs, chat, gacha, activities, recharge
+from sd_routers import auth, users, celebrities, fan_clubs, chat, gacha, activities, recharge
 
 app.include_router(auth.router)
 app.include_router(users.router)
@@ -82,6 +82,15 @@ app.include_router(recharge.router)
 @app.get("/api/health")
 async def health():
     return {"code": 0, "msg": "ok", "data": None}
+
+
+# 根路径重定向到登录页（前端入口）
+from fastapi.responses import RedirectResponse
+
+
+@app.get("/")
+async def index():
+    return RedirectResponse(url="/stardock/home.html")
 
 
 # ============== 静态资源禁缓存中间件 ==============
@@ -102,15 +111,6 @@ class NoCacheStaticMiddleware(BaseHTTPMiddleware):
 
 
 app.add_middleware(NoCacheStaticMiddleware)
-
-
-# ============== 根路径跳转（作品集整合） ==============
-from fastapi.responses import RedirectResponse
-
-
-@app.get("/")
-async def index_redirect():
-    return RedirectResponse(url="/stardock/home.html")
 
 
 # ============== 挂载静态文件（必须放最后！）==============

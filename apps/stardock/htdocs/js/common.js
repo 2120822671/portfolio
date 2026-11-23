@@ -1,8 +1,8 @@
 /* ============================================================
-   common.js —— 公共脚本
+   common.js —— 公共脚本 v3
    统一封装：fetchJSON / loadNavbar / logout / requireRole
    增强：btnLoading / debounce / toast / throttle
-   v2 —— loadNavbar 改为增量更新，不再每次 innerHTML 全重写
+   安全：loadNavbar 全面改用 textContent，消灭 innerHTML 拼接用户数据
    ============================================================ */
 
 /** 当前登录用户（缓存）—— 跨页面存 sessionStorage，导航栏可以瞬间渲染不弹跳 */
@@ -19,7 +19,7 @@ function _saveUser(u) {
 /** 导航栏是否已渲染过（防止每次 innerHTML 全重写） */
 let _navbarRendered = false;
 
-/** 基础 API 地址（作品集整合：统一挂载在 /stardock 前缀下） */
+/** 基础 API 地址（同域为空） */
 const API_BASE = "/stardock";
 
 /* ============================================================
@@ -60,15 +60,12 @@ async function fetchJSON(url, options = {}) {
 }
 
 /* ============================================================
-   loadNavbar —— 渲染导航栏
-   优化：首次 innerHTML 全渲染，后续只更新积分数字
-   参数 force: true 强制全量重绘（登录/登出/角色变化时用）
+   loadNavbar —— 渲染导航栏（全面安全版：textContent）
    ============================================================ */
 async function loadNavbar(containerId = "navbar", force = false) {
   const el = document.getElementById(containerId);
   if (!el) return;
 
-  // 拿用户信息（sessionStorage 缓存命中就同步渲染，不等接口 → 导航栏不弹跳）
   let u = _currentUser;
   if (!u) {
     try {
@@ -77,7 +74,6 @@ async function loadNavbar(containerId = "navbar", force = false) {
       u = _currentUser;
     } catch (e) {
       el.innerHTML = `
-        <a href="/">🏠 作品集</a>
         <a href="/stardock/login.html">登录</a>
         <a href="/stardock/register.html">注册</a>
       `;
@@ -86,57 +82,92 @@ async function loadNavbar(containerId = "navbar", force = false) {
     }
   }
 
-  // 导航栏已存在 + 没强制重绘 → 只更积分
   if (_navbarRendered && !force) {
     const scoreEl = el.querySelector(".user-info .score");
-    if (scoreEl) {
-      scoreEl.textContent = `💎 ${u.score.toLocaleString()}`;
+    if (scoreEl && u) {
+      scoreEl.textContent = `💎 ${(u.score ?? 0).toLocaleString()}`;
     }
     return;
   }
 
-  // 首次渲染 / 强制重绘
+  // 安全构建：模板 + textContent 注入
   const roleMap = { 1: "粉丝", 2: "管理员", 3: "明星" };
-  const roleName = roleMap[u.role] || "未知";
 
-  let adminHtml = "";
+  const nav = document.createElement("nav");
+  nav.className = "stardock-nav";
+
+  // 首页
+  nav.appendChild(_navLink("🏠 首页", "/stardock/home.html"));
+  nav.appendChild(_navLink("🎴 抽卡", "/stardock/gacha.html"));
+  nav.appendChild(_navLink("📖 图鉴", "/stardock/my-cards.html"));
+  nav.appendChild(_navLink("💰 充值", "/stardock/recharge.html"));
+
+  // 管理链接（根据角色）
   if (u.role === 2) {
-    adminHtml = `
-      <a href="/stardock/admin/users.html">用户管理</a>
-      <a href="/stardock/admin/gacha.html">卡池配置</a>
-      <a href="/stardock/admin/activities.html">活动管理</a>
-    `;
+    nav.appendChild(_navLink("🛡️ 用户管理", "/stardock/admin/users.html"));
+    nav.appendChild(_navLink("🎴 卡池配置", "/stardock/admin/gacha.html"));
+    nav.appendChild(_navLink("📢 活动管理", "/stardock/admin/activities.html"));
   }
   if (u.role === 3) {
-    adminHtml = `<a href="/stardock/admin/activities.html">发布活动</a>`;
+    nav.appendChild(_navLink("📢 发布活动", "/stardock/admin/activities.html"));
   }
 
-  el.innerHTML = `
-    <a href="/">🏠 作品集</a>
-    <a href="/stardock/home.html">🏠 首页</a>
-    <a href="/stardock/gacha.html">🎴 抽卡</a>
-    <a href="/stardock/my-cards.html">📖 图鉴</a>
-    <a href="/stardock/recharge.html">💰 充值</a>
-    ${adminHtml}
-    <span class="user-info">
-      <span class="role-tag role-${u.role}">${roleName}</span>
-      <span class="nick">${u.nickname}</span>
-      <span class="score">💎 ${u.score.toLocaleString()}</span>
-      <a href="/stardock/profile.html" class="btn btn-sm btn-secondary">个人中心</a>
-      <button onclick="logout()">退出</button>
-    </span>
-  `;
+  // 右侧用户区
+  const userArea = document.createElement("div");
+  userArea.className = "nav-user-area";
+
+  const roleTag = document.createElement("span");
+  roleTag.className = `role-tag role-${u.role}`;
+  roleTag.textContent = roleMap[u.role] || "未知";
+
+  const nick = document.createElement("span");
+  nick.className = "nav-nick";
+  nick.textContent = u.nickname || "";
+
+  const score = document.createElement("span");
+  score.className = "score";
+  score.textContent = `💎 ${(u.score ?? 0).toLocaleString()}`;
+
+  const profileLink = document.createElement("a");
+  profileLink.href = "/stardock/profile.html";
+  profileLink.className = "nav-link nav-link-sm";
+  profileLink.textContent = "个人中心";
+
+  const logoutBtn = document.createElement("button");
+  logoutBtn.type = "button";
+  logoutBtn.className = "nav-btn-logout";
+  logoutBtn.textContent = "退出";
+  logoutBtn.addEventListener("click", logout);
+
+  userArea.appendChild(roleTag);
+  userArea.appendChild(nick);
+  userArea.appendChild(score);
+  userArea.appendChild(profileLink);
+  userArea.appendChild(logoutBtn);
+
+  nav.appendChild(userArea);
+
+  el.innerHTML = "";
+  el.appendChild(nav);
+
   _navbarRendered = true;
+}
+
+function _navLink(text, href) {
+  const a = document.createElement("a");
+  a.href = href;
+  a.className = "nav-link";
+  a.textContent = text;
+  return a;
 }
 
 /* ============================================================
    updateUserScore —— 只更新当前缓存的积分值（本地用）
-   调完后 loadNavbar() 就只改积分数字不重绘
    ============================================================ */
 function updateUserScore(newScore) {
   if (_currentUser) _currentUser.score = newScore;
-  _saveUser(_currentUser);   // 同步进 sessionStorage，切页面后积分也是新的
-  const scoreEl = document.querySelector("#navbar .user-info .score");
+  _saveUser(_currentUser);
+  const scoreEl = document.querySelector("#navbar .user-info .score, #navbar .nav-user-area .score");
   if (scoreEl) scoreEl.textContent = `💎 ${newScore.toLocaleString()}`;
 }
 
@@ -157,7 +188,7 @@ async function logout() {
 async function requireRole(allowRoles) {
   const res = await fetchJSON("/api/auth/me");
   _saveUser(res.data);
-  _navbarRendered = false; // 换页面了，重新渲染导航栏
+  _navbarRendered = false;
   const u = _currentUser;
 
   if (allowRoles !== undefined) {
@@ -175,9 +206,6 @@ async function requireRole(allowRoles) {
    按钮交互优化
    ============================================================ */
 
-/**
- * 给按钮加 loading 状态（文案替换 + 禁点）
- */
 function btnLoading(btnOrId, loading, loadingText = "处理中...") {
   const btn = typeof btnOrId === "string" ? document.getElementById(btnOrId) : btnOrId;
   if (!btn) return;
@@ -206,7 +234,7 @@ function debounce(fn, wait = 300) {
   };
 }
 
-/** 节流（注意：async 函数别用这个，用 btnLoading 禁点更靠谱） */
+/** 节流 */
 function throttle(fn, wait = 300) {
   let last = 0;
   return function (...args) {
@@ -233,31 +261,38 @@ function throttle(fn, wait = 300) {
   document.body.appendChild(box);
 })();
 
-function toast(msg, type = "info", duration = 2500) {
+function toast(msg, type = "info", duration = 2800) {
   const box = document.getElementById("__toast_container");
   if (!box) return alert(msg);
 
   const el = document.createElement("div");
   const colors = {
-    info:   { bg: "#2196f3", icon: "ℹ️" },
-    success:{ bg: "#4caf50", icon: "✅" },
-    error:  { bg: "#f44336", icon: "❌" },
-    warn:   { bg: "#ff9800", icon: "⚠️" },
+    info:   { bg: "linear-gradient(135deg, #2196f3, #1976d2)", icon: "ℹ️" },
+    success:{ bg: "linear-gradient(135deg, #4caf50, #2e7d32)", icon: "✅" },
+    error:  { bg: "linear-gradient(135deg, #f44336, #c62828)", icon: "❌" },
+    warn:   { bg: "linear-gradient(135deg, #ff9800, #e65100)", icon: "⚠️" },
   };
   const c = colors[type] || colors.info;
 
   Object.assign(el.style, {
-    background: c.bg, color: "#fff", padding: "12px 18px",
-    borderRadius: "8px", boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
-    fontSize: "14px", display: "flex", alignItems: "center", gap: "10px",
-    animation: "toastIn 0.25s ease", pointerEvents: "auto"
+    background: c.bg, color: "#fff", padding: "14px 20px",
+    borderRadius: "12px", boxShadow: "0 8px 24px rgba(0,0,0,0.4)",
+    fontSize: "14px", display: "flex", alignItems: "center", gap: "12px",
+    animation: "toastIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)", pointerEvents: "auto",
+    backdropFilter: "blur(8px)"
   });
-  el.innerHTML = `<span style="font-size:18px">${c.icon}</span><span>${msg}</span>`;
+  const iconSpan = document.createElement("span");
+  iconSpan.style.fontSize = "18px";
+  iconSpan.textContent = c.icon;
+  const msgSpan = document.createElement("span");
+  msgSpan.textContent = msg;
+  el.appendChild(iconSpan);
+  el.appendChild(msgSpan);
   box.appendChild(el);
 
   setTimeout(() => {
-    el.style.animation = "toastOut 0.25s ease";
-    setTimeout(() => el.remove(), 250);
+    el.style.animation = "toastOut 0.3s ease forwards";
+    setTimeout(() => el.remove(), 300);
   }, duration);
 }
 
@@ -265,8 +300,8 @@ if (!document.getElementById("__toast_style")) {
   const st = document.createElement("style");
   st.id = "__toast_style";
   st.textContent = `
-    @keyframes toastIn  { from { transform: translateX(120%); opacity: 0 } to { transform: translateX(0); opacity: 1 } }
-    @keyframes toastOut { from { transform: translateX(0);     opacity: 1 } to { transform: translateX(120%); opacity: 0 } }
+    @keyframes toastIn  { from { transform: translateX(120%) scale(0.9); opacity: 0 } to { transform: translateX(0) scale(1); opacity: 1 } }
+    @keyframes toastOut { from { transform: translateX(0) scale(1); opacity: 1 } to { transform: translateX(120%) scale(0.9); opacity: 0 } }
   `;
   document.head.appendChild(st);
 }

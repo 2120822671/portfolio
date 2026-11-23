@@ -5,3 +5,10 @@ __pycache__/
 .trae-html-share-packages/
 libs/
 .DS_Store
+venv/
+.venv/
+.env
+*.db
+*.sqlite3
+.pytest_cache/
+.workbuddy/

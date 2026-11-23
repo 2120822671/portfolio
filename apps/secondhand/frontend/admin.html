@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>校淘集市 - 管理看板</title>
+  <link rel="stylesheet" href="css/style.css?v=2026111801">
+  <style>
+    .dash-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; margin: 22px 0; }
+    .dash-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 14px;
+                 padding: 22px; box-shadow: 3px 3px 0 rgba(47,107,79,.12); text-align: center; }
+    .dash-card .num { font-family: var(--font-display); font-size: 40px; color: var(--green); line-height: 1.2; }
+    .dash-card .label { margin-top: 8px; font-size: 14px; color: #566573; }
+    .dash-card .ico { font-size: 26px; }
+    .dash-note { color: #7a8794; font-size: 13px; text-align: center; margin-top: 6px; }
+    /* 增量新增：管理功能分区 */
+    .admin-tabs { display:flex; gap:8px; flex-wrap:wrap; margin:26px 0 14px; border-bottom:1.5px dashed var(--border); padding-bottom:10px; }
+    .admin-tabs button { padding:8px 18px; border-radius:20px; border:1.5px solid var(--border); background:var(--card); cursor:pointer; font-size:14px; }
+    .admin-tabs button.cur { background:var(--green); border-color:var(--green); color:#fffdf8; }
+    .admin-panel { display:none; }
+    .admin-panel.show { display:block; }
+    .admin-table { width:100%; border-collapse:collapse; background:var(--card); border:1.5px solid var(--border); border-radius:12px; overflow:hidden; font-size:13px; }
+    .admin-table th,.admin-table td { padding:10px 12px; border-bottom:1px dashed var(--border); text-align:left; }
+    .admin-table th { background:rgba(47,107,79,.08); }
+    .admin-table tr:last-child td { border-bottom:none; }
+    .admin-table .act { white-space:nowrap; }
+    .admin-table button { padding:4px 10px; margin-right:5px; border-radius:12px; border:1.5px solid var(--border); background:var(--card); cursor:pointer; font-size:12px; }
+    .admin-table button.ok { background:var(--green); color:#fff; border-color:var(--green); }
+    .admin-table button.danger { color:#b23b3b; border-color:#d99; }
+    .admin-empty { text-align:center; color:#8a97a4; padding:22px; font-size:13px; }
+  </style>
+</head>
+<body>
+<a href="/" class="portal-back" style="position:fixed;left:14px;bottom:14px;z-index:9999;background:#2f6df6;color:#fff;text-decoration:none;font-size:12px;font-weight:700;padding:8px 14px;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.25)">← 作品集</a>
+  <header id="navbar"></header>
+
+  <div class="container">
+    <h2 class="page-title">📊 管理看板</h2>
+    <p class="dash-note" id="dash-note">数据来自管理员统计接口，仅管理员 / 超级管理员可见</p>
+    <div class="dash-grid" id="dash-grid">
+      <div class="dash-card"><div class="ico">🧑‍🎓</div><div class="num" id="stat-users">—</div><div class="label">今日新增用户</div></div>
+      <div class="dash-card"><div class="ico">📦</div><div class="num" id="stat-goods">—</div><div class="label">今日新增商品</div></div>
+      <div class="dash-card"><div class="ico">🧾</div><div class="num" id="stat-orders">—</div><div class="label">今日订单</div></div>
+      <div class="dash-card"><div class="ico">🕒</div><div class="num" id="stat-pending">—</div><div class="label">待审核商品</div></div>
+    </div>
+    <div class="empty" id="dash-error" style="display:none;">
+      <div class="big">🔒</div><p id="dash-error-text">无权查看，请使用管理员账号登录</p>
+    </div>
+
+    <!-- 增量新增：管理功能分区（用户/审核/举报/订单） -->
+    <div class="admin-tabs" id="admin-tabs">
+      <button data-tab="users" class="cur">👥 用户管理</button>
+      <button data-tab="audit">📦 商品审核</button>
+      <button data-tab="reports">🚩 举报处理</button>
+      <button data-tab="orders">🧾 订单监管</button>
+    </div>
+    <div class="admin-panel show" id="panel-users">
+      <table class="admin-table"><thead><tr><th>ID</th><th>用户名</th><th>昵称</th><th>信用分</th><th>状态</th><th>注册时间</th><th>操作</th></tr></thead><tbody id="users-body"></tbody></table>
+    </div>
+    <div class="admin-panel" id="panel-audit">
+      <table class="admin-table"><thead><tr><th>ID</th><th>标题</th><th>价格</th><th>卖家</th><th>发布时间</th><th>操作</th></tr></thead><tbody id="audit-body"></tbody></table>
+    </div>
+    <div class="admin-panel" id="panel-reports">
+      <label style="font-size:13px;margin-right:10px;"><input type="checkbox" id="report-unhandled"> 仅看待处理</label>
+      <table class="admin-table"><thead><tr><th>ID</th><th>举报人</th><th>类型</th><th>对象ID</th><th>原因</th><th>处理状态</th><th>时间</th><th>操作</th></tr></thead><tbody id="reports-body"></tbody></table>
+    </div>
+    <div class="admin-panel" id="panel-orders">
+      <label style="font-size:13px;">状态筛选：
+        <select id="order-status"><option value="">全部</option><option value="10">待付款</option><option value="20">已支付</option><option value="30">已完成</option><option value="40">已关闭</option></select>
+      </label>
+      <button id="order-abnormal-btn" style="padding:5px 12px;border-radius:12px;border:1.5px solid var(--border);background:var(--card);cursor:pointer;font-size:12px;">⚠️ 查看异常订单</button>
+      <table class="admin-table"><thead><tr><th>ID</th><th>订单号</th><th>商品</th><th>买家</th><th>金额</th><th>状态</th><th>关闭方式</th><th>下单时间</th><th>操作</th></tr></thead><tbody id="orders-body"></tbody></table>
+    </div>
+  </div>
+
+  <script src="js/app.js?v=2026111801"></script>
+  <script>
+    renderNav("admin");
+
+    /* 增量新增：加载管理员看板统计；错误由 request 拦截器统一弹窗，这里只处理无权限展示 */
+    async function loadDashboard() {
+      if (!getUser()) { openLoginModal(); return; }
+      try {
+        const d = await request("/api/v1/admin/dashboard");
+        document.getElementById("stat-users").textContent   = d.today_new_users ?? 0;
+        document.getElementById("stat-goods").textContent   = d.today_new_goods ?? 0;
+        document.getElementById("stat-orders").textContent  = d.today_orders ?? 0;
+        document.getElementById("stat-pending").textContent = d.pending_goods ?? 0;
+      } catch (e) {
+        document.getElementById("dash-error").style.display = "block";
+        document.getElementById("dash-error-text").textContent = e.message || "统计加载失败";
+      }
+    }
+    loadDashboard();
+
+    /* ===== 增量新增：管理功能分区逻辑 ===== */
+    const BIZ_STATUS = { 1:"正常", 0:"冻结" };
+    const ORDER_STATUS = { 10:"待付款", 20:"已支付", 30:"已完成", 40:"已关闭" };
+    let currentTab = "users";
+
+    document.getElementById("admin-tabs").addEventListener("click", e => {
+      const btn = e.target.closest("button[data-tab]");
+      if (!btn) return;
+      currentTab = btn.dataset.tab;
+      document.querySelectorAll("#admin-tabs button").forEach(b => b.classList.toggle("cur", b === btn));
+      document.querySelectorAll(".admin-panel").forEach(p => p.classList.toggle("show", p.id === "panel-" + currentTab));
+      loadPanel(currentTab);
+    });
+
+    function loadPanel(tab) {
+      if (tab === "users") loadUsers();
+      else if (tab === "audit") loadAudit();
+      else if (tab === "reports") loadReports();
+      else if (tab === "orders") loadOrders();
+    }
+
+    function rowsHtml(bodyId, cols, items, rowFn) {
+      const body = document.getElementById(bodyId);
+      if (!items.length) { body.innerHTML = `<tr><td colspan="${cols}" class="admin-empty">暂无数据</td></tr>`; return; }
+      body.innerHTML = items.map(rowFn).join("");
+    }
+
+    async function loadUsers() {
+      try {
+        const d = await request("/api/v1/admin/users?page_size=50");
+        rowsHtml("users-body", 7, d.items, u => `<tr>
+          <td>${u.id}</td><td>${esc(u.username)}</td><td>${esc(u.nickname || "")}</td><td>${u.credit_score}</td>
+          <td>${BIZ_STATUS[u.status] ?? u.status}</td><td>${u.created_at ? u.created_at.slice(0,10) : "-"}</td>
+          <td class="act"><button data-uid="${u.id}" data-status="${u.status === 1 ? 0 : 1}">${u.status === 1 ? "冻结" : "解封"}</button></td></tr>`);
+      } catch (e) { /* 拦截器已弹窗 */ }
+    }
+    document.getElementById("users-body").addEventListener("click", async e => {
+      const b = e.target.closest("button[data-uid]");
+      if (!b) return;
+      const act = b.textContent === "冻结" ? "冻结该用户" : "解封该用户";
+      if (!await confirmDialog(act, `确定要${act}吗？`, b.dataset.status === 0)) return;
+      try {
+        await request(`/api/v1/admin/users/${b.dataset.uid}/status`, { method:"POST", body:{ status: Number(b.dataset.status) } });
+        toast("操作成功", "ok"); loadUsers();
+      } catch (e) { /* 拦截器已弹窗 */ }
+    });
+
+    async function loadAudit() {
+      try {
+        const d = await request("/api/v1/admin/goods/pending?page_size=50");
+        rowsHtml("audit-body", 6, d.items, g => `<tr>
+          <td>${g.id}</td><td>${esc(g.title)}</td><td>¥${g.price}</td><td>${g.seller_id}</td>
+          <td>${g.created_at ? g.created_at.slice(0,10) : "-"}</td>
+          <td class="act"><button class="ok" data-gid="${g.id}" data-act="approve">通过</button><button class="danger" data-gid="${g.id}" data-act="reject">驳回</button></td></tr>`);
+      } catch (e) { /* 拦截器已弹窗 */ }
+    }
+    document.getElementById("audit-body").addEventListener("click", async e => {
+      const b = e.target.closest("button[data-gid]");
+      if (!b) return;
+      if (!await confirmDialog(b.dataset.act === "approve" ? "审核通过" : "驳回商品", "确定执行该审核操作？", b.dataset.act === "reject")) return;
+      try {
+        await request(`/api/v1/admin/goods/${b.dataset.gid}/audit`, { method:"POST", body:{ action: b.dataset.act } });
+        toast("审核完成", "ok"); loadAudit();
+      } catch (e) { /* 拦截器已弹窗 */ }
+    });
+
+    async function loadReports() {
+      try {
+        const handled = document.getElementById("report-unhandled").checked ? "false" : "";
+        const d = await request("/api/v1/admin/reports?page_size=50" + (handled ? "&handled=" + handled : ""));
+        rowsHtml("reports-body", 8, d.items, r => `<tr>
+          <td>${r.id}</td><td>${r.user_id}</td><td>${esc(r.target_type)}</td><td>${r.target_id}</td><td>${esc(r.reason)}</td>
+          <td>${r.handle_action ? (r.handle_action === "processed" ? "已处理" : "已忽略") : "待处理"}</td>
+          <td>${r.created_at ? r.created_at.slice(0,10) : "-"}</td>
+          <td class="act">${r.handle_action ? "-" : `<button class="ok" data-rid="${r.id}" data-act="processed">已处理</button><button data-rid="${r.id}" data-act="ignored">忽略</button>`}</td></tr>`);
+      } catch (e) { /* 拦截器已弹窗 */ }
+    }
+    document.getElementById("report-unhandled").addEventListener("change", loadReports);
+    document.getElementById("reports-body").addEventListener("click", async e => {
+      const b = e.target.closest("button[data-rid]");
+      if (!b) return;
+      try {
+        await request(`/api/v1/admin/reports/${b.dataset.rid}/handle`, { method:"POST", body:{ action: b.dataset.act } });
+        toast("举报已处理", "ok"); loadReports();
+      } catch (e) { /* 拦截器已弹窗 */ }
+    });
+
+    async function loadOrders() {
+      try {
+        const st = document.getElementById("order-status").value;
+        const d = await request("/api/v1/admin/orders?page_size=50" + (st ? "&status=" + st : ""));
+        rowsHtml("orders-body", 9, d.items, o => `<tr>
+          <td>${o.id}</td><td>${esc(o.order_no)}</td><td>${o.goods_id}</td><td>${o.buyer_id}</td><td>¥${o.amount}</td>
+          <td>${ORDER_STATUS[o.status] ?? o.status}</td><td>${esc(o.close_type || "-")}</td>
+          <td>${o.created_at ? o.created_at.slice(0,10) : "-"}</td>
+          <td class="act">${o.status === 40 ? "-" : `<button class="danger" data-oid="${o.id}">强制关闭</button>`}</td></tr>`);
+      } catch (e) { /* 拦截器已弹窗 */ }
+    }
+    document.getElementById("order-status").addEventListener("change", loadOrders);
+    document.getElementById("order-abnormal-btn").addEventListener("click", async () => {
+      try {
+        const d = await request("/api/v1/admin/orders/abnormal");
+        if (!d.items.length) { toast("暂无异常订单", "info"); return; }
+        rowsHtml("orders-body", 9, d.items, o => `<tr>
+          <td>${o.id}</td><td>${esc(o.order_no)}</td><td>${o.goods_id}</td><td>${o.buyer_id}</td><td>¥${o.amount}</td>
+          <td>超时未付</td><td>-</td><td>${o.pay_deadline ? o.pay_deadline.slice(0,16) : "-"}</td>
+          <td class="act"><button class="danger" data-oid="${o.id}">强制关闭</button></td></tr>`);
+        toast(`发现 ${d.total} 条异常订单`, "info");
+      } catch (e) { /* 拦截器已弹窗 */ }
+    });
+    document.getElementById("orders-body").addEventListener("click", async e => {
+      const b = e.target.closest("button[data-oid]");
+      if (!b) return;
+      if (!await confirmDialog("强制关闭订单", "确定强制关闭该订单？", true)) return;
+      try {
+        await request(`/api/v1/admin/orders/${b.dataset.oid}/force-close`, { method:"POST" });
+        toast("订单已关闭", "ok"); loadOrders();
+      } catch (e) { /* 拦截器已弹窗 */ }
+    });
+
+    /* 默认加载首个面板 */
+    loadUsers();
+  </script>
+</body>
+</html>

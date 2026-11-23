@@ -1,12 +1,12 @@
 """
 求职作品集 · 聚合入口
-把四个项目作为子应用挂载在统一前缀下，单端口启动：
+四个项目以独立 FastAPI 子应用挂载在统一前缀下，单端口启动：
 
-  /          门户首页 + 简历页
-  /mall      蛋糕线上商城
-  /account   招财记账 · 个人记账小系统
-  /club      学生社团活动登记系统
-  /stardock  星坞 StarDock
+  /               门户首页 + 简历页
+  /book           墨香书阁 · 图书借阅（JSON 文件存储）
+  /secondhand     校淘集市 · 校园二手交易（SQLAlchemy + MySQL + Redis）
+  /account        招财记账 · 个人记账小系统（MySQL + APScheduler）
+  /stardock       星坞 StarDock · 明星粉丝社区（PyMySQL + DBUtils + WebSocket）
 
 启动：python main.py    访问：http://127.0.0.1:8000
 """
@@ -18,8 +18,22 @@ import sys
 BASE = os.path.dirname(os.path.abspath(__file__))
 APPS = os.path.join(BASE, "apps")
 
-# 星坞 backend 内部使用顶层导入（routers / database / deps），需要加入 sys.path
-sys.path.insert(0, os.path.join(APPS, "stardock", "backend"))
+# 像素农场使用 SQLite，数据库文件固定放在 apps/farm 下（先于子应用导入设置）
+os.environ.setdefault(
+    "DATABASE_URL",
+    "sqlite+aiosqlite:///" + os.path.join(APPS, "farm", "pixel_farm.db").replace("\\", "/"),
+)
+
+# 各子项目使用顶层模块导入，加载前把各自目录加入 sys.path
+for extra in (
+    os.path.join(APPS, "farm"),
+    os.path.join(APPS, "book"),
+    os.path.join(APPS, "secondhand", "backend"),
+    os.path.join(APPS, "account"),
+    os.path.join(APPS, "stardock", "backend"),
+):
+    if extra not in sys.path:
+        sys.path.insert(0, extra)
 
 
 def load_app(module_name: str, file_path: str):
@@ -31,28 +45,30 @@ def load_app(module_name: str, file_path: str):
     return mod
 
 
+# ---------- 加载五个子应用 ----------
+farm_mod = load_app("farm_app", os.path.join(APPS, "farm", "app", "main.py"))
+book_mod = load_app("book_app", os.path.join(APPS, "book", "main.py"))
+sh_mod = load_app("secondhand_app", os.path.join(APPS, "secondhand", "backend", "main.py"))
+acc_mod = load_app("account_app", os.path.join(APPS, "account", "main.py"))
+sd_mod = load_app("stardock_app", os.path.join(APPS, "stardock", "backend", "main.py"))
+
+farm_app = farm_mod.app
+book_app = book_mod.app
+secondhand_app = sh_mod.app
+account_app = acc_mod.app
+stardock_app = sd_mod.app
+
 from fastapi import FastAPI
-from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 
-# ---------- 加载四个子应用 ----------
-mall_app = load_app("mall_app", os.path.join(APPS, "mall", "backend", "main.py")).app
-account_app = load_app("account_app", os.path.join(APPS, "account", "main.py")).app
-club_app = load_app("club_app", os.path.join(APPS, "club", "main.py")).app
-stardock_app = load_app("stardock_app", os.path.join(APPS, "stardock", "backend", "main.py")).app
-
-app = FastAPI(title="求职作品集", version="1.0.0")
+app = FastAPI(title="求职作品集", version="2.0.0")
 
 # ---------- 挂载子应用 ----------
-app.mount("/mall", mall_app)
+app.mount("/farm", farm_app)
+app.mount("/book", book_app)
+app.mount("/secondhand", secondhand_app)
 app.mount("/account", account_app)
-app.mount("/club", club_app)
 app.mount("/stardock", stardock_app)
-
-# 蛋糕商城前端使用 /static/... 绝对路径（含数据库里存的图片地址），
-# 在门户根下再挂一份，保证商城页面从任意入口进入资源都可用
-app.mount("/static", StaticFiles(directory=os.path.join(APPS, "mall", "frontend", "static")),
-          name="mall-static")
 
 
 # ---------- 门户页面 ----------
@@ -77,12 +93,62 @@ async def resume_docx():
                         filename="陈振华-个人简历.docx")
 
 
-# ---------- 生命周期：启动蛋糕商城的订单超时自动取消后台任务 ----------
-# 子应用挂载后其 startup 事件不会触发，这里手动启动
+# ---------- 生命周期：子应用挂载后其 lifespan/startup 不会自动触发，这里手动启动 ----------
 @app.on_event("startup")
 async def start_background_tasks():
-    from mall_app import _auto_cancel_expired_orders  # noqa
-    asyncio.create_task(_auto_cancel_expired_orders())
+    # 像素农场：建表 + 种子数据（挂载的子应用 lifespan 不会自动触发）
+    try:
+        await farm_mod.init_db()
+        from scripts.seed_data import run_seed
+        await run_seed()
+    except Exception as e:  # noqa: BLE001
+        print(f"[farm] 数据库初始化失败：{e}")
+
+    # 图书：确保 JSON 数据文件存在
+    try:
+        book_mod.book_storage._ensure_file()
+    except Exception as e:  # noqa: BLE001
+        print(f"[book] 数据目录初始化失败：{e}")
+
+    # 二手交易：Redis 风控连接池 + 超时订单自动关闭任务
+    try:
+        await sh_mod.init_redis()
+    except Exception as e:  # noqa: BLE001
+        print(f"[secondhand] Redis 初始化失败（降级放行）：{e}")
+    try:
+        sh_mod.start_scheduler()
+    except Exception as e:  # noqa: BLE001
+        print(f"[secondhand] 定时任务启动失败：{e}")
+
+    # 招财记账：建表 + 自动化调度器
+    try:
+        acc_mod.init_db()
+    except Exception as e:  # noqa: BLE001
+        print(f"[account] 数据库初始化失败：{e}")
+    try:
+        acc_mod.automation.start_scheduler()
+    except Exception as e:  # noqa: BLE001
+        print(f"[account] 调度器启动失败：{e}")
+
+
+@app.on_event("shutdown")
+async def stop_background_tasks():
+    for fn, label in (
+        (lambda: sh_mod.stop_scheduler(), "secondhand 定时任务"),
+        (lambda: acc_mod.automation.shutdown_scheduler(), "account 调度器"),
+    ):
+        try:
+            fn()
+        except Exception as e:  # noqa: BLE001
+            print(f"[shutdown] {label} 关闭失败：{e}")
+    try:
+        await sh_mod.close_redis()
+    except Exception as e:  # noqa: BLE001
+        print(f"[shutdown] Redis 关闭失败：{e}")
+    try:
+        await farm_mod.close_db()
+    except Exception as e:  # noqa: BLE001
+        print(f"[shutdown] 农场数据库关闭失败：{e}")
 
 
 if __name__ == "__main__":

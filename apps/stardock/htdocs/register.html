@@ -5,24 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>星坞 StarDock —— 注册</title>
   <link rel="stylesheet" href="/stardock/css/style.css">
+  <style>
+    .auth-form { display: flex; flex-direction: column; gap: 14px; }
+    .rules-hint {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+  </style>
 </head>
 <body>
+<a href="/" class="portal-back" style="position:fixed;left:14px;bottom:14px;z-index:9999;background:#b388ff;color:#1a1035;text-decoration:none;font-size:12px;font-weight:700;padding:8px 14px;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.35)">← 作品集</a>
   <div class="auth-box">
-    <h1>⭐ 星坞 注册</h1>
-    <div class="form-group">
-      <label>账号（≥3 位）</label>
-      <input type="text" id="username" placeholder="登录用的账号">
-    </div>
-    <div class="form-group">
-      <label>密码（≥6 位）</label>
-      <input type="password" id="password" placeholder="至少 6 位">
-    </div>
-    <div class="form-group">
-      <label>昵称（显示用）</label>
-      <input type="text" id="nickname" placeholder="想叫什么名字？">
-    </div>
-    <button class="btn" style="width:100%" onclick="doRegister()">注 册</button>
-    <p style="text-align:center;margin-top:16px;font-size:14px">
+    <h1>⭐ 星 坞 注 册</h1>
+    <form class="auth-form" onsubmit="doRegister();return false;">
+      <div class="form-group">
+        <label>账号 <span class="rules-hint">（≥3 位字母数字）</span></label>
+        <input type="text" id="username" placeholder="你想叫什么账号？" autocomplete="username">
+      </div>
+      <div class="form-group">
+        <label>密码 <span class="rules-hint">（≥6 位）</span></label>
+        <input type="password" id="password" placeholder="至少 6 位密码" autocomplete="new-password">
+      </div>
+      <div class="form-group">
+        <label>昵称 <span class="rules-hint">（显示用）</span></label>
+        <input type="text" id="nickname" placeholder="想让大家怎么称呼你？">
+      </div>
+      <button type="submit" class="btn" style="width:100%;padding:14px;font-size:15px">创 建 账 号</button>
+    </form>
+
+    <p style="text-align:center;margin-top:20px;font-size:13px">
       已有账号？<a href="/stardock/login.html">去登录</a>
     </p>
   </div>
@@ -33,21 +45,25 @@
       const username = document.getElementById("username").value.trim();
       const password = document.getElementById("password").value.trim();
       const nickname = document.getElementById("nickname").value.trim();
-      if (!username || !password || !nickname) { alert("请填写完整"); return; }
+
+      if (!username || !password || !nickname) { toast("请填写完整信息", "warn"); return; }
+      if (username.length < 3) { toast("账号至少 3 位", "warn"); return; }
+      if (password.length < 6) { toast("密码至少 6 位", "warn"); return; }
+
+      const btn = event.submitter;
+      btnLoading(btn, true, "注册中...");
 
       try {
         await fetchJSON("/api/auth/register", {
           method: "POST",
           body: { username, password, nickname }
         });
-        alert("注册成功！请登录");
-        window.location.href = "/stardock/login.html";
-      } catch (e) { /* fetchJSON 里 alert 过了 */ }
+        toast("🎉 注册成功！即将跳转登录页", "success");
+        setTimeout(() => { window.location.href = "/stardock/login.html"; }, 1200);
+      } catch (e) {
+        btnLoading(btn, false);
+      }
     }
-
-    document.addEventListener("keydown", e => {
-      if (e.key === "Enter") doRegister();
-    });
   </script>
 </body>
 </html>

@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+pymysql
+cryptography
+bcrypt
+APScheduler==3.11.3
+redis>=5.0
+aiomysql>=0.2.0
+loguru>=0.7

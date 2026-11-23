@@ -1,0 +1,138 @@
+[
+  {
+    "id": 1,
+    "title": "三体",
+    "author": "刘慈欣",
+    "isbn": "978-7-5366-9293-0",
+    "stock": 3,
+    "cover_url": "/static/covers/book_01.jpg"
+  },
+  {
+    "id": 2,
+    "title": "活着",
+    "author": "余华",
+    "isbn": "978-7-5063-6543-7",
+    "stock": 4,
+    "cover_url": "/static/covers/book_02.jpg"
+  },
+  {
+    "id": 3,
+    "title": "百年孤独",
+    "author": "加西亚·马尔克斯",
+    "isbn": "978-7-5442-5399-4",
+    "stock": 2,
+    "cover_url": "/static/covers/book_03.jpg"
+  },
+  {
+    "id": 4,
+    "title": "人类简史",
+    "author": "尤瓦尔·赫拉利",
+    "isbn": "978-7-5086-4735-9",
+    "stock": 3,
+    "cover_url": "/static/covers/book_04.jpg"
+  },
+  {
+    "id": 5,
+    "title": "深度学习",
+    "author": "Ian Goodfellow",
+    "isbn": "978-7-115-46128-7",
+    "stock": 2,
+    "cover_url": "/static/covers/book_05.jpg"
+  },
+  {
+    "id": 6,
+    "title": "原则",
+    "author": "瑞·达利欧",
+    "isbn": "978-7-5086-8678-7",
+    "stock": 2,
+    "cover_url": "/static/covers/book_06.jpg"
+  },
+  {
+    "id": 7,
+    "title": "明朝那些事儿",
+    "author": "当年明月",
+    "isbn": "978-7-5063-7762-1",
+    "stock": 3,
+    "cover_url": "/static/covers/book_07.jpg"
+  },
+  {
+    "id": 8,
+    "title": "小王子",
+    "author": "圣埃克苏佩里",
+    "isbn": "978-7-5447-3107-5",
+    "stock": 5,
+    "cover_url": "/static/covers/book_08.jpg"
+  },
+  {
+    "id": 9,
+    "title": "思考，快与慢",
+    "author": "丹尼尔·卡尼曼",
+    "isbn": "978-7-5086-3355-6",
+    "stock": 2,
+    "cover_url": "/static/covers/book_09.jpg"
+  },
+  {
+    "id": 10,
+    "title": "红楼梦",
+    "author": "曹雪芹",
+    "isbn": "978-7-02-008666-7",
+    "stock": 2,
+    "cover_url": "/static/covers/book_10.jpg"
+  },
+  {
+    "id": 11,
+    "title": "算法导论",
+    "author": "Thomas H. Cormen",
+    "isbn": "978-7-111-40701-0",
+    "stock": 1,
+    "cover_url": "/static/covers/book_11.jpg"
+  },
+  {
+    "id": 12,
+    "title": "苏菲的世界",
+    "author": "乔斯坦·贾德",
+    "isbn": "978-7-5063-2753-0",
+    "stock": 2,
+    "cover_url": "/static/covers/book_12.jpg"
+  },
+  {
+    "id": 13,
+    "title": "围城",
+    "author": "钱锺书",
+    "isbn": "978-7-02-002475-4",
+    "stock": 3,
+    "cover_url": "/static/covers/book_13.jpg"
+  },
+  {
+    "id": 14,
+    "title": "枪炮、病菌与钢铁",
+    "author": "贾雷德·戴蒙德",
+    "isbn": "978-7-5633-2726-4",
+    "stock": 2,
+    "cover_url": "/static/covers/book_14.jpg"
+  },
+  {
+    "id": 15,
+    "title": "代码整洁之道",
+    "author": "Robert C. Martin",
+    "isbn": "978-7-115-21787-5",
+    "stock": 2,
+    "cover_url": "/static/covers/book_15.jpg"
+  },
+  {
+    "id": 16,
+    "title": "C语言程序设计",
+    "author": "刘炎",
+    "isbn": "9787313799188",
+    "stock": 3,
+    "cover_url": null
+  },
+  {
+    "id": 17,
+    "title": "思想道德与法治",
+    "author": "张超",
+    "isbn": "9787040599022",
+    "stock": 5,
+    "cover_url": null
+  }
+]
