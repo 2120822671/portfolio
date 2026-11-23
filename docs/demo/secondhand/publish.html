@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="data:,">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>校淘集市 - 发布商品</title>
+  <link rel="stylesheet" href="css/style.css?v=2026111703">
+</head>
+<body>
+<a href="https://37lixloirzejy43lagp.traesite.cn/" class="portal-back" style="position:fixed;top:14px;left:14px;z-index:9999;background:#2f6df6;color:#fff;text-decoration:none;font-size:12px;font-weight:700;padding:8px 14px;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.25)">← 返回作品集</a>
+<div style="position:fixed;right:14px;bottom:14px;z-index:9999;padding:9px 14px;border-radius:10px;background:rgba(47,107,79,.92);border:1px solid rgba(255,255,255,.24);color:#f4f1e4;font:12px/1.6 'Microsoft YaHei',sans-serif;max-width:240px;box-shadow:0 4px 14px rgba(0,0,0,.2)">
+  <b style="color:#ffe08a">静态演示版</b><br>数据为浏览器内模拟，关闭标签页即还原。
+</div>
+  <header id="navbar"></header>
+
+  <div class="container">
+    <h2 class="page-title">📦 摆个小摊 · 发布闲置</h2>
+    <form class="form-card" id="form" novalidate>
+      <div class="form-item" data-field="title">
+        <label>商品名称 <span class="req">*</span></label>
+        <input id="title" maxlength="100" placeholder="例如：高等数学教材（第七版）">
+        <div class="err">请输入商品名称</div>
+      </div>
+      <div class="form-row">
+        <div class="form-item" data-field="price">
+          <label>售价（元）<span class="req">*</span></label>
+          <input id="price" type="number" step="0.01" min="0.01" placeholder="必须大于0">
+          <div class="err">售价必须为大于0的数字</div>
+        </div>
+        <div class="form-item" data-field="original_price">
+          <label>原价（元）</label>
+          <input id="original_price" type="number" step="0.01" min="0.01" placeholder="选填，用于计算折扣">
+          <div class="err">原价必须大于0</div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-item" data-field="category">
+          <label>商品分类 <span class="req">*</span></label>
+          <select id="category">
+            <option value="1">数码电子</option><option value="2">教材书籍</option>
+            <option value="3">宿舍家居</option><option value="4">运动户外</option>
+            <option value="5">乐器文娱</option><option value="6">生活用品</option>
+          </select>
+          <div class="err">请选择分类</div>
+        </div>
+        <div class="form-item" data-field="stock">
+          <label>库存数量 <span class="req">*</span></label>
+          <input id="stock" type="number" step="1" min="0" value="1">
+          <div class="err">库存必须为非负整数</div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-item"><label>交易地点</label><input id="location" maxlength="100" placeholder="例如：三食堂门口"></div>
+        <div class="form-item"><label>联系方式</label><input id="contact" maxlength="50" placeholder="微信/手机号，选填"></div>
+        <label class="swap-check"><input type="checkbox" id="want-swap"> 🔁 求交换：也接受以物易物，标题会带上【求交换】标签</label>
+      </div>
+      <div class="form-item" data-field="description">
+        <label>商品描述 <span class="req">*</span></label>
+        <textarea id="description" rows="4" maxlength="2000" placeholder="成色、使用时长、瑕疵说明等"></textarea>
+        <div class="err">请填写商品描述</div>
+      </div>
+      <div class="form-item">
+        <label>商品图片（最多5张，jpg/png/gif/webp，单张≤2MB）</label>
+        <div class="upload-area" onclick="document.getElementById('files').click()">点击选择图片上传</div>
+        <input id="files" type="file" accept=".jpg,.jpeg,.png,.gif,.webp" multiple hidden>
+        <div class="preview-list" id="previews"></div>
+      </div>
+      <button class="btn-primary" id="submit" type="submit">开 始 营 业</button>
+    </form>
+  </div>
+
+  <script src="js/demo-mock.js"></script>
+  <script src="js/app.js?v=2026111703"></script>
+  <script>
+    renderNav("publish");
+    const pics = [];  // {file, url} 本地预览
+
+    /* 分类下拉：以数据库为准动态渲染，避免 ID 映射错位 */
+    (async () => {
+      const list = await fetchCategories();
+      document.getElementById("category").innerHTML =
+        list.map(c => `<option value="${c.id}">${esc(c.name)}</option>`).join("");
+    })();
+
+    document.getElementById("files").addEventListener("change", e => {
+      for (const f of e.target.files) {
+        if (pics.length >= 5) { toast("最多上传5张图片", "err"); break; }
+        if (f.size > 2 * 1024 * 1024) { toast(`${f.name} 超过2MB`, "err"); continue; }
+        pics.push({ file: f, url: URL.createObjectURL(f) });
+      }
+      e.target.value = "";
+      renderPreviews();
+    });
+
+    function renderPreviews() {
+      document.getElementById("previews").innerHTML = pics.map((p, i) => `
+        <div class="pic"><img src="${p.url}" alt=""><button type="button" class="del" onclick="removePic(${i})">✕</button></div>`).join("");
+    }
+    function removePic(i) { pics.splice(i, 1); renderPreviews(); }
+
+    /* 表单校验 */
+    function validate() {
+      let firstBad = null;
+      const mark = (key, bad) => {
+        const item = document.querySelector(`[data-field="${key}"]`);
+        item.classList.toggle("invalid", bad);
+        if (bad && !firstBad) firstBad = item;
+      };
+      const price = document.getElementById("price").value;
+      const orig = document.getElementById("original_price").value;
+      const stock = document.getElementById("stock").value;
+      mark("title", !document.getElementById("title").value.trim());
+      mark("price", !price || Number(price) <= 0);
+      mark("original_price", !!orig && Number(orig) <= 0);
+      mark("category", !document.getElementById("category").value);
+      mark("stock", stock === "" || Number(stock) < 0 || !Number.isInteger(Number(stock)));
+      mark("description", !document.getElementById("description").value.trim());
+      if (firstBad) firstBad.querySelector("input,select,textarea").focus();
+      return !firstBad;
+    }
+
+    document.getElementById("form").addEventListener("submit", async e => {
+      e.preventDefault();
+      if (!validate()) { toast("请修正表单中标红的字段", "err"); return; }
+      const u = getUser();
+      if (!u) { toast("请先登录后再发布", "info"); openLoginModal(); return; }
+
+      const btn = document.getElementById("submit");
+      await withLoading(btn, async () => {
+        try {
+          // 1. 先上传图片，拿到URL列表
+          const images = [];
+          for (const p of pics) {
+            const fd = new FormData();
+            fd.append("files", p.file);
+            const urls = await request("/upload", { method: "POST", formData: fd });
+            images.push(urls[0]);
+          }
+          // 2. 提交商品
+          const orig = document.getElementById("original_price").value;
+          let title = document.getElementById("title").value.trim();
+          if (document.getElementById("want-swap").checked && !title.startsWith("🔁")) title = "🔁【求交换】" + title;
+          const body = {
+            title,
+            price: document.getElementById("price").value,
+            category_id: Number(document.getElementById("category").value),
+            seller_id: u.id,
+            description: document.getElementById("description").value.trim(),
+            stock: Number(document.getElementById("stock").value),
+            images,
+          };
+          if (orig) body.original_price = orig;
+          const loc = document.getElementById("location").value.trim();
+          const con = document.getElementById("contact").value.trim();
+          if (loc) body.location = loc;
+          if (con) body.contact = con;
+
+          const data = await request("/goods", { method: "POST", body });
+          toast(`发布成功！商品ID：${data.id}`, "ok");
+          setTimeout(() => location.href = `detail.html?id=${data.id}`, 800);
+        } catch (err) {
+          toast(err.message, "err");
+        }
+      });
+    });
+  </script>
+</body>
+</html>

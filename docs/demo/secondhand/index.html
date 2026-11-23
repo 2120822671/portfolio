@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="data:,">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>校淘集市 - 校园好物，越淘越有</title>
+  <link rel="stylesheet" href="css/style.css?v=2026111703">
+</head>
+<body>
+<a href="https://37lixloirzejy43lagp.traesite.cn/" class="portal-back" style="position:fixed;top:14px;left:14px;z-index:9999;background:#2f6df6;color:#fff;text-decoration:none;font-size:12px;font-weight:700;padding:8px 14px;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.25)">← 返回作品集</a>
+<div style="position:fixed;right:14px;bottom:14px;z-index:9999;padding:9px 14px;border-radius:10px;background:rgba(47,107,79,.92);border:1px solid rgba(255,255,255,.24);color:#f4f1e4;font:12px/1.6 'Microsoft YaHei',sans-serif;max-width:240px;box-shadow:0 4px 14px rgba(0,0,0,.2)">
+  <b style="color:#ffe08a">静态演示版</b><br>数据为浏览器内模拟，关闭标签页即还原。
+</div>
+  <header id="navbar"></header>
+
+  <!-- 集市招牌 -->
+  <div class="hero" id="hero">
+    <span class="tape l"></span><span class="tape r"></span>
+    <span class="deco" style="left:6%;top:40%;">📚</span>
+    <span class="deco" style="right:7%;top:30%;">🚲</span>
+    <h1 id="hero-title">校淘集市<span class="dot">。</span></h1>
+    <p id="hero-sub">校 园 好 物 ， 越 淘 越 有</p>
+    <div class="hero-fun">
+      <button class="fun-btn scratch" onclick="openBlindBox()">🎁 刮刮乐盲盒</button>
+      <button class="fun-btn bottle" onclick="pickBottle()">🍾 捞一个漂流瓶</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- 数据统计卡片 -->
+    <div class="stats" id="stats"></div>
+
+    <!-- 搜索 / 分类 / 价格区间 / 排序 -->
+    <div class="filter-bar" id="filter">
+      <div class="search-box">
+        <input id="q" placeholder="搜索商品名称、关键词，回车即搜" maxlength="50">
+        <span class="clear" id="q-clear" title="清空">✕</span>
+      </div>
+      <select id="category">
+        <option value="">全部分类</option>
+        <option value="1">数码电子</option><option value="2">教材书籍</option>
+        <option value="3">宿舍家居</option><option value="4">运动户外</option>
+        <option value="5">乐器文娱</option><option value="6">生活用品</option>
+      </select>
+      <input class="price-input" id="min-price" type="number" min="0" placeholder="最低价">
+      <span style="color:#8a94a6;">—</span>
+      <input class="price-input" id="max-price" type="number" min="0" placeholder="最高价">
+      <select id="sort">
+        <option value="newest">最新发布</option>
+        <option value="price_asc">价格从低到高</option>
+        <option value="price_desc">价格从高到低</option>
+        <option value="views">浏览量优先</option>
+      </select>
+      <button class="btn-reset" id="reset">重置</button>
+    </div>
+
+    <h2 class="page-title" id="list-title">全部商品</h2>
+    <div class="grid" id="list"></div>
+    <div class="empty" id="empty" style="display:none;">
+      <div class="big">🔍</div><p id="empty-text">没有找到相关商品，换个关键词试试</p>
+    </div>
+    <div class="pagination" id="pager"></div>
+  </div>
+
+  <div class="footer">校淘集市 · 校园二手循环平台 <span class="heart">♥</span> FastAPI + MySQL 课程实践</div>
+
+  <!-- 刮刮乐盲盒 / 漂流瓶 弹窗 -->
+  <div class="modal-mask" id="fun-modal">
+    <div class="modal fun-modal" id="fun-body"></div>
+  </div>
+
+  <script src="js/demo-mock.js"></script>
+  <script src="js/app.js?v=2026111703"></script>
+  <script>
+    renderNav("home");
+
+    const PAGE_SIZE = 12;
+    const mineMode = new URLSearchParams(location.search).get("mine");
+    const state = { q: "", category: "", min: "", max: "", sort: "newest", page: 1,
+                    mine: mineMode ? (getUser() ? getUser().id : (requireLogin(), 0)) : 0 };
+
+    /* ---------- 统计卡片 ---------- */
+    async function loadStats() {
+      try {
+        const s = await request("/stats");
+        document.getElementById("stats").innerHTML = `
+          <div class="stat-card"><span class="icon blue">📦</span><div><div class="num">${s.total}</div><div class="label">商品总数</div></div></div>
+          <div class="stat-card"><span class="icon green">💰</span><div><div class="num">${s.on_sale}</div><div class="label">在售商品</div></div></div>
+          <div class="stat-card"><span class="icon gray">✅</span><div><div class="num">${s.sold}</div><div class="label">已售商品</div></div></div>
+          <div class="stat-card"><span class="icon orange">🆕</span><div><div class="num">${s.today_new}</div><div class="label">今日新增</div></div></div>`;
+      } catch (e) { toast(e.message, "err"); }
+    }
+
+    /* ---------- 商品列表 ---------- */
+    function skeleton(n = PAGE_SIZE) {
+      document.getElementById("list").innerHTML = Array.from({ length: n }, () => '<div class="skeleton"></div>').join("");
+    }
+
+    async function loadList() {
+      skeleton();
+      const params = new URLSearchParams({ page: state.page, page_size: PAGE_SIZE, sort: state.sort });
+      if (state.q) params.set("q", state.q);
+      if (state.category) params.set("category_id", state.category);
+      if (state.min !== "") params.set("min_price", state.min);
+      if (state.max !== "") params.set("max_price", state.max);
+      if (state.mine) params.set("seller_id", state.mine);
+      if (!state.mine) params.set("status", 1);
+      try {
+        const data = await request("/goods?" + params);
+        document.getElementById("list-title").textContent =
+          state.mine ? "我的商品" : (state.q ? `“${state.q}” 的搜索结果` : "全部商品");
+        renderCards(data.items);
+        renderPager(data.total);
+      } catch (e) {
+        document.getElementById("list").innerHTML = "";
+        toast(e.message, "err");
+      }
+    }
+
+    function renderCards(items) {
+      const empty = document.getElementById("empty");
+      empty.style.display = items.length ? "none" : "block";
+      document.getElementById("list").innerHTML = items.map(g => {
+        const u = getUser();
+        const owner = u && u.id === g.seller_id;
+        return `
+        <div class="goods-card" onclick="location.href='detail.html?id=${g.id}'">
+          <div class="card-img">
+            ${g.cover ? `<img src="${API}${g.cover}" alt="">` : '<span class="ph">🛍️</span>'}
+            <span class="tag-status s${g.status}">${g.status_text}</span>
+          </div>
+          <div class="card-body">
+            <div class="card-title">${esc(g.title)}</div>
+            <div class="price-row">
+              <span class="price"><small>￥</small>${g.price}</span>
+              ${g.original_price ? `<span class="orig">￥${g.original_price}</span>` : ""}
+              ${g.discount ? `<span class="discount">${g.discount}折</span>` : ""}
+            </div>
+            <div class="meta-row">
+              <span class="cat-tag">${CATEGORIES[g.category_id] || "其他"}</span>
+              <span>库存${g.stock}</span><span>👁 ${g.view_count}</span><span>📅 ${fmtTime(g.created_at)}</span>
+            </div>
+            <div class="card-foot">
+              <button class="like-btn" onclick="event.stopPropagation();toggleLike(${g.id},this)">❤ ${g.like_count}</button>
+              <div class="card-actions">${owner ? ownerButtons(g) : ""}</div>
+            </div>
+          </div>
+        </div>`;
+      }).join("");
+    }
+
+    function ownerButtons(g) {
+      const btns = [];
+      if (g.status === 1) btns.push(`<button class="mini-btn" onclick="event.stopPropagation();changeStatus(${g.id},'off','下架')">下架</button>`,
+                                    `<button class="mini-btn" onclick="event.stopPropagation();changeStatus(${g.id},'sold','标记成交')">成交</button>`);
+      if (g.status === 3) btns.push(`<button class="mini-btn" onclick="event.stopPropagation();changeStatus(${g.id},'on','重新上架')">上架</button>`);
+      btns.push(`<button class="mini-btn danger" onclick="event.stopPropagation();removeGoods(${g.id})">删除</button>`);
+      return btns.join("");
+    }
+
+    /* ---------- 分页组件 ---------- */
+    function renderPager(total) {
+      const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+      const box = document.getElementById("pager");
+      if (pages <= 1) { box.innerHTML = ""; return; }
+      let html = `<button ${state.page === 1 ? "disabled" : ""} onclick="goPage(${state.page - 1})">‹</button>`;
+      for (let i = 1; i <= pages; i++) {
+        if (pages > 7 && i > 2 && i < pages - 1 && Math.abs(i - state.page) > 1) {
+          if (i === 3 || i === pages - 2) html += `<button disabled>…</button>`;
+          continue;
+        }
+        html += `<button class="${i === state.page ? "cur" : ""}" onclick="goPage(${i})">${i}</button>`;
+      }
+      html += `<button ${state.page === pages ? "disabled" : ""} onclick="goPage(${state.page + 1})">›</button>`;
+      box.innerHTML = html;
+    }
+    function goPage(p) { state.page = p; loadList(); window.scrollTo({ top: 0, behavior: "smooth" }); }
+
+    /* ---------- 点赞 / 状态变更 / 删除 ---------- */
+    async function toggleLike(id, btn) {
+      if (!requireLogin()) return;
+      try {
+        const liked = btn.classList.contains("liked");
+        const data = liked
+          ? await request(`/goods/${id}/like`, { method: "DELETE" })
+          : await request(`/goods/${id}/like`, { method: "POST" });
+        btn.innerHTML = `❤ ${data.like_count}`;
+        btn.classList.toggle("liked", data.liked);
+        toast(data.liked ? "点赞成功" : "已取消点赞", "info");
+      } catch (e) { toast(e.message, "err"); }
+    }
+
+    async function changeStatus(id, action, label) {
+      const tips = { off: ["确认下架？", "下架后商品将不再展示在售状态"],
+                     on: ["确认重新上架？", "上架后商品恢复在售"],
+                     sold: ["确认标记交易完成？", "标记后商品状态变为已售出"] }[action];
+      if (!(await confirmDialog(tips[0], tips[1]))) return;
+      try {
+        const data = await request(`/goods/${id}/status`, { method: "POST", body: { action } });
+        toast(`${label}成功：${data.status_text}`, "ok");
+        loadList(); loadStats();
+      } catch (e) { toast(e.message, "err"); }
+    }
+
+    async function removeGoods(id) {
+      if (!(await confirmDialog("确认删除商品？", "删除后不可恢复，相关图片、点赞、留言将一并清除", true))) return;
+      try {
+        await request(`/goods/${id}`, { method: "DELETE" });
+        toast("商品已删除", "ok");
+        loadList(); loadStats();
+      } catch (e) { toast(e.message, "err"); }
+    }
+
+    /* ---------- 搜索交互：实时(防抖)+回车+清空+重置 ---------- */
+    const qInput = document.getElementById("q");
+    qInput.addEventListener("input", debounce(() => {
+      state.q = qInput.value.trim(); state.page = 1;
+      document.getElementById("q-clear").style.display = state.q ? "block" : "none";
+      loadList();
+    }));
+    qInput.addEventListener("keydown", e => { if (e.key === "Enter") { state.q = qInput.value.trim(); state.page = 1; loadList(); } });
+    document.getElementById("q-clear").onclick = () => { qInput.value = ""; state.q = ""; qInput.dispatchEvent(new Event("input")); };
+    /* 分类筛选：按数据库分类动态渲染，避免 ID 与名称错位 */
+    (async () => {
+      const sel = document.getElementById("category");
+      const list = await fetchCategories();
+      sel.innerHTML = `<option value="">全部分类</option>` +
+        list.map(c => `<option value="${c.id}">${esc(c.name)}</option>`).join("");
+      sel.value = state.category || "";
+    })();
+    document.getElementById("category").onchange = e => { state.category = e.target.value; state.page = 1; loadList(); };
+    document.getElementById("sort").onchange = e => { state.sort = e.target.value; state.page = 1; loadList(); };
+    document.getElementById("min-price").onchange = e => { state.min = e.target.value; state.page = 1; loadList(); };
+    document.getElementById("max-price").onchange = e => { state.max = e.target.value; state.page = 1; loadList(); };
+    document.getElementById("reset").onclick = () => {
+      Object.assign(state, { q: "", category: "", min: "", max: "", sort: "newest", page: 1 });
+      ["q", "min-price", "max-price"].forEach(id => document.getElementById(id).value = "");
+      document.getElementById("category").value = "";
+      document.getElementById("sort").value = "newest";
+      document.getElementById("q-clear").style.display = "none";
+      loadList(); toast("筛选条件已重置", "info");
+    };
+
+    /* ---------- 深夜emo模式 ---------- */
+    if (isNightOwl()) {
+      document.getElementById("hero").classList.add("night");
+      document.getElementById("hero-title").textContent = "这么晚还不睡。";
+      document.getElementById("hero-sub").textContent = "在 淘 什 么 宝 贝 呢 ？ 🌙";
+    }
+
+    /* ---------- 刮刮乐盲盒 ---------- */
+    const funModal = document.getElementById("fun-modal");
+    funModal.addEventListener("click", e => { if (e.target === funModal) funModal.classList.remove("show"); });
+
+    async function openBlindBox() {
+      const d = await request("/goods?status=1&page_size=50");
+      if (!d.items.length) { toast("在售商品太少，刮不出盲盒", "info"); return; }
+      const g = d.items[Math.floor(Math.random() * d.items.length)];
+      document.getElementById("fun-body").innerHTML = `
+        <h3>🎁 今日盲盒 · 手气测试</h3>
+        <div class="scratch-wrap">
+          <div class="scratch-goods">
+            ${g.cover ? `<img src="${API}${g.cover}">` : '<span class="ph" style="font-size:64px;">🛍️</span>'}
+            <div class="scratch-name">${esc(g.title)}</div>
+            <div class="scratch-price">￥${g.price}</div>
+            <button class="btn-primary" onclick="location.href='detail.html?id=${g.id}'">就它了，去围观 →</button>
+          </div>
+          <canvas id="scratch-canvas"></canvas>
+          <div class="scratch-tip">🪙 按住刮开，看看今天的缘分</div>
+        </div>`;
+      funModal.classList.add("show");
+      initScratch();
+    }
+
+    function initScratch() {
+      const cv = document.getElementById("scratch-canvas");
+      const wrap = cv.parentElement;
+      cv.width = wrap.clientWidth; cv.height = wrap.clientHeight;
+      const ctx = cv.getContext("2d");
+      const grd = ctx.createLinearGradient(0, 0, cv.width, cv.height);
+      grd.addColorStop(0, "#e9e2cf"); grd.addColorStop(1, "#d8cfb4");
+      ctx.fillStyle = grd; ctx.fillRect(0, 0, cv.width, cv.height);
+      ctx.fillStyle = "rgba(47,107,79,.28)";
+      ctx.font = "bold 30px KaiTi, serif"; ctx.textAlign = "center";
+      for (let y = 40; y < cv.height; y += 70)
+        for (let x = 30; x < cv.width; x += 90)
+          ctx.fillText("淘", x + (y % 140 ? 45 : 0), y);
+      ctx.fillStyle = "rgba(232,98,58,.75)";
+      ctx.font = "bold 20px KaiTi, serif";
+      ctx.fillText("✦ 刮开有惊喜 ✦", cv.width / 2, cv.height / 2);
+      let scratching = false, cleared = 0;
+      const scratch = (x, y) => {
+        ctx.globalCompositeOperation = "destination-out";
+        ctx.beginPath(); ctx.arc(x, y, 22, 0, Math.PI * 2); ctx.fill();
+        cleared++;
+        if (cleared % 12 === 0 && coverage(ctx, cv) > .45) reveal(cv, wrap);
+      };
+      const pos = e => {
+        const r = cv.getBoundingClientRect();
+        const p = e.touches ? e.touches[0] : e;
+        return [p.clientX - r.left, p.clientY - r.top];
+      };
+      cv.addEventListener("pointerdown", e => { scratching = true; cv.setPointerCapture(e.pointerId); const [x, y] = pos(e); scratch(x, y); });
+      cv.addEventListener("pointermove", e => { if (!scratching) return; const [x, y] = pos(e); scratch(x, y); });
+      ["pointerup", "pointercancel"].forEach(ev => cv.addEventListener(ev, () => { scratching = false; }));
+      cv.addEventListener("dblclick", () => reveal(cv, wrap));
+    }
+    function coverage(ctx, cv) {
+      const d = ctx.getImageData(0, 0, cv.width, cv.height).data;
+      let empty = 0;
+      for (let i = 3; i < d.length; i += 40) if (d[i] === 0) empty++;
+      return empty / (d.length / 40);
+    }
+    function reveal(cv, wrap) {
+      cv.classList.add("revealed");
+      wrap.querySelector(".scratch-tip").textContent = "✨ 缘分到！要不要去看看？";
+      setTimeout(() => cv.remove(), 700);
+    }
+
+    /* ---------- 商品漂流瓶（池=已下架商品） ---------- */
+    async function pickBottle() {
+      const d = await request("/goods?status=3&page_size=50");
+      if (!d.items.length) { toast("海面风平浪静，还没有漂流瓶 🌊", "info"); return; }
+      const g = d.items[Math.floor(Math.random() * d.items.length)];
+      document.getElementById("fun-body").innerHTML = `
+        <h3>🍾 捞到一个漂流瓶</h3>
+        <div class="bottle-card">
+          <div class="bottle-wave"></div>
+          <div class="bottle-note">
+            <p class="bottle-line">「 这是一件没卖掉的小宝贝，<br>主人把它放进了海里…… 」</p>
+            ${g.cover ? `<img src="${API}${g.cover}">` : ""}
+            <div class="scratch-name">${esc(g.title)}</div>
+            <div class="scratch-price">￥${g.price}</div>
+            <button class="btn-primary" onclick="location.href='detail.html?id=${g.id}'">🌊 捡回家 →</button>
+            <button onclick="document.getElementById('fun-modal').classList.remove('show')">扔回海里</button>
+          </div>
+        </div>`;
+      document.getElementById("fun-modal").classList.add("show");
+    }
+
+    loadStats(); loadList();
+  </script>
+</body>
+</html>

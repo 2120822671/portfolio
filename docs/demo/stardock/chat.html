@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>粉丝团聊天 —— 星坞 StarDock</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .chat-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 20px;
+      background: rgba(5,10,42,0.8);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,215,0,0.2);
+      border-radius: 16px 16px 0 0;
+      border-bottom: none;
+    }
+    .chat-header .online-dot {
+      width: 10px; height: 10px;
+      background: #69f0ae;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #69f0ae;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.2); }
+    }
+    .chat-header .chat-title {
+      font-size: 16px; font-weight: 600;
+      color: var(--star-gold);
+    }
+    .chat-header .chat-status {
+      margin-left: auto;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .chat-container {
+      border-radius: 0 0 16px 16px;
+      border-top: 1px solid rgba(255,215,0,0.15);
+    }
+
+    .chat-msg { margin-bottom: 14px; }
+    .chat-msg .name {
+      color: var(--star-gold);
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+    .chat-msg .content {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 10px 16px;
+      border-radius: 14px;
+      display: inline-block;
+      max-width: 75%;
+      word-break: break-word;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .chat-msg.mine { text-align: right; }
+    .chat-msg.mine .name { color: var(--star-cyan); }
+    .chat-msg.mine .content {
+      background: linear-gradient(135deg, #1565c0, #0d47a1);
+      border-bottom-right-radius: 4px;
+    }
+
+    .chat-input input {
+      border-radius: 20px;
+    }
+    .chat-input .btn {
+      border-radius: 20px;
+      padding: 12px 24px;
+    }
+
+    .reconnect-tip {
+      text-align: center;
+      padding: 8px;
+      font-size: 12px;
+      color: var(--warn);
+    }
+  </style>
+</head>
+<body>
+<a href="https://37lixloirzejy43lagp.traesite.cn/" class="portal-back" style="position:fixed;left:14px;top:14px;z-index:99999;background:#b388ff;color:#1a1035;text-decoration:none;font-size:12px;font-weight:700;padding:8px 14px;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.35)">← 返回作品集</a>
+  <div id="navbar"></div>
+  <div class="container">
+    <div class="chat-header">
+      <span class="online-dot" id="onlineDot"></span>
+      <span class="chat-title" id="clubTitle">粉丝团聊天</span>
+      <span class="chat-status" id="chatStatus">连接中...</span>
+    </div>
+    <div class="chat-container">
+      <div class="chat-messages" id="msgList"></div>
+      <div id="reconnectTip"></div>
+      <div class="chat-input">
+        <input type="text" id="msgInput" placeholder="💬 说点什么..." maxlength="1000">
+        <button class="btn" onclick="sendMsg()">发送</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/demo-mock.js"></script>
+  <script src="js/common.js"></script>
+  <script>
+    let user = null;
+    let clubId = null;
+    let ws = null;
+
+    (async () => {
+      try {
+        user = await requireRole();
+        await loadNavbar();
+
+        const params = new URLSearchParams(location.search);
+        clubId = params.get("club_id");
+        if (!clubId) { toast("参数错误", "error"); location.href = "home.html"; return; }
+
+        document.getElementById("clubTitle").textContent = `粉丝团聊天 #${clubId}`;
+        await loadHistory();
+        connectWS();
+      } catch (e) {}
+    })();
+
+    async function loadHistory() {
+      try {
+        const res = await fetchJSON(`/api/chat/${clubId}/history?size=50`);
+        const list = res.data;
+        const listEl = document.getElementById("msgList");
+        listEl.innerHTML = "";
+        list.forEach(m => listEl.appendChild(renderMsgEl(m)));
+        listEl.scrollTop = listEl.scrollHeight;
+      } catch (e) {}
+    }
+
+    function renderMsgEl(m) {
+      const wrap = document.createElement("div");
+      wrap.className = `chat-msg ${m.user_id === user.id ? "mine" : ""} ${m.msg_type === 2 ? "system" : ""}`;
+
+      const name = document.createElement("div");
+      name.className = "name";
+      name.textContent = m.nickname || "系统";
+
+      const content = document.createElement("div");
+      content.className = "content";
+      content.textContent = m.content;
+
+      wrap.appendChild(name);
+      wrap.appendChild(content);
+      return wrap;
+    }
+
+    function appendMsg(payload) {
+      const m = payload.data;
+      const list = document.getElementById("msgList");
+      const el = renderMsgEl({ ...m, msg_type: 1 });
+      list.appendChild(el);
+      list.scrollTop = list.scrollHeight;
+    }
+
+    function connectWS() {
+      document.getElementById("chatStatus").textContent = "连接中...";
+      const proto = location.protocol === "https:" ? "wss:" : "ws:";
+      const wsUrl = `${proto}//${location.host}ws/chat/${clubId}?user_id=${user.id}`;
+      ws = new WebSocket(wsUrl);
+
+      ws.onopen = () => {
+        document.getElementById("chatStatus").textContent = "● 已连接";
+        document.getElementById("onlineDot").style.background = "#69f0ae";
+      };
+
+      ws.onmessage = ev => {
+        try {
+          const payload = JSON.parse(ev.data);
+          if (payload.type === "message") appendMsg(payload);
+        } catch (e) {}
+      };
+
+      ws.onerror = () => {
+        document.getElementById("chatStatus").textContent = "连接错误";
+      };
+
+      ws.onclose = () => {
+        document.getElementById("chatStatus").textContent = "重连中...";
+        document.getElementById("onlineDot").style.background = "#ff5252";
+        setTimeout(connectWS, 2500);
+      };
+    }
+
+    function sendMsg() {
+      const input = document.getElementById("msgInput");
+      const content = input.value.trim();
+      if (!content || !ws) return;
+      if (ws.readyState !== WebSocket.OPEN) {
+        toast("连接已断开，正在重连...", "warn");
+        return;
+      }
+      ws.send(JSON.stringify({ content }));
+      input.value = "";
+      input.focus();
+    }
+
+    document.getElementById("msgInput").addEventListener("keydown", e => {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        sendMsg();
+      }
+    });
+  </script>
+</body>
+</html>

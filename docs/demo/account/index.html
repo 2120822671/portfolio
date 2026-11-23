@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>招财记账 · 个人记账小系统</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a href="https://37lixloirzejy43lagp.traesite.cn/" class="portal-back" style="position:fixed;top:14px;left:14px;z-index:99999;background:#f59e0b;color:#1a1a2e;text-decoration:none;font-size:12px;font-weight:700;padding:8px 14px;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.25)">← 返回作品集</a>
+
+<header class="topbar">
+    <div class="topbar-left">
+        <h1>🐱 招财记账</h1>
+        <p class="subtitle">招财猫陪你把每一笔都记得清清楚楚</p>
+    </div>
+    <div class="topbar-tools">
+        <div class="book-switch" id="bookSwitch"></div>
+        <button class="bell-btn" id="bellBtn" aria-label="消息中心">
+            🔔<span class="bell-badge" id="bellBadge" style="display:none">0</span>
+        </button>
+    </div>
+</header>
+
+<nav class="tabs" id="tabs" role="tablist">
+    <button class="tab active" data-tab="record" role="tab">📝 记账</button>
+    <button class="tab" data-tab="board" role="tab">📊 看板</button>
+    <button class="tab" data-tab="auto" role="tab">⚙️ 自动化</button>
+</nav>
+
+<div class="container">
+
+<!-- ==================== 面板一：记账 ==================== -->
+<div class="tab-panel active" data-panel="record">
+
+    <!-- 概览卡 -->
+    <section class="summary-grid">
+        <div class="summary-card income">
+            <div class="summary-label">今日收入</div>
+            <div class="summary-value" id="sumIncome">¥0.00</div>
+        </div>
+        <div class="summary-card expense">
+            <div class="summary-label">今日支出</div>
+            <div class="summary-value" id="sumExpense">¥0.00</div>
+        </div>
+        <div class="summary-card balance">
+            <div class="summary-label">今日结余</div>
+            <div class="summary-value" id="sumBalance">¥0.00</div>
+        </div>
+    </section>
+
+    <!-- 表单 + 宠物区 -->
+    <section class="main-grid">
+        <div class="card">
+            <h2 class="card-title">记一笔账</h2>
+            <form id="recordForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="type">类型</label>
+                        <select id="type" required>
+                            <option value="1">收入</option>
+                            <option value="2" selected>支出</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">金额（元）</label>
+                        <input type="text" id="amount" inputmode="decimal" placeholder="0.00" required>
+                    </div>
+                </div>
+                <div class="quick-amounts" id="quickAmounts">
+                    <span class="quick-label">快捷金额</span>
+                    <button type="button" data-amt="10">10</button>
+                    <button type="button" data-amt="20">20</button>
+                    <button type="button" data-amt="30">30</button>
+                    <button type="button" data-amt="50">50</button>
+                    <button type="button" data-amt="100">100</button>
+                    <button type="button" data-amt="clear">清空</button>
+                </div>
+                <div class="quick-categories" id="quickCategories">
+                    <span class="quick-label">常用分类</span>
+                    <button type="button" data-cat="餐饮">🍜 餐饮</button>
+                    <button type="button" data-cat="交通">🚇 交通</button>
+                    <button type="button" data-cat="购物">🛍 购物</button>
+                    <button type="button" data-cat="娱乐">🎮 娱乐</button>
+                    <button type="button" data-cat="生活">🏠 生活</button>
+                    <button type="button" data-cat="工资">💰 工资</button>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="category">分类</label>
+                        <input type="text" id="category" placeholder="如：餐饮、交通、工资" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recordTime">账目发生时间</label>
+                        <input type="datetime-local" id="recordTime" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="remark">备注（选填）</label>
+                    <input type="text" id="remark" placeholder="写点说明，如：午餐牛肉面">
+                </div>
+                <button type="submit" class="btn-primary">💾 提交记账</button>
+            </form>
+        </div>
+
+        <div class="pet-card">
+            <div class="pet-stage">
+                <button class="cat-btn" id="catBtn" aria-label="点击招财猫说话记账">
+                    <svg class="cat-float" viewBox="0 0 700 1020" width="200" height="291" role="img" aria-label="招财猫">
+  <!-- 尾巴：右侧绕出 -->
+  <g class="cat-tail" transform="translate(0,18)">
+    <path d="M576 692 C 632 678 644 616 620 574" fill="none" stroke="#5B1A18" stroke-width="34" stroke-linecap="round"/>
+    <path d="M576 692 C 632 678 644 616 620 574" fill="none" stroke="#FFFFFF" stroke-width="22" stroke-linecap="round"/>
+    <path d="M622 578 C 632 552 632 528 622 508" fill="none" stroke="#7A4A3A" stroke-width="32" stroke-linecap="round"/>
+  </g>
+
+  <!-- 脚掌：身体两侧下方 -->
+  <g class="cat-feet" data-zone="feet" transform="translate(0,18)">
+    <g>
+      <ellipse cx="172" cy="752" rx="102" ry="88" fill="#FFFFFF" stroke="#5B1A18" stroke-width="12"/>
+      <g fill="#E23B3E">
+        <ellipse cx="128" cy="730" rx="14" ry="19"/>
+        <ellipse cx="162" cy="712" rx="14" ry="19"/>
+        <ellipse cx="198" cy="728" rx="14" ry="19"/>
+      </g>
+      <ellipse cx="170" cy="768" rx="30" ry="24" fill="#6B1F1F"/>
+    </g>
+    <g>
+      <ellipse cx="528" cy="752" rx="102" ry="88" fill="#FFFFFF" stroke="#5B1A18" stroke-width="12"/>
+      <g fill="#E23B3E">
+        <ellipse cx="484" cy="730" rx="14" ry="19"/>
+        <ellipse cx="518" cy="712" rx="14" ry="19"/>
+        <ellipse cx="554" cy="728" rx="14" ry="19"/>
+      </g>
+      <ellipse cx="530" cy="768" rx="30" ry="24" fill="#6B1F1F"/>
+    </g>
+  </g>
+
+  <!-- 身体：大胖圆 -->
+  <g data-zone="body" transform="translate(0,18)">
+    <path d="M350 300 C 472 300 554 386 564 512
+             C 574 640 486 732 350 732
+             C 214 732 126 640 136 512
+             C 146 386 228 300 350 300 Z"
+          fill="#FFFFFF" stroke="#5B1A18" stroke-width="13" stroke-linejoin="round"/>
+    <!-- 肚皮（可撸） -->
+    <ellipse data-zone="belly" cx="350" cy="566" rx="120" ry="102" fill="#FFF6EC"/>
+    <!-- 右下棕斑 -->
+    <path d="M556 620 C 586 630 594 666 578 692
+             C 562 716 530 720 512 702
+             C 498 688 506 662 526 650
+             C 544 638 540 612 556 620 Z"
+          fill="#7A4A3A"/>
+  </g>
+
+  <!-- 头 -->
+  <g data-zone="head" transform="translate(0,18)">
+    <!-- 耳朵 -->
+    <path d="M158 116 C 160 58 186 20 224 16 C 256 14 272 40 278 88
+             C 268 74 250 62 226 64 C 196 66 174 88 158 116 Z"
+          fill="#FFFFFF" stroke="#5B1A18" stroke-width="12" stroke-linejoin="round"/>
+    <path d="M176 96 C 180 58 196 38 220 36 C 242 34 250 52 250 80
+             C 234 64 210 64 196 80 C 186 88 178 94 176 96 Z" fill="#E23B3E"/>
+    <path d="M542 116 C 540 58 514 20 476 16 C 444 14 428 40 422 88
+             C 432 74 450 62 474 64 C 504 66 526 88 542 116 Z"
+          fill="#FFFFFF" stroke="#5B1A18" stroke-width="12" stroke-linejoin="round"/>
+    <path d="M524 96 C 520 58 504 38 480 36 C 458 34 450 52 450 80
+             C 466 64 490 64 504 80 C 514 88 522 94 524 96 Z" fill="#E23B3E"/>
+
+    <!-- 脸 -->
+    <path d="M350 22 C 486 22 586 118 586 202
+             C 586 286 486 334 350 334
+             C 214 334 114 286 114 202
+             C 114 118 214 22 350 22 Z"
+          fill="#FFFFFF" stroke="#5B1A18" stroke-width="13" stroke-linejoin="round"/>
+
+    <!-- 额头红斑（如意云头） -->
+    <path d="M350 46 C 372 46 386 58 388 74
+             C 396 64 414 66 420 80
+             C 426 96 412 108 396 106
+             C 396 126 376 138 350 138
+             C 324 138 304 126 304 106
+             C 288 108 274 96 280 80
+             C 286 66 304 64 312 74
+             C 314 58 328 46 350 46 Z" fill="#E23B3E"/>
+
+    <!-- 腮红 -->
+    <ellipse cx="196" cy="232" rx="34" ry="20" fill="#F7B8B6" opacity="0.75"/>
+    <ellipse cx="504" cy="232" rx="34" ry="20" fill="#F7B8B6" opacity="0.75"/>
+
+    <!-- 眼睛：弯月笑眼 -->
+    <g class="cat-eyes" fill="none" stroke="#5B1A18" stroke-width="13" stroke-linecap="round">
+      <path d="M212 182 C 236 154 274 154 298 182"/>
+      <path d="M402 182 C 426 154 464 154 488 182"/>
+    </g>
+    <!-- 眼内高光点（笑眼弯弧上方） -->
+    <circle cx="248" cy="164" r="6" fill="#5B1A18"/>
+    <circle cx="452" cy="164" r="6" fill="#5B1A18"/>
+
+    <!-- 鼻子 -->
+    <path d="M350 208 C 360 208 367 214 365 221
+             C 363 228 356 232 350 232
+             C 344 232 337 228 335 221
+             C 333 214 340 208 350 208 Z" fill="#E23B3E"/>
+
+    <!-- 嘴：w 形笑口 -->
+    <g fill="none" stroke="#5B1A18" stroke-width="10" stroke-linecap="round">
+      <path d="M350 232 L 350 242"/>
+      <path d="M350 242 C 337 262 310 260 300 238"/>
+      <path d="M350 242 C 363 262 390 260 400 238"/>
+    </g>
+
+    <!-- 胡须 -->
+    <g stroke="#5B1A18" stroke-width="10" stroke-linecap="round">
+      <path d="M190 200 C 166 194 146 196 126 204"/>
+      <path d="M188 226 C 162 226 140 230 120 240"/>
+      <path d="M194 252 C 172 260 154 268 136 282"/>
+      <path d="M510 200 C 534 194 554 196 574 204"/>
+      <path d="M512 226 C 538 226 560 230 580 240"/>
+      <path d="M506 252 C 528 260 546 268 564 282"/>
+    </g>
+  </g>
+
+  <!-- 围巾：横跨脖子，右端翘起，中央挂铜铃 -->
+  <g data-zone="scarf" transform="translate(0,18)">
+    <path d="M150 300 C 220 342 480 342 550 300
+             L 556 366 C 480 406 220 406 144 366 Z"
+          fill="#E23B3E" stroke="#5B1A18" stroke-width="12" stroke-linejoin="round"/>
+    <!-- 右端翘起的一角 -->
+    <path d="M496 332 C 528 318 566 300 588 282
+             L 604 330 C 580 352 540 372 506 382 Z"
+          fill="#E23B3E" stroke="#5B1A18" stroke-width="12" stroke-linejoin="round"/>
+    <!-- 中央铜铃 -->
+    <g class="cat-bell" data-zone="bell">
+      <circle cx="350" cy="356" r="30" fill="#F5C518" stroke="#5B1A18" stroke-width="10"/>
+      <path d="M326 356 L 374 356" stroke="#5B1A18" stroke-width="7" stroke-linecap="round"/>
+      <circle cx="350" cy="366" r="7" fill="#5B1A18"/>
+    </g>
+  </g>
+
+  <!-- 左手钱袋：完全在身体左侧外，袋口被手爪握住 -->
+  <g class="cat-hand-left" data-zone="coin" transform="translate(0,18)">
+    <path d="M6 452 C 6 412 34 384 70 380
+             C 118 374 152 404 158 454
+             C 166 526 150 630 108 684
+             C 88 710 54 710 36 684
+             C -2 630 -14 526 6 452 Z"
+          fill="#F5C518" stroke="#5B1A18" stroke-width="13" stroke-linejoin="round"/>
+    <path d="M22 396 C 54 372 116 372 146 396
+             L 134 444 C 102 422 66 422 36 444 Z"
+          fill="#F5C518" stroke="#5B1A18" stroke-width="11" stroke-linejoin="round"/>
+    <ellipse cx="84" cy="412" rx="26" ry="15" fill="#E23B3E" stroke="#5B1A18" stroke-width="9"/>
+    <text x="80" y="530" text-anchor="middle" font-size="76" font-weight="900"
+          fill="#E23B3E" stroke="#F5C518" stroke-width="9" paint-order="stroke fill"
+          font-family="Microsoft YaHei, sans-serif">招</text>
+    <text x="80" y="618" text-anchor="middle" font-size="76" font-weight="900"
+          fill="#E23B3E" stroke="#F5C518" stroke-width="9" paint-order="stroke fill"
+          font-family="Microsoft YaHei, sans-serif">财</text>
+    <!-- 手爪 -->
+    <path d="M34 394 C 34 356 56 334 84 334
+             C 114 334 136 356 136 394
+             C 136 420 114 438 84 438
+             C 56 438 34 420 34 394 Z"
+          fill="#FFFFFF" stroke="#5B1A18" stroke-width="12"/>
+    <ellipse cx="60" cy="362" rx="18" ry="13" fill="#E23B3E"/>
+  </g>
+
+  <!-- 右手小锤：锤头在上，柄斜下，手爪握柄 -->
+  <g class="cat-hand-right" data-zone="paw" transform="translate(0,18)">
+    <!-- 锤柄 -->
+    <path d="M556 392 L 570 548" fill="none" stroke="#5B1A18" stroke-width="32" stroke-linecap="round"/>
+    <path d="M556 392 L 570 548" fill="none" stroke="#E23B3E" stroke-width="21" stroke-linecap="round"/>
+    <!-- 锤头 -->
+    <path d="M516 276 C 516 258 530 244 548 244
+             L 602 244 C 620 244 634 258 634 276
+             L 634 328 C 634 346 620 360 602 360
+             L 548 360 C 530 360 516 346 516 328 Z"
+          fill="#F5C518" stroke="#5B1A18" stroke-width="13" stroke-linejoin="round"/>
+    <path d="M538 244 C 538 216 554 200 568 212
+             C 582 198 598 216 598 244
+             C 584 234 552 234 538 244 Z"
+          fill="#F5A623" stroke="#5B1A18" stroke-width="11" stroke-linejoin="round"/>
+    <!-- 手爪握柄 -->
+    <path d="M534 450 C 534 422 552 404 576 404
+             C 600 404 618 422 618 450
+             C 618 472 600 486 576 486
+             C 552 486 534 472 534 450 Z"
+          fill="#FFFFFF" stroke="#5B1A18" stroke-width="12"/>
+    <g fill="#E23B3E">
+      <circle cx="558" cy="440" r="10"/>
+      <circle cx="578" cy="432" r="10"/>
+      <circle cx="598" cy="440" r="10"/>
+    </g>
+  </g>
+</svg>
+
+                </button>
+
+                <div class="woodfish-wrap">
+                    <button class="woodfish-btn" id="woodfishBtn" aria-label="敲一敲木鱼">
+                        <svg class="woodfish" viewBox="0 0 160 150" width="104" height="111" role="img" aria-label="木鱼">
+                            <!-- 阴影 -->
+                            <ellipse cx="70" cy="126" rx="46" ry="9" fill="#E8D5B8" opacity="0.75"/>
+                            <!-- 木鱼本体 -->
+                            <path d="M20 88 C 20 50 42 28 70 28 C 98 28 120 50 120 88
+                                     C 120 112 98 126 70 126 C 42 126 20 112 20 88 Z"
+                                  fill="#E8A33D" stroke="#5B1A18" stroke-width="7" stroke-linejoin="round"/>
+                            <!-- 上半高光 -->
+                            <path d="M34 84 C 34 58 48 46 70 46 C 92 46 106 58 106 84
+                                     C 106 100 92 108 70 108 C 48 108 34 100 34 84 Z"
+                                  fill="#F7C069" stroke="#5B1A18" stroke-width="6" stroke-linejoin="round"/>
+                            <!-- 鱼眼凹槽（锤头落点） -->
+                            <ellipse cx="70" cy="88" rx="16" ry="10" fill="#D18B2B" stroke="#5B1A18" stroke-width="5"/>
+                            <!-- 敲击纹 -->
+                            <path d="M44 60 C 56 52 84 52 96 60" fill="none" stroke="#5B1A18"
+                                  stroke-width="5" stroke-linecap="round" opacity="0.55"/>
+                            <!-- 圆头木槌：柄尾从木鱼右上方外侧伸出，绕柄尾支点摆下敲击 -->
+                            <g class="mallet">
+                                <!-- 锤柄（外侧斜出） -->
+                                <line x1="128" y1="22" x2="70" y2="74" stroke="#5B1A18" stroke-width="15" stroke-linecap="round"/>
+                                <line x1="128" y1="22" x2="70" y2="74" stroke="#C98A46" stroke-width="9" stroke-linecap="round"/>
+                                <!-- 圆头槌头 -->
+                                <circle cx="70" cy="86" r="17" fill="#F0A72E" stroke="#5B1A18" stroke-width="7"/>
+                                <circle cx="65" cy="81" r="5" fill="#F7C069" opacity="0.85"/>
+                            </g>
+                        </svg>
+                    </button>
+                    <div class="merit-label">今日功德 <span id="meritCount">0</span></div>
+                    <button class="merit-clear" id="meritClear">清零</button>
+                </div>
+            </div>
+                <div class="merit-label">今日撸猫 <span id="petCount">0</span> 次</div>
+                <button class="btn-ghost" id="catChatBtn" style="padding:7px 16px;font-size:13px;">💬 跟猫说流水</button>
+                <div class="pet-hint">摸摸头、撸撸肚子、握握钱袋、敲敲小锤 · 踩肉垫也招财</div>
+        </div>
+    </section>
+
+    <!-- 流水列表 -->
+    <section class="card list-card">
+        <h2 class="card-title">收支流水</h2>
+
+        <div class="filter-bar">
+            <input type="text" id="fKeyword" placeholder="搜索分类或备注…">
+            <select id="fType">
+                <option value="">全部类型</option>
+                <option value="1">收入</option>
+                <option value="2">支出</option>
+            </select>
+            <input type="date" id="fStart" aria-label="开始日期">
+            <input type="date" id="fEnd" aria-label="结束日期">
+            <button class="btn-ghost" id="btnSearch">🔍 查询</button>
+            <button class="btn-ghost" id="btnReset">重置</button>
+        </div>
+
+        <div class="table-wrap" id="recordList">
+            <div class="empty-tip">数据加载中…</div>
+        </div>
+
+        <div class="pagination">
+            <div class="page-info" id="pageInfo"></div>
+            <div class="page-btns" id="pageBtns"></div>
+        </div>
+    </section>
+</div>
+
+<!-- ==================== 面板二：看板 ==================== -->
+<div class="tab-panel" data-panel="board">
+
+    <section class="card">
+        <h2 class="card-title">📊 数据看板</h2>
+        <p class="panel-desc">图表全部本地手绘渲染，断网也能看。当前账本：<b id="boardBookName">日常账本</b></p>
+
+        <div class="board-grid">
+            <div class="chart-box">
+                <div class="chart-title">本月支出分类占比</div>
+                <canvas id="chartPie"></canvas>
+                <div class="legend" id="pieLegend"></div>
+            </div>
+            <div class="chart-box">
+                <div class="chart-title">近 6 个月收支趋势</div>
+                <canvas id="chartTrend"></canvas>
+            </div>
+            <div class="chart-box">
+                <div class="chart-title">近 7 日支出</div>
+                <canvas id="chartLast7"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2 class="card-title">🎯 预算与超支预警</h2>
+        <p class="panel-desc">按分类设置月度上限，超过 80% 变黄，超支变红并写入消息中心。</p>
+        <div class="section-actions">
+            <button class="btn-primary btn-sm" id="btnAddBudget">＋ 设预算</button>
+        </div>
+        <div class="budget-list" id="budgetList"></div>
+    </section>
+
+    <section class="card">
+        <h2 class="card-title">🏆 记账打卡与成就</h2>
+        <div class="checkin-box" id="checkinBox"></div>
+        <div class="quote-box" id="dailyQuote">喵～今天的每一笔都算数。</div>
+    </section>
+
+    <section class="card">
+        <h2 class="card-title">📜 月度账单解读</h2>
+        <p class="panel-desc">让招财猫用数据讲讲这个月花得怎么样（配置大模型后更自然）。</p>
+        <div class="section-actions">
+            <button class="btn-primary btn-sm" id="btnMonthlyReview">📜 生成本月账单解读</button>
+        </div>
+        <div id="monthlyReviewBox"><div class="empty-tip">点击上方按钮生成解读</div></div>
+    </section>
+
+    <section class="card">
+        <h2 class="card-title">💳 我的账本</h2>
+        <p class="panel-desc">多账户分开记账，余额 = 初始余额 + 收入 − 支出。</p>
+        <div class="book-cards" id="bookCards"></div>
+    </section>
+</div>
+
+<!-- ==================== 面板三：自动化 ==================== -->
+<div class="tab-panel" data-panel="auto">
+
+    <section class="card">
+        <h2 class="card-title">🔁 周期账单自动入账</h2>
+        <p class="panel-desc">
+            房租、订阅、工资这类固定收支设一次就够。系统每天 <b>00:05</b> 自动检查并入账，
+            同一个周期只会入账一次，重复触发不会产生重复数据。
+        </p>
+        <div class="section-actions">
+            <button class="btn-primary btn-sm" id="btnAddRecurring">＋ 新建周期账单</button>
+            <button class="btn-ghost btn-sm" id="btnRunRecurring">▶ 立即检查并执行</button>
+        </div>
+        <div class="recurring-list" id="recurringList"></div>
+    </section>
+
+    <section class="card">
+        <h2 class="card-title">⏰ 自动任务与调度状态</h2>
+        <p class="panel-desc">调度器随后端启动，无需额外配置；失败会记录日志并在消息中心留痕。</p>
+        <div class="scheduler-box" id="schedulerStatus"></div>
+        <div class="section-actions">
+            <button class="btn-ghost btn-sm" id="btnRunSummary">📊 立即生成日终汇总</button>
+            <button class="btn-ghost btn-sm" id="btnRunReview">🐱 立即生成消费复盘</button>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2 class="card-title">🔔 日报与消息中心</h2>
+        <p class="panel-desc">每天 23:00 生成收支小结，23:10 生成消费复盘，预算超支会立即预警。</p>
+        <div class="section-actions">
+            <button class="btn-ghost btn-sm" id="btnReadAll">全部标为已读</button>
+        </div>
+        <div class="report-list" id="reportList"></div>
+    </section>
+</div>
+
+</div>
+
+<!-- 抽屉 -->
+<div class="drawer-mask" id="drawerMask"></div>
+<aside class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-head">
+        <h3 id="drawerTitle">记录详情</h3>
+        <button class="icon-btn" id="drawerClose" aria-label="关闭">✕</button>
+    </div>
+    <div class="drawer-body" id="drawerBody"></div>
+</aside>
+
+<!-- 消息中心侧滑面板 -->
+<div class="drawer-mask" id="reportMask"></div>
+<aside class="drawer report-drawer" id="reportPanel" aria-hidden="true">
+    <div class="drawer-head">
+        <h3>消息中心</h3>
+        <button class="icon-btn" id="reportClose" aria-label="关闭">✕</button>
+    </div>
+    <div class="drawer-body">
+        <div class="report-list" id="reportListSide"></div>
+    </div>
+</aside>
+
+<!-- 招财猫对话 -->
+<div class="cat-chat" id="catChat" aria-hidden="true">
+    <div class="chat-head">
+        <span class="chat-avatar">🐱</span>
+        <div>
+            <strong>招财猫</strong>
+            <span class="chat-sub">跟我说说今天花了什么</span>
+        </div>
+        <button class="icon-btn" id="chatClose" aria-label="关闭对话">✕</button>
+    </div>
+    <div class="chat-body" id="chatBody"></div>
+    <div class="chat-chips" id="chatChips">
+        <button data-text="午饭 30">午饭 30</button>
+        <button data-text="打车 15 元">打车 15 元</button>
+        <button data-text="工资 8000">工资 8000</button>
+        <button data-text="今天花了多少">今天花了多少</button>
+        <button data-text="分析一下我的消费">分析消费</button>
+    </div>
+    <div class="chat-input">
+        <input type="text" id="chatText" placeholder="例如：午饭花了 30 元" autocomplete="off">
+        <button id="chatSend">发送</button>
+    </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<div style="position:fixed;right:14px;bottom:14px;z-index:99999;padding:9px 14px;border-radius:10px;background:rgba(47,43,40,.86);border:1px solid rgba(255,255,255,.22);color:#f7ecd9;font:12px/1.6 'Microsoft YaHei',sans-serif;max-width:260px;backdrop-filter:blur(6px);box-shadow:0 4px 14px rgba(0,0,0,.22)">
+  <b style="color:#f5c518">静态演示版</b><br>数据为浏览器内模拟，刷新后还原；完整后端版见 GitHub 源码。
+</div>
+
+<script>
+  // 静态演示版：全部使用相对路径，兼容 GitHub Pages 子路径与本地直接打开。
+  // demo-mock.js 必须最先加载（接管 fetch），再按 app.js → modal.js → dashboard.js 顺序串行加载。
+  (function () {
+    var files = ["js/demo-mock.js", "js/app.js", "js/modal.js", "js/dashboard.js"];
+    var i = 0;
+    (function next() {
+      if (i >= files.length) return;
+      var s = document.createElement("script");
+      s.src = files[i++];
+      s.onload = next;
+      s.onerror = function () {
+        console.error("脚本加载失败：" + files[i - 1]);
+      };
+      document.body.appendChild(s);
+    })();
+  })();
+</script>
+</body>
+</html>

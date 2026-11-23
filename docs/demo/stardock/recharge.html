@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>充值中心 —— 星坞</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .page-title { display: flex; align-items: center; justify-content: space-between; }
+    .balance-box {
+      background: linear-gradient(135deg, #1a237e, #0d47a1);
+      border: 1px solid #ffd700; border-radius: 12px;
+      padding: 20px; text-align: center; margin-bottom: 24px;
+    }
+    .balance-box .label { font-size: 13px; color: rgba(255,255,255,0.7); }
+    .balance-box .score { font-size: 36px; font-weight: bold; color: #ffd700; margin-top: 4px; }
+
+    .plan-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+    .plan-card {
+      background: rgba(255,255,255,0.08);
+      border: 2px solid rgba(255,255,255,0.15);
+      border-radius: 12px; padding: 20px; text-align: center;
+      cursor: pointer; transition: all 0.2s; user-select: none;
+    }
+    .plan-card:hover { transform: translateY(-4px); border-color: #ffd700; }
+    .plan-card.selected { border-color: #ffd700; background: rgba(255,215,0,0.15); box-shadow: 0 0 20px rgba(255,215,0,0.3); }
+    .plan-card .plan-name { font-size: 14px; color: #aaa; margin-bottom: 6px; }
+    .plan-card .plan-amount { font-size: 28px; font-weight: bold; color: #fff; }
+    .plan-card .plan-amount .bonus { font-size: 14px; color: #4caf50; margin-left: 4px; }
+    .plan-card .plan-price { margin-top: 8px; font-size: 14px; color: #ff9800; }
+    .plan-card.hot { position: relative; }
+    .plan-card.hot::after {
+      content: "🔥 热门"; position: absolute; top: -10px; right: -10px;
+      background: #ff5722; padding: 2px 10px; border-radius: 10px; font-size: 12px;
+    }
+    .plan-card.legend::after {
+      content: "👑 传说"; position: absolute; top: -10px; right: -10px;
+      background: #ffd700; color: #1a237e; padding: 2px 10px; border-radius: 10px; font-size: 12px;
+    }
+
+    .pay-row { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; align-items: center; }
+    .pay-method {
+      flex: 1; min-width: 140px; padding: 14px;
+      border: 2px solid rgba(255,255,255,0.15); border-radius: 8px;
+      background: rgba(0,0,0,0.2); cursor: pointer; text-align: center;
+      transition: all 0.2s;
+    }
+    .pay-method:hover { border-color: #ffd700; }
+    .pay-method.selected { border-color: #ffd700; background: rgba(255,215,0,0.15); }
+    .pay-method .icon { font-size: 28px; }
+    .pay-method .name { margin-top: 4px; font-size: 14px; }
+
+    .action-row { display: flex; gap: 12px; margin-top: 24px; }
+    .action-row .btn { flex: 1; padding: 14px; font-size: 16px; }
+
+    .redeem-box {
+      margin-top: 30px; padding: 20px; border: 1px dashed rgba(255,215,0,0.5);
+      border-radius: 12px; text-align: center;
+    }
+    .redeem-box input {
+      padding: 10px 14px; border-radius: 6px; border: none; background: rgba(255,255,255,0.1);
+      color: #fff; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; width: 240px; text-align: center;
+    }
+
+    .order-history { margin-top: 30px; }
+    .order-history table { font-size: 13px; }
+
+    .loading-mask {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+      display: none; align-items: center; justify-content: center; z-index: 9999;
+    }
+    .loading-mask.active { display: flex; }
+    .loading-mask .spinner {
+      width: 60px; height: 60px; border: 4px solid rgba(255,215,0,0.3);
+      border-top-color: #ffd700; border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+<a href="https://37lixloirzejy43lagp.traesite.cn/" class="portal-back" style="position:fixed;left:14px;top:14px;z-index:99999;background:#b388ff;color:#1a1035;text-decoration:none;font-size:12px;font-weight:700;padding:8px 14px;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.35)">← 返回作品集</a>
+  <div id="navbar"></div>
+  <div class="container">
+    <div class="page-title">
+      <h2>💰 充值中心</h2>
+      <a href="admin/activities.html" id="postActLink" style="display:none">📢 发布活动</a>
+    </div>
+
+    <!-- 余额卡片 -->
+    <div class="balance-box">
+      <div class="label">💎 当前积分余额</div>
+      <div class="score" id="balanceScore">--</div>
+    </div>
+
+    <!-- 套餐选择 -->
+    <h3 style="margin-bottom:12px">选择充值套餐</h3>
+    <div class="plan-grid" id="planGrid"></div>
+
+    <!-- 支付方式 -->
+    <h3 style="margin:24px 0 12px">选择支付方式</h3>
+    <div class="pay-row">
+      <div class="pay-method" data-pay="1">
+        <div class="icon">💚</div><div class="name">微信支付</div>
+      </div>
+      <div class="pay-method" data-pay="2">
+        <div class="icon">💙</div><div class="name">支付宝</div>
+      </div>
+    </div>
+
+    <!-- 确认按钮 -->
+    <div class="action-row">
+      <button class="btn" id="confirmBtn" style="background:#4caf50;color:#fff" disabled>
+        请先选择套餐
+      </button>
+    </div>
+
+    <!-- 兑换码区域 -->
+    <div class="redeem-box">
+      <h3 style="color:#ffd700;margin-bottom:12px">🎁 兑换码</h3>
+      <p style="color:#aaa;margin-bottom:12px;font-size:13px">输入从活动中获得的兑换码，立即到账积分</p>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <input type="text" id="redeemCode" placeholder="STAR1000" maxlength="20">
+        <button class="btn" onclick="doRedeem()">兑换</button>
+      </div>
+      <p style="color:#666;margin-top:10px;font-size:12px">
+        测试兑换码：STAR1000（+1000）、STAR5000（+5000）、STAR10000（+10000）、STAR_NEW（+2000）
+      </p>
+    </div>
+
+    <!-- 充值记录 -->
+    <div class="order-history">
+      <h3 style="margin-bottom:12px">📒 充值记录</h3>
+      <div class="card" style="padding:0;overflow-x:auto">
+        <table>
+          <thead><tr><th>订单号</th><th>积分</th><th>方式</th><th>状态</th><th>时间</th></tr></thead>
+          <tbody id="orderTbody"><tr><td colspan="5" style="text-align:center;padding:20px;color:#666">暂无记录</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 全页 loading mask -->
+  <div class="loading-mask" id="loadingMask">
+    <div class="spinner"></div>
+  </div>
+
+  <script src="js/demo-mock.js"></script>
+  <script src="js/common.js"></script>
+  <script>
+    let user = null;
+    let plans = [];
+    let selectedPlan = null;
+    let selectedPay = null;
+
+    (async () => {
+      try {
+        user = await requireRole();
+        await loadNavbar();
+        // 明星/管理员也能在导航栏链接发布活动
+        if (user.role === 2 || user.role === 3) document.getElementById("postActLink").style.display = "inline";
+        document.getElementById("balanceScore").textContent = user.score.toLocaleString();
+        await loadPlans();
+        await loadOrders();
+      } catch (e) {}
+    })();
+
+    async function loadPlans() {
+      try {
+        const res = await fetchJSON("/api/recharge/plans");
+        plans = res.data;
+        document.getElementById("planGrid").innerHTML = plans.map(p => {
+          const cls = p.id === 4 ? "hot" : (p.id === 5 ? "legend" : "");
+          return `
+            <div class="plan-card ${cls}" data-plan="${p.id}">
+              <div class="plan-name">${p.name}</div>
+              <div class="plan-amount">${p.amount.toLocaleString()}${p.bonus > 0 ? `<span class="bonus">+${p.bonus}</span>` : ""}</div>
+              <div class="plan-price">¥ ${p.price.toFixed(2)}</div>
+            </div>
+          `;
+        }).join("");
+
+        // 选择事件
+        document.querySelectorAll(".plan-card").forEach(el => {
+          el.addEventListener("click", () => {
+            document.querySelectorAll(".plan-card").forEach(e => e.classList.remove("selected"));
+            el.classList.add("selected");
+            selectedPlan = parseInt(el.dataset.plan);
+            updateConfirmBtn();
+          });
+        });
+      } catch (e) {}
+    }
+
+    // 支付方式选择
+    document.querySelectorAll(".pay-method").forEach(el => {
+      el.addEventListener("click", () => {
+        document.querySelectorAll(".pay-method").forEach(e => e.classList.remove("selected"));
+        el.classList.add("selected");
+        selectedPay = parseInt(el.dataset.pay);
+        updateConfirmBtn();
+      });
+    });
+
+    function updateConfirmBtn() {
+      const btn = document.getElementById("confirmBtn");
+      if (selectedPlan && selectedPay) {
+        const plan = plans.find(p => p.id === selectedPlan);
+        const payName = selectedPay === 1 ? "微信" : "支付宝";
+        btn.disabled = false;
+        btn.textContent = `${payName}支付 ¥${plan.price.toFixed(2)} → 到账 ${(plan.amount + plan.bonus).toLocaleString()} 积分`;
+      } else {
+        btn.disabled = true;
+        btn.textContent = selectedPlan ? "请选择支付方式" : "请选择套餐";
+      }
+    }
+
+    /* ========== 下单 + 模拟支付（btnLoading 已防重复点击）========== */
+    document.getElementById("confirmBtn").addEventListener("click", async () => {
+      const btn = document.getElementById("confirmBtn");
+      btnLoading(btn, true, "正在下单...");
+      document.getElementById("loadingMask").classList.add("active");
+
+      try {
+        const orderRes = await fetchJSON("/api/recharge/order", {
+          method: "POST",
+          body: { plan_id: selectedPlan, pay_type: selectedPay }
+        });
+        const order = orderRes.data;
+
+        await new Promise(r => setTimeout(r, 1000)); // 假装 1 秒支付
+        const payRes = await fetchJSON("/api/recharge/pay", {
+          method: "POST",
+          body: { order_no: order.order_no }
+        });
+
+        toast(`🎉 充值成功！到账 ${order.amount.toLocaleString()} 积分`, "success");
+        applyBalance(payRes.data.remain_balance);
+        await loadOrders();
+
+        // 清空选择
+        document.querySelectorAll(".plan-card").forEach(e => e.classList.remove("selected"));
+        document.querySelectorAll(".pay-method").forEach(e => e.classList.remove("selected"));
+        selectedPlan = selectedPay = null;
+        updateConfirmBtn();
+      } catch (e) {} finally {
+        btnLoading(btn, false);
+        document.getElementById("loadingMask").classList.remove("active");
+      }
+    });
+
+    /* ========== 兑换码 ========== */
+    async function doRedeem() {
+      const code = document.getElementById("redeemCode").value.trim();
+      if (!code) { toast("请输入兑换码", "warn"); return; }
+      const input = document.getElementById("redeemCode");
+      input.disabled = true;
+      try {
+        const res = await fetchJSON("/api/recharge/redeem", {
+          method: "POST", body: { code }
+        });
+        toast(`🎁 ${res.msg}`, "success");
+        applyBalance(res.data.remain_balance);
+        await loadOrders();
+        document.getElementById("redeemCode").value = "";
+      } catch (e) {} finally {
+        input.disabled = false;
+      }
+    }
+
+    /* ========== 轻量更新积分（零网络请求）========== */
+    function applyBalance(newScore) {
+      document.getElementById("balanceScore").textContent = newScore.toLocaleString();
+      updateUserScore(newScore);  // 更新导航栏积分（common.js 里的函数）
+    }
+
+    /* ========== 我的订单 ========== */
+    async function loadOrders() {
+      try {
+        const res = await fetchJSON("/api/recharge/my-orders?size=20");
+        const list = res.data;
+        if (list.length === 0) {
+          document.getElementById("orderTbody").innerHTML = `<tr><td colspan="5" style="text-align:center;padding:20px;color:#666">暂无记录</td></tr>`;
+          return;
+        }
+        const payMap = { 1: "微信", 2: "支付宝", 3: "兑换码" };
+        const statusMap = { 0: "待支付", 1: "已到账", 2: "已取消" };
+        document.getElementById("orderTbody").innerHTML = list.map(o => `
+          <tr>
+            <td>${o.order_no}</td>
+            <td>+${o.amount.toLocaleString()}</td>
+            <td>${payMap[o.pay_type] || "?"}</td>
+            <td style="color:${o.status === 1 ? '#4caf50' : '#ff9800'}">${statusMap[o.status] || "?"}</td>
+            <td>${fmt(o.create_time)}</td>
+          </tr>
+        `).join("");
+      } catch (e) {}
+    }
+  </script>
+</body>
+</html>

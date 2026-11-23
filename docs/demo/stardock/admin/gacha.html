@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>卡池配置 —— 星坞</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .pool-list { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+    .pool-chip {
+      padding: 10px 20px; border-radius: 20px; cursor: pointer;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,215,0,0.2);
+      color: var(--text-secondary); font-size: 13px; font-weight: 500;
+      transition: all 0.2s;
+    }
+    .pool-chip:hover { border-color: var(--star-gold); color: var(--star-gold); }
+    .pool-chip.active {
+      background: linear-gradient(135deg, var(--star-gold), var(--star-gold-deep));
+      color: var(--bg-deep-3); border-color: transparent;
+      box-shadow: 0 2px 10px rgba(255,215,0,0.3);
+    }
+    .pool-chip.disabled { opacity: 0.4; }
+    .chip-badge {
+      display: inline-block; margin-left: 6px;
+      padding: 1px 6px; border-radius: 10px;
+      font-size: 10px; background: rgba(255,255,255,0.15);
+    }
+    .chip-badge.off { background: #f44336; color: #fff; }
+
+    .pool-detail { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 14px; padding: 20px; }
+    .pool-detail h3 { margin-bottom: 4px; font-size: 18px; }
+    .pool-detail .desc { color: var(--text-muted); font-size: 13px; margin-bottom: 16px; }
+    .pool-actions { display: flex; gap: 10px; margin-bottom: 16px; }
+
+    .card-table { padding: 0; overflow-x: auto; }
+    .card-table th, .card-table td { padding: 12px; }
+    .rarity-tag {
+      display: inline-block; padding: 2px 10px; border-radius: 10px;
+      font-size: 11px; font-weight: 600; letter-spacing: 1px;
+    }
+    .rarity-tag.r1 { background: #616161; color: #eee; }
+    .rarity-tag.r2 { background: #1976d2; color: #fff; }
+    .rarity-tag.r3 { background: #7b1fa2; color: #fff; }
+    .rarity-tag.r4 { background: #ff6f00; color: #fff; box-shadow: 0 0 8px rgba(255,111,0,0.5); }
+
+    .empty-hint { text-align: center; padding: 40px; color: var(--text-muted); }
+    .empty-hint .emoji { font-size: 48px; margin-bottom: 12px; opacity: 0.6; }
+
+    /* ===== Modal ===== */
+    .modal-mask {
+      position: fixed; inset: 0;
+      background: rgba(5, 10, 42, 0.8);
+      backdrop-filter: blur(8px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: modalFade 0.2s ease;
+    }
+    @keyframes modalFade { from { opacity: 0 } to { opacity: 1 } }
+    .modal-box {
+      background: linear-gradient(160deg, #0d1547 0%, #1a237e 100%);
+      border: 1px solid rgba(255,215,0,0.35);
+      border-radius: 16px;
+      width: 420px;
+      max-width: 90vw;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(255,215,0,0.1);
+      animation: modalIn 0.25s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    @keyframes modalIn { from { transform: translateY(20px) scale(0.95); opacity: 0 } to { transform: translateY(0) scale(1); opacity: 1 } }
+    .modal-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid rgba(255,215,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .modal-title { font-size: 16px; font-weight: 700; color: var(--star-gold); letter-spacing: 1px; }
+    .modal-close {
+      background: transparent; border: none; color: var(--text-muted);
+      font-size: 20px; cursor: pointer; padding: 2px 8px; border-radius: 6px;
+      transition: all 0.15s;
+    }
+    .modal-close:hover { background: rgba(255,215,0,0.15); color: var(--star-gold); }
+    .modal-body { padding: 20px; }
+    .modal-footer {
+      padding: 14px 20px;
+      border-top: 1px solid rgba(255,215,0,0.15);
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+    .modal-body .form-group { margin-bottom: 14px; }
+    .modal-body .form-group:last-child { margin-bottom: 0; }
+  </style>
+</head>
+<body>
+<a href="https://37lixloirzejy43lagp.traesite.cn/" class="portal-back" style="position:fixed;left:14px;top:14px;z-index:99999;background:#b388ff;color:#1a1035;text-decoration:none;font-size:12px;font-weight:700;padding:8px 14px;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.35)">← 返回作品集</a>
+  <div id="navbar"></div>
+  <div class="container">
+    <h2>🎴 卡 池 配 置</h2>
+
+    <!-- 卡池选择 -->
+    <div class="pool-list" id="poolList">
+      <div class="empty-hint" style="grid-column:1/-1">加载中...</div>
+    </div>
+
+    <!-- 卡池详情 -->
+    <div class="card pool-detail" id="poolDetail" style="display:none">
+      <h3 id="poolName"></h3>
+      <div class="desc" id="poolDesc"></div>
+      <div class="pool-actions">
+        <button class="btn btn-sm" onclick="togglePool()">🔄 启用/关闭</button>
+        <button class="btn btn-sm btn-secondary" onclick="showAddCard()">➕ 添加卡片</button>
+        <button class="btn btn-sm btn-secondary" onclick="showEditPool()">✏️ 编辑卡池</button>
+      </div>
+
+      <div class="card card-table" style="padding:0">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th><th>卡片名称</th><th>稀有度</th><th>权重</th><th>图片</th><th>描述</th><th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="cardTbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 空状态 -->
+    <div class="card empty-hint" id="emptyHint" style="display:none">
+      <div class="emoji">🎴</div>
+      <p>请先选择一个卡池开始配置</p>
+    </div>
+  </div>
+
+  <!-- ========== 通用 Modal ========== -->
+  <div class="modal-mask" id="modalMask" style="display:none">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span class="modal-title" id="modalTitle">标题</span>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+      <div class="modal-footer" id="modalFooter"></div>
+    </div>
+  </div>
+
+  <script src="../js/demo-mock.js"></script>
+  <script src="../js/common.js"></script>
+  <script>
+    let pools = [];
+    let currentPool = null;
+
+    (async () => {
+      try {
+        await requireRole([2]);
+        await loadNavbar();
+        await loadPools();
+      } catch (e) {}
+    })();
+
+    async function loadPools() {
+      try {
+        const res = await fetchJSON("/api/gacha/pools");
+        pools = res.data;
+
+        const list = document.getElementById("poolList");
+        list.innerHTML = "";
+
+        if (pools.length === 0) {
+          document.getElementById("emptyHint").style.display = "block";
+          document.getElementById("poolDetail").style.display = "none";
+          return;
+        }
+
+        pools.forEach(p => {
+          const chip = document.createElement("div");
+          chip.className = `pool-chip${p.is_active !== 1 ? " disabled" : ""}`;
+          chip.dataset.id = p.id;
+
+          const nameSpan = document.createElement("span");
+          nameSpan.textContent = p.name;
+
+          const badge = document.createElement("span");
+          badge.className = `chip-badge${p.is_active !== 1 ? " off" : ""}`;
+          badge.textContent = p.is_active === 1 ? "开启" : "关闭";
+
+          chip.appendChild(nameSpan);
+          chip.appendChild(badge);
+
+          chip.addEventListener("click", () => {
+            document.querySelectorAll(".pool-chip").forEach(c => c.classList.remove("active"));
+            chip.classList.add("active");
+            loadPoolDetail(p.id);
+          });
+
+          list.appendChild(chip);
+        });
+
+        // URL 有 pool_id 则选它，否则默认选第一个
+        const params = new URLSearchParams(location.search);
+        const id = params.get("pool_id");
+        const target = id ? pools.find(p => p.id == id) : pools[0];
+        if (target) {
+          const chip = document.querySelector(`.pool-chip[data-id="${target.id}"]`);
+          if (chip) chip.classList.add("active");
+          await loadPoolDetail(target.id);
+        }
+      } catch (e) {}
+    }
+
+    async function loadPoolDetail(poolId) {
+      try {
+        const res = await fetchJSON(`/api/gacha/pools/${poolId}`);
+        const p = res.data;
+        currentPool = p;
+        document.getElementById("poolDetail").style.display = "block";
+        document.getElementById("emptyHint").style.display = "none";
+
+        setText("poolName", `${p.name} — ${p.is_active === 1 ? "已开启" : "已关闭"}`);
+        setText("poolDesc", `消耗 ${p.cost_per_draw} 积分 / 单抽，${p.cost_per_ten} 积分 / 十连 · ${p.description || "暂无描述"}`);
+
+        renderCards(p.cards || []);
+      } catch (e) {}
+    }
+
+    function renderCards(cards) {
+      const tbody = document.getElementById("cardTbody");
+      tbody.innerHTML = "";
+
+      if (cards.length === 0) {
+        const tr = document.createElement("tr");
+        const td = document.createElement("td");
+        td.colSpan = 7;
+        td.style.textAlign = "center";
+        td.style.padding = "32px";
+        td.style.color = "var(--text-muted)";
+        td.textContent = "这个卡池还没有卡片，点击上方 ➕ 添加卡片";
+        tr.appendChild(td);
+        tbody.appendChild(tr);
+        return;
+      }
+
+      const rarityMap = { 1: { t: "N", c: "r1" }, 2: { t: "R", c: "r2" }, 3: { t: "SR", c: "r3" }, 4: { t: "SSR", c: "r4" } };
+
+      cards.forEach(c => {
+        const tr = document.createElement("tr");
+        tr.appendChild(_td(c.id));
+
+        const nameTd = _td("");
+        const nameLink = document.createElement("span");
+        nameLink.style.color = "var(--star-gold)";
+        nameLink.style.fontWeight = "600";
+        nameLink.textContent = c.name;
+        nameTd.appendChild(nameLink);
+        tr.appendChild(nameTd);
+
+        const r = rarityMap[c.rarity] || { t: "?", c: "" };
+        const rTd = document.createElement("td");
+        const rTag = document.createElement("span");
+        rTag.className = `rarity-tag ${r.c}`;
+        rTag.textContent = r.t;
+        rTd.appendChild(rTag);
+        tr.appendChild(rTd);
+
+        tr.appendChild(_td(c.weight));
+        tr.appendChild(_td(c.image_url || "-"));
+        tr.appendChild(_td(c.description || "-"));
+
+        const opsTd = document.createElement("td");
+        const delBtn = document.createElement("button");
+        delBtn.className = "btn btn-sm btn-danger";
+        delBtn.textContent = "删除";
+        delBtn.onclick = async () => {
+          if (!confirm(`确定从卡池中删除卡片 "${c.name}"？`)) return;
+          try {
+            await fetchJSON(`/api/gacha/cards/${c.id}`, { method: "DELETE" });
+            toast("✅ 已删除", "success");
+            await loadPoolDetail(currentPool.id);
+          } catch (e) {}
+        };
+        opsTd.appendChild(delBtn);
+        tr.appendChild(opsTd);
+
+        tbody.appendChild(tr);
+      });
+    }
+
+    function _td(text) {
+      const td = document.createElement("td");
+      td.textContent = text;
+      return td;
+    }
+
+    async function togglePool() {
+      if (!currentPool) return;
+      const newStatus = currentPool.is_active === 1 ? 0 : 1;
+      try {
+        await fetchJSON(`/api/gacha/pools/${currentPool.id}`, {
+          method: "PUT", body: { is_active: newStatus }
+        });
+        toast(`✅ 卡池已${newStatus === 1 ? "开启" : "关闭"}`, "success");
+        await loadPools();
+      } catch (e) {}
+    }
+
+    /* ===== Modal 工具 ===== */
+    function openModal(title, bodyHTML, submitHandler) {
+      document.getElementById("modalTitle").textContent = title;
+      document.getElementById("modalBody").innerHTML = bodyHTML;
+
+      const footer = document.getElementById("modalFooter");
+      footer.innerHTML = "";
+      const cancelBtn = document.createElement("button");
+      cancelBtn.className = "btn btn-sm btn-secondary";
+      cancelBtn.textContent = "取消";
+      cancelBtn.onclick = closeModal;
+
+      const submitBtn = document.createElement("button");
+      submitBtn.className = "btn btn-sm";
+      submitBtn.textContent = "确定";
+      submitBtn.onclick = () => {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "处理中...";
+        submitHandler(submitBtn);
+      };
+
+      footer.appendChild(cancelBtn);
+      footer.appendChild(submitBtn);
+
+      document.getElementById("modalMask").style.display = "flex";
+    }
+    function closeModal() {
+      document.getElementById("modalMask").style.display = "none";
+      document.getElementById("modalBody").innerHTML = "";
+      document.getElementById("modalFooter").innerHTML = "";
+    }
+
+    /* ===== 添加卡片 ===== */
+    function showAddCard() {
+      openModal("➕ 添加卡片", `
+        <div class="form-group">
+          <label>卡片名称 *</label>
+          <input type="text" id="f_card_name" placeholder="给卡片起个好听的名字">
+        </div>
+        <div class="form-group">
+          <label>稀有度</label>
+          <select id="f_card_rarity">
+            <option value="1">N — 普通</option>
+            <option value="2" selected>R — 稀有</option>
+            <option value="3">SR — 超稀有</option>
+            <option value="4">SSR — 传说</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>权重</label>
+          <input type="number" id="f_card_weight" value="100" min="1">
+          <small style="color:var(--text-muted);font-size:11px">数字越大越容易被抽到</small>
+        </div>
+        <div class="form-group">
+          <label>图片 URL</label>
+          <input type="text" id="f_card_img" value="img/card/new.jpg">
+        </div>
+      `, async (btn) => {
+        const name = document.getElementById("f_card_name").value.trim();
+        const rarity = parseInt(document.getElementById("f_card_rarity").value);
+        const weight = parseInt(document.getElementById("f_card_weight").value) || 100;
+        const image_url = document.getElementById("f_card_img").value.trim();
+
+        if (!name) { toast("卡片名称不能为空", "warn"); btn.disabled = false; btn.textContent = "确定"; return; }
+
+        try {
+          await fetchJSON("/api/gacha/cards", {
+            method: "POST",
+            body: { pool_id: currentPool.id, name, image_url, rarity, weight, description: "" }
+          });
+          toast("✅ 卡片添加成功", "success");
+          closeModal();
+          await loadPools();
+          await loadPoolDetail(currentPool.id);
+        } catch (e) {
+          btn.disabled = false; btn.textContent = "确定";
+        }
+      });
+    }
+
+    /* ===== 编辑卡池 ===== */
+    function showEditPool() {
+      if (!currentPool) return;
+      openModal("✏️ 编辑卡池", `
+        <div class="form-group">
+          <label>卡池名称</label>
+          <input type="text" id="f_pool_name" value="${currentPool.name.replace(/"/g, '&quot;')}">
+        </div>
+        <div class="form-group">
+          <label>描述</label>
+          <textarea id="f_pool_desc" rows="3">${(currentPool.description || "").replace(/"/g, '&quot;')}</textarea>
+        </div>
+        <div class="form-group">
+          <label>单抽消耗积分</label>
+          <input type="number" id="f_pool_single" value="${currentPool.cost_per_draw}">
+        </div>
+        <div class="form-group">
+          <label>十连消耗积分</label>
+          <input type="number" id="f_pool_ten" value="${currentPool.cost_per_ten}">
+          <small style="color:var(--text-muted);font-size:11px">建议设为单抽的 9 倍（打九折）</small>
+        </div>
+      `, async (btn) => {
+        const name = document.getElementById("f_pool_name").value.trim();
+        const description = document.getElementById("f_pool_desc").value.trim();
+        const cost_per_draw = parseInt(document.getElementById("f_pool_single").value);
+        const cost_per_ten = parseInt(document.getElementById("f_pool_ten").value);
+
+        if (!name) { toast("卡池名称不能为空", "warn"); btn.disabled = false; btn.textContent = "确定"; return; }
+
+        try {
+          await fetchJSON(`/api/gacha/pools/${currentPool.id}`, {
+            method: "PUT",
+            body: { name, description, cost_per_draw, cost_per_ten }
+          });
+          toast("✅ 卡池已更新", "success");
+          closeModal();
+          await loadPools();
+          await loadPoolDetail(currentPool.id);
+        } catch (e) {
+          btn.disabled = false; btn.textContent = "确定";
+        }
+      });
+    }
+  </script>
+</body>
+</html>

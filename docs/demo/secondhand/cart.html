@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="data:,">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>校淘集市 - 购物车</title>
+  <link rel="stylesheet" href="css/style.css?v=2026111703">
+</head>
+<body>
+<a href="https://37lixloirzejy43lagp.traesite.cn/" class="portal-back" style="position:fixed;top:14px;left:14px;z-index:9999;background:#2f6df6;color:#fff;text-decoration:none;font-size:12px;font-weight:700;padding:8px 14px;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.25)">← 返回作品集</a>
+<div style="position:fixed;right:14px;bottom:14px;z-index:9999;padding:9px 14px;border-radius:10px;background:rgba(47,107,79,.92);border:1px solid rgba(255,255,255,.24);color:#f4f1e4;font:12px/1.6 'Microsoft YaHei',sans-serif;max-width:240px;box-shadow:0 4px 14px rgba(0,0,0,.2)">
+  <b style="color:#ffe08a">静态演示版</b><br>数据为浏览器内模拟，关闭标签页即还原。
+</div>
+  <header id="navbar"></header>
+
+  <div class="container">
+    <div class="page-head">
+      <h2 class="page-title" style="margin-bottom:0;">🧺 我的购物车</h2>
+      <button class="mini-btn" id="clear-btn" onclick="clearCart()" style="display:none;">清空购物车</button>
+    </div>
+
+    <div class="cart-list" id="cart-list"></div>
+
+    <div class="empty" id="empty" style="display:none;">
+      <div class="big">🧺</div>
+      <p>购物车还是空的，去看看有什么宝贝</p>
+      <p style="margin-top:12px;"><a href="index.html" style="color:var(--green);font-family:var(--font-display);">→ 去逛逛</a></p>
+    </div>
+
+    <div class="cart-bar" id="cart-bar" style="display:none;">
+      <label class="cart-all"><input type="checkbox" id="sel-all" checked onchange="toggleAll(this.checked)"> 全选</label>
+      <span class="cart-sum">已选 <b id="sel-count">0</b> 件</span>
+      <span class="cart-total">合计 <b id="sel-total">￥0.00</b></span>
+      <button class="btn-buy" id="checkout-btn" onclick="checkout()">去结算</button>
+    </div>
+  </div>
+
+  <script src="js/demo-mock.js"></script>
+  <script src="js/app.js?v=2026111703"></script>
+  <script>
+    renderNav("cart");
+    let cart = [];
+    const selected = new Set();
+
+    async function load() {
+      const u = getUser();
+      if (!u) {
+        document.getElementById("cart-list").innerHTML = "";
+        document.getElementById("cart-bar").style.display = "none";
+        document.getElementById("empty").style.display = "block";
+        document.querySelector("#empty p").textContent = "登录后查看购物车";
+        requireLogin();
+        return;
+      }
+      try {
+        const d = await request("/cart");
+        cart = d.items;
+        selected.clear();
+        cart.forEach(i => { if (i.available) selected.add(i.id); });
+        render();
+      } catch (e) { toast(e.message, "err"); }
+    }
+
+    function render() {
+      const list = document.getElementById("cart-list");
+      const bar = document.getElementById("cart-bar");
+      document.getElementById("empty").style.display = cart.length ? "none" : "block";
+      document.getElementById("clear-btn").style.display = cart.length ? "inline-block" : "none";
+      bar.style.display = cart.length ? "flex" : "none";
+      document.getElementById("sel-all").disabled = !cart.some(i => i.available);
+
+      list.innerHTML = cart.map(i => `
+        <div class="cart-item ${i.available ? "" : "off"}">
+          <label class="cart-check">
+            <input type="checkbox" ${selected.has(i.id) ? "checked" : ""}
+              ${i.available ? "" : "disabled"} onchange="toggleOne(${i.id}, this.checked)">
+          </label>
+          <div class="cart-img" onclick="location.href='detail.html?id=${i.goods_id}'">
+            ${i.cover ? `<img src="${API}${i.cover}" alt="">` : '<span class="ph">🛍️</span>'}
+          </div>
+          <div class="cart-info">
+            <div class="cart-title" onclick="location.href='detail.html?id=${i.goods_id}'">${esc(i.title)}</div>
+            <div class="cart-meta">
+              ${i.available
+                ? `<span class="cat-tag">在售 · 库存 ${i.stock}</span>`
+                : `<span class="cart-off">${i.reason || i.goods_status_text}，无法结算</span>`}
+            </div>
+            <div class="cart-price">￥${i.price}</div>
+          </div>
+          <div class="cart-qty">
+            <button onclick="changeQty(${i.id}, -1)" ${i.quantity <= 1 ? "disabled" : ""}>−</button>
+            <span>${i.quantity}</span>
+            <button onclick="changeQty(${i.id}, 1)" ${i.quantity >= i.stock ? "disabled" : ""}>+</button>
+          </div>
+          <div class="cart-sub">￥${i.subtotal}</div>
+          <button class="cart-del" title="移出购物车" onclick="removeItem(${i.id})">✕</button>
+        </div>`).join("");
+      updateBar();
+    }
+
+    function toggleOne(id, checked) {
+      if (checked) selected.add(id); else selected.delete(id);
+      updateBar();
+    }
+
+    function toggleAll(checked) {
+      selected.clear();
+      if (checked) cart.forEach(i => { if (i.available) selected.add(i.id); });
+      document.querySelectorAll(".cart-item input[type=checkbox]").forEach(box => {
+        if (!box.disabled) box.checked = checked;
+      });
+      updateBar();
+    }
+
+    function picked() {
+      return cart.filter(i => selected.has(i.id) && i.available);
+    }
+
+    function updateBar() {
+      const items = picked();
+      document.getElementById("sel-count").textContent = items.length;
+      const total = items.reduce((s, i) => s + Number(i.subtotal), 0);
+      document.getElementById("sel-total").textContent = `￥${total.toFixed(2)}`;
+      document.getElementById("checkout-btn").disabled = items.length === 0;
+      const all = cart.filter(i => i.available).length;
+      const allBox = document.getElementById("sel-all");
+      allBox.checked = all > 0 && items.length === all;
+    }
+
+    async function changeQty(id, delta) {
+      const item = cart.find(i => i.id === id);
+      if (!item) return;
+      const qty = item.quantity + delta;
+      if (qty < 1 || qty > item.stock) return;
+      try {
+        await request(`/cart/${id}`, { method: "PATCH", body: { quantity: qty } });
+        item.quantity = qty;
+        item.subtotal = (Number(item.price) * qty).toFixed(2);
+        render();
+      } catch (e) { toast(e.message, "err"); }
+    }
+
+    async function removeItem(id) {
+      try {
+        await request(`/cart/${id}`, { method: "DELETE" });
+        selected.delete(id);
+        toast("已移出购物车", "info");
+        load();
+      } catch (e) { toast(e.message, "err"); }
+    }
+
+    async function clearCart() {
+      if (!cart.length) return;
+      if (!(await confirmDialog("清空购物车？", "所有宝贝会从购物车里移除", true))) return;
+      try {
+        await request("/cart", { method: "DELETE" });
+        toast("购物车已清空", "info");
+        load();
+      } catch (e) { toast(e.message, "err"); }
+    }
+
+    async function checkout() {
+      if (!requireLogin()) return;
+      const items = picked();
+      if (!items.length) { toast("请先勾选要结算的宝贝", "err"); return; }
+      const total = items.reduce((s, i) => s + Number(i.subtotal), 0).toFixed(2);
+      const method = await choosePayMethod(total, `共 ${items.length} 件宝贝`);
+      if (!method) return;
+      await withLoading(document.getElementById("checkout-btn"), async () => {
+        try {
+          const d = await request("/orders/batch", { method: "POST", body: {
+            buyer_id: getUser().id,
+            goods_ids: items.map(i => i.goods_id),
+            pay_method: method,
+          } });
+          toast(`已用${d.pay_method_text}支付 ￥${d.total_amount}，共 ${d.orders.length} 笔 🎉`, "ok");
+          setTimeout(() => location.href = "orders.html?tab=buyer", 900);
+        } catch (e) {
+          toast(e.message, "err");
+          load();
+        }
+      });
+    }
+
+    load();
+    document.addEventListener("cs:login", () => load());
+  </script>
+</body>
+</html>

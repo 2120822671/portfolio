@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="data:,">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>校淘集市 - 我的交易</title>
+  <link rel="stylesheet" href="css/style.css?v=2026111703">
+  <style>
+    .tabs { display: flex; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; }
+    .tabs button { padding: 8px 22px; border-radius: 20px; border: 1.5px solid var(--border); background: var(--card); cursor: pointer; font-size: 14px; }
+    .tabs button.cur { background: var(--green); border-color: var(--green); color: #fffdf8; box-shadow: 2px 2px 0 rgba(47,107,79,.3); }
+    .tabs .divider { width: 1.5px; align-self: stretch; background: var(--border); margin: 2px 4px; }
+  </style>
+</head>
+<body>
+<a href="https://37lixloirzejy43lagp.traesite.cn/" class="portal-back" style="position:fixed;top:14px;left:14px;z-index:9999;background:#2f6df6;color:#fff;text-decoration:none;font-size:12px;font-weight:700;padding:8px 14px;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.25)">← 返回作品集</a>
+<div style="position:fixed;right:14px;bottom:14px;z-index:9999;padding:9px 14px;border-radius:10px;background:rgba(47,107,79,.92);border:1px solid rgba(255,255,255,.24);color:#f4f1e4;font:12px/1.6 'Microsoft YaHei',sans-serif;max-width:240px;box-shadow:0 4px 14px rgba(0,0,0,.2)">
+  <b style="color:#ffe08a">静态演示版</b><br>数据为浏览器内模拟，关闭标签页即还原。
+</div>
+  <header id="navbar"></header>
+
+  <div class="container">
+    <h2 class="page-title">📒 我的交易</h2>
+    <div class="stamp-card" id="stamp-card"></div>
+    <div class="tabs" id="tabs">
+      <button data-view="goods:1" class="cur">在售</button>
+      <button data-view="goods:2">已售出</button>
+      <button data-view="goods:4">已预订</button>
+      <button data-view="goods:3">已下架</button>
+      <span class="divider"></span>
+      <button data-view="order:buyer">🧾 购买记录</button>
+      <button data-view="order:seller">💰 出售记录</button>
+    </div>
+    <div class="order-summary" id="order-summary" style="display:none;"></div>
+    <div class="grid" id="list"></div>
+    <div class="empty" id="empty" style="display:none;">
+      <div class="big" id="empty-icon">🗂️</div><p id="empty-text">这个状态下还没有商品，去首页摆个小摊吧</p>
+      <p style="margin-top:12px;"><a id="empty-link" href="publish.html" style="color:var(--green);font-family:var(--font-display);">→ 去发布</a></p>
+    </div>
+  </div>
+
+  <script src="js/demo-mock.js"></script>
+  <script src="js/app.js?v=2026111703"></script>
+  <script>
+    renderNav("order");
+    /* view 取值：goods:<状态> 看我发布的商品；order:buyer / order:seller 看订单 */
+    let view = "goods:1";
+    let countdownTimer = null;
+
+    /* 详情页下单后跳转：orders.html?tab=buyer */
+    const tabParam = new URLSearchParams(location.search).get("tab");
+    if (tabParam === "buyer" || tabParam === "seller") view = "order:" + tabParam;
+    syncTabs();
+
+    function syncTabs() {
+      document.querySelectorAll("#tabs button").forEach(b => b.classList.toggle("cur", b.dataset.view === view));
+    }
+
+    document.getElementById("tabs").addEventListener("click", e => {
+      const btn = e.target.closest("button[data-view]");
+      if (!btn) return;
+      view = btn.dataset.view;
+      syncTabs();
+      load();
+    });
+
+    function setEmpty(icon, text, linkText, linkHref, show) {
+      document.getElementById("empty-icon").textContent = icon;
+      document.getElementById("empty-text").textContent = text;
+      const link = document.getElementById("empty-link");
+      link.textContent = linkText;
+      link.href = linkHref;
+      document.getElementById("empty").style.display = show ? "block" : "none";
+    }
+
+    async function load() {
+      clearInterval(countdownTimer); countdownTimer = null;
+      const u = getUser();
+      if (!u) {
+        document.getElementById("list").innerHTML = "";
+        setEmpty("🔐", "登录后查看你的交易记录", "→ 去登录", "javascript:openLoginModal()", true);
+        requireLogin();
+        return;
+      }
+      const box = document.getElementById("list");
+      box.className = view.startsWith("order:") ? "order-list" : "grid";
+      if (!view.startsWith("order:")) document.getElementById("order-summary").style.display = "none";
+      box.innerHTML = '<div class="skeleton"></div><div class="skeleton"></div>';
+      try {
+        if (view.startsWith("order:")) await loadOrders(u, view.split(":")[1]);
+        else await loadGoods(u, Number(view.split(":")[1]));
+      } catch (e) {
+        box.innerHTML = "";
+        toast(e.message, "err");
+      }
+    }
+
+    /* ---------- 我发布的商品 ---------- */
+    async function loadGoods(u, status) {
+      const data = await request(`/goods?seller_id=${u.id}&page=1&page_size=50`);
+      const items = data.items.filter(g => g.status === status);
+      const emptyMap = {
+        1: ["🧺", "还没有在售的宝贝，去摆个小摊吧", "→ 去发布", "publish.html"],
+        2: ["📦", "还没有卖出的宝贝，再等等有缘人", "→ 去逛逛", "index.html"],
+        3: ["🌊", "漂流瓶池子里还没有你的宝贝", "→ 去发布", "publish.html"],
+        4: ["🔒", "暂时没有被买家锁定的宝贝", "→ 去逛逛", "index.html"],
+      };
+      setEmpty(...emptyMap[status], items.length === 0);
+      document.getElementById("list").innerHTML = items.map(g => `
+        <div class="goods-card" onclick="location.href='detail.html?id=${g.id}'">
+          <div class="card-img">
+            ${g.cover ? `<img src="${API}${g.cover}" alt="">` : '<span class="ph">🛍️</span>'}
+            <span class="tag-status s${g.status}">${g.status_text}</span>
+          </div>
+          <div class="card-body">
+            <div class="card-title">${esc(g.title)}</div>
+            <div class="price-row"><span class="price"><small>￥</small>${g.price}</span></div>
+            <div class="meta-row">
+              <span class="cat-tag">${CATEGORIES[g.category_id] || "其他"}</span>
+              <span>👁 ${g.view_count}</span><span>❤ ${g.like_count}</span><span>📅 ${fmtTime(g.created_at)}</span>
+            </div>
+            <div class="card-foot"><div class="card-actions">
+              ${g.status === 1 ? `<button class="mini-btn" onclick="event.stopPropagation();throwBottle(${g.id})">🌊 投入漂流瓶</button>` : ""}
+              ${g.status === 3 ? `<button class="mini-btn" onclick="event.stopPropagation();backFromBottle(${g.id})">↩️ 捞回上架</button>` : ""}
+              ${g.status === 4 ? `<span class="card-hint">🔒 等待买家付款</span>` : ""}
+            </div></div>
+          </div>
+        </div>`).join("");
+    }
+
+    /* ---------- 我的订单（买家 / 卖家视角） ---------- */
+    async function loadOrders(u, role) {
+      const data = await request(`/orders?role=${role}&page=1&page_size=50`);
+      const items = data.items || [];
+      const box = document.getElementById("list");
+      if (role === "buyer") setEmpty("🧾", "还没有购买记录，去首页逛逛吧", "→ 去逛逛", "index.html", !items.length);
+      else setEmpty("💰", "还没卖出过宝贝，再等等有缘人", "→ 去发布", "publish.html", !items.length);
+
+      /* 汇总：不含已关闭订单的金额 */
+      const valid = items.filter(o => o.status !== 40);
+      const amount = valid.reduce((s, o) => s + Number(o.amount), 0);
+      const sum = document.getElementById("order-summary");
+      sum.style.display = "block";
+      sum.innerHTML = `共 <b>${data.total}</b> 笔${role === "buyer" ? "购买" : "出售"}记录 ·
+        有效 <b>${valid.length}</b> 笔 · ${role === "buyer" ? "支出" : "收入"}合计 <b>￥${amount.toFixed(2)}</b>
+        <span class="order-sum-tip">（不含已关闭订单）</span>`;
+
+      box.innerHTML = items.map(o => orderCard(o, role)).join("");
+      if (items.length) startCountdown();
+    }
+
+    function orderCard(o, role) {
+      const cover = o.goods_cover ? `<img src="${API}${o.goods_cover}" alt="">` : '<span class="ph">🛍️</span>';
+      const who = role === "buyer"
+        ? `卖家 ${esc(o.seller_nickname || "?")}`
+        : `买家 ${esc(o.buyer_nickname || "?")}`;
+      const deadline = o.status === 10
+        ? `<div class="order-deadline" data-deadline="${o.pay_deadline || ""}">⏳ 剩余 --:--</div>` : "";
+      const reason = o.status === 40
+        ? `<div class="order-meta">关闭原因：${o.close_type === "timeout" ? "超时未付款" : "买家取消"}</div>` : "";
+      let foot = "";
+      if (o.status === 10 && role === "buyer") {
+        foot = `<div class="order-foot">
+          <button class="mini-btn pay" onclick="payOrder(${o.id}, ${o.amount})">立即付款</button>
+          <button class="mini-btn" onclick="cancelOrder(${o.id})">取消订单</button>
+        </div>`;
+      } else if (o.status === 10) {
+        foot = `<div class="order-foot"><span class="order-hint">等待买家付款，超时后宝贝自动重新上架</span></div>`;
+      }
+      return `<div class="order-card">
+        <div class="order-head">
+          <span>订单号 ${esc(o.order_no)}</span>
+          <span class="order-status st${o.status}">${o.status_text}</span>
+        </div>
+        <div class="order-main" onclick="location.href='detail.html?id=${o.goods_id}'">
+          <div class="order-img">${cover}</div>
+          <div class="order-info">
+            <div class="order-title">${esc(o.goods_title)}</div>
+            <div class="order-meta">${who} · ${fmtTime(o.created_at)}下单${o.pay_method ? ` · 已用${esc(o.pay_method_text)}付款` : ""}</div>
+            ${deadline}${reason}
+          </div>
+          <div class="order-amount">￥${o.amount}</div>
+        </div>
+        ${foot}
+      </div>`;
+    }
+
+    /* 待付款倒计时 */
+    function startCountdown() {
+      const tick = () => {
+        document.querySelectorAll("[data-deadline]").forEach(el => {
+          const t = el.dataset.deadline ? new Date(el.dataset.deadline).getTime() : 0;
+          if (!t) { el.textContent = "⌛ 等待系统确认"; return; }
+          const left = Math.max(0, Math.floor((t - Date.now()) / 1000));
+          if (left > 0) {
+            const m = String(Math.floor(left / 60)).padStart(2, "0");
+            const s = String(left % 60).padStart(2, "0");
+            el.textContent = `⏳ 剩余 ${m}:${s}`;
+            el.classList.remove("over");
+          } else {
+            el.textContent = "⌛ 已超时，等待系统关闭";
+            el.classList.add("over");
+          }
+        });
+      };
+      tick();
+      countdownTimer = setInterval(tick, 1000);
+    }
+
+    async function payOrder(id, amount) {
+      const method = await choosePayMethod(amount, "订单付款");
+      if (!method) return;
+      try {
+        await request(`/orders/${id}/pay`, { method: "POST", body: { pay_method: method } });
+        toast(`已用${payMethodText(method)}付款，交易完成 🎉`, "ok");
+        load(); loadStamps();
+      } catch (e) { toast(e.message, "err"); }
+    }
+
+    async function cancelOrder(id) {
+      if (!(await confirmDialog("取消订单？", "取消后宝贝会重新上架，可以再次购买", true))) return;
+      try {
+        await request(`/orders/${id}/cancel`, { method: "POST" });
+        toast("订单已取消", "info");
+        load(); loadStamps();
+      } catch (e) { toast(e.message, "err"); }
+    }
+    /* 集章卡 */
+    async function loadStamps() {
+      const box = document.getElementById("stamp-card");
+      const u = getUser();
+      if (!u) { box.style.display = "none"; return; }
+      try {
+        const { stamps, title } = await getMyStamps();
+        box.innerHTML = `
+          <div class="stamp-head"><span class="stamp-title">🎖️ 我的集章卡</span>
+            <span class="stamp-badge">${title}</span></div>
+          <div class="stamp-slots">${Array.from({ length: 10 }, (_, i) =>
+            `<span class="stamp-slot ${i < stamps ? "on" : ""}">${i < stamps ? "淘" : ""}</span>`).join("")}</div>
+          <p class="stamp-hint">每成交一笔盖一个"淘"章：3个→砍价王 · 5个→收藏家 · 10个→校园倒爷</p>`;
+      } catch (e) { box.style.display = "none"; }
+    }
+
+    /* 漂流瓶：投入=下架，捞回=重新上架 */
+    async function throwBottle(id) {
+      if (!(await confirmDialog("投入漂流瓶？", "商品将下架漂进海里，等待有缘人捞起 🌊"))) return;
+      try {
+        await request(`/goods/${id}/status`, { method: "POST", body: { action: "off" } });
+        toast("已投入漂流瓶，祝它找到新主人 🍾", "ok");
+        load(); loadStamps();
+      } catch (e) { toast(e.message, "err"); }
+    }
+    async function backFromBottle(id) {
+      try {
+        await request(`/goods/${id}/status`, { method: "POST", body: { action: "on" } });
+        toast("已从海里捞回，重新上架 ↩️", "ok");
+        load(); loadStamps();
+      } catch (e) { toast(e.message, "err"); }
+    }
+
+    load(); loadStamps();
+    document.addEventListener("cs:login", () => { load(); loadStamps(); });
+  </script>
+</body>
+</html>

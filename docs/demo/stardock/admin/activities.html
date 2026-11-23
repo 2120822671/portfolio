@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>活动发布 —— 星坞</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .post-area { margin-bottom: 30px; }
+    .post-area textarea { height: 120px; resize: vertical; }
+    .type-tag {
+      padding: 4px 12px; border-radius: 10px; font-size: 12px; font-weight: bold;
+      display: inline-block; margin-right: 6px;
+    }
+    .tag-notice { background: #2196f3; }
+    .tag-event  { background: #ff5722; }
+    .tag-global { background: rgba(255,215,0,0.3); color: #ffd700; }
+    .tag-club   { background: rgba(76,175,80,0.3); color: #81c784; }
+
+    .act-card {
+      background: rgba(255,255,255,0.08);
+      border-left: 4px solid #ffd700;
+      border-radius: 8px; padding: 14px 18px; margin-bottom: 12px;
+    }
+    .act-card.draft { border-left-color: #666; opacity: 0.6; }
+    .act-card h4 { margin: 0 0 6px 0; display: flex; gap: 8px; align-items: center; }
+    .act-card .meta { font-size: 12px; color: #aaa; margin-top: 8px; display: flex; gap: 14px; flex-wrap: wrap; }
+    .act-card .content { white-space: pre-wrap; line-height: 1.6; font-size: 14px; }
+    .act-card .ops { margin-top: 10px; display: flex; gap: 8px; }
+  </style>
+</head>
+<body>
+<a href="https://37lixloirzejy43lagp.traesite.cn/" class="portal-back" style="position:fixed;left:14px;top:14px;z-index:99999;background:#b388ff;color:#1a1035;text-decoration:none;font-size:12px;font-weight:700;padding:8px 14px;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.35)">← 返回作品集</a>
+  <div id="navbar"></div>
+  <div class="container">
+    <h2 style="margin-bottom:16px">📢 活动 / 通知 发布管理</h2>
+
+    <!-- 发布区域 -->
+    <div class="card post-area">
+      <h3 style="color:#ffd700;margin-bottom:16px">发布新内容</h3>
+      <div class="form-group">
+        <label>标题</label>
+        <input type="text" id="title" placeholder="标题（最多 100 字）" maxlength="100">
+      </div>
+      <div class="form-group">
+        <label>正文（支持换行）</label>
+        <textarea id="content" placeholder="填写活动或通知的内容..."></textarea>
+      </div>
+      <div class="form-group">
+        <label>类型</label>
+        <select id="actType">
+          <option value="1">📌 通知</option>
+          <option value="2">🎉 活动</option>
+        </select>
+      </div>
+      <div class="form-group" id="scopeGroup">
+        <label>可见范围</label>
+        <select id="scope" onchange="onScopeChange()">
+          <option value="1">🌐 全体用户</option>
+          <option value="2">🎯 指定粉丝团</option>
+        </select>
+      </div>
+      <div class="form-group" id="clubSelect" style="display:none">
+        <label>选择粉丝团</label>
+        <select id="targetClub"></select>
+      </div>
+      <button class="btn" id="postBtn" onclick="doPost()">立即发布</button>
+    </div>
+
+    <!-- 列表 -->
+    <h3 style="margin-bottom:12px">📒 已发布的活动</h3>
+    <div id="listArea"></div>
+  </div>
+
+  <script src="../js/demo-mock.js"></script>
+  <script src="../js/common.js"></script>
+  <script>
+    let user = null;
+    let allClubs = [];
+    let myClubId = null; // 明星发布时自动锁定自己的粉丝团
+
+    (async () => {
+      try {
+        user = await requireRole([2, 3]);
+        await loadNavbar();
+
+        // 加载粉丝团列表（管理员看全部，明星只看自己的）
+        await loadClubs();
+        document.getElementById("scope").dispatchEvent(new Event("change"));
+        await loadList();
+      } catch (e) {}
+    })();
+
+    async function loadClubs() {
+      try {
+        if (user.role === 3) {
+          // 明星：查自己的粉丝团
+          const res = await fetchJSON("/api/celebrities");
+          const myCeleb = res.data.find(c => c.user_id === user.id);
+          if (myCeleb && myCeleb.club_id) {
+            myClubId = myCeleb.club_id;
+            const club = await fetchJSON(`/api/fan-clubs/${myClubId}`);
+            allClubs = [{ id: club.data.id, name: club.data.name }];
+          }
+        } else {
+          // 管理员：查全部
+          const res = await fetchJSON("/api/celebrities");
+          allClubs = res.data.filter(c => c.club_id).map(c => ({
+            id: c.club_id, name: c.club_name || c.stage_name + "粉丝团"
+          }));
+        }
+
+        const sel = document.getElementById("targetClub");
+        sel.innerHTML = allClubs.map(c => `<option value="${c.id}">${c.name}</option>`).join("");
+
+        // 明星：强制只能发自己的粉丝团
+        if (user.role === 3 && myClubId) {
+          document.getElementById("scope").value = "2";
+          document.getElementById("scope").disabled = true;
+          sel.value = myClubId;
+        }
+      } catch (e) {}
+    }
+
+    function onScopeChange() {
+      const scope = document.getElementById("scope").value;
+      document.getElementById("clubSelect").style.display = scope === "2" ? "block" : "none";
+    }
+
+    async function doPost() {
+      const title = document.getElementById("title").value.trim();
+      const content = document.getElementById("content").value.trim();
+      const actType = parseInt(document.getElementById("actType").value);
+      const scope = parseInt(document.getElementById("scope").value);
+      const target = scope === 2 ? parseInt(document.getElementById("targetClub").value) : null;
+
+      if (!title || !content) { toast("标题和正文不能空", "warn"); return; }
+
+      const btn = document.getElementById("postBtn");
+      btnLoading(btn, true, "发布中...");
+      try {
+        await fetchJSON("/api/activities", {
+          method: "POST",
+          body: { title, content, activity_type: actType, scope, target_club_id: target }
+        });
+        toast("🎉 发布成功！", "success");
+        document.getElementById("title").value = "";
+        document.getElementById("content").value = "";
+        await loadList();
+      } catch (e) {}
+      btnLoading(btn, false);
+    }
+
+    async function loadList() {
+      try {
+        const res = await fetchJSON("/api/activities?size=30");
+        const list = res.data;
+        if (list.length === 0) {
+          document.getElementById("listArea").innerHTML = `<p style="color:#666">还没有发布任何内容~</p>`;
+          return;
+        }
+
+        document.getElementById("listArea").innerHTML = list.map(a => {
+          const typeTag = a.activity_type === 2 ? `<span class="type-tag tag-event">🎯 活动</span>` : `<span class="type-tag tag-notice">📌 通知</span>`;
+          const scopeTag = a.scope === 1 ? `<span class="type-tag tag-global">🌐 全体</span>` : `<span class="type-tag tag-club">🎯 ${a.club_name || "指定粉丝团"}</span>`;
+          const draftCls = a.status === 0 ? "draft" : "";
+          const statusText = a.status === 0 ? "（已撤回）" : "";
+          return `
+            <div class="act-card ${draftCls}">
+              <h4>${typeTag}${scopeTag}${a.title} <span style="color:#aaa;font-size:13px">${statusText}</span></h4>
+              <div class="content">${a.content}</div>
+              <div class="meta">
+                <span>👤 ${a.poster_name}</span>
+                <span>⏰ ${fmt(a.create_time)}</span>
+              </div>
+              ${a.status === 1 ? `
+                <div class="ops">
+                  <button class="btn btn-sm btn-danger" data-del="${a.id}">撤回</button>
+                </div>` : ""}
+            </div>
+          `;
+        }).join("");
+
+        document.querySelectorAll("[data-del]").forEach(btn => {
+          btn.addEventListener("click", async () => {
+            if (!confirm("确定要撤回吗？")) return;
+            try {
+              await fetchJSON(`/api/activities/${btn.dataset.del}`, { method: "DELETE" });
+              toast("已撤回", "success");
+              await loadList();
+            } catch (e) {}
+          });
+        });
+      } catch (e) {}
+    }
+  </script>
+</body>
+</html>

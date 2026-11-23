@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="data:,">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>校淘集市 - 商品详情</title>
+  <link rel="stylesheet" href="css/style.css?v=2026111703">
+</head>
+<body>
+<a href="https://37lixloirzejy43lagp.traesite.cn/" class="portal-back" style="position:fixed;top:14px;left:14px;z-index:9999;background:#2f6df6;color:#fff;text-decoration:none;font-size:12px;font-weight:700;padding:8px 14px;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.25)">← 返回作品集</a>
+<div style="position:fixed;right:14px;bottom:14px;z-index:9999;padding:9px 14px;border-radius:10px;background:rgba(47,107,79,.92);border:1px solid rgba(255,255,255,.24);color:#f4f1e4;font:12px/1.6 'Microsoft YaHei',sans-serif;max-width:240px;box-shadow:0 4px 14px rgba(0,0,0,.2)">
+  <b style="color:#ffe08a">静态演示版</b><br>数据为浏览器内模拟，关闭标签页即还原。
+</div>
+  <header id="navbar"></header>
+
+  <div class="container">
+    <div class="empty" id="loading"><div class="big">⏳</div><p>加载中…</p></div>
+    <div id="content" style="display:none;">
+      <div class="detail-wrap">
+        <!-- 图片轮播 -->
+        <div class="gallery">
+          <div class="main" id="main-img"></div>
+          <div class="thumbs" id="thumbs"></div>
+        </div>
+        <!-- 信息面板 -->
+        <div class="info-panel" id="info"></div>
+      </div>
+      <!-- 留言区 -->
+      <div class="section">
+        <h3 style="margin-bottom:8px;">💬 商品留言（<span id="msg-count">0</span>）</h3>
+        <div id="messages"></div>
+        <div class="sticker-row" id="sticker-row"></div>
+        <div class="msg-form">
+          <input id="msg-input" maxlength="500" placeholder="有疑问先留言，友善沟通~">
+          <button id="msg-btn" onclick="postMessage()">发表留言</button>
+        </div>
+        <button class="swap-btn" id="swap-btn" style="display:none;"
+          onclick="openChat(goods.id, goods.seller_id, 'swap')">🔁 用我的宝贝换它</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 下单确认弹窗 -->
+  <div class="modal-mask" id="buy-modal">
+    <div class="modal buy-modal">
+      <h3>🛒 确认下单</h3>
+      <div class="buy-goods" id="buy-goods"></div>
+      <div class="buy-list" id="buy-info"></div>
+      <p class="buy-tip">下单后宝贝会为你锁定 30 分钟，请及时付款；超时未付款订单将自动关闭，宝贝重新上架。</p>
+      <div class="actions">
+        <button onclick="closeBuy()">再想想</button>
+        <button class="ok" id="buy-confirm" onclick="submitBuy(this)">确认下单</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/demo-mock.js"></script>
+  <script src="js/app.js?v=2026111703"></script>
+  <script>
+    renderNav();
+    const goodsId = new URLSearchParams(location.search).get("id");
+    let goods = null;
+
+    async function load() {
+      if (!goodsId) { document.getElementById("loading").innerHTML = '<div class="big">⚠️</div><p>缺少商品ID参数</p>'; return; }
+      try {
+        goods = await request(`/goods/${goodsId}`);
+        render();
+      } catch (e) {
+        document.getElementById("loading").innerHTML = `<div class="big">🫥</div><p>${esc(e.message)}</p>
+          <p style="margin-top:12px;"><a href="index.html" style="color:var(--primary)">← 返回首页</a></p>`;
+      }
+    }
+
+    function render() {
+      document.getElementById("loading").style.display = "none";
+      document.getElementById("content").style.display = "block";
+      document.title = `${goods.title} - 校淘集市`;
+
+      /* 图片轮播 */
+      const imgs = goods.images.length ? goods.images : (goods.cover ? [goods.cover] : []);
+      const main = document.getElementById("main-img");
+      const setMain = url => main.innerHTML = url ? `<img src="${API}${url}">` : '<span>🛍️</span>';
+      setMain(imgs[0]);
+      document.getElementById("thumbs").innerHTML = imgs.map((u, i) =>
+        `<img src="${API}${u}" class="${i === 0 ? "cur" : ""}" onclick="switchImg(this,'${u}')" alt="">`).join("");
+
+      /* 信息面板 */
+      const u = getUser();
+      const owner = u && u.id === goods.seller_id;
+      /* 可购买：非本人、在售、有库存（未登录也展示入口，点击后引导登录） */
+      const canBuy = !owner && goods.status === 1 && goods.stock > 0;
+      const statusHtml = `<span class="tag-status s${goods.status}" style="position:static;">${goods.status_text}</span>`;
+      document.getElementById("info").innerHTML = `
+        <h2>${esc(goods.title)} ${statusHtml}</h2>
+        <div class="price-row" style="margin:10px 0 14px;">
+          <span class="price">￥${goods.price}</span>
+          ${goods.original_price ? `<span class="orig">原价 ￥${goods.original_price}</span>` : ""}
+          ${goods.discount ? `<span class="discount">${goods.discount}折</span>` : ""}
+        </div>
+        <div class="info-line"><span class="k">分类</span><span class="cat-tag">${goods.category_name || CATEGORIES[goods.category_id]}</span></div>
+        <div class="info-line"><span class="k">库存</span><span>${goods.stock} 件</span></div>
+        <div class="info-line"><span class="k">交易地点</span><span>${esc(goods.location) || "面议"}</span></div>
+        <div class="info-line"><span class="k">联系方式</span><span>${esc(goods.contact) || "通过留言联系"}</span></div>
+        <div class="info-line"><span class="k">数据</span><span>👁 ${goods.view_count} 浏览 · ❤ ${goods.like_count} 点赞 · ${fmtTime(goods.created_at)}发布</span></div>
+        <div class="info-line"><span class="k">描述</span><span style="white-space:pre-wrap;">${esc(goods.description) || "—"}</span></div>
+        <div class="seller-box">
+          <span class="avatar-circle" style="width:40px;height:40px;font-size:16px;">${esc((goods.seller.nickname || "?").slice(0, 1))}</span>
+          <div><b>${esc(goods.seller.nickname)}</b><div style="font-size:12px;color:var(--muted);">信用分 ${goods.seller.credit_score}</div></div>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;align-items:center;">
+          <button class="btn-like ${goods.liked ? "liked" : ""}" id="like-btn" onclick="toggleLike()">❤ <span>${goods.like_count}</span></button>
+          ${canBuy ? `<button class="btn-buy" id="buy-btn" onclick="openBuy()">🛒 立即购买</button>` : ""}
+          ${canBuy ? `<button class="btn-cart" onclick="addToCart()">🧺 加入购物车</button>` : ""}
+          ${!owner ? `<button class="btn-chat" onclick="openChat(goods.id, goods.seller_id)">💬 聊聊 / 砍价</button>` : ""}
+          ${owner && goods.status === 4 ? `<span class="buy-lock-hint">🔒 已被买家锁定，等待付款</span>` : ""}
+          ${!owner && goods.status === 4 ? `<span class="buy-lock-hint">🔒 已有同学下单锁定，超时未付款会自动释放</span>` : ""}
+          ${owner ? ownerBtns() : ""}
+        </div>`;
+
+      /* 留言 */
+      document.getElementById("msg-count").textContent = goods.messages.length;
+      document.getElementById("messages").innerHTML = goods.messages.length
+        ? goods.messages.map(m => {
+            const isSticker = /^[🍋🔪😭🔥🤝]/.test(m.content);
+            const isSwap = m.content.startsWith("🔁");
+            const cls = isSwap ? "msg-item msg-swap" : isSticker ? "msg-item msg-sticker" : "msg-item";
+            return `<div class="${cls}"><span class="time">${m.created_at}</span>
+              <span class="who">${esc(m.nickname)}</span>${esc(m.content)}</div>`;
+          }).join("")
+        : '<div style="color:var(--muted);font-size:14px;padding:14px 0;">还没有留言，抢个沙发~</div>';
+
+      /* 砍价贴纸行 */
+      document.getElementById("sticker-row").innerHTML = BARGAIN_STICKERS
+        .map(s => `<button class="sticker-chip" onclick="useSticker('${s}')">${s}</button>`).join("");
+
+      /* 换物入口：登录且非本人且在售 */
+      document.getElementById("swap-btn").style.display =
+        (u && !owner && goods.status === 1) ? "inline-block" : "none";
+    }
+
+    function useSticker(s) {
+      const input = document.getElementById("msg-input");
+      input.value = s; input.focus();
+    }
+
+    async function addToCart() {
+      if (!requireLogin()) return;
+      try {
+        await request("/cart", { method: "POST", body: { goods_id: goods.id, quantity: 1 } });
+        toast("已加入购物车，去结算吧 🧺", "ok");
+      } catch (e) { toast(e.message, "err"); }
+    }
+
+    /* ---------- 购买 ---------- */
+    async function openBuy() {
+      if (!requireLogin()) return;
+      if (!goods || goods.status !== 1 || goods.stock <= 0) { toast("宝贝已被预订、已售出或已下架", "err"); return; }
+      if (getUser().id === goods.seller_id) { toast("不能购买自己发布的宝贝", "err"); return; }
+      document.getElementById("buy-goods").innerHTML = `
+        ${goods.cover ? `<img src="${API}${goods.cover}" alt="">` : '<span class="ph">🛍️</span>'}
+        <div><b>${esc(goods.title)}</b>
+          <div class="buy-sub">卖家 ${esc(goods.seller.nickname)} · 信用分 ${goods.seller.credit_score}</div></div>`;
+      document.getElementById("buy-info").innerHTML = `
+        <div class="buy-line"><span>单价</span><b>￥${goods.price}</b></div>
+        <div class="buy-line"><span>数量</span><b>1 件</b></div>
+        <div class="buy-line"><span>交易地点</span><b>${esc(goods.location) || "面议"}</b></div>
+        <div class="buy-line"><span>联系方式</span><b>${esc(goods.contact) || "下单后留言联系"}</b></div>
+        <div class="buy-total"><span>应付金额</span><b>￥${goods.price}</b></div>`;
+      document.getElementById("buy-modal").classList.add("show");
+    }
+
+    function closeBuy() {
+      document.getElementById("buy-modal").classList.remove("show");
+    }
+
+    async function submitBuy(btn) {
+      await withLoading(btn, async () => {
+        try {
+          const order = await request("/orders", { method: "POST",
+            body: { goods_id: goods.id, buyer_id: getUser().id } });
+          closeBuy();
+          toast(`下单成功，订单号 ${order.order_no}`, "ok");
+          const method = await choosePayMethod(order.amount, goods.title);
+          if (method) {
+            await request(`/orders/${order.id}/pay`, { method: "POST", body: { pay_method: method } });
+            toast(`已通过${payMethodText(method)}付款，交易完成 🎉`, "ok");
+            load();
+          } else {
+            toast("宝贝已为你锁定 30 分钟，可在「我的交易」继续付款", "info");
+            setTimeout(() => location.href = "orders.html?tab=buyer", 900);
+          }
+        } catch (e) { toast(e.message, "err"); }
+      });
+    }
+
+    function switchImg(el, url) {
+      document.getElementById("main-img").innerHTML = `<img src="${API}${url}">`;
+      document.querySelectorAll(".thumbs img").forEach(i => i.classList.remove("cur"));
+      el.classList.add("cur");
+    }
+
+    function ownerBtns() {
+      const b = [];
+      if (goods.status === 1) b.push(
+        `<button class="mini-btn" onclick="changeStatus('off')">下架</button>`,
+        `<button class="mini-btn" onclick="changeStatus('sold')">标记成交</button>`);
+      if (goods.status === 3) b.push(`<button class="mini-btn" onclick="changeStatus('on')">重新上架</button>`);
+      b.push(`<button class="mini-btn danger" onclick="removeGoods()">删除商品</button>`);
+      return b.join("");
+    }
+
+    async function toggleLike() {
+      if (!requireLogin()) return;
+      const btn = document.getElementById("like-btn");
+      try {
+        const liked = btn.classList.contains("liked");
+        const data = liked ? await request(`/goods/${goodsId}/like`, { method: "DELETE" })
+                           : await request(`/goods/${goodsId}/like`, { method: "POST" });
+        btn.classList.toggle("liked", data.liked);
+        btn.querySelector("span").textContent = data.like_count;
+        toast(data.liked ? "点赞成功" : "已取消点赞", "info");
+      } catch (e) { toast(e.message, "err"); }
+    }
+
+    async function changeStatus(action) {
+      const tips = { off: ["确认下架？", "下架后商品不再展示在售状态"],
+                     on: ["确认重新上架？", "上架后恢复在售"],
+                     sold: ["确认标记交易完成？", "状态将变为已售出"] }[action];
+      if (!(await confirmDialog(tips[0], tips[1]))) return;
+      try {
+        const data = await request(`/goods/${goodsId}/status`, { method: "POST", body: { action } });
+        toast(`${data.status_text}`, "ok");
+        load();
+      } catch (e) { toast(e.message, "err"); }
+    }
+
+    async function removeGoods() {
+      if (!(await confirmDialog("确认删除商品？", "删除后不可恢复", true))) return;
+      try {
+        await request(`/goods/${goodsId}`, { method: "DELETE" });
+        toast("商品已删除", "ok");
+        setTimeout(() => location.href = "index.html", 700);
+      } catch (e) { toast(e.message, "err"); }
+    }
+
+    async function postMessage() {
+      if (!requireLogin()) return;
+      const input = document.getElementById("msg-input");
+      const content = input.value.trim();
+      if (!content) { toast("留言内容不能为空", "err"); return; }
+      await withLoading(document.getElementById("msg-btn"), async () => {
+        try {
+          await request(`/goods/${goodsId}/messages`, { method: "POST", body: { content } });
+          input.value = "";
+          toast("留言成功", "ok");
+          load();
+        } catch (e) { toast(e.message, "err"); }
+      });
+    }
+    document.getElementById("msg-input").addEventListener("keydown", e => { if (e.key === "Enter") postMessage(); });
+    /* 点击遮罩关闭下单弹窗 */
+    document.getElementById("buy-modal").addEventListener("click", e => {
+      if (e.target.id === "buy-modal") closeBuy();
+    });
+
+    load();
+  </script>
+</body>
+</html>
